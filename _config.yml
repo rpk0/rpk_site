@@ -4,9 +4,10 @@ permalink: /posts/:title
 rdiscount:
   extensions: [smart]
 
-name: Zach Holman
+name: rpk
 url: http://zachholman.com
 description: A fantastic blog that is fantastic.
-twitter: holman
-github: holman
-gravatar_url: http://gravatar.com/avatar/6f63cde8b16b035280ca615f621a6c8c
+twitter: rpk0_
+github: rpk0
+gravatar_url: https://s.gravatar.com/avatar/8bc43bee9040db6434f0842501858358?s=80
+

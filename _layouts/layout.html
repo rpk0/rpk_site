@@ -20,14 +20,26 @@
   <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
   <link media="only screen and (max-device-width: 480px)" href="/css/mobile.css" type="text/css" rel="stylesheet" />
   <link media="only screen and (device-width: 768px)" href="/css/mobile.css" type="text/css" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <!-- <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'> -->
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+  <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> -->
+<!-- gallery sara -->
+<link rel="stylesheet" href="/css/styles.css" type="text/css">
 
+  <link rel="shortcut icon" href="/favicon.ico"/>
+  <link href="css/lightbox.css" rel="stylesheet" />
+
+  <script type="text/javascript" src="/js/jquery.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/application.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/lightbox-2.6.min.js"></script>
+
 </head>
 
 <body>
+
   <section class="sidebar">
     <a href="/">
       <img src="{{ site.gravatar_url }}?s=150" height="75" width="75" class="avatar" />
@@ -35,8 +47,8 @@
 
     <section class="name">
       <a href="/">
-        <span id="fname">{{ site.name|split:' '|first }}</span>
-        <span id="lname">{{ site.name|split:' '|last }}</span>
+        <span id="fname">{{ site.name }}</span>
+        <!-- <span id="lname">{{ site.name|split:' '|last }}</span> -->
       </a>
     </section>
 
@@ -49,12 +61,15 @@
     <section class="sections">
       <ul>
         <li><a href="/about.html">about</a></li>
+        <li><a href="/testing.html">storyy</a></li>
+        <li><a href="/gallery.html">photography</a></li>
         <li><a href="/">posts</a></li>
       </ul>
     </section>
   </section>
 
   {{ content }}
+
 </body>
 
 </html>

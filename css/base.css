@@ -9,10 +9,10 @@ a {
 
 .sidebar {
   position: fixed;
-  left: 15px;
-  top: 15px;
+  left: 25px;
+  top: 25px;
   width: 80px;
-  font-family: Helvetica, sans-serif; }
+  font-family: Ubuntu, sans-serif; }
   .sidebar a {
     text-decoration: none; }
   .sidebar img {
@@ -20,7 +20,7 @@ a {
     border: 0; }
   .sidebar .avatar {
     padding: 0;
-    margin-left: 2px;
+    margin-left: -7px;
     border-radius: 5px; }
   .sidebar .name {
     text-transform: uppercase;
@@ -32,7 +32,7 @@ a {
       color: black; }
     .sidebar .name #lname {
       font-size: 17px;
-      font-weight: bold;
+      /*font-weight: bold;*/
       letter-spacing: 1px;
       color: black; }
   .sidebar .meta a {
@@ -49,7 +49,7 @@ a {
     .sidebar .sections a {
       padding: 3px 0;
       color: black;
-      font-weight: bold;
+      /*font-weight: bold;*/
       font-size: 12px;
       display: block; }
       .sidebar .sections a:hover {
@@ -63,33 +63,33 @@ a {
 
 .content {
   max-width: 650px;
-  margin-left: 110px;
+  margin-left: 180px;
   margin-right: 20px;
-  margin-bottom: 50px; }
+  margin-bottom: 0px; }
   .content h1 {
     color: #333;
-    font-family: "Yanone Kaffeesatz", Helvetica, sans-serif;
+    font-family: Ubuntu, sans-serif;
     font-weight: 400; }
   .content h1 a {
     color: #111;
     text-decoration: none; }
   .content h2 {
     color: #333;
-    font-family: "Yanone Kaffeesatz", Helvetica, sans-serif;
+    font-family: Ubuntu, sans-serif;
     font-weight: 400; }
   .content h2 a {
     color: #111;
     text-decoration: none; }
   .content h3 {
     color: #333;
-    font-family: "Yanone Kaffeesatz", Helvetica, sans-serif;
+    font-family: Ubuntu, sans-serif;
     font-weight: 400; }
   .content h3 a {
     color: #111;
     text-decoration: none; }
   .content h4 {
     color: #333;
-    font-family: "Yanone Kaffeesatz", Helvetica, sans-serif;
+    font-family: "Yanone Kaffeesatz", Ubuntu, sans-serif;
     font-weight: 400; }
   .content h4 a {
     color: #111;
@@ -166,7 +166,7 @@ a {
     .content .listing li {
       font-size: 13px;
       list-style: none;
-      padding: 5px 3px;
+      padding: 45px 3px;
       margin: 0;
       color: #777777;
       border-bottom: 1px solid #eee; }
@@ -202,6 +202,6 @@ a {
     border: 1px solid #000;
     font-family: Helvetica, sans-serif;
     font-size: 12px;
-    font-weight: bold; }
+    /*font-weight: bold; }*/
   .content .talk-design .color .white {
     color: #fff; }
