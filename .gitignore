@@ -1,1 +1,4 @@
-_site
+_site/
+.bundle/
+.DS_Store
+gh-pages/
