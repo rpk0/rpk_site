@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body {
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: "Source Sans Pro", "Palatino Linotype", "Book Antiqua", Palatino, serif;
   margin: 0;
   -webkit-font-smoothing: antialiased; }
 
@@ -12,7 +12,7 @@ a {
   left: 25px;
   top: 25px;
   width: 80px;
-  font-family: Ubuntu, sans-serif; }
+  font-family: "Source Sans Pro"; }
   .sidebar a {
     text-decoration: none; }
   .sidebar img {
@@ -50,7 +50,7 @@ a {
       padding: 3px 0;
       color: black;
       /*font-weight: bold;*/
-      font-size: 12px;
+      font-size: 20px;
       display: block; }
       .sidebar .sections a:hover {
         color: #227ce8; }
@@ -68,28 +68,28 @@ a {
   margin-bottom: 0px; }
   .content h1 {
     color: #333;
-    font-family: Ubuntu, sans-serif;
+    font-family: "Source Sans Pro";
     font-weight: 400; }
   .content h1 a {
     color: #111;
     text-decoration: none; }
   .content h2 {
     color: #333;
-    font-family: Ubuntu, sans-serif;
+    font-family: "Source Sans Pro";
     font-weight: 400; }
   .content h2 a {
     color: #111;
     text-decoration: none; }
   .content h3 {
     color: #333;
-    font-family: Ubuntu, sans-serif;
+    font-family: "Source Sans Pro";
     font-weight: 400; }
   .content h3 a {
     color: #111;
     text-decoration: none; }
   .content h4 {
     color: #333;
-    font-family: "Yanone Kaffeesatz", Ubuntu, sans-serif;
+    font-family: "Source Sans Pro";
     font-weight: 400; }
   .content h4 a {
     color: #111;
