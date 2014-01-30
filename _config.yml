@@ -1,0 +1,13 @@
+markdown: rdiscount
+pygments: true
+permalink: /posts/:title
+rdiscount:
+  extensions: [smart]
+
+name: rpk
+url: http://zachholman.com
+description: A fantastic blog that is fantastic.
+twitter: rpk0_
+github: rpk0
+gravatar_url: https://s.gravatar.com/avatar/8bc43bee9040db6434f0842501858358?s=80
+
