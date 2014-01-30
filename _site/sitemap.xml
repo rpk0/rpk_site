@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://zachholman.com</loc>
+        <loc>http://rpk0.github.io/rpk_site/</loc>
     </url>
     
     
     <url>
-        <loc>http://zachholman.com/posts/photo_test</loc>
+        <loc>http://rpk0.github.io/rpk_site//posts/photo_test</loc>
     </url>
     
     <url>
-        <loc>http://zachholman.com/posts/readme</loc>
+        <loc>http://rpk0.github.io/rpk_site//posts/readme</loc>
     </url>
     
     <url>
-        <loc>http://zachholman.com/posts/left</loc>
+        <loc>http://rpk0.github.io/rpk_site//posts/left</loc>
     </url>
     
 </urlset>
