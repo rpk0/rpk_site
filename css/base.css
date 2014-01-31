@@ -54,6 +54,9 @@ a {
       display: block; }
       .sidebar .sections a:hover {
         color: #227ce8; }
+      .sidebar .sections .active {
+        text-decoration: underline;
+      }
     .sidebar .sections ul {
       margin: 0;
       padding: 0; }
