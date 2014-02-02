@@ -133,7 +133,7 @@ box-sizing: border-box;
 }
 
 .sidebar .meta a:hover {
-  color: #227ce8;
+  color: #31472D;
 }
 
 .sidebar .sections {
@@ -150,57 +150,45 @@ box-sizing: border-box;
 }
 
 .sidebar .sections a:after {
-  position: absolute;
-  width: 71%;
-  top: 50%;
-  left: 50%;
-  margin-left: -60px;
-  height: 1px;
-  background: #aaa;
-  content: '';
-  z-index: -1;
-  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-  -moz-transition: -moz-transform 0.3s, opacity 0.3s;
-  transition: transform 0.3s, opacity 0.3s;
-  pointer-events: none;
-  -webkit-transform: translateY(20px);
-  -moz-transform: translateY(20px);
-  transform: translateY(20px);
+  margin-left: 10px;
+  content: ']';
+  -webkit-transform: translateX(-20px);
+  -moz-transform: translateX(-20px);
+  transform: translateX(-20px);
+  display: inline-block;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+  transition: transform 0.3s, opacity 0.2s;
 }
 
 .sidebar .sections a:before {
-  position: absolute;
-  width: 71%;
-  top: 50%;
-  left: 50%;
-  margin-left: -60px;
-  height: 1px;
-  background: #aaa;
-  content: '';
-  z-index: -1;
-  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-  -moz-transition: -moz-transform 0.3s, opacity 0.3s;
-  transition: transform 0.3s, opacity 0.3s;
-  pointer-events: none;
-  -webkit-transform: translateY(-20px);
-  -moz-transform: translateY(-20px);
-  transform: translateY(-20px);
+  margin-right: 10px;
+  content: '[';
+  -webkit-transform: translateX(20px);
+  -moz-transform: translateX(20px);
+  transform: translateX(20px);
+  display: inline-block;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+  transition: transform 0.3s, opacity 0.2s;
 }
 
 .sidebar .sections a:hover:before,
 .sidebar .sections .active a:before {
-  background: #333;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  transform: rotate(45deg);
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  transform: translateX(0px);
 }
 
 .sidebar .sections a:hover:after,
 .sidebar .sections .active a:after {
-  background: #333;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  transform: translateX(0px);
 }
 
 .sidebar .sections a:hover {
@@ -212,13 +200,13 @@ box-sizing: border-box;
 }
 
 .sidebar .sections ul {
-  margin: 0;
+  margin: 30px 0;
   padding: 0;
 }
 
 .sidebar .sections li {
   list-style: none;
-  margin: 70px 0;
+  margin: 10px 0;
 }
 
 .content {
