@@ -5,11 +5,13 @@ group: "navigation"
 ---
 
 <section class="content">
-  <ul class="listing">
-    {% for p in site.posts %}
-    <li>
-      <span>{{ p.date | date: "%B %e, %Y" }}</span> <a href="{{ p.url }}">{{ p.title }}</a>
-    </li>
-    {% endfor %}
-  </ul>
+	<div class="inner-left">
+	  <ul class="listing">
+	    {% for p in site.posts %}
+	    <li>
+	      <span>{{ p.date | date: "%B %e, %Y" }}</span> <a href="{{ p.url }}">{{ p.title }}</a>
+	    </li>
+	    {% endfor %}
+	  </ul>
+  </div>
 </section>
