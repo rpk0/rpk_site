@@ -72,7 +72,7 @@ box-sizing: border-box;
   font-family: "segoe ui light";
   border-right: 1px solid #ddd;
   text-align: center;
-  -webkit-animation: sidebar 2s;
+  /*-webkit-animation: sidebar 2s;*/
 }
 
 .sidebar a {
