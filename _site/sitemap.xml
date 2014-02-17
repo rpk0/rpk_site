@@ -6,6 +6,10 @@
     
     
     <url>
+        <loc>127.0.0.1:4000//posts/photo-post</loc>
+    </url>
+    
+    <url>
         <loc>127.0.0.1:4000//posts/photo_test</loc>
     </url>
     
