@@ -2,3 +2,4 @@ _site/
 .bundle/
 .DS_Store
 gh-pages/
+site/_site/
