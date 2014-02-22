@@ -22,9 +22,9 @@ body {
 }
 
 *, *:after, *::before {
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .cf:before,
@@ -256,8 +256,11 @@ box-sizing: border-box;
   float: left;
   height: 100%;
   padding: 40px;
-  overflow: auto;
+  /*overflow: auto;*/
+}
 
+.content.about .inner-left {
+  overflow: auto;
 }
 
 .content .inner-right {
@@ -556,4 +559,114 @@ box-sizing: border-box;
 
 /* Photo post layout */
 
+.content.photo .inner-left {
+  width: 80%;
+}
 
+.photo-listing {
+  margin: 0;
+  padding: 0;
+}
+
+.photo-listing li {
+  list-style: none;
+  display: inline-block;
+  width: 32%;
+  max-height: 200px;
+  margin-right: 2%;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-listing li .date-hover {
+  background: rgb(79, 119, 89);
+  color: #fff;
+  right: 90px;
+  left: 90px;
+  position: absolute;
+  top: -44px;
+  text-align: center;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  font-style: normal;
+}
+
+.photo-listing li:hover .date-hover {
+  top: 0;
+}
+
+.photo-listing li:hover span:before {
+  top: -13px;
+}
+
+.photo-listing li:hover span:after {
+  bottom: -13px;
+}
+
+.photo-listing li a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.photo-listing li span {
+  position: absolute;
+  color: #fff;
+  top: 48%;
+  left: 20px;
+  right: 20px;
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.photo-listing li span:before {
+  content: '';
+  background: #494949;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.photo-listing li span:after {
+  content: '';
+  background: #494949;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.photo-listing li img {
+  width: 100%;
+  min-height: 200px;
+}
+
+.photo-listing li:before {
+  content: "";
+  background: rgba(0, 0, 0, .4);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.photo-listing li:nth-child(4),
+.photo-listing li:nth-child(7),
+.photo-listing li:nth-child(10),
+.photo-listing li:first-child {
+  margin-right: 0;
+}
+
+.photo-listing li.main-image {
+  width: 100%;
+  min-height: 300px;
+}
