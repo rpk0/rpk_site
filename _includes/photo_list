@@ -1,0 +1,7 @@
+{% for node in photo_list %}
+  {% if group == null or group == node.group %}
+      <li><a href="{{node.url}}">{{node.title}}</a></li>
+  {% endif %}
+{% endfor %}
+{% assign photo_list = nil %}
+{% assign group = nil %}
