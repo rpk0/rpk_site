@@ -222,6 +222,7 @@ body {
   font-size: 80px;
   font-family: "segoe ui light";
   text-align: center;
+  font-weight: 300;
   line-height: 66px;
   -webkit-animation: main-title 2s;
   position: relative;
@@ -273,32 +274,88 @@ body {
 }
 
 .content .inner-center {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 90px 20px;
+  position: relative;
+}
+
+.content .inner-center:before {
+  content: "";
+  background: #ccc;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  top: 47px;
+  left: 0;
+}
+
+.sticky {
+  position: fixed;
+  top: 30px;
+  margin-left: 719px;
+  float: none;
+}
+
+.content .stack-right {
+  /*position: fixed;*/
+  float: right;
+  /*margin-left: 719px;*/
+  max-width: 250px;
+}
+
+.content .stack-right h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.content .stack-right small {
+  display: block;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  font-size: 17px;
+  color: #474747;
+}
+
+.content .stack-right p {
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .content.photography .inner-center {
-  max-width: 1200px;
+  max-width: 1000px;
 }
 
 .content .center-wrap {
   background: #f9f9f9;
   position: relative;
-  top: 400px;
+  margin-top: 31%;
 }
 
 .content .inner-bg {
-  width: 100%;
-  height: 400px;
   position: fixed;
+  top: 0;
   /*background: url(../images/test-bg.jpg) no-repeat center;*/
 }
 
+.stack-left {
+  max-width: 680px;
+}
+
 .content .inner-bg img {
-  border: none;
-  padding: 0;
-  height: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.content .inner-bg span {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  margin-top: -30px;
+  left: 50%;
+  margin-left: -250px;
+  text-align: center;
+  font-size: 43px;
 }
 
 .content h1 {
@@ -560,7 +617,9 @@ body {
 /* Photo post layout */
 
 .content.photo .inner-left {
-  width: 80%;
+  width: 90%;
+  max-width: 1000px;
+
 }
 
 .photo-listing {
