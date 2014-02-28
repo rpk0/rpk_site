@@ -5,7 +5,7 @@ rdiscount:
   extensions: [smart]
 
 name: rpk
-url: www.kostaskarampinas.com
+url: kostaskarampinas.com
 description: A fantastic blog that is fantastic.
 twitter: rpk0_
 github: rpk0
