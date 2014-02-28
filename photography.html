@@ -9,7 +9,7 @@ group: "navigation"
 	  <ul class="listing">
 	    {% for p in site.posts %}
 	    <li>
-	      <span>{{ p.date | date: "%B %e, %Y" }}</span> <a href="{{site.url}}{{ p.url }}">{{ p.title }}</a>
+	      <span>{{ p.date | date: "%B %e, %Y" }}</span> <a href="{{ p.url }}">{{ p.title }}</a>
 	    </li>
 	    {% endfor %}
 	  </ul>
