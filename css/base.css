@@ -21,6 +21,15 @@ body {
        url('../fonts/segoeuil.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
 
+@font-face {
+  font-family: 'segoe sc';
+  src: url('../fonts/segoesc.eot');
+  src: url('../fonts/segoesc.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/segoesc.woff') format('woff'),
+       url('../fonts/segoesc.ttf')  format('truetype'),
+       url('../fonts/segoesc.svg#svgFontName') format('svg');
+}
+
 *, *:after, *::before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -76,7 +85,6 @@ body {
   font-family: "segoe ui light";
   border-right: 1px solid #ddd;
   text-align: center;
-  /*-webkit-animation: sidebar 2s;*/
 }
 
 .sidebar a {
@@ -154,7 +162,7 @@ body {
 
 .sidebar .sections a:after {
   margin-left: 10px;
-  content: ']';
+  content: '|';
   -webkit-transform: translateX(-20px);
   -moz-transform: translateX(-20px);
   transform: translateX(-20px);
@@ -167,7 +175,7 @@ body {
 
 .sidebar .sections a:before {
   margin-right: 10px;
-  content: '[';
+  content: '|';
   -webkit-transform: translateX(20px);
   -moz-transform: translateX(20px);
   transform: translateX(20px);
@@ -269,25 +277,19 @@ body {
   float: left;
   height: 100%;
   background: url(../images/1.jpg) no-repeat right top;
-  -webkit-animation: bg-img 4s;
   overflow: hidden;
 }
 
 .content .inner-center {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 90px 20px;
+  padding: 50px 20px;
   position: relative;
 }
 
-.content .inner-center:before {
-  content: "";
-  background: #ccc;
-  height: 1px;
-  width: 100%;
-  position: absolute;
-  top: 47px;
-  left: 0;
+.posts .inner-center {
+  max-width: 800px;
+  padding-top: 30px;
 }
 
 .sticky {
@@ -336,6 +338,57 @@ body {
   position: fixed;
   top: 0;
   /*background: url(../images/test-bg.jpg) no-repeat center;*/
+}
+
+.content .inner-bg h2 {
+  margin-top: -80px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  margin-left: -130px;
+  position: absolute;
+  font-size: 100px;
+  color: #fff;
+  font-family: 'segoe ui light';
+}
+
+.content .inner-bg h2:before {
+  background: red;
+  width: 230px;
+  height: 1px;
+  content: "";
+  position: absolute;
+  -webkit-transform: rotate(-45deg);
+  z-index: 0;
+  top: 74px;
+}
+
+.post-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  overflow: hidden;
+  float: left;
+  margin-top: -16px !important;
+  margin-right: 15px !important;
+}
+
+.posts .listing a span {
+  float: none !important;
+  display: block;
+  max-width: 78%;
+  font-size: 13px;
+  color: #999;
+}
+
+.posts .listing li a {
+  font-size: 17px;
+}
+
+.post-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
 }
 
 .stack-left {
@@ -415,7 +468,7 @@ body {
   margin-bottom: 10px;
 }
 
-.content p {
+.content.about p {
   font-size: 16px;
   -webkit-animation: main-title 4s;
 }
@@ -622,6 +675,10 @@ body {
 
 }
 
+.content.photo .inner-center {
+  padding-top: 20px;
+}
+
 .photo-listing {
   margin: 0;
   padding: 0;
@@ -640,8 +697,9 @@ body {
 .photo-listing li .date-hover {
   background: rgb(79, 119, 89);
   color: #fff;
-  right: 90px;
-  left: 90px;
+  max-width: 69px;
+  left: 50%;
+  margin-left: -35px;
   position: absolute;
   top: -44px;
   text-align: center;
