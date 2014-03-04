@@ -232,7 +232,7 @@ body {
   text-align: center;
   font-weight: 300;
   line-height: 66px;
-  -webkit-animation: main-title 2s;
+  -webkit-animation: main-title 1s;
   position: relative;
 }
 
@@ -253,7 +253,7 @@ body {
   text-align: center;
   padding: 10px 0 30px;
   border-bottom: 1px solid #ddd;
-  -webkit-animation: main-title 3s;
+  -webkit-animation: main-title 2s;
 }
 
 .content .inner-left small + p {
@@ -309,19 +309,27 @@ body {
 .content .stack-right h2 {
   margin: 0;
   padding: 0;
+  border-bottom: 1px solid #d4d4d4;
 }
 
 .content .stack-right small {
   display: block;
   padding-bottom: 30px;
   padding-top: 10px;
-  font-size: 17px;
+  font-size: 16px;
   color: #474747;
 }
 
 .content .stack-right p {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.6;
+  text-align: justify;
+}
+
+.content .stack-right p.date {
+  text-align: right;
+  padding-top: 20px;
+  color: #999;
 }
 
 .content.photography .inner-center {
@@ -470,7 +478,7 @@ body {
 
 .content.about p {
   font-size: 16px;
-  -webkit-animation: main-title 4s;
+  -webkit-animation: main-title 3s;
 }
 
 .content p code {
@@ -489,6 +497,7 @@ body {
   max-width: 100%;
   width: 100%;
   padding: 7px 5px;
+  background: #f5f5f5;
 }
 
 .content .inner-center p.half-col {
@@ -766,6 +775,7 @@ body {
 .photo-listing li img {
   width: 100%;
   min-height: 200px;
+  background: #333;
 }
 
 .photo-listing li:before {
@@ -786,4 +796,57 @@ body {
 .photo-listing li.main-image {
   width: 100%;
   min-height: 300px;
+}
+
+.more-projects {
+  padding-top: 50px;
+}
+
+.prev-proj,
+.next-proj {
+  background: #fafafa;
+  width: 50%;
+  text-align: center;
+  font-size: 21px;
+}
+
+.prev-proj span,
+.next-proj span {
+    display: block;
+    padding-top: 5px;
+    font-size: 15px;
+    color: #999;
+  }
+
+.prev-proj a,
+.next-proj a {
+  display: block;
+  padding: 54px 0;
+  text-decoration: none;
+  color: #474747;
+}
+
+.prev-proj a:hover,
+.next-proj a:hover {
+  background: #eaeaea;
+}
+
+.prev-proj p,
+.next-proj p {
+  width: 100px;
+  height: 100px;
+  margin-top: -27px;
+  border-radius: 100px;
+}
+
+.prev-proj {
+  float: left;
+  border-right: 1px solid #d4d4d4;
+  border-top: 1px solid #d4d4d4;
+}
+
+.next-proj {
+  float: right;
+  border-left: 1px solid #d4d4d4;
+  border-top: 1px solid #d4d4d4;
 }
