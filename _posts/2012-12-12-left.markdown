@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: photo_layout
 title: Left
 category: posts
 ---

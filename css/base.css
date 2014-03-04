@@ -462,6 +462,7 @@ body {
 .content h1 {
   font-size: 36px;
   margin: 18px 0 5px 0;
+  text-align: center;
 }
 
 .content h2 {
@@ -589,6 +590,9 @@ body {
   padding-left: 0px;
   font-size: 17px;
   color: #777;
+  text-align: center;
+  border-bottom: 1px solid #d4d4d4;
+  padding-bottom: 43px;
 }
 
 .content .aside {

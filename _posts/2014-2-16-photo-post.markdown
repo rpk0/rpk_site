@@ -4,7 +4,7 @@ title: Photo_post_test
 category: posts
 ---
 
-# Left
+## Left
 
 Left is a clean, whitespace-happy layout for [Jekyll](https://github.com/mojombo/jekyll).
 

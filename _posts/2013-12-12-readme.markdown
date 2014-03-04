@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: photo_layout
 title: readme
 category: posts
 ---
 
-# Left
+## Left
 
 Left is a clean, whitespace-happy layout for [Jekyll](https://github.com/mojombo/jekyll).
 
