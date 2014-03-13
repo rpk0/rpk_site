@@ -62,17 +62,17 @@ body {
 ::-webkit-scrollbar {
     width: 12px;
 }
- 
+
 /* Track */
 ::-webkit-scrollbar-track {
     border-radius: 0;
-    background: #eee; 
+    background: #eee;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
     border-radius: 0;
-    background: #ddd; 
+    background: #ddd;
 }
 
 .sidebar {
@@ -674,7 +674,7 @@ body {
   font-family: Helvetica, sans-serif;
   font-size: 12px;
 }
-  
+
 .content .talk-design .color .white {
   color: #fff;
 }
@@ -853,4 +853,13 @@ body {
   float: right;
   border-left: 1px solid #d4d4d4;
   border-top: 1px solid #d4d4d4;
+}
+
+blockquote.style2 {
+  font: 14px/22px normal helvetica, sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  padding-left: 15px;
+  border-left: 3px solid #ccc;
 }
