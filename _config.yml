@@ -1,8 +1,17 @@
 markdown: rdiscount
 pygments: true
 permalink: posts/:title
+paginate: 6
+paginate_path: "posts/page:num"
 rdiscount:
   extensions: [smart]
+nav:
+  - text: photography
+    url: /photography/index.html
+  - text: posts
+    url: /posts/index.html
+  - text: about
+    url:  /about/index.html
 
 name: rpk
 url: 127.0.0.1:4000/
