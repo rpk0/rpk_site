@@ -5,34 +5,29 @@ group: "navigation"
 ---
 
 <section class="content posts">
-	<div class="inner-bg">
-    <img src="../../images/post-bg.jpg" alt="">
-    <h2>Posts</h2>
-  </div>
-  <div class="center-wrap">
-		<div class="inner-center">
-			<ul class="listing">
-		    {% for post in paginator.posts %}
-		    <li>
-		      <p class="post-avatar"><img src="../../images/p_ava_1.jpg" alt="post_avatar"></p>
-		      <span>{{ post.date | date: "%B %e, %Y" }}</span> <a href="{{ post.url }}">{{ post.title }}<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis.</span></a>
-		    </li>
-		    {% endfor %}
-	  	</ul>
-		</div>
-    <nav id="pagination">
-       {% if paginator.previous_page %}
-         {% if paginator.previous_page == 1 %}
-         <a href="/" title="Previous Page">&laquo; Previous</a>
-         {% else %}
-         <a href="/page{{ paginator.previous_page }}/" title="Previous Page">&laquo; Previous</a>
-         {% endif %}
-       {% endif %}
-
-       {% if paginator.next_page %}
-       <a href="/posts/page{{ paginator.next_page }}/" title="Next Page">Next &raquo;</a>
-       {% endif %}
-     </nav>
+	<div class="inner-center">
+    <h1>Posts</h1>
+		<ul class="listing">
+	    {% for post in paginator.posts %}
+	    <li>
+	      <p class="post-avatar"><img src="../../images/p_ava_1.jpg" alt="post_avatar"></p>
+	      <span>{{ post.date | date: "%B %e, %Y" }}</span> <a href="{{ post.url }}">{{ post.title }}<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis.</span></a>
+	    </li>
+	    {% endfor %}
+  	</ul>
 	</div>
+  <nav id="pagination">
+     {% if paginator.previous_page %}
+       {% if paginator.previous_page == 1 %}
+       <a href="/" title="Previous Page">&laquo; Previous</a>
+       {% else %}
+       <a href="/page{{ paginator.previous_page }}/" title="Previous Page">&laquo; Previous</a>
+       {% endif %}
+     {% endif %}
+
+     {% if paginator.next_page %}
+     <a href="/posts/page{{ paginator.next_page }}/" title="Next Page">Next &raquo;</a>
+     {% endif %}
+   </nav>
 </section>
 

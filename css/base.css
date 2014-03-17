@@ -336,6 +336,32 @@ body {
   max-width: 1000px;
 }
 
+.content.photography .center-wrap {
+  margin-top: 21%;
+}
+
+.content.photo .inner-center > h1,
+.content.posts .inner-center > h1 {
+  font-size: 100px;
+  color: #333;
+  position: relative;
+  margin: 40px 0 50px;
+}
+
+.content.photo .inner-center > h1:after,
+.content.posts .inner-center > h1:after {
+  background: red;
+  width: 230px;
+  height: 1px;
+  content: "";
+  position: absolute;
+  -webkit-transform: rotate(-45deg);
+  z-index: 0;
+  top: 74px;
+  left: 50%;
+  margin-left: -115px;
+}
+
 .content .center-wrap {
   background: #f9f9f9;
   position: relative;
@@ -346,6 +372,18 @@ body {
   position: fixed;
   top: 0;
   /*background: url(../images/test-bg.jpg) no-repeat center;*/
+}
+
+.photography .inner-bg h2 {
+  margin-top: -79px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  margin-left: -130px;
+  position: absolute;
+  font-size: 100px;
+  color: #fff;
+  font-family: 'segoe ui light';
 }
 
 .content .inner-bg h2 {
@@ -477,7 +515,7 @@ body {
   margin-bottom: 10px;
 }
 
-.content.about p {
+.content.about .main-text {
   font-size: 16px;
   -webkit-animation: main-title 1.5s;
 }
@@ -710,7 +748,7 @@ body {
 .photo-listing li .date-hover {
   background: rgb(79, 119, 89);
   color: #fff;
-  max-width: 69px;
+  width: 69px;
   left: 50%;
   margin-left: -35px;
   position: absolute;
