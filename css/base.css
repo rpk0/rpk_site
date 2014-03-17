@@ -187,16 +187,16 @@ body {
 }
 
 .sidebar .sections a:hover:before,
-.sidebar .sections .active a:before {
-  opacity: 1;
+.sidebar .sections a.active:before {
+  opacity: 1 !important;
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
   transform: translateX(0px);
 }
 
 .sidebar .sections a:hover:after,
-.sidebar .sections .active a:after {
-  opacity: 1;
+.sidebar .sections a.active:after {
+  opacity: 1 !important;
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
   transform: translateX(0px);
