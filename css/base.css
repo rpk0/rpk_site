@@ -232,7 +232,7 @@ body {
   text-align: center;
   font-weight: 300;
   line-height: 66px;
-  -webkit-animation: main-title 1s;
+  -webkit-animation: main-title .5s;
   position: relative;
 }
 
@@ -253,7 +253,7 @@ body {
   text-align: center;
   padding: 10px 0 30px;
   border-bottom: 1px solid #ddd;
-  -webkit-animation: main-title 2s;
+  -webkit-animation: main-title 1s;
 }
 
 .content .inner-left small + p {
@@ -339,7 +339,7 @@ body {
 .content .center-wrap {
   background: #f9f9f9;
   position: relative;
-  margin-top: 31%;
+  margin-top: 13%;
 }
 
 .content .inner-bg {
@@ -349,7 +349,7 @@ body {
 }
 
 .content .inner-bg h2 {
-  margin-top: -80px;
+  margin-top: -79px;
   text-align: center;
   top: 50%;
   left: 50%;
@@ -479,7 +479,7 @@ body {
 
 .content.about p {
   font-size: 16px;
-  -webkit-animation: main-title 3s;
+  -webkit-animation: main-title 1.5s;
 }
 
 .content p code {
