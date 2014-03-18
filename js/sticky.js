@@ -3,5 +3,5 @@
 
 // Fire Sticky
 $(function(){
-      $(".stack-right").sticky({topSpacing:20});
-    });
+  $(".stack-right").sticky({topSpacing:20});
+});
