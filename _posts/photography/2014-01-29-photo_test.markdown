@@ -1,5 +1,5 @@
 ---
-layout: photo_layout
+layout: post_layout
 title: photo_test
 category: photo_posts
 ---

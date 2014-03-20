@@ -1,6 +1,6 @@
 ---
-layout: photo_layout
-title: Photo_post_test
+layout: post_layout
+title: readme
 category: posts
 ---
 

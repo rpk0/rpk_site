@@ -50,9 +50,10 @@
 
     <section class="sections">
       <ul>
-          {% for link in site.nav %}
+        {% assign url = page.url|remove:'index.html' %}
+          {% for link in site.navigation %}
             {% assign active = nil %}
-            {% if page.url == link.url or page.layout == link.layout %}
+            {% if url == link.url or page.layout == link.layout %}
               {% assign active = 'class="active"' %}
             {% endif %}
             <li><a {{ active }} href="/{{ link.text }}/">{{ link.text }}</a>{{ indicator }}</li>

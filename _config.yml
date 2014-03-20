@@ -5,14 +5,13 @@ paginate: 6
 paginate_path: "posts/page:num"
 rdiscount:
   extensions: [smart]
-nav:
-  - text: photography
-    url: /photography/index.html
-  - text: posts
-    url: /posts/index.html
-  - text: about
-    url:  /about/index.html
-
+navigation:
+    - text: photography
+      url: /photography/
+    - text: posts
+      url: /posts/
+    - text: about
+      url:  /about/
 name: rpk
 url: 127.0.0.1:4000/
 description: A fantastic blog that is fantastic.
