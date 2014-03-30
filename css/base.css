@@ -868,6 +868,10 @@ body {
   height: 100%;*/
 }
 
+.content.photo .inner-center {
+  max-width: 100%;
+}
+
 .photo-listing li:nth-child(3n) {
   margin-right: 0;
 }
