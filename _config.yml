@@ -8,10 +8,13 @@ rdiscount:
 navigation:
     - text: photography
       url: /photography/
+      identity: photos
     - text: posts
       url: /posts/
+      identity: posts
     - text: about
       url:  /about/
+      identity: about
 name: rpk
 url: 127.0.0.1:4000/
 description: A fantastic blog that is fantastic.
