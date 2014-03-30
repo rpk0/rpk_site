@@ -31,35 +31,39 @@
 <body>
 
   <section class="sidebar">
-    <a href="/">
-      <img src="../images/logo.png" class="avatar" />
-    </a>
 
     <section class="name">
       <a href="/">
-        <span id="fname">{{ site.name }}</span>
-        <!-- <span id="lname">{{ site.name|split:' '|last }}</span> -->
+        <span id="fname">Kostas Karabinas</span>
+        <small>Ruby Developer</small>
+        <em>&amp;</em>
+        <small>Photography Enthusiast</small>
       </a>
     </section>
-
-    <section class="meta">
-      <a href="https://github.com/{{ site.github }}" target="_blank"><i class="icon icon-github"></i></a>
-      <a href="https://twitter.com/{{ site.twitter }}" target="_blank"><i class="icon icon-twitter"></i></a>
-      <a href="http://www.flickr.com/photos/{{ site.flickr }}" target="_blank"><i class="icon icon-flickr"></i></a>
-    </section>
-
     <section class="sections">
       <ul>
         {% assign url = page.url|remove:'index.html' %}
           {% for link in site.navigation %}
             {% assign active = nil %}
-            {% if url == link.url or page.layout == link.layout %}
+            {% if url == link.url %}
               {% assign active = 'class="active"' %}
             {% endif %}
             <li><a {{ active }} href="/{{ link.text }}/">{{ link.text }}</a>{{ indicator }}</li>
           {% endfor %}
       </ul>
     </section>
+
+    <section class="meta">
+      <h3>Follow me</h3>
+      <a href="https://github.com/{{ site.github }}" target="_blank"><i class="icon icon-github"></i></a>
+      <a href="https://twitter.com/{{ site.twitter }}" target="_blank"><i class="icon icon-twitter"></i></a>
+      <a href="http://www.flickr.com/photos/{{ site.flickr }}" target="_blank"><i class="icon icon-flickr"></i></a>
+
+      <span>Currently working at <a href="#">Skroutz.gr</a>
+
+©2014 RPK, Kostas Karabinas</span>
+    </section>
+
   </section>
 
   {{ content }}
