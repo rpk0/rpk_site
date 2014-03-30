@@ -10,9 +10,9 @@ body:after {
   top: 0;
   left: 0;
   z-index: 9999;
-  background-color: #333;
+  background-color: black;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-  opacity: .4;
+  opacity: .1;
   display: none;
 }
 
