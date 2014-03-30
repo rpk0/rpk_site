@@ -330,7 +330,7 @@ body {
 .content .inner-center {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 50px 20px;
+  padding: 20px;
   position: relative;
 }
 
@@ -388,7 +388,8 @@ body {
 }
 
 .content.photo .inner-center > h1,
-.content.posts .inner-center > h1 {
+.content.posts .inner-center > h1,
+.content.photography .inner-center > h1 {
   font-size: 90px;
   color: #333;
   position: relative;
@@ -404,7 +405,8 @@ body {
   padding: 10px 0 50px;
 }
 
-.content.posts .inner-center .inner-heading {
+.content.posts .inner-center .inner-heading,
+.content.photography .inner-center .inner-heading {
   max-width: 100%;
   padding-bottom: 20px;
 }
@@ -876,7 +878,6 @@ body {
 
 .prev-proj,
 .next-proj {
-  background: #fafafa;
   width: 50%;
   text-align: center;
   font-size: 21px;
@@ -893,14 +894,62 @@ body {
 .prev-proj a,
 .next-proj a {
   display: block;
-  padding: 54px 0;
+  padding: 33px 0;
   text-decoration: none;
   color: #474747;
+  float: left;
 }
 
-.prev-proj a:hover,
-.next-proj a:hover {
-  background: #eaeaea;
+.next-proj a {
+  float: right;
+}
+
+#triangle-left {
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-right: 48px solid red;
+  border-bottom: 50px solid transparent;
+  position: relative;
+  display: inline-block;
+  float: left;
+   margin-left: 50px;
+}
+
+#triangle-left:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-right: 48px solid #fff;
+  border-bottom: 50px solid transparent;
+  left: 1px;
+  top: -50px;
+  position: absolute;
+}
+
+#triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-left: 48px solid red;
+  border-bottom: 50px solid transparent;
+  position: relative;
+  display: inline-block;
+  float: right;
+  margin-right: 50px;
+}
+
+#triangle-right:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-left: 48px solid #fff;
+  border-bottom: 50px solid transparent;
+  right: 1px;
+  top: -50px;
+  position: absolute;
 }
 
 .prev-proj p,
@@ -913,14 +962,10 @@ body {
 
 .prev-proj {
   float: left;
-  border-right: 1px solid #d4d4d4;
-  border-top: 1px solid #d4d4d4;
 }
 
 .next-proj {
   float: right;
-  border-left: 1px solid #d4d4d4;
-  border-top: 1px solid #d4d4d4;
 }
 
 blockquote.style2 {
