@@ -4,36 +4,31 @@ comments: true
 ---
 
 <section class="content posts">
-  <div class="inner-bg">
-    <img src="../../images/post-inner-bg.jpg" alt="">
-  </div>
-  <div class="center-wrap">
-    <div class="inner-center">
-      <h1>
-        <a href="{{ page.url }}">{{ page.title }}</a>
-      </h1>
+  <div class="inner-center">
+    <h1 class="inner-heading">
+      <a href="{{ page.url }}">{{ page.title }}</a>
+    </h1>
 
-      <section class="byline">
-        {{ page.date | date: "%B %e, %Y" }}
-      </section>
+    <section class="byline">
+      {{ page.date | date: "%B %e, %Y" }}
+    </section>
 
-      {{ content }}
+    {{ content }}
 
-      <!-- DISQUS -->
-      <section class="meta">
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            var disqus_shortname = 'rpk';
+    <!-- DISQUS -->
+    <section class="meta">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          var disqus_shortname = 'rpk';
 
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </section>
-    </div>
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   </div>
 </section>
