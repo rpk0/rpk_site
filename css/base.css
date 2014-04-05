@@ -283,17 +283,6 @@ body {
   position: relative;
 }
 
-.main-title:before {
-  background: red;
-  width: 32%;
-  height: 1px;
-  content: "";
-  position: absolute;
-  -webkit-transform: rotate(-45deg);
-  z-index: -1;
-  top: 74px;
-}
-
 .content .main-title + small {
   font-size: 19px;
   display: block;
@@ -313,6 +302,17 @@ body {
   height: 100%;
   padding: 40px;
   /*overflow: auto;*/
+}
+
+.content.about .main-text a {
+  font-weight: bold;
+  border-bottom: 1px dotted #999;
+  color: #333;
+  text-decoration: none;
+}
+
+.content.about .main-text a:hover {
+ border-bottom-style: solid;
 }
 
 .content.about .inner-left {
@@ -379,8 +379,9 @@ body {
   color: #999;
 }
 
-.content.photography .inner-center {
-  max-width: 1000px;
+.content.photography .inner-center,
+.content.about .inner-center {
+  max-width: 900px;
 }
 
 .content.photography .center-wrap {
@@ -389,6 +390,7 @@ body {
 
 .content.photo .inner-center > h1,
 .content.posts .inner-center > h1,
+.content.about .inner-center > h1,
 .content.photography .inner-center > h1 {
   font-size: 90px;
   color: #333;
@@ -406,14 +408,18 @@ body {
 }
 
 .content.posts .inner-center .inner-heading,
+.content.about .inner-center .inner-heading,
 .content.photography .inner-center .inner-heading {
   max-width: 100%;
-  padding-bottom: 20px;
 }
 
 .content.photography .inner-center ul {
   margin: 50px 0 0;
   padding: 0;
+}
+
+.content.about .inner-center .main-text ul + p {
+  text-align: center;
 }
 
 .content.photography .inner-center ul li {
@@ -428,6 +434,25 @@ body {
   text-align: center;
   color: #999;
   padding: 20px 0 30px;
+}
+
+.inner-heading + small {
+  font-size: 16px;
+  margin-top: 50px;
+  display: block;
+}
+
+.about-img {
+  text-align: center;
+}
+
+.inner-heading + span {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: #707070;
+  font-size: 17px;
+  margin-bottom: 50px;
 }
 
 .content .center-wrap {
@@ -586,6 +611,23 @@ body {
 .content.about .main-text {
   font-size: 16px;
   -webkit-animation: main-title 1.5s;
+  margin-top: 50px;
+}
+
+.content.about .main-text ul {
+  padding: 0;
+  margin: 40px 0;
+}
+
+.content.about .main-text ul li {
+  list-style: none;
+  display: inline-block;
+  width: 32%;
+  margin: 4px;
+}
+
+.content.about .main-text ul li img {
+  width: 100%;
 }
 
 .content p code {
@@ -620,23 +662,12 @@ body {
 }
 
 .content blockquote {
-  font-style: italic;
-  font-size: 14px;
-  padding: .25em 1em;
-  margin: 1em 1em 0 1em;
-  color: #444;
+  font-size: 19px;
+  text-align: center;
 }
 
-.content blockquote cite:before {
-  content: '— ';
-}
-
-.content blockquote cite {
-  display: block;
-  margin-top: .5em;
-  text-align: right;
-  color: #111;
-  font-style: normal;
+.content blockquote + p {
+  text-align: center;
 }
 
 .content .byline {
@@ -830,14 +861,6 @@ body {
   background: #333;
 }
 
-.photo-listing li:before {
-  /*content: "";
-  background: rgba(0, 0, 0, .4);
-  position: absolute;
-  width: 100%;
-  height: 100%;*/
-}
-
 .content.photo .inner-center {
   max-width: 100%;
 }
@@ -943,10 +966,5 @@ body {
 }
 
 blockquote.style2 {
-  font: 14px/22px normal helvetica, sans-serif;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 50px;
-  padding-left: 15px;
-  border-left: 3px solid #ccc;
+  
 }
