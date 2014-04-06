@@ -878,6 +878,8 @@ body {
   width: 50%;
   text-align: center;
   font-size: 21px;
+  background: #fafafa;
+  padding: 30px;
 }
 
 .prev-proj span,
@@ -891,7 +893,7 @@ body {
 .prev-proj a,
 .next-proj a {
   display: block;
-  padding: 33px 0;
+  padding: 5px 30px;
   text-decoration: none;
   color: #474747;
   float: left;
@@ -904,48 +906,46 @@ body {
 #triangle-left {
   width: 0;
   height: 0;
-  border-top: 50px solid transparent;
-  border-right: 48px solid red;
-  border-bottom: 50px solid transparent;
+  border-top: 30px solid transparent;
+  border-right: 15px solid red;
+  border-bottom: 30px solid transparent;
   position: relative;
   display: inline-block;
   float: left;
-   margin-left: 50px;
 }
 
 #triangle-left:before {
   content: "";
   width: 0;
   height: 0;
-  border-top: 50px solid transparent;
-  border-right: 48px solid #fff;
-  border-bottom: 50px solid transparent;
+  border-top: 30px solid transparent;
+  border-right: 15px solid #fafafa;
+  border-bottom: 30px solid transparent;
   left: 1px;
-  top: -50px;
+  top: -30px;
   position: absolute;
 }
 
 #triangle-right {
   width: 0;
   height: 0;
-  border-top: 50px solid transparent;
-  border-left: 48px solid red;
-  border-bottom: 50px solid transparent;
+  border-top: 30px solid transparent;
+  border-left: 15px solid red;
+  border-bottom: 30px solid transparent;
   position: relative;
   display: inline-block;
   float: right;
-  margin-right: 50px;
 }
 
 #triangle-right:before {
   content: "";
   width: 0;
   height: 0;
-  border-top: 50px solid transparent;
-  border-left: 48px solid #fff;
-  border-bottom: 50px solid transparent;
+  border-top: 30px solid transparent;
+  border-left: 15px solid #fafafa;
+  border-bottom: 30px solid transparent;
   right: 1px;
-  top: -50px;
+  top: -30px;
   position: absolute;
 }
 
