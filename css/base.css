@@ -413,6 +413,48 @@ body {
   max-width: 100%;
 }
 
+.content.about .inner-center .inner-heading2 {
+  font-size: 60px;
+  max-width: 600px;
+  padding-top: 30px;
+}
+
+.content.about .inner-center .inner-heading2 + span {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.wrap-main-text {
+  background: url(../images/about_texture.jpg) no-repeat #fafafa;
+  background-size: cover;
+  padding: 50px 0;
+}
+
+.main-text.inner-center {
+  padding: 50px;
+  background: #fff;
+  max-width: 700px !important;
+  text-align: center;
+  font-size: 17px;
+  line-height: 29px;
+}
+
+.main-text.inner-center i:before {
+  font-size: 80px;
+}
+
+.main-text.inner-center ul li a {
+  border-bottom: none !important;
+}
+
+.main-text.inner-center span {
+  display: block;
+  font-size: 17px;
+  padding-bottom: 30px;
+}
+
 .content.photography .inner-center ul {
   margin: 50px 0 0;
   padding: 0;
@@ -444,6 +486,7 @@ body {
 
 .about-img {
   text-align: center;
+  -webkit-filter: grayscale(70%);
 }
 
 .inner-heading + span {
@@ -616,13 +659,13 @@ body {
 
 .content.about .main-text ul {
   padding: 0;
-  margin: 40px 0;
+  margin: 40px 0 0;
 }
 
 .content.about .main-text ul li {
   list-style: none;
   display: inline-block;
-  width: 32%;
+  width: 31%;
   margin: 4px;
 }
 
