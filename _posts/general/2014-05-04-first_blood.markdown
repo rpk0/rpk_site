@@ -1,22 +1,28 @@
-# First blood
+---
+layout: post_layout
+title: First Boold
+category: General
+tags: [blog - general]
+path: posts
+---
 
 Hi,
 
 this is the first post for my blog.
 So let me explain why I created yet another blog site..
 
-1. **Firstly**, Because I can!
-2. **Secondly**, I wanted to be able to have my uploaded photographs somewhere clustered and properly displayed. I call them photoessays and you can find them in the photography section on the right
-3. **Lastly**, I wanted to keep somewhere interesting stuff related to my day job as a developer. Furthermore posting solutions of interesting problems and challanges might help others.
+- **Firstly**, Because I can!
+- **Secondly**, I wanted to be able to have my uploaded photographs somewhere clustered and properly displayed. I call them photoessays and you can find them in the [photography](http://rpk.gr/photography/) section on the right
+- **Lastly**, I wanted to keep somewhere interesting stuff related to my day job as a developer. Furthermore posting solutions of interesting problems and challanges might help others.
 
 ### So this site is seperated into two topics,
-1. the first and main one is photography.
+- the first and main one is photography.
 
 > In this section I am going to post chunks of my work as an amatuer photographer.
 > **Digital photogrpahy**, **Film photography** (**normal format** and **medium format**), and everything else that falls into my hands over time.
 > Also I plan to write some thoughts about photography in general like from where a derive inspiration, and how photography changed my vision.
 
-2. the second topic is the one I am doing for living, programming.
+- the second topic is the one I am doing for living, programming.
 
 > The last 2 years I am an actively Ruby and Ruby on Rails developer, so I will write any interesting stuff I meet on my way of becoming the next billionere CTO (not)
 
@@ -24,4 +30,6 @@ Now if anything else beyond these two topics attract my attention and deserves a
 
 That's it.
 
-cya
+![tree](https://farm4.staticflickr.com/3782/12329014655_9a6be31676_c.jpg "tree")
+
+cya!
