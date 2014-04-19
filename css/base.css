@@ -955,7 +955,7 @@ body {
 }
 
 .content.photo .inner-center {
-  max-width: 100%;
+  max-width: 1500px;
 }
 
 .photo-listing li:nth-child(3n) {
