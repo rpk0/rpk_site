@@ -400,6 +400,16 @@ body {
   border-bottom: 1px solid #d4d4d4;
 }
 
+.content.posts .inner-center {
+  font-size: 20px;
+  text-align: left;
+}
+
+.content.posts blockquote,
+.content.posts blockquote + p {
+  text-align: left;
+}
+
 .subheading {
   color: #999;
   display: block;
@@ -750,57 +760,34 @@ body {
   margin: 0;
   color: #777777;
   text-align: center;
-  -webkit-transition: all 1s;
-  -moz-transition: all 1s;
-  transition: all 1s;
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  transition: all .2s;
 }
 
 .content .listing li:hover {
-  background: url(http://www.ntmy.fr/wp-content/themes/ntmy2014/css/../images/bg_square.png) 0 -41px #333 !important;
+  /*background: url(http://www.ntmy.fr/wp-content/themes/ntmy2014/css/../images/bg_square.png) 0 -41px #333 !important;*/
+  background: #333 !important;
 }
 
 .content .listing li:hover a {
   color: #fff !important;
 }
 
-.content .listing li:first-child {
+.content .listing li:nth-child(even) {
   background: #ddd;
 }
 
-.content .listing li:first-child a {
+.content .listing li:nth-child(even) a {
   color: #fff;
 }
 
-.content .listing li:nth-child(2) {
+.content .listing li:nth-child(odd) {
   background: #fafafa;
 }
 
-.content .listing li:nth-child(2) a {
+.content .listing li:nth-child(odd) a {
   color: #333;
-}
-
-.content .listing li:nth-child(3) {
-  background: #333;
-}
-
-.content .listing li:nth-child(3) a {
-  color: #fafafa;
-}
-
-.content .listing li:nth-child(4) {
-  background: #fafafa;
-}
-
-.content .listing li:nth-child(4) a {
-  color: #333;
-}
-
-.content .listing li:nth-child(5) {
-  background: #ddd;
-}
-
-.content .listing li:nth-child(5) a {
-  color: #fff;
 }
 
 .content .listing li span {
