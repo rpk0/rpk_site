@@ -975,101 +975,28 @@ body {
 }
 
 .more-projects {
-  padding-top: 50px;
-}
-
-.prev-proj,
-.next-proj {
-  width: 50%;
+  margin-top: 100px;
   text-align: center;
-  font-size: 21px;
-  background: #fafafa;
-  padding: 30px;
+  padding: 80px;
+  background: url(../images/p_ava_2.jpg) no-repeat;
+  -webkit-filter: grayscale(60%);
 }
 
-.prev-proj span,
-.next-proj span {
-    display: block;
-    padding-top: 5px;
-    font-size: 15px;
-    color: #999;
-  }
+.more-projects .next-proj p {
+  font-size: 60px;
+  color: white;
+  margin-bottom: 20px;
+}
 
-.prev-proj a,
-.next-proj a {
+.more-projects .next-proj p a {
+  color: #fff;
   display: block;
-  padding: 5px 30px;
-  text-decoration: none;
-  color: #474747;
-  float: left;
+  font-size: 25px;
+  font-style: italic;
 }
 
-.next-proj a {
-  float: right;
-}
-
-#triangle-left {
-  width: 0;
-  height: 0;
-  border-top: 30px solid transparent;
-  border-right: 15px solid red;
-  border-bottom: 30px solid transparent;
-  position: relative;
-  display: inline-block;
-  float: left;
-}
-
-#triangle-left:before {
-  content: "";
-  width: 0;
-  height: 0;
-  border-top: 30px solid transparent;
-  border-right: 15px solid #fafafa;
-  border-bottom: 30px solid transparent;
-  left: 1px;
-  top: -30px;
-  position: absolute;
-}
-
-#triangle-right {
-  width: 0;
-  height: 0;
-  border-top: 30px solid transparent;
-  border-left: 15px solid red;
-  border-bottom: 30px solid transparent;
-  position: relative;
-  display: inline-block;
-  float: right;
-}
-
-#triangle-right:before {
-  content: "";
-  width: 0;
-  height: 0;
-  border-top: 30px solid transparent;
-  border-left: 15px solid #fafafa;
-  border-bottom: 30px solid transparent;
-  right: 1px;
-  top: -30px;
-  position: absolute;
-}
-
-.prev-proj p,
-.next-proj p {
-  width: 100px;
-  height: 100px;
-  margin-top: -27px;
-  border-radius: 100px;
-}
-
-.prev-proj {
-  float: left;
-}
-
-.next-proj {
-  float: right;
-}
-
-blockquote.style2 {
-  
+.more-projects .next-proj p span {
+  font-size: 20px;
+  color: #ddd;
+  display: block;
 }
