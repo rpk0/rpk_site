@@ -20,59 +20,45 @@ body {
        url('../fonts/segoeuil.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
 
-@font-face {
-  font-family: 'segoe sc';
-  src: url('../fonts/segoesc.eot');
-  src: url('../fonts/segoesc.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/segoesc.woff') format('woff'),
-       url('../fonts/segoesc.ttf')  format('truetype'),
-       url('../fonts/segoesc.svg#svgFontName') format('svg');
-}
-
 *, *:after, *::before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
+a,
+a:active,
+a:hover {
+  text-decoration: none;
+}
+
 .cf:before,
 .cf:after { content: ""; display: table; }
 .cf:after { clear: both; }
 
-/* keyframes animation effect */
 
-@-webkit-keyframes sidebar {
-  0% { left: -230px;}
-  100% { left: 0;}
-}
+/* Custom Scrollbar */
 
-@-webkit-keyframes bg-img {
-  0% { background-position-x: 676px;}
-  50% { background-position-x: 0;}
-}
-
-@-webkit-keyframes main-title {
-  0% { opacity: 0;}
-  50% { opacity: 0;}
-  100% { opacity: 1;}
-}
-
-/* Let's get this party started */
 ::-webkit-scrollbar {
     width: 12px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     border-radius: 0;
     background: #eee;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     border-radius: 0;
     background: #ddd;
 }
+
+
+/* -----------------------------------------------------------------------
+
+SIDEBAR SECTION 
+
+----------------------------------------------------------------------- */
 
 .sidebar {
   position: fixed;
@@ -80,33 +66,17 @@ body {
   top: 0;
   width: 230px;
   height: 100%;
-  background: #fff;
-  font-family: "segoe ui light";
+  background: white;
   text-align: center;
-}
-
-.sidebar a {
-  text-decoration: none;
-}
-
-.sidebar img {
-  padding: 0 3px;
-  border: 0;
-}
-
-.sidebar .avatar {
-  width: 150px;
-  height: 150px;
-  padding-top: 20px;
 }
 
 .sidebar .name {
   margin: 20px 0;
+  display: block;
 }
 
-.sidebar .name #fname {
+.sidebar .name span {
   font-size: 23px;
-  font-family: 'segoe ui light';
   color: black;
   padding-bottom: 10px;
   display: block;
@@ -141,38 +111,10 @@ body {
   background: #999;
 }
 
-.sidebar .name #lname {
-  font-size: 17px;
-  /*font-weight: bold;*/
-  letter-spacing: 1px;
-  color: black;
-}
-
 .sidebar .meta {
   padding-bottom: 10px;
   width: 69%;
   margin: 0 auto;
-}
-
-.sidebar .meta h3 {
-  text-align: left;
-  color: #999;
-  font-size: 15px;
-}
-
-.sidebar .meta span {
-  font-size: 12px;
-  color: #999;
-  padding-top: 30px;
-  display: block;
-  text-align: left;
-}
-
-.sidebar .meta span a {
-  color: #474747;
-  text-decoration: underline;
-  display: inline;
-  border: none;
 }
 
 .sidebar .meta a {
@@ -184,30 +126,36 @@ body {
   position: relative;
 }
 
+.sidebar .meta a:hover {
+  color: #31472D;
+}
+
 .sidebar .meta i {
   position: absolute;
   top: 17px;
   left: 17px;
 }
 
-.sidebar .meta a:hover {
-  color: #31472D;
+.sidebar .menu {
+  margin: 40px 0 30px;
+  padding: 0;
 }
 
-.sidebar .sections {
-  padding: 0 30px;
+.sidebar .menu li {
+  list-style: none;
+  margin: 10px 0;
 }
 
-.sidebar .sections a {
+.sidebar .menu a {
   color: black;
   font-size: 17px;
   position: relative;
   display: block;
-  background: #fff;
+  background: white;
   padding: 2px 0 5px;
 }
 
-.sidebar .sections a:after {
+.sidebar .menu a:after {
   margin-left: 10px;
   content: '|';
   -webkit-transform: translateX(-20px);
@@ -215,12 +163,12 @@ body {
   transform: translateX(-20px);
   display: inline-block;
   opacity: 0;
-  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
-  transition: transform 0.3s, opacity 0.2s;
+  -webkit-transition: -webkit-transform .3s, opacity .2s;
+  -moz-transition: -moz-transform .3s, opacity .2s;
+  transition: transform .3s, opacity .2s;
 }
 
-.sidebar .sections a:before {
+.sidebar .menu a:before {
   margin-right: 10px;
   content: '|';
   -webkit-transform: translateX(20px);
@@ -228,44 +176,41 @@ body {
   transform: translateX(20px);
   display: inline-block;
   opacity: 0;
-  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
-  transition: transform 0.3s, opacity 0.2s;
+  -webkit-transition: -webkit-transform .3s, opacity .2s;
+  -moz-transition: -moz-transform .3s, opacity .2s;
+  transition: transform .3s, opacity .2s;
 }
 
-.sidebar .sections a:hover:before,
-.sidebar .sections a.active:before {
-  opacity: 1 !important;
+.sidebar .menu a:hover:before,
+.sidebar .menu a.active:before {
+  opacity: 1;
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
   transform: translateX(0px);
 }
 
-.sidebar .sections a:hover:after,
-.sidebar .sections a.active:after {
-  opacity: 1 !important;
+.sidebar .menu a:hover:after,
+.sidebar .menu a.active:after {
+  opacity: 1;
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
   transform: translateX(0px);
 }
 
-.sidebar .sections a:hover {
+.sidebar .menu a:hover {
   color: #31472D;
 }
 
-.sidebar .sections .active a {
+.sidebar .menu .active a {
   color: #31472D;
 }
 
-.sidebar .sections ul {
-  margin: 30px 0;
-  padding: 0;
-}
 
-.sidebar .sections li {
-  list-style: none;
-  margin: 10px 0;
-}
+/* -----------------------------------------------------------------------
+
+LAYOUT STYLES
+
+----------------------------------------------------------------------- */
 
 .content {
   margin-left: 230px;
@@ -273,36 +218,12 @@ body {
   height: 100%;
 }
 
-.content .main-title {
-  font-size: 80px;
-  font-family: "segoe ui light";
-  text-align: center;
-  font-weight: 300;
-  line-height: 66px;
-  -webkit-animation: main-title .5s;
-  position: relative;
-}
 
-.content .main-title + small {
-  font-size: 19px;
-  display: block;
-  text-align: center;
-  padding: 10px 0 30px;
-  border-bottom: 1px solid #ddd;
-  -webkit-animation: main-title 1s;
-}
+/* -----------------------------------------------------------------------
 
-.content .inner-left small + p {
-  padding-top: 30px;
-}
+SECTION ABOUT
 
-.content .inner-left {
-  width: 60%;
-  float: left;
-  height: 100%;
-  padding: 40px;
-  /*overflow: auto;*/
-}
+----------------------------------------------------------------------- */
 
 .content.about .main-text a {
   font-weight: bold;
