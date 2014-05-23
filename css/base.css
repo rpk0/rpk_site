@@ -68,7 +68,7 @@ h4 a {
 
 /* -----------------------------------------------------------------------
 
-SIDEBAR SECTION 
+SIDEBAR SECTION
 
 ----------------------------------------------------------------------- */
 
@@ -367,6 +367,12 @@ SECTION ABOUT
   -webkit-animation: main-title 1.5s;
   margin-top: 200px;
   text-align: left;
+}
+
+.about-img img {
+  /*width: 80%;*/
+  width:200px;
+  height: auto;
 }
 
 .about .main-text ul {
