@@ -27,6 +27,18 @@
   <script src="/js/lightbox-2.6.min.js"></script>
   <link href="/css/lightbox.css" rel="stylesheet" />
 
+  <script>
+    $(document).ready(function(){
+     $('.menu-icon').on('click', function() {
+      $(this).toggleClass('active');
+     });
+
+     $('.menu-icon').on('click', function() {
+      $('.sidebar').toggleClass('toggle');
+     });
+    });
+  </script>
+
 </head>
 
 <body>
@@ -62,6 +74,10 @@
         <i class="icon icon-flickr"></i>
       </a>
     </section>
+
+    <div class="menu-icon">
+      <i></i>
+    </div>
 
   </section>
 
