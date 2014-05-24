@@ -161,7 +161,6 @@ SIDEBAR SECTION
   font-size: 17px;
   position: relative;
   display: block;
-  background: white;
   padding: 2px 0 5px;
 }
 
@@ -228,6 +227,9 @@ SIDEBAR SECTION
 }
 
 .menu-icon {
+  display: none;
+}
+.menu-icon-bg {
   display: none;
 }
 
@@ -383,6 +385,10 @@ SECTION ABOUT
 
 .about .main-text ul li img {
   width: 100%;
+}
+
+.about small {
+  font-size: 16px;
 }
 
 
@@ -642,7 +648,7 @@ SECTION PHOTOGRAPHY
     width: 300px;
     left: -230px;
     -webkit-transition: left 1s;
-    z-index: 1;
+    z-index: 2;
   }
 
   .sidebar.toggle {
@@ -780,5 +786,115 @@ SECTION PHOTOGRAPHY
 /* Mobile viewport bellow 640px */
 
 @media screen and (max-width: 640px) {
+  
+  .photo-listing li {
+    width: 100%;
+    float: none;
+    margin-right: 0;
+  }
 
+  .photo .inner-center > h1,
+  .posts .inner-center > h1,
+  .about .inner-center > h1,
+  .photography .inner-center > h1 {
+    font-size: 40px;
+  }
+
+  .about .inner-center {
+    padding: 20px;
+  }
+
+  .about .inner-center span {
+    padding-bottom: 10px;
+  }
+
+  .about .main-text ul li {
+    width: 17%;
+  }
+
+  .about .inner-center i:before {
+    font-size: 50px;
+  }
+
+  .about-img {
+    margin-top: 10px;
+  }
+
+  .photography .inner-center ul {
+    margin: 20px 0 0;
+  }
+
+  .content .inner-center {
+    padding: 18px;
+  }
+
+  .content .listing li {
+    padding: 30px 10px;
+  }
+
+  .content {
+    margin-left: 0;
+    margin-top: 55px;
+  }
+
+  .content .listing li a {
+    font-size: 35px;
+  }
+
+  .posts .inner-center {
+    font-size: 16px;
+  }
+
+  .posts .inner-center ul {
+    padding-left: 20px !important;
+  }
+
+  .content .inner-center p img {
+    padding: 7px 0;
+  }
+
+  .content .inner-center {
+    margin-top: 45px !important;
+  }
+
+  .sidebar {
+    background: rgba(255, 255, 255, 0);
+  }
+
+  .sidebar .name,
+  .sidebar .meta,
+  .sidebar .menu {
+    display: none;
+  }
+
+  .sidebar.toggle {
+    background: rgba(255, 255, 255, 1);
+  }
+
+  .sidebar.toggle .name,
+  .sidebar.toggle .meta,
+  .sidebar.toggle .menu {
+    display: block;
+  }
+
+  .menu-icon-bg {
+    background: white;
+    height: 55px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: block;
+    z-index: 1;
+    text-align: right;
+    padding-right: 15px;
+    padding-top: 10px;
+    font-size: 26px;
+    letter-spacing: 5px;
+    box-shadow: 1px 1px 15px rgba(80, 79, 79, 0.12);
+  }
+
+  .sidebar.toggle + .menu-icon-bg {
+    opacity: 0;
+  }
 }
