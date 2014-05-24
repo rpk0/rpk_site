@@ -125,8 +125,6 @@ SIDEBAR SECTION
 
 .sidebar .meta {
   padding-bottom: 10px;
-  width: 69%;
-  margin: 0 auto;
 }
 
 .sidebar .meta a {
@@ -172,11 +170,15 @@ SIDEBAR SECTION
   content: '|';
   -webkit-transform: translateX(-20px);
   -moz-transform: translateX(-20px);
+  -o-transform: translateX(-20px);
+  -ms-transform: translateX(-20px);
   transform: translateX(-20px);
   display: inline-block;
   opacity: 0;
   -webkit-transition: -webkit-transform .3s, opacity .2s;
   -moz-transition: -moz-transform .3s, opacity .2s;
+  -o-transition: -moz-transform .3s, opacity .2s;
+  -ms-transition: -moz-transform .3s, opacity .2s;
   transition: transform .3s, opacity .2s;
 }
 
@@ -185,28 +187,36 @@ SIDEBAR SECTION
   content: '|';
   -webkit-transform: translateX(20px);
   -moz-transform: translateX(20px);
+  -o-transform: translateX(20px);
+  -ms-transform: translateX(20px);
   transform: translateX(20px);
   display: inline-block;
   opacity: 0;
   -webkit-transition: -webkit-transform .3s, opacity .2s;
   -moz-transition: -moz-transform .3s, opacity .2s;
+  -o-transition: -moz-transform .3s, opacity .2s;
+  -ms-transition: -moz-transform .3s, opacity .2s;
   transition: transform .3s, opacity .2s;
 }
 
 .sidebar .menu a:hover:before,
 .sidebar .menu a.active:before {
   opacity: 1;
-  -webkit-transform: translateX(0px);
-  -moz-transform: translateX(0px);
-  transform: translateX(0px);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -o-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
 }
 
 .sidebar .menu a:hover:after,
 .sidebar .menu a.active:after {
   opacity: 1;
-  -webkit-transform: translateX(0px);
-  -moz-transform: translateX(0px);
-  transform: translateX(0px);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -o-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
 }
 
 .sidebar .menu a:hover {
@@ -232,7 +242,7 @@ LAYOUT STYLES
 
 .content h1 {
   font-size: 36px;
-  margin: 18px 0 5px 0;
+  margin: 18px 0 5px;
   text-align: center;
 }
 
@@ -291,7 +301,6 @@ LAYOUT STYLES
 }
 
 .content .inner-center p img {
-  max-width: 100%;
   width: 100%;
   padding: 7px 5px;
 }
@@ -304,6 +313,7 @@ LAYOUT STYLES
   margin: 2em 3em;
 }
 
+
 /* -----------------------------------------------------------------------
 
 SECTION ABOUT
@@ -312,52 +322,30 @@ SECTION ABOUT
 
 .about .main-text a {
   font-weight: bold;
-  color: #999;
+  color: #474747;
 }
 
-.about .inner-center .inner-heading2 {
-  font-size: 60px;
-  max-width: 600px;
-  padding-top: 30px;
-}
-
-.about .inner-center .inner-heading2 + span {
-  display: block;
-  text-align: center;
-  margin-top: 25px;
-}
-
-.wrap-main-text {
-  background: url(../images/about_texture.jpg) no-repeat #fafafa;
-  background-size: cover;
-  padding: 50px 0;
-}
-
-.main-text.inner-center {
+.about .inner-center {
   padding: 50px;
-  background: #fff;
-  max-width: 700px !important;
+  background: white;
+  max-width: 700px;
   text-align: center;
   font-size: 17px;
   line-height: 29px;
 }
 
-.main-text.inner-center i:before {
+.about .inner-center i:before {
   font-size: 80px;
 }
 
-.main-text.inner-center span {
+.about .inner-center span {
   display: block;
   font-size: 17px;
   padding-bottom: 30px;
 }
 
-.about .inner-center .main-text ul + p {
-  text-align: center;
-}
-
 .about-img {
-  margin-top: -205px;
+  margin-top: 50px;
   text-align: center;
   -webkit-filter: grayscale(70%);
 }
@@ -365,13 +353,15 @@ SECTION ABOUT
 .about .main-text {
   font-size: 16px;
   -webkit-animation: main-title 1.5s;
-  margin-top: 200px;
+  -moz-animation: main-title 1.5s;
+  -o-animation: main-title 1.5s;
+  -ms-animation: main-title 1.5s;
+  animation: main-title 1.5s;
   text-align: left;
 }
 
 .about-img img {
-  /*width: 80%;*/
-  width:200px;
+  width: 200px;
   height: auto;
 }
 
@@ -411,6 +401,13 @@ SECTION POSTS
   text-align: left;
 }
 
+.posts .byline {
+  font-size: 17px;
+  color: #999;
+  text-align: center;
+  padding: 20px 0 40px;
+}
+
 .post-avatar {
   width: 70px;
   height: 70px;
@@ -425,18 +422,11 @@ SECTION POSTS
   border-radius: 100%;
 }
 
-.posts .listing a span {
-  float: none !important;
-  display: block;
-  font-size: 13px;
-  color: #999;
-}
-
 .posts .listing li a {
   font-size: 17px;
 }
 
-.content .listing {
+.posts .listing {
   margin: 0;
   padding: 0;
   font-family: Helvetica, sans-serif;
@@ -456,16 +446,9 @@ SECTION POSTS
   text-align: center;
   -webkit-transition: all .2s;
   -moz-transition: all .2s;
+  -o-transition: all .2s;
+  -ms-transition: all .2s;
   transition: all .2s;
-}
-
-.content .listing li:hover {
-  /*background: url(http://www.ntmy.fr/wp-content/themes/ntmy2014/css/../images/bg_square.png) 0 -41px #333 !important;*/
-  background: #333 !important;
-}
-
-.content .listing li:hover a {
-  color: #fff !important;
 }
 
 .content .listing li:nth-child(even) {
@@ -484,6 +467,14 @@ SECTION POSTS
   color: #333;
 }
 
+.content .listing li:hover {
+  background: #474747;
+}
+
+.content .listing li:hover a {
+  color: white;
+}
+
 .content .listing li span {
   display: block;
   font-size: 15px;
@@ -493,10 +484,6 @@ SECTION POSTS
   display: block;
   font-size: 60px;
   line-height: normal;
-}
-
-.content .listing a {
-  text-decoration: none;
 }
 
 
@@ -519,27 +506,6 @@ SECTION PHOTOGRAPHY
   width: 100%;
 }
 
-.inner-heading + .date {
-  text-align: center;
-  color: #999;
-  padding: 20px 0 30px;
-}
-
-.inner-heading + small {
-  font-size: 16px;
-  margin-top: 50px;
-  display: block;
-}
-
-.inner-heading + span {
-  display: block;
-  text-align: center;
-  margin-top: 10px;
-  color: #707070;
-  font-size: 17px;
-  margin-bottom: 50px;
-}
-
 .photo .inner-center {
   padding-top: 20px;
 }
@@ -554,6 +520,7 @@ SECTION PHOTOGRAPHY
   display: inline-block;
   width: 32%;
   margin-right: 2%;
+  margin-bottom: 10px;
   overflow: hidden;
   position: relative;
 }
@@ -564,9 +531,12 @@ SECTION PHOTOGRAPHY
   bottom: 5px;
   left: 0;
   right: 0;
-  background: rgba(0,0,0,.7);
+  background: rgba(0, 0, 0, .7);
   opacity: 0;
   -webkit-transition: opacity .5s;
+  -moz-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  -ms-transition: opacity .5s;
   transition: opacity .5s;
 }
 
@@ -576,7 +546,7 @@ SECTION PHOTOGRAPHY
 
 .photo-listing li span {
   position: absolute;
-  color: #fff;
+  color: white;
   top: 50%;
   left: 20px;
   right: 20px;
@@ -596,6 +566,9 @@ SECTION PHOTOGRAPHY
   left: 50%;
   margin-left: -30%;
   -webkit-transition: width 1s;
+  -moz-transition: width 1s;
+  -o-transition: width 1s;
+  -ms-transition: width 1s;
   transition: width 1s;
 }
 
@@ -604,7 +577,7 @@ SECTION PHOTOGRAPHY
 }
 
 .photo-listing li em {
-  color: #fff;
+  color: white;
   max-width: 300px;
   display: block;
   padding-top: 20px;
@@ -627,6 +600,9 @@ SECTION PHOTOGRAPHY
   margin-right: 0;
 }
 
+
+/* Phototography project pagination */
+
 .more-projects {
   margin-top: 100px;
   text-align: center;
@@ -642,7 +618,7 @@ SECTION PHOTOGRAPHY
 }
 
 .more-projects .next-proj p a {
-  color: #fff;
+  color: white;
   display: block;
   font-size: 25px;
   font-style: italic;
@@ -652,85 +628,4 @@ SECTION PHOTOGRAPHY
   font-size: 20px;
   color: #ddd;
   display: block;
-}
-
-
-/* *******************************
-
-Should evaluate
-
-********************************* */
-
-
-.content li {
-  margin-bottom: 10px;
-  line-height: 1.4em;
-}
-
-.content blockquote {
-  font-size: 19px;
-  text-align: center;
-}
-
-.content blockquote + p {
-  text-align: center;
-}
-
-.content .byline {
-  font-size: 17px;
-  color: #999;
-  text-align: center;
-  padding: 20px 0 40px;
-}
-
-.content .aside {
-  background-color: #eeeeee;
-  padding: 14px;
-  font-size: 14px;
-  margin: 5px 0 15px 0;
-  font-family: Helvetica, sans-serif;
-  line-height: 1.6em;
-}
-
-
-.content .meta {
-  margin: 30px 0;
-  padding: 10px 0;
-  font-family: Helvetica, sans-serif;
-}
-
-.content .meta p {
-  line-height: 1.4;
-  font-size: 14px;
-  margin-top: 0px;
-}
-
-.content .meta img {
-  position: relative;
-  float: left;
-  margin-top: 0px;
-  margin-right: 10px;
-  margin-left: -60px;
-  border-radius: 4px;
-}
-
-.content .meta .copy {
-  padding-left: 60px;
-}
-
-.content .meta iframe {
-  padding-left: 5px;
-}
-
-.content .talk-design .color div {
-  float: left;
-  margin-right: 10px;
-  padding: 5px 15px;
-  border: 1px solid #000;
-  font-family: Helvetica, sans-serif;
-  font-size: 12px;
-}
-
-.content .talk-design .color .white {
-  color: #fff;
 }
