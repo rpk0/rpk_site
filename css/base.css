@@ -609,25 +609,56 @@ SECTION PHOTOGRAPHY
   margin-right: 0;
 }
 
+.intro-text {
+  margin: 40px 0;
+}
+
+.intro-text small {
+  font-size: 16px;
+}
+
+.photography li {
+  margin-bottom: 12px;
+}
 
 /* Phototography project pagination */
 
 .more-projects {
-  margin-top: 100px;
   text-align: center;
-  padding: 80px;
-  background: url(../images/p_ava_2.jpg) no-repeat;
-  -webkit-filter: grayscale(60%);
+  padding: 20px 0 80px;
+  position: relative;
+}
+
+.more-projects:after {
+  content: '';
+  background: rgb(212, 212, 212);
+  height: 1px;
+  width: 600px;
+  position: absolute;
+  bottom: 77px;
+  left: 50%;
+  margin-left: -300px;
+}
+
+.more-projects:before {
+  content: '';
+  background: rgb(212, 212, 212);
+  height: 1px;
+  width: 600px;
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  margin-left: -300px;
 }
 
 .more-projects .next-proj p {
-  font-size: 60px;
-  color: white;
+  font-size: 50px;
+  color: #474747;
   margin-bottom: 20px;
 }
 
 .more-projects .next-proj p a {
-  color: white;
+  color: #474747;
   display: block;
   font-size: 25px;
   font-style: italic;
@@ -635,7 +666,7 @@ SECTION PHOTOGRAPHY
 
 .more-projects .next-proj p span {
   font-size: 20px;
-  color: #ddd;
+  color: #999;
   display: block;
 }
 
@@ -780,8 +811,6 @@ SECTION PHOTOGRAPHY
   }
 }
 
-  
-  
 
 /* Mobile viewport bellow 640px */
 
