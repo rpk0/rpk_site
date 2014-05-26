@@ -633,38 +633,37 @@ SECTION PHOTOGRAPHY
   content: '';
   background: rgb(212, 212, 212);
   height: 1px;
-  width: 600px;
+  width: 500px;
   position: absolute;
-  bottom: 77px;
+  bottom: 50px;
   left: 50%;
-  margin-left: -300px;
+  margin-left: -250px;
 }
 
 .more-projects:before {
   content: '';
   background: rgb(212, 212, 212);
   height: 1px;
-  width: 600px;
+  width: 500px;
   position: absolute;
-  top: 55px;
+  top: 0;
   left: 50%;
-  margin-left: -300px;
+  margin-left: -250px;
 }
 
-.more-projects .next-proj p {
+.more-projects .next-proj a {
   font-size: 50px;
   color: #474747;
   margin-bottom: 20px;
 }
 
-.more-projects .next-proj p a {
+.more-projects .next-proj a i {
   color: #474747;
   display: block;
   font-size: 25px;
-  font-style: italic;
 }
 
-.more-projects .next-proj p span {
+.more-projects .next-proj a span {
   font-size: 20px;
   color: #999;
   display: block;
@@ -925,5 +924,26 @@ SECTION PHOTOGRAPHY
 
   .sidebar.toggle + .menu-icon-bg {
     opacity: 0;
+  }
+
+  .more-projects {
+    padding-bottom: 60px;
+  }
+
+  .more-projects:after {
+    width: 200px;
+    margin-left: -100px;
+    bottom: 37px;
+  }
+
+  .more-projects:before {
+    width: 200px;
+    margin-left: -100px;
+    top: 5px;
+  }
+
+  .more-projects .next-proj a {
+    font-size: 40px;
+    margin-top: 0;
   }
 }
