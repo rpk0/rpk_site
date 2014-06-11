@@ -1,9 +1,20 @@
 markdown: rdiscount
 pygments: true
 permalink: posts/:title
+paginate: 6
+paginate_path: "posts/page:num"
 rdiscount:
   extensions: [smart]
-
+navigation:
+    - text: photography
+      url: /photography/
+      identity: photos
+    - text: posts
+      url: /posts/
+      identity: posts
+    - text: about
+      url:  /about/
+      identity: about
 name: rpk
 url: http://rpk.gr
 description: A fantastic blog that is fantastic.
