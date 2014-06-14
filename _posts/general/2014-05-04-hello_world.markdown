@@ -1,6 +1,6 @@
 ---
 layout: post_layout
-title: First Boold
+title: Hello World
 category: General
 tags: [blog - general]
 path: posts

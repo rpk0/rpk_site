@@ -1,6 +1,6 @@
 ---
 layout: post_layout
-title: photo_test
+title: Test
 category: photo_posts
 path: posts
 ---
