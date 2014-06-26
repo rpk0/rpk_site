@@ -411,7 +411,8 @@ SECTION POSTS
   text-align: left;
 }
 
-.posts .byline {
+.posts .byline,
+.photography .byline {
   font-size: 17px;
   color: #999;
   text-align: center;
@@ -610,10 +611,6 @@ SECTION PHOTOGRAPHY
   margin-right: 0;
 }
 
-.intro-text {
-  margin: 40px 0;
-}
-
 .intro-text small {
   font-size: 16px;
 }
@@ -678,7 +675,7 @@ SECTION PHOTOGRAPHY
   .sidebar {
     width: 300px;
     left: -230px;
-    -webkit-transition: left 1s;
+    -webkit-transition: left .5s;
     z-index: 2;
   }
 
@@ -815,6 +812,26 @@ SECTION PHOTOGRAPHY
 /* Mobile viewport bellow 640px */
 
 @media screen and (max-width: 640px) {
+
+  .photo-listing li a {
+    opacity: 1;
+    background: none;
+  }
+
+  .photo-listing li a span {
+    padding: 27px 0;
+    background: rgba(0, 0, 0, .7);
+    bottom: 0;
+    top: auto;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .photo-listing li a span:before,
+  .photo-listing li a span em {
+    display: none;
+  }
 
   .photo-listing li {
     width: 100%;
