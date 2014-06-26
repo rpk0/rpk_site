@@ -1,6 +1,0 @@
----
-layout: post_layout
-title: Left
-category: posts
-path: posts
----

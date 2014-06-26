@@ -1,6 +1,0 @@
----
-layout: post_layout
-title: New
-category: posts
-path: posts
----
