@@ -2,7 +2,7 @@
 layout: post_layout
 title: Hello World
 category: General
-tags: [blog - general]
+tags: [Blog - General - First Post]
 path: posts
 ---
 
