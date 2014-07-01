@@ -8,7 +8,7 @@ group: "navigation"
 	<ul class="listing">
     {% for post in paginator.posts %}
     <li>
-      <p class="post-avatar"><img src="http://earthspacesolutions.files.wordpress.com/2009/07/xplanet_rgb_spec_afrika.png" alt="post_avatar"></p>
+      <p class="post-avatar"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ambox_globe.svg/300px-Ambox_globe.svg.png" alt="post_avatar"></p>
       <span>{{ post.date | date: "%B %e, %Y" }}</span> <a href="{{ post.url }}">{{ post.title }}<span></a><i class="fa fa-folder-o"></i> {{ post.category }} | <i class="fa fa-tags"></i> {{ post.tags }}</span>
     </li>
     {% endfor %}
