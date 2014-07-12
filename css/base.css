@@ -337,7 +337,7 @@ SECTION ABOUT
   max-width: 700px;
   text-align: center;
   font-size: 17px;
-  line-height: 29px;
+  line-height: 1.6;
 }
 
 .about .inner-center i:before {
@@ -347,7 +347,6 @@ SECTION ABOUT
 .about .inner-center span {
   display: block;
   font-size: 17px;
-  padding-bottom: 30px;
 }
 
 .about-img {
@@ -373,7 +372,7 @@ SECTION ABOUT
 
 .about .main-text ul {
   padding: 0;
-  margin: 40px 0 0;
+  margin: 40px 0;
   text-align: center;
 }
 
@@ -389,7 +388,9 @@ SECTION ABOUT
 }
 
 .about small {
-  font-size: 16px;
+  font-size: 15px;
+  color: #707070;
+
 }
 
 
