@@ -678,6 +678,11 @@ SECTION PHOTOGRAPHY
   display: block;
 }
 
+blockquote {
+  color: #a5a4a4;
+  font-style: italic;
+  text-align: center;
+}
 
 /* Tablet viewport from 640px to 960px */
 
