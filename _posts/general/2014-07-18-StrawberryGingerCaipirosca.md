@@ -12,8 +12,8 @@ path: posts
 **INGREDIENTS**
 
 - 5 fresh strawberries, hulled and quartered
-- 1/4 lime, cut into 4 pieces
-- 2 ginger slices (thumb size)
+- 1/4 lime, cut into 2 pieces (thats the trick less lime than a usual caipiroska)
+- 3 ginger slices (thumb size)
 - 2 tablespoons brown sugar
 - 2 cups cracked ice
 - vodka
@@ -26,6 +26,6 @@ Place berries, lime, and ginger in a rocks-glass or a highball. Sprinkle sugar o
 
 ![tree](https://farm4.staticflickr.com/3782/12329014655_9a6be31676_c.jpg "directions")
 
+Alternative, if you dont like vodka base you can replace it with Gin, the result is equally awesome!
+
 enjoy!
-
-
