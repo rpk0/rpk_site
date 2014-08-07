@@ -407,6 +407,16 @@ SECTION POSTS
   text-align: left;
 }
 
+.posts .inner-center .image-caption {
+  text-align: center;
+  font-size: 70%;
+  margin: 10px 0 20px;
+}
+
+.posts img {
+  margin: 0 0 -5px;
+}
+
 .posts blockquote,
 .posts blockquote + p {
   text-align: left;
