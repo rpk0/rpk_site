@@ -13,11 +13,11 @@ body {
 
 @font-face {
   font-family: 'segoe ui light';
-  src: url('../fonts/segoeuil.eot'); /* IE9 Compat Modes */
-  src: url('../fonts/segoeuil.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/segoeuil.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/segoeuil.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/segoeuil.svg#svgFontName') format('svg'); /* Legacy iOS */
+  src: url('../fonts/segoeuil.eot');
+  src: url('../fonts/segoeuil.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/segoeuil.woff') format('woff'),
+       url('../fonts/segoeuil.ttf')  format('truetype'),
+       url('../fonts/segoeuil.svg#segoeuil') format('svg');
 }
 
 *, *:after, *::before {
