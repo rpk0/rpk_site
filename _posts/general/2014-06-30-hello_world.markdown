@@ -1,7 +1,7 @@
 ---
 layout: post_layout
 title: Hello World
-avatar: http://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ambox_globe.svg/300px-Ambox_globe.svg.png
+avatar: http://uxrepo.com/static/icon-sets/ionicons/svg/earth.svg
 category: General
 tags: [Blog - General - First Post]
 path: posts
