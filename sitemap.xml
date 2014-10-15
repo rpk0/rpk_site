@@ -1,15 +1,30 @@
 ---
-layout: layout
+layout: nil
+title : "sitemap"
+sitemap_exclude: y
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>{{ site.baseurl }}</loc>
-    </url>
-
     {% for post in site.posts %}
     <url>
-        <loc>{{ site.baseurl }}{{ post.url }}</loc>
+      <loc>{{site.url}}{{ post.url | remove: 'index.html' }}</loc>
+      {% if post.lastmod == null %}
+        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+      {% else %}
+        <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
+      {% endif %}
     </url>
+    {% endfor %}
+
+    {% for page in site.pages %}
+    {% if page.layout != nil %}
+    {% if page.layout != 'feed' %}
+    {% if page.sitemap_exclude != 'y' %}
+    <url>
+        <loc>{{site.url}}{{ page.url | remove: 'index.html' }}</loc>
+    </url>
+    {% endif %}
+    {% endif %}
+    {% endif %}
     {% endfor %}
 </urlset>
