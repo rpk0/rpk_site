@@ -20,26 +20,21 @@ Unfortunately, many of his photo collections are expensive and difficult to find
 
 ![1](https://www.magnumphotos.com/CorexDoc/MAG/Media/TR2/2/1/8/6/PAR65507.jpg "koudelka") 
 
-{:.image-caption}
-FRANCE. Hauts-de-Seine. Parc de Sceaux. 1987
+>FRANCE. Hauts-de-Seine. Parc de Sceaux. 1987
 
 ![1](https://www.magnumphotos.com/CorexDoc/MAG/Media/TR2/9/2/d/a/PAR65592.jpg "koudelka")
 
-{:.image-caption}
-PORTUGAL. S. Bartolomeu Do Mar. 1976
+>PORTUGAL. S. Bartolomeu Do Mar. 1976
 
 ![1](https://www.magnumphotos.com/CorexDoc/MAG/Media/TR2/8/6/f/c/PAR65541.jpg "koudelka")
 
-{:.image-caption}
-FRANCE. Brittany. Gypsies. 1973
+>FRANCE. Brittany. Gypsies. 1973
 
 ![1](http://38.media.tumblr.com/38785e3036921fcaa3e310336ff487dc/tumblr_n06oqicYzo1qaihw2o1_1280.jpg "koudelka")
 
-{:.image-caption}
-IRELAND. 1976
+>IRELAND. 1976
 
 ![1](https://www.magnumphotos.com/CorexDoc/MAG/Media/TR2/8/2/f/a/PAR65558.jpg "koudelka")
 
-{:.image-caption}
-NORTHERN IRELAND. 1978
+>NORTHERN IRELAND. 1978
 
