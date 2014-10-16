@@ -18,9 +18,9 @@ format:
 So each time you create a new post you have to follow these convention. 
 In addition to this every post has a `YAML front matter block` which is processed by Jekyll and contains predefined and custom variables.
 
-So we have two things to automate:
+Hence we have to automate these two things:
 
-1. the creation of the file with the correct name and
+1. the creation of the file with the correct name
 2. the *YAML front matter block*
 
 **The solution**
@@ -29,8 +29,8 @@ I chose [Thor](http://whatisthor.com/) for this job as it is a very simple but p
 
 In my research I have rejected two other solutions
 
-- a simple Rake task and
-- a simple ruby script with [Slop Gem](https://github.com/leejarvis/slop) (lightweight option parsing)
+- a simple Rake task
+- a simple [ruby script](https://gist.github.com/rpk0/7ef3ba85bff2fbbba342) with [Slop Gem](https://github.com/leejarvis/slop) (lightweight option parsing)
 
 if you have a Gemfile add the the following gems 
 
@@ -91,7 +91,7 @@ class Post < Thor
       post.puts "---"
     end
 
-    # open the md file in your default editor
+    # opens the md file in your default editor
     system ("#{ENV['EDITOR']} #{filename}")
 
     puts "New post created: #{filename}"
@@ -108,9 +108,9 @@ thor post:new TITLE  # Create a new post
 ```
 
 In this example, the `method_options` have been supplied with several parameters. 
-The first parameter is the full name of the option. this is translated into a -- option on the command line.
+The first parameter is the full name of the option, this is translated into a -- option on the command line.
 The second is the alias option to provide a short version of this option 
-and the last one is the `desc` parameter which adds a description for the option, when printing out the full usage for a command. 
+and the last one is the `desc` parameter which adds a description for the option, when printing out the full usage for a command, 
 for example: 
 
 If you run `thor post:help new` you should see the following output:
@@ -163,3 +163,4 @@ To execute the post task you have to run
 
 In a future post I'll be writing how I have automated the photo essay posts generation which are not markdown files but complex HTML files. 
   
+>*references: http://jonasforsberg.se/2012/12/28/create-jekyll-posts-from-the-command-line*
