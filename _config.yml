@@ -1,12 +1,10 @@
-markdown: kramdown
-kramdown:
-  parse_block_html: true
-highlighter: true
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "space_after_headers", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "smart"]
+highlighter: pygments
 permalink: posts/:title
 paginate: 6
 paginate_path: "posts/page:num"
-rdiscount:
-  extensions: [smart]
 navigation:
     - text: photography
       url: /photography/
