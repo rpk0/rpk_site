@@ -276,8 +276,11 @@ LAYOUT STYLES
   max-width: 750px;
 }
 
+.photo .inner-center > h1,
+.about .inner-center > h1,
+.photography .inner-center > h1,
 .posts .inner-center > h1 {
-  font-size: 70px;
+  font-size: 90px;
   color: #333;
   position: relative;
   margin: 0 auto;
@@ -285,15 +288,8 @@ LAYOUT STYLES
   border-bottom: 1px solid #d4d4d4;
 }
 
-.photo .inner-center > h1,
-.about .inner-center > h1,
-.photography .inner-center > h1 {
-  font-size: 90px;
-  color: #333;
-  position: relative;
-  margin: 0 auto;
-  max-width: 400px;
-  border-bottom: 1px solid #d4d4d4;
+.posts .inner-center > h1 {
+  font-size: 70px;
 }
 
 .posts .inner-center .inner-heading,
