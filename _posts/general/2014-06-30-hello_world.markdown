@@ -3,7 +3,7 @@ layout: post_layout
 title: Hello World
 avatar: http://uxrepo.com/static/icon-sets/ionicons/svg/earth.svg
 category: General
-tags: [Blog - General - First Post]
+tags: [General - First Post]
 path: posts
 ---
 
