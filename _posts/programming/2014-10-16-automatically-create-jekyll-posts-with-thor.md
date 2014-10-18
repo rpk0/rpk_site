@@ -32,7 +32,7 @@ In my research I have rejected two other solutions
 - a simple Rake task
 - a simple [ruby script](https://gist.github.com/rpk0/7ef3ba85bff2fbbba342) with [Slop Gem](https://github.com/leejarvis/slop) (lightweight option parsing)
 
-if you have a Gemfile add the the following gems 
+if you have a Gemfile add the following gems 
 
 ```
 gem 'thor'
@@ -107,10 +107,10 @@ post
 thor post:new TITLE  # Create a new post
 ```
 
-In this example, the `method_options` have been supplied with several parameters. 
-The first parameter is the full name of the option, this is translated into a -- option on the command line.
-The second is the alias option to provide a short version of this option 
-and the last one is the `desc` parameter which adds a description for the option, when printing out the full usage for a command, 
+In this example, the `method_options` have been supplied with several parameters.  
+The first parameter is the full name of the option, this is translated into a -- option on the command line.  
+The second is the alias option to provide a short version of this option.  
+The last one is the `desc` parameter which adds a description for the option,when printing out the full usage for a command.  
 for example: 
 
 If you run `thor post:help new` you should see the following output:
@@ -163,4 +163,4 @@ To execute the post task you have to run
 
 In a future post I'll be writing how I have automated the photo essay posts generation which are not markdown files but complex HTML files. 
   
->*references: http://jonasforsberg.se/2012/12/28/create-jekyll-posts-from-the-command-line*
+<sup>*references: http://jonasforsberg.se/2012/12/28/create-jekyll-posts-from-the-command-line*</sup>
