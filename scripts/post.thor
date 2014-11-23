@@ -20,7 +20,7 @@ class Post < Thor
     category = options[:category]
     # fomat tags in the way you want them to be displayed
     tags = [options[:tags].gsub(/\W+/, " - ")] if options[:tags]
-    filename = "_posts/#{category.downcase}/#{options[:date]}-#{title.to_url}.md"
+    filename = "../_posts/#{category.downcase}/#{options[:date]}-#{title.to_url}.md"
 
     if File.exist?(filename)
       abort("#{filename} already exists!")
