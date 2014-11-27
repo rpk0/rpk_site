@@ -14,7 +14,7 @@ class PhotoPost < Thor
   desc "create", "Use the interactive prompt to create a new photo essay"
 
   def create
-    say("New phot essay", Thor::Shell::Color::YELLOW)
+    say("New photo essay", Thor::Shell::Color::YELLOW)
 
     photos_count = ask("Number of photos:")
     title = ask("Title:")
@@ -40,7 +40,7 @@ class PhotoPost < Thor
     else
       FileUtils.mkdir_p(dirname)
       FileUtils.mkdir_p(uploads_dirname)
-      temp = File.read("sample_post.html").
+      temp = File.read("sample_post").
         gsub(/--number_of_photos--/, number_of_photos).
         gsub(/--title--/, title).
         gsub(/--folder_name--/, path).
@@ -56,9 +56,9 @@ class PhotoPost < Thor
       end
 
       if directories_exists?(dirname, uploads_dirname)
-        say_status("Created >> #{dirname}/index.html", Thor::Shell::Color::GREEN)
-        say_status("Created >> #{uploads_dirname}", Thor::Shell::Color::GREEN)
-        say_status("Reminder: Add the photos to the uploads folder", Thor::Shell::Color::RED)
+        say("Created >> #{dirname}/index.html", Thor::Shell::Color::GREEN)
+        say("Created >> #{uploads_dirname}", Thor::Shell::Color::GREEN)
+        say("Reminder: Add the photos to the uploads folder", Thor::Shell::Color::RED)
       end
     end
   end

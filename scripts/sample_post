@@ -3,8 +3,7 @@ layout: photo_post
 title: --title--
 group: "photo_navigation"
 path: photos
-images:
---number_of_photos--
+images: --number_of_photos--
 ---
 
 <section class="byline">
