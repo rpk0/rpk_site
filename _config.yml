@@ -7,16 +7,13 @@ paginate: 6
 paginate_path: "posts/page:num"
 navigation:
     - text: photography
-      url: /photography/
-      identity: photos
+      url: /
     - text: posts
       url: /posts/
-      identity: posts
     - text: about
-      url:  /about/
-      identity: about
+      url: /about/
 name: rpk
-email: kostis.rpk@gmail.
+email: kostis.rpk@gmail
 url: http://rpk.io
 description: "Contemporary urban and sub-urban landscapes which emit the feeling of loneliness, abandonment and curiosity. Film photography - Software development - Ruby - Ruby on Rails"
 google_plus: https://plus.google.com/106674914836183072429
