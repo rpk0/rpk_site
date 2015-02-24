@@ -6,9 +6,10 @@ permalink: posts/:title
 paginate: 6
 paginate_path: "posts/page:num"
 navigation:
-    - text: photo essays
-      identity: photo_essays
+    - text: projects
       url: /
+    - text: photo essays
+      url: /photo_essays/
     - text: posts
       url: /posts/
     - text: about
