@@ -2,7 +2,7 @@
 layout: photo_post
 title: --title--
 group: "photo_navigation"
-path: photography
+path: photo_essays
 images: --number_of_photos--
 ---
 
@@ -36,7 +36,7 @@ images: --number_of_photos--
 
 <div class="more-projects">
   <div class="next-proj">
-    <a href="/photography/--next_project_path--/">
+    <a href="/photo_essays/--next_project_path--/">
       <i>next project</i>
       --next_project_title--
      </a>
