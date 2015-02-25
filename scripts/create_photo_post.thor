@@ -32,7 +32,7 @@ class PhotoPost < Thor
       number_of_photos << "  - #{l}.jpg\n"
     end
 
-    dirname = File.dirname("../photos/#{path}/index.html")
+    dirname = File.dirname("../photo_essays/#{path}/index.html")
     uploads_dirname = File.dirname("../uploads/#{path}/image.jpg")
 
     if directories_exists?(dirname, uploads_dirname)
