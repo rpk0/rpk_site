@@ -56,14 +56,14 @@
     </a>
 
     <ul class="menu">
-      {% assign url = page.url|remove:'index.html' %}
-        {% for link in site.navigation %}
-          {% assign active = nil %}
-          {% if url == link.url or page.path == link.identity %}
-            {% assign active = 'class="active"' %}
-          {% endif %}
-          <li><a {{ active }} href="/{{ link.text }}/">{{ link.text }}</a>{{ indicator }}</li>
-        {% endfor %}
+      {% assign url = page.url | remove:'index.html' %}
+      {% for link in site.navigation %}
+        {% assign active = nil %}
+        {% if url == link.url or page.path == link.text or page.path == link.identity %}
+          {% assign active = 'class="active"' %}
+        {% endif %}
+          <li><a {{ active }} href="{{ link.url }}">{{ link.text }}</a>{{ indicator }}</li>
+      {% endfor %}
     </ul>
 
     <section class="meta">
