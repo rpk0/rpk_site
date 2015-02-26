@@ -13,7 +13,7 @@ navigation:
       url: /posts/
     - text: about
       url: /about/
-name: rpk
+name: rpk.io
 email: kostis.rpk@gmail
 url: http://rpk.io
 description: "Contemporary urban and sub-urban landscapes which emit the feeling of loneliness, abandonment and curiosity. Film photography - Software development - Ruby - Ruby on Rails"
