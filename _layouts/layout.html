@@ -21,6 +21,9 @@
   <!-- for Facebook -->
   <meta property="og:site_name" content="{{ site.name }}" />
   <meta property="og:title" content="{{ page.title }}" />
+  <meta property="fb:admins" content="1515735991980410">
+  <meta property="og:url" content="{{ site.url }}{{ page.url | remove:'index.html' }}" />
+
   {% if page.path == "photo_essays" or page.path == "posts" %}
     <meta property="og:type" content="article" />
   {% else %}
@@ -34,8 +37,6 @@
   {% else %}
     <meta property="og:image" content="{{ site.gravatar_url }}" />
   {% endif %}
-
-  <meta property="og:url" content="{{ site.url }}{{ page.url | remove:'index.html' }}" />
 
   {% if page.categories %}
     {% for category in page.categories %}
