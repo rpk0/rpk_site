@@ -21,7 +21,7 @@
   <!-- for Facebook -->
   <meta property="og:site_name" content="{{ site.name }}" />
   <meta property="og:title" content="{{ page.title }}" />
-  <meta property="fb:admins" content="1515735991980410">
+  <meta property="fb:app_id" content="1515735991980410">
   <meta property="og:url" content="{{ site.url }}{{ page.url | remove:'index.html' }}" />
 
   {% if page.path == "photo_essays" or page.path == "posts" %}
@@ -31,7 +31,9 @@
   {% endif %}
 
   {% if page.path == "photo_essays" %}
-    <meta property="og:image" content="{{ site.url }}/images/photo_listing/{{ page.title | downcase | split: ' ' | join: '_' | append: '.jpg'}}" />
+    <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/1.jpg" />
+    <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/2.jpg" />
+    <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/3.jpg" />
   {% elsif page.path == "posts" %}
     <meta property="og:image" content="{{ page.avatar }}" />
   {% else %}
