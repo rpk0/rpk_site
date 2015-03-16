@@ -1,9 +1,11 @@
 <div class="more-projects">
   <div class="next-proj">
-    <a href="/photo_essays/{{ page.next_project_path }}/">
-      <i>next project</i>
-      {{ page.next_project }}
-     </a>
+    {% if page.next_project_path != "" %}
+      <a href="/photo_essays/{{ page.next_project_path }}/">
+        <i>next project</i>
+        {{ page.next_project }}
+      </a>
+    {% endif %}
     <a href="/">
       <span>back to photography projects</span>
     </a>
