@@ -125,12 +125,22 @@ SIDEBAR SECTION
 }
 
 .sidebar .meta {
-  padding-bottom: 10px;
+  position: absolute;
+  bottom: 20px;
+  padding: 0;
+  left: 50%;
+  margin-left: -80px;
+  max-width: 160px;
+}
+
+.sidebar .meta li {
+  list-style: none;
+  display: inline-block;
 }
 
 .sidebar .meta a {
   color: black;
-  border: 1px solid #ccc;
+  border: 1px solid #d4d4d4;
   width: 50px;
   height: 50px;
   display: inline-block;
@@ -138,7 +148,7 @@ SIDEBAR SECTION
 }
 
 .sidebar .meta a:hover {
-  color: #31472D;
+  border-color: #999;
 }
 
 .sidebar .meta i {
@@ -323,6 +333,17 @@ LAYOUT STYLES
   margin: 2em 3em;
 }
 
+.btn {
+  color: #000;
+  font-size: 14px;
+  padding: 8px 18px 8px 18px;
+  border: solid #ccc 1px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  color: #31472D;
+}
 
 /* -----------------------------------------------------------------------
 
@@ -671,15 +692,30 @@ SECTION PHOTOGRAPHY
 }
 
 .more-projects .next-proj a i {
-  color: #474747;
+  color: #999;
   display: block;
-  font-size: 25px;
+  font-size: 20px;
+  font-style: normal;
 }
 
 .more-projects .next-proj a span {
   font-size: 20px;
   color: #999;
   display: block;
+  position: relative;
+  padding-top: 30px;
+}
+
+.more-projects .next-proj a span:before {
+  content: '';
+  background: #d4d4d4;
+  height: 1px;
+  width: 70px;
+  position: absolute;
+  top: 0px;
+  margin-top: 17px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 blockquote {
@@ -692,6 +728,48 @@ blockquote {
 .photography .inner-center ul {
   font-size: 0;
   margin: 0;
+}
+
+.social-buttons {
+  text-align: center;
+  padding: 20px 0 80px;
+  position: relative;
+}
+
+.photography .social-buttons ul,
+.posts .social-buttons ul {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: 15px;
+}
+
+.social-buttons p {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+
+.social-buttons .btn {
+  border: 1px solid #d4d4d4;
+  display: inline-block;
+}
+
+.social-buttons .btn:hover {
+  border: 1px solid #999;
+}
+
+.social-buttons ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0;
+}
+
+.social-buttons .share p {
+  text-align: center;
+  font-size: 20px;
+  color: #999;
+  margin-bottom: 20px;
 }
 
 .project-icons li {
@@ -733,7 +811,6 @@ blockquote {
   right: 5px;
   top: 5px;
 }
-
 
 /* Tablet viewport from 640px to 960px */
 
