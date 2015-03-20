@@ -110,7 +110,13 @@
      });
     });
   </script>
-
+  <script>
+    // Wait for window load
+    $(window).load(function() {
+      // Animate loader off screen
+      $("#dying-light-spinner").fadeOut("slow");;
+    });
+  </script>
 </head>
 
 <body>

@@ -65,6 +65,52 @@ h4 a {
     background: #ddd;
 }
 
+/* Loading animation */
+
+@keyframes spin {
+  0% {
+    transform: scale(1) rotate(0deg) translateZ(0); }
+
+  10%, 20% {
+    transform: scale(1.4) rotate(0deg) translateZ(0); }
+
+  30%, 45% {
+    transform: scale(1.4) rotate(-90deg) translateZ(0); }
+
+  55%, 100% {
+    transform: scale(1) rotate(-90deg) translateZ(0); } }
+
+.dying-light-spinner {
+  display: inline-block;
+  height: 14px;
+  position: relative;
+  width: 14px; }
+  .dying-light-spinner::before, .dying-light-spinner::after {
+    position: absolute;
+    -webkit-font-smoothing: none; }
+  .dying-light-spinner::before {
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 0 1px #929292;
+    color: white;
+    content: "+";
+    font-size: 106px;
+    height: 26px;
+    line-height: 0;
+    left: 0;
+    top: 0;
+    text-indent: -17px;
+    transform-origin: 50% 50%;
+    width: 26px; }
+  .dying-light-spinner::after {
+    content: "";
+    background: #929292;
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    top: 6px;
+    left: 6px; }
+
+
 
 /* -----------------------------------------------------------------------
 
