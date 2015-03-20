@@ -44,7 +44,7 @@ The rest of the file consists of three elements one section with the icons and g
 
 ### 2. The images will be uploaded to GitHub 
 
-This site is hosted in [GitHub Pages](https://pages.github.com/) so it is very convenient to upload the images there. I use a separate folder for each photo essay with the tile of the post. 
+This site is hosted in [GitHub Pages](https://pages.github.com/) so it is very convenient to upload the images there. I use a separate folder for each photo essay with the title of the post. 
 
 ### 3. The script 
 
