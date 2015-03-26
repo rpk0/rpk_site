@@ -85,7 +85,11 @@
     <meta name="twitter:image2" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/3.jpg">
     <meta name="twitter:image3" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/4.jpg">
   {% else %}
-    <meta name="twitter:image:src" content="{{ site.gravatar_url }}">
+    {% if page.avatar %}
+      <meta name="twitter:image:src" content="{{ page.avatar }}">
+    {% else %}
+      <meta name="twitter:image:src" content="{{ site.gravatar_url }}">
+    {% endif %}
   {% endif %}
 
   <link rel="stylesheet" href="/css/fontawesome.min.css" type="text/css" media="screen, projection" />
