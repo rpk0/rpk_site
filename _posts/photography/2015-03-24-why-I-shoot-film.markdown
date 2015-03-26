@@ -11,7 +11,7 @@ path: posts
 
 When you have **36** or **10** (for my medium format 6x7) frames available you take your time before you decide to shoot.
 
-The procedure when shotting film is something like this: 
+The procedure when shooting film is something like this:
 
 - Find elements you find visually captivating
 - Think every element of the photo. (light, pose, environment)
