@@ -54,7 +54,7 @@
   {% if page.description %}
     <meta property="og:description" content="{{ page.description | replace:'more start -->','' | replace:'<!-- more end','' | truncatewords: 30 }}" />
   {% elsif page.path == "posts" %}
-    <meta property="og:description" content="{{ page.content | strip_html | xml_escape | truncate: 200 }}" />
+    <meta property="og:description" content="{{ page.content | markdownify | strip_html | xml_escape | truncate: 200 }}" />
   {% else %}
     <meta property="og:description" content="{{ site.description }}" />
   {% endif %}
@@ -78,7 +78,7 @@
   {% if page.description %}
     <meta name="twitter:description" content="{{ page.description | replace:'more start -->','' | replace:'<!-- more end','' | truncatewords: 30 }}" />
   {% elsif page.path == "posts" %}
-    <meta property="og:description" content="{{ page.content | strip_html | xml_escape | truncate: 200 }}" />
+    <meta property="og:description" content="{{ page.content | markdownify | strip_html | xml_escape | truncate: 200 }}" />
   {% else %}
     <meta name="twitter:description" content="{{ site.description }}">
   {% endif %}
