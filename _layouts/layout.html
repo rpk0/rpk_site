@@ -22,7 +22,12 @@
   <meta property="og:site_name" content="{{ site.name }}" />
   <meta property="og:title" content="{{ page.title }}" />
   <meta property="fb:admins" content="100006320713108">
-  <meta property="og:url" content="{{ site.url }}{{ page.url | remove:'index.html' }}" />
+
+  {% if page.path == "posts" %}
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}/" />
+  {% else %}
+    <meta property="og:url" content="{{ site.url }}{{ page.url | remove:'index.html' }}" />
+  {% endif %}
 
   {% if page.path == "photo_essays" or page.path == "posts" %}
     <meta property="og:type" content="article" />
