@@ -37,7 +37,7 @@ Yes, thats the second most important reason for me shooting film. I can not desc
 - ...when I develop a film that I have no idea what is on it and I finally see the forgotten pictures.
 - ...when I go to the photo lab to pick up the development of the film. It's like a Birthday present, always!
 
-![opening the film tank](https://raw.githubusercontent.com/rpk0/rpk_site/why_shoot_film/images/posts/why_i_shoot_film/developing_film.jpg)
+![opening the film tank](https://raw.githubusercontent.com/rpk0/rpk_site/gh-pages/images/posts/why_i_shoot_film/developing_film.jpg)
 
 ## **History**
 
@@ -50,7 +50,7 @@ Multiple exposures, expired films, grain, dust, blur, vintage filters, light lea
 
 **...Endless possibilities!**
 
-![double exposure](https://raw.githubusercontent.com/rpk0/rpk_site/why_shoot_film/images/posts/why_i_shoot_film/double_exp.jpg)
+![double exposure](https://raw.githubusercontent.com/rpk0/rpk_site/gh-pages/images/posts/why_i_shoot_film/double_exp.jpg)
 
 ## **The analogue cameras**
 
@@ -74,7 +74,7 @@ In my opinion you have to love the camera you're using (for personal work) or th
  
 Lastly, I do not want to invest a lot of money in equipment that will be obsolete in a very short time. **Film cameras last for decades!**
 
-![film cameras](https://raw.githubusercontent.com/rpk0/rpk_site/why_shoot_film/images/posts/why_i_shoot_film/film_cameras.jpg)
+![film cameras](https://raw.githubusercontent.com/rpk0/rpk_site/gh-pages/images/posts/why_i_shoot_film/film_cameras.jpg)
 
 ## **Quality**
 
@@ -94,7 +94,7 @@ I Also love:
 - The deep contrast of film
 - The smoothness of the grain and the feeling of continuity from the foreground to the background. It has a very organic look and I think nothing can replicate it
 
-![filmvsdigital](https://raw.githubusercontent.com/rpk0/rpk_site/why_shoot_film/images/posts/why_i_shoot_film/filmvsdigital.jpg)
+![filmvsdigital](https://raw.githubusercontent.com/rpk0/rpk_site/gh-pages/images/posts/why_i_shoot_film/filmvsdigital.jpg)
 
 ## **DIY**
 
