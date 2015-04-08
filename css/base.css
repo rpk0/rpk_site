@@ -424,6 +424,13 @@ SECTION ABOUT
 SECTION POSTS
 
 ----------------------------------------------------------------------- */
+.center_align {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    margin: 3px 8px 30px 0;
+    color: #707070;
+}
 
 .posts .inner-center {
   max-width: 800px;
