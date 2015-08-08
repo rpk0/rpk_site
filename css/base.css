@@ -567,14 +567,15 @@ SECTION PHOTOGRAPHY
 .photo-listing {
   margin: 0;
   padding: 0;
+  font-size: 0;
 }
 
 .photo-listing li {
   list-style: none;
   display: inline-block;
-  width: 32%;
-  margin-right: 2%;
-  margin-bottom: 10px;
+  width: 32.6%;
+  margin-right: 1%;
+  margin-bottom: 1%;
   overflow: hidden;
   position: relative;
 }
@@ -582,7 +583,7 @@ SECTION PHOTOGRAPHY
 .photo-listing li a {
   position: absolute;
   top: 0;
-  bottom: 5px;
+  bottom: 0;
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, .7);
@@ -939,12 +940,13 @@ blockquote {
   }
 
   .photo-listing li {
-    width: 48%;
-    margin-right: 4%;
+    width: 49%;
+    margin-right: 2%;
+    margin-bottom: 2%;
   }
 
   .photo-listing li:nth-child(3n) {
-    margin-right: 4%;
+    margin-right: 2%;
   }
 
   .photo-listing li:nth-child(2n) {
