@@ -1,7 +1,7 @@
 ---
 layout: post_layout
 title: Why I shoot Film
-avatar: http://image4.spreadshirt.com/image-server/v1/compositions/1003004268/views/1,width=235,height=235,appearanceId=70/Use-Film-Kids--Shirts.jpg
+avatar: https://cdn3.iconfinder.com/data/icons/glypho-photography/64/film-strip-roll-512.png
 category: Photography
 tags: [Photography - Film - Analogue - Darkroom]
 path: posts
