@@ -950,12 +950,6 @@ blockquote {
     transition: transform .1s linear;
   }
 
-  .photo-listing li {
-    width: 49%;
-    margin-right: 2%;
-    margin-bottom: 2%;
-  }
-
   .photo-listing li:nth-child(3n) {
     margin-right: 2%;
   }
@@ -964,18 +958,11 @@ blockquote {
     margin-right: 0;
   }
 
-  .photo .inner-center > h1,
-  .posts .inner-center > h1,
-  .about .inner-center > h1,
-  .photography .inner-center > h1 {
-    font-size: 70px;
+  .photo-listing li {
+    width: 49%;
+    margin-right: 2%;
+    margin-bottom: 2%;
   }
-}
-
-
-/* Mobile viewport bellow 640px */
-
-@media screen and (max-width: 640px) {
 
   .photo-listing li a {
     opacity: 1;
@@ -994,21 +981,35 @@ blockquote {
     text-align: left;
   }
 
+  .photo-listing li a span:before,
+  .photo-listing li a span em {
+    display: none;
+  }
+
   .photo-listing li .stack-icon {
     float: right;
     margin: auto 20px;
     display: inline-block;
   }
 
-  .photo-listing li a span:before,
-  .photo-listing li a span em {
-    display: none;
+  .photo .inner-center > h1,
+  .posts .inner-center > h1,
+  .about .inner-center > h1,
+  .photography .inner-center > h1 {
+    font-size: 70px;
   }
+}
+
+
+/* Mobile viewport bellow 640px */
+
+@media screen and (max-width: 640px) {
 
   .photo-listing li {
     width: 100%;
-    float: none;
     margin-right: 0;
+    float: none;
+    margin-bottom: 2%;
   }
 
   .photo .inner-center > h1,
