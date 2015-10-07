@@ -540,6 +540,16 @@ SECTION POSTS
   line-height: normal;
 }
 
+.pagination-buttons {
+  text-align: center;
+  padding: 20px 0 80px;
+  position: relative;
+}
+
+.pagination-buttons .btn {
+  border: 1px solid #d4d4d4;
+  display: inline-block;
+}
 
 /* -----------------------------------------------------------------------
 
