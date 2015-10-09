@@ -15,6 +15,7 @@ body {
   font-family: 'segoe ui light';
   src: url('../fonts/segoeuil.eot');
   src: url('../fonts/segoeuil.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/segoeuil.woff2') format('woff2'),
        url('../fonts/segoeuil.woff') format('woff'),
        url('../fonts/segoeuil.ttf')  format('truetype'),
        url('../fonts/segoeuil.svg#segoeuil') format('svg');
