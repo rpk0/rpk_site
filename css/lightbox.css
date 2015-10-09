@@ -1,6 +1,6 @@
 /* line 1, ../sass/lightbox.scss */
 body:after {
-  content: url(../img/close.png) url(../img/loading.gif) url(../img/prev.png) url(../img/next.png);
+  content: url(../ images/close.png) url(../ images/loading.gif) url(../ images/prev.png) url(../ images/next.png);
   display: none;
 }
 
@@ -79,7 +79,7 @@ body:after {
   width: 32px;
   height: 32px;
   margin: 0 auto;
-  background: url(../img/loading.gif) no-repeat;
+  background: url(../ images/loading.gif) no-repeat;
 }
 
 /* line 78, ../sass/lightbox.scss */
@@ -111,7 +111,7 @@ body:after {
 }
 /* line 102, ../sass/lightbox.scss */
 .lb-prev:hover {
-  background: url(../img/prev.png) left 48% no-repeat;
+  background: url(../ images/prev.png) left 48% no-repeat;
 }
 
 /* line 107, ../sass/lightbox.scss */
@@ -121,7 +121,7 @@ body:after {
 }
 /* line 111, ../sass/lightbox.scss */
 .lb-next:hover {
-  background: url(../img/next.png) right 48% no-repeat;
+  background: url(../ images/next.png) right 48% no-repeat;
 }
 
 /* line 116, ../sass/lightbox.scss */
@@ -170,7 +170,7 @@ body:after {
   float: right;
   width: 30px;
   height: 30px;
-  background: url(../img/close.png) top right no-repeat;
+  background: url(../ images/close.png) top right no-repeat;
   text-align: right;
   outline: none;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
