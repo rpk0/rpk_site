@@ -60,7 +60,7 @@ Each section will have **two subsections** based on **budget** with two options 
   Moriyama with a Ricoh GR1
 </span>
 
-## Landscape Photogrpahy (Contemporary) - Still Life 
+## Landscape Photography (Contemporary) - Still Life 
 
 ##### High Budget:   
 - **Leica M3/M4/M6** or **Contax G2** or **Nikon F6**  
