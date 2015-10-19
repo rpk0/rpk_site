@@ -31,7 +31,7 @@ There is only one important question:
 I am going to split this guide into **3 main sections** based on answering the previous question.
 Each section will have **two subsections** based on **budget** with two options each, based on **format** (35mm and Medium Format). 
 
-*Disclaimer:* Having the right lens is as vital as having a good and reliable body. In my choices I don't mention any lenses but they have been taken into account so be sure that any of the below suggestions have the right lenses. 
+*Disclaimer:* Having the right lens is as vital as having a good and reliable body. In my choices I don't mention any lenses but they have been taken into account, so be sure that any of the below suggestions offers the proper lenses for each case.
 
 ----
 
