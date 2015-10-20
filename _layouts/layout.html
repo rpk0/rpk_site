@@ -134,7 +134,7 @@
     </a>
 
     <ul class="menu">
-      {% assign url = page.url | remove:'index.html' %}
+      {% assign url = page.url | remove:'index.html' | remove:'page2/'%}
       {% for link in site.navigation %}
         {% assign active = nil %}
         {% if url == link.url or page.path == link.text or page.path == link.identity %}
