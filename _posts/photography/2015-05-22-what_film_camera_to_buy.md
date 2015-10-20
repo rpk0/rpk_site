@@ -99,7 +99,7 @@ Each section will have **two subsections** based on **budget** with two options 
 
 ![Steve McCurry Nikon F6 Afghan girl](/images/posts/what_to_buy/mccurry_nikon_f6.jpg)
 <span class="center_align">
-  Steve McCurry with a Nikon F6
+  Steve McCurry with a Nikon FM2
 </span>
 
 ![Todd Hido with a Pentax67](/images/posts/what_to_buy/todd_hido_pentax67.jpg)
