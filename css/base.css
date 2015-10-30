@@ -536,10 +536,15 @@ SECTION POSTS
 
 .content .listing li:hover {
   background: #474747;
+  color: #999;
 }
 
 .content .listing li:hover a {
   color: white;
+}
+
+.content .listing li:hover span {
+  color: #999;
 }
 
 .content .listing li span {
@@ -551,6 +556,7 @@ SECTION POSTS
   display: block;
   font-size: 60px;
   line-height: normal;
+  margin-bottom: 10px;
 }
 
 .pagination-buttons {
