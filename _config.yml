@@ -1,8 +1,11 @@
-markdown: redcarpet
-redcarpet:
-  extensions: ["no_intra_emphasis", "space_after_headers", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "smart"]
-highlighter: pygments
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
 permalink: posts/:title
+gems: [jekyll-paginate]
 paginate: 6
 paginate_path: "posts/page:num"
 navigation:
