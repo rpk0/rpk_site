@@ -25,7 +25,7 @@ Hence we have to automate these two things:
 
 **The solution**
 
-I chose [Thor](http://whatisthor.com/) for this job as it is a very simple but powerful tool.
+I chose [Thor](https://whatisthor.com/) for this job as it is a very simple but powerful tool.
 
 In my research I have rejected two other solutions
 
@@ -163,4 +163,4 @@ To execute the post task you have to run
 
 In a future post I'll be writing how I have automated the photo essay posts generation which are not markdown files but complex HTML files. 
   
-<sup>*references: http://jonasforsberg.se/2012/12/28/create-jekyll-posts-from-the-command-line*</sup>
+<sup>*references: https://jonasforsberg.se/2012/12/28/create-jekyll-posts-from-the-command-line*</sup>

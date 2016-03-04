@@ -1,7 +1,7 @@
 ---
 layout: post_layout
 title: Hello World
-avatar: http://uxrepo.com/static/icon-sets/ionicons/svg/earth.svg
+avatar: https://uxrepo.com/static/icon-sets/ionicons/svg/earth.svg
 category: General
 tags: [General - First Post]
 path: posts
@@ -13,7 +13,7 @@ this is the first post for my blog.
 So let me explain why I created yet another blog site..
 
 - **Firstly**, Because I can!
-- **Secondly**, I wanted to be able to have my uploaded photographs somewhere clustered and properly displayed. I call them photoessays and you can find them in the [photography](http://rpk.io/photo_essays/) section on the left
+- **Secondly**, I wanted to be able to have my uploaded photographs somewhere clustered and properly displayed. I call them photoessays and you can find them in the [photography](https://rpk.io/photo_essays/) section on the left
 - **Lastly**, I wanted to keep somewhere interesting stuff related to my day job as a developer. Furthermore posting solutions of interesting problems and challanges might help others.
 
 ### So this site is seperated into two topics,
