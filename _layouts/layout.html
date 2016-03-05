@@ -1,193 +1,190 @@
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-  <!-- for Google -->
-  <meta name="google-site-verification" content="ZeiyLEq0pBT9mOrskrWweTuwTZ9ti2HJoPOOe1SVyok" />
-  {% include google_analytics.html %}
-  {% if site.google_plus %}
-    <link rel="author" href="{{ site.google_plus }}?rel=author" />
-  {% endif %}
-  <meta charset="utf-8">
-  <title>
-    {% if page.title %}
-      {{ page.title }} &ndash;
+  <head>
+    <!-- for Google -->
+    <meta name="google-site-verification" content="ZeiyLEq0pBT9mOrskrWweTuwTZ9ti2HJoPOOe1SVyok" />
+    {% include google_analytics.html %}
+    {% if site.google_plus %}
+      <link rel="author" href="{{ site.google_plus }}?rel=author" />
     {% endif %}
-    {{ site.name }}
-  </title>
+    <meta charset="utf-8">
+    <title>
+      {% if page.title %}
+        {{ page.title }} &ndash;
+      {% endif %}
+      {{ site.name }}
+    </title>
 
-  <meta name="author" content="{{ site.name }}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="{{ site.name }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- for Facebook -->
-  <meta property="og:site_name" content="{{ site.name }}" />
-  <meta property="og:title" content="{{ page.title }}" />
-  <meta property="fb:admins" content="100006320713108">
+    <!-- for Facebook -->
+    <meta property="og:site_name" content="{{ site.name }}" />
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="fb:admins" content="100006320713108">
 
-  {% if page.path == "posts" %}
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}/" />
-  {% else %}
-    <meta property="og:url" content="{{ site.url }}{{ page.url | remove:'index.html' }}" />
-  {% endif %}
-
-  {% if page.path == "photo_essays" or page.path == "posts" %}
-    <meta property="og:type" content="article" />
-  {% else %}
-    <meta property="og:type" content="website" />
-  {% endif %}
-
-  {% if page.path == "photo_essays" %}
-    <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/1.jpg" />
-    <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/2.jpg" />
-    <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/3.jpg" />
-  {% elsif page.path == "posts" %}
-    <meta property="og:image" content="{{ page.avatar }}" />
-  {% else %}
-    <meta property="og:image" content="{{ site.gravatar_url }}" />
-  {% endif %}
-
-  {% if page.categories %}
-    {% for category in page.categories %}
-      <meta property="article:tag" content="{{ category }}" />
-    {% endfor %}
-  {% endif %}
-
-  {% if page.description %}
-    <meta property="og:description" content="{{ page.description | replace:'more start -->','' | replace:'<!-- more end','' | truncatewords: 30 }}" />
-  {% elsif page.path == "posts" %}
-    <meta property="og:description" content="{{ page.content | markdownify | strip_html | xml_escape | truncate: 200 }}" />
-  {% else %}
-    <meta property="og:description" content="{{ site.description }}" />
-  {% endif %}
-
-  <!-- for Twitter -->
-  {% if page.images %}
-    <meta name="twitter:card" content="gallery" />
-  {% else %}
-    <meta name="twitter:card" content="summary">
-  {% endif %}
-
-  <meta name="twitter:site" content="@{{ site.twitter }}" />
-  <meta name="twitter:creator" content="@{{ site.twitter }}" />
-
-  {% if page.title %}
-    <meta name="twitter:title" content="{{ page.title }}">
-  {% else %}
-    <meta name="twitter:title" content="{{ site.name }}">
-  {% endif %}
-
-  {% if page.description %}
-    <meta name="twitter:description" content="{{ page.description | replace:'more start -->','' | replace:'<!-- more end','' | truncatewords: 30 }}" />
-  {% elsif page.path == "posts" %}
-    <meta property="og:description" content="{{ page.content | markdownify | strip_html | xml_escape | truncate: 200 }}" />
-  {% else %}
-    <meta name="twitter:description" content="{{ site.description }}">
-  {% endif %}
-
-  {% if page.images %}
-    <meta name="twitter:url" content="{{ site.url }}{{ page.url | remove:'index.html' }}" />
-    <meta name="twitter:image0" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/1.jpg">
-    <meta name="twitter:image1" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/2.jpg">
-    <meta name="twitter:image2" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/3.jpg">
-    <meta name="twitter:image3" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/4.jpg">
-  {% else %}
-    {% if page.avatar %}
-      <meta name="twitter:image:src" content="{{ page.avatar }}">
+    {% if page.path == "posts" %}
+      <meta property="og:url" content="{{ site.url }}{{ page.url }}/" />
     {% else %}
-      <meta name="twitter:image:src" content="{{ site.gravatar_url }}">
+      <meta property="og:url" content="{{ site.url }}{{ page.url | remove:'index.html' }}" />
     {% endif %}
-  {% endif %}
 
-  <link rel="stylesheet" href="/css/fontawesome.min.css" type="text/css" media="screen, projection" />
-  <link rel="stylesheet" href="/css/base.css" type="text/css" media="screen, projection" />
-  <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
+    {% if page.path == "photo_essays" or page.path == "posts" %}
+      <meta property="og:type" content="article" />
+    {% else %}
+      <meta property="og:type" content="website" />
+    {% endif %}
 
-  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    {% if page.path == "photo_essays" %}
+      <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/1.jpg" />
+      <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/2.jpg" />
+      <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/3.jpg" />
+    {% elsif page.path == "posts" %}
+      <meta property="og:image" content="{{ page.avatar }}" />
+    {% else %}
+      <meta property="og:image" content="{{ site.gravatar_url }}" />
+    {% endif %}
 
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="/js/lightbox-2.6.min.js"></script>
-  <link href="/css/lightbox.css" rel="stylesheet" />
+    {% if page.categories %}
+      {% for category in page.categories %}
+        <meta property="article:tag" content="{{ category }}" />
+      {% endfor %}
+    {% endif %}
 
-  <script>
-    $(document).ready(function(){
-     $('.menu-icon').on('click', function() {
-      $(this).toggleClass('active');
-     });
+    {% if page.description %}
+      <meta property="og:description" content="{{ page.description | replace:'more start -->','' | replace:'<!-- more end','' | truncatewords: 30 }}" />
+    {% elsif page.path == "posts" %}
+      <meta property="og:description" content="{{ page.content | markdownify | strip_html | xml_escape | truncate: 200 }}" />
+    {% else %}
+      <meta property="og:description" content="{{ site.description }}" />
+    {% endif %}
 
-     $('.menu-icon').on('click', function() {
-      $('.sidebar').toggleClass('toggle');
-     });
-    });
-  </script>
+    <!-- for Twitter -->
+    {% if page.images %}
+      <meta name="twitter:card" content="gallery" />
+    {% else %}
+      <meta name="twitter:card" content="summary">
+    {% endif %}
 
-</head>
+    <meta name="twitter:site" content="@{{ site.twitter }}" />
+    <meta name="twitter:creator" content="@{{ site.twitter }}" />
 
-<body>
-  <a href="{{ site.google_plus }}" rel="publisher"></a>
-  <section class="sidebar">
+    {% if page.title %}
+      <meta name="twitter:title" content="{{ page.title }}">
+    {% else %}
+      <meta name="twitter:title" content="{{ site.name }}">
+    {% endif %}
 
+    {% if page.description %}
+      <meta name="twitter:description" content="{{ page.description | replace:'more start -->','' | replace:'<!-- more end','' | truncatewords: 30 }}" />
+    {% elsif page.path == "posts" %}
+      <meta property="og:description" content="{{ page.content | markdownify | strip_html | xml_escape | truncate: 200 }}" />
+    {% else %}
+      <meta name="twitter:description" content="{{ site.description }}">
+    {% endif %}
+
+    {% if page.images %}
+      <meta name="twitter:url" content="{{ site.url }}{{ page.url | remove:'index.html' }}" />
+      <meta name="twitter:image0" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/1.jpg">
+      <meta name="twitter:image1" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/2.jpg">
+      <meta name="twitter:image2" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/3.jpg">
+      <meta name="twitter:image3" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/4.jpg">
+    {% else %}
+      {% if page.avatar %}
+        <meta name="twitter:image:src" content="{{ page.avatar }}">
+      {% else %}
+        <meta name="twitter:image:src" content="{{ site.gravatar_url }}">
+      {% endif %}
+    {% endif %}
+
+    <link rel="stylesheet" href="/css/base.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <script src="/js/lightbox-2.6.min.js"></script>
+    <link href="/css/lightbox.css" rel="stylesheet"/>
+
+    <script>
+      $(document).ready(function(){
+       $('.menu-icon').on('click', function() {
+        $(this).toggleClass('active');
+       });
+
+       $('.menu-icon').on('click', function() {
+        $('.sidebar').toggleClass('toggle');
+       });
+      });
+    </script>
+  </head>
+
+  <body>
+    <a href="{{ site.google_plus }}" rel="publisher"></a>
+    <section class="sidebar">
+
+      <a href="/" class="name">
+        <span>RPK</span>
+        <small>Ruby Developer</small>
+        <em>&amp;</em>
+        <small>Photography Enthusiast</small>
+      </a>
+
+      <ul class="menu">
+        {% assign url = page.url | remove:'index.html' | remove:'page2/'%}
+        {% for link in site.navigation %}
+          {% assign active = nil %}
+          {% if url == link.url or page.path == link.text or page.path == link.identity %}
+            {% assign active = 'class="active"' %}
+          {% endif %}
+            <li><a {{ active }} href="{{ link.url }}">{{ link.text }}</a>{{ indicator }}</li>
+        {% endfor %}
+      </ul>
+
+      <ul class="meta">
+        <li>
+          <a href="https://www.flickr.com/photos/{{ site.flickr }}" target="_blank">
+            <i class="fa fa-flickr"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://instagram.com/{{ site.instagram }}" target="_blank">
+            <i class="fa fa-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/{{ site.github }}" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/{{ site.twitter }}" target="_blank">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="{{ site.facebook_page }}" target="_blank">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a href="{{ site.google_plus }}" target="_blank">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+      </ul>
+
+      <div class="menu-icon">
+        <i></i>
+      </div>
+
+    </section>
     <a href="/" class="name">
-      <span>RPK</span>
-      <small>Ruby Developer</small>
-      <em>&amp;</em>
-      <small>Photography Enthusiast</small>
+      <div class="menu-icon-bg">RPK</div>
     </a>
 
-    <ul class="menu">
-      {% assign url = page.url | remove:'index.html' | remove:'page2/'%}
-      {% for link in site.navigation %}
-        {% assign active = nil %}
-        {% if url == link.url or page.path == link.text or page.path == link.identity %}
-          {% assign active = 'class="active"' %}
-        {% endif %}
-          <li><a {{ active }} href="{{ link.url }}">{{ link.text }}</a>{{ indicator }}</li>
-      {% endfor %}
-    </ul>
+    {{ content }}
 
-    <ul class="meta">
-      <li>
-        <a href="https://www.flickr.com/photos/{{ site.flickr }}" target="_blank">
-          <i class="icon icon-flickr"></i>
-        </a>
-      </li>
-      <li>
-        <a href="https://instagram.com/{{ site.instagram }}" target="_blank">
-          <i class="icon icon-instagram"></i>
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/{{ site.github }}" target="_blank">
-          <i class="icon icon-github"></i>
-        </a>
-      </li>
-      <li>
-        <a href="https://twitter.com/{{ site.twitter }}" target="_blank">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a href="{{ site.facebook_page }}" target="_blank">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a href="{{ site.google_plus }}" target="_blank">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
-
-    <div class="menu-icon">
-      <i></i>
-    </div>
-
-  </section>
-  <a href="/" class="name">
-    <div class="menu-icon-bg">RPK</div>
-  </a>
-
-  {{ content }}
-
-</body>
-
+  </body>
 </html>
