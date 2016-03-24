@@ -615,8 +615,18 @@ SECTION PHOTOGRAPHY
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, .7);
-  opacity: 0;
+}
+
+.photo-listing li a:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.4;
+  transition: opacity .5s ease-in-out;
   -webkit-transition: opacity .5s;
   -moz-transition: opacity .5s;
   -o-transition: opacity .5s;
@@ -624,8 +634,8 @@ SECTION PHOTOGRAPHY
   transition: opacity .5s;
 }
 
-.photo-listing li:hover a {
-  opacity: 1;
+.photo-listing li:hover a:before {
+  opacity: .7;
 }
 
 .photo-listing li span {
@@ -660,7 +670,10 @@ SECTION PHOTOGRAPHY
   width: 60%;
 }
 
-.photo-listing li em {
+.photo-listing li em,
+.photo-listing li i {
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
   color: white;
   max-width: 300px;
   display: block;
@@ -669,6 +682,11 @@ SECTION PHOTOGRAPHY
   text-align: center;
   font-size: 16px;
   font-style: normal;
+}
+
+.photo-listing li:hover em,
+.photo-listing li:hover i {
+  opacity: 1;
 }
 
 .photo-listing li img {
