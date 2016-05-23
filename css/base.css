@@ -90,10 +90,14 @@ SIDEBAR SECTION
 }
 
 .sidebar .name span {
-  font-size: 23px;
-  color: black;
-  padding-bottom: 10px;
+  font-size: 0;
+  color: transparent;
+  margin: 0 auto 10px;
   display: block;
+  width: 80px;
+  height: 80px;
+  background-image: url("../images/site_logo.svg");
+  background-size: 80px 80px;
 }
 
 .sidebar .name small,
