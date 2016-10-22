@@ -184,16 +184,10 @@ SIDEBAR SECTION
   margin-left: 10px;
   content: '|';
   -webkit-transform: translateX(-20px);
-  -moz-transform: translateX(-20px);
-  -o-transform: translateX(-20px);
   -ms-transform: translateX(-20px);
   transform: translateX(-20px);
   display: inline-block;
   opacity: 0;
-  -webkit-transition: -webkit-transform .3s, opacity .2s;
-  -moz-transition: -moz-transform .3s, opacity .2s;
-  -o-transition: -moz-transform .3s, opacity .2s;
-  -ms-transition: -moz-transform .3s, opacity .2s;
   transition: transform .3s, opacity .2s;
 }
 
@@ -201,16 +195,10 @@ SIDEBAR SECTION
   margin-right: 10px;
   content: '|';
   -webkit-transform: translateX(20px);
-  -moz-transform: translateX(20px);
-  -o-transform: translateX(20px);
   -ms-transform: translateX(20px);
   transform: translateX(20px);
   display: inline-block;
   opacity: 0;
-  -webkit-transition: -webkit-transform .3s, opacity .2s;
-  -moz-transition: -moz-transform .3s, opacity .2s;
-  -o-transition: -moz-transform .3s, opacity .2s;
-  -ms-transition: -moz-transform .3s, opacity .2s;
   transition: transform .3s, opacity .2s;
 }
 
@@ -218,8 +206,6 @@ SIDEBAR SECTION
 .sidebar .menu a.active:before {
   opacity: 1;
   -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -o-transform: translateX(0);
   -ms-transform: translateX(0);
   transform: translateX(0);
 }
@@ -228,8 +214,6 @@ SIDEBAR SECTION
 .sidebar .menu a.active:after {
   opacity: 1;
   -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -o-transform: translateX(0);
   -ms-transform: translateX(0);
   transform: translateX(0);
 }
@@ -383,14 +367,12 @@ SECTION ABOUT
   margin-top: 50px;
   text-align: center;
   -webkit-filter: grayscale(70%);
+  filter: grayscale(70%);
 }
 
 .about .main-text {
   font-size: 16px;
   -webkit-animation: main-title 1.5s;
-  -moz-animation: main-title 1.5s;
-  -o-animation: main-title 1.5s;
-  -ms-animation: main-title 1.5s;
   animation: main-title 1.5s;
   text-align: left;
 }
@@ -515,10 +497,6 @@ SECTION POSTS
   margin: 0;
   color: #777777;
   text-align: center;
-  -webkit-transition: all .2s;
-  -moz-transition: all .2s;
-  -o-transition: all .2s;
-  -ms-transition: all .2s;
   transition: all .2s;
 }
 
@@ -631,11 +609,6 @@ SECTION PHOTOGRAPHY
   background: #000;
   opacity: 0.4;
   transition: opacity .5s ease-in-out;
-  -webkit-transition: opacity .5s;
-  -moz-transition: opacity .5s;
-  -o-transition: opacity .5s;
-  -ms-transition: opacity .5s;
-  transition: opacity .5s;
 }
 
 .photo-listing li:hover a:before {
@@ -663,10 +636,6 @@ SECTION PHOTOGRAPHY
   top: 34px;
   left: 50%;
   margin-left: -30%;
-  -webkit-transition: width 1s;
-  -moz-transition: width 1s;
-  -o-transition: width 1s;
-  -ms-transition: width 1s;
   transition: width 1s;
 }
 
@@ -774,6 +743,8 @@ SECTION PHOTOGRAPHY
   top: 0px;
   margin-top: 17px;
   left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
@@ -865,7 +836,7 @@ blockquote {
   content: '';
   width: 15px;
   height: 20px;
-    border: 1px solid #999;
+  border: 1px solid #999;
   position: absolute;
   right: 5px;
   top: 5px;
@@ -878,7 +849,7 @@ blockquote {
   .sidebar {
     width: 300px;
     left: -230px;
-    -webkit-transition: left .5s;
+    transition: left .5s;
     z-index: 2;
   }
 
@@ -915,9 +886,6 @@ blockquote {
     background: #999;
     display: block;
     box-shadow: none;
-    -webkit-transition: box-shadow .3s linear;
-    -o-transition: box-shadow .3s linear;
-    -ms-transition: box-shadow .3s linear;
     transition: box-shadow .3s linear;
     position: absolute;
   }
@@ -930,10 +898,6 @@ blockquote {
     height: 3px;
     background: #999;
     margin-top: 7px;
-    -webkit-transition: box-shadow .3s linear .15s;
-    -moz-transition: box-shadow .3s linear .15s;
-    -o-transition: box-shadow .3s linear .15s;
-    -ms-transition: box-shadow .3s linear .15s;
     transition: box-shadow .3s linear .15s;
   }
 
@@ -945,10 +909,6 @@ blockquote {
     height: 3px;
     background: #999;
     margin-top: 14px;
-    -webkit-transition: box-shadow .3s linear .3s;
-    -moz-transition: box-shadow .3s linear .3s;
-    -o-transition: box-shadow .3s linear .3s;
-    -ms-transition: box-shadow .3s linear .3s;
     transition: box-shadow .3s linear .3s;
   }
 
@@ -965,28 +925,16 @@ blockquote {
   .menu-icon.active i {
     top: 10px;
     -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-    -webkit-transition: -webkit-transform .5s linear;
-    -moz-transition: transform .1s linear;
-    -o-transition: transform .1s linear;
-    -ms-transition: transform .1s linear;
     transition: transform .1s linear;
   }
 
   .menu-icon.active i:after {
     top: -14px;
     -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
-    -webkit-transition: -webkit-transform .5s linear;
-    -moz-transition: transform 1s linear;
-    -o-transition: transform .1s linear;
-    -ms-transition: transform .1s linear;
     transition: transform .1s linear;
   }
 
