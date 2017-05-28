@@ -8,12 +8,20 @@
       <link rel="author" href="{{ site.google_plus }}?rel=author" />
     {% endif %}
     <meta charset="utf-8">
+
     <title>
-      {% if page.title %}
-        {{ page.title }} &ndash;
+      {% if page.path == "photo_essay" or page.path == "index" %}
+        {{ site.title }} | {{ site.name }}
+      {% elsif page.path == "photo_essays" %}
+        Photo Essay: {{ page.title }} by {{site.myname}} | {{ site.name }}
+      {% elsif page.path == "about" %}
+        {{ page.title }} {{ site.name }}
+      {% elsif page.title %}
+        {{ page.title }} | {{ site.name }}
       {% endif %}
-      {{ site.name }}
     </title>
+
+    <meta name="description" content="{% if page.description %}{{page.title}}: {{ page.description }}{% else %}{{ site.description }}{% endif %}">
 
     <meta name="author" content="{{ site.name }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
