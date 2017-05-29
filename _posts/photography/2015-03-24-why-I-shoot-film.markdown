@@ -4,7 +4,7 @@ title: Why I shoot Film
 avatar: https://cdn3.iconfinder.com/data/icons/glypho-photography/64/film-strip-roll-512.png
 category: Photography
 tags: [Photography - Film - Analogue - Darkroom]
-path: posts
+identifier: posts
 ---
 
 ## **Slow Life - The wait**

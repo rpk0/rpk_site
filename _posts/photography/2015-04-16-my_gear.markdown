@@ -4,7 +4,7 @@ title: My photography gear
 avatar: https://raw.githubusercontent.com/rpk0/rpk_site/gh-pages/images/posts/my_gear/my_gear_logo.jpg
 category: Photography
 tags: [Photography - Gear - Cameras - Bronica GS-1 - Contax G1 - Olympus XA2 - Olympus OM2n - Olympus OMD EM-5]
-path: posts
+identifier: posts
 ---
 
 The second most popular question following the ["Why you shoot film?"](http://rpk.io/posts/why-I-shoot-film/) is **"What gear you own and use?"**
