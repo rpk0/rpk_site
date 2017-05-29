@@ -4,7 +4,7 @@ title: What film camera to buy
 avatar: https://cdn3.iconfinder.com/data/icons/camera-icons/512/camera-leica-512.png
 category: Photography
 tags: [Photography - Cameras - Film - Analogue - Buyers - Guide]
-path: posts
+identifier: posts
 ---
 
 There are hundreds of blog posts out there with extended reviews and detailed explanations on which film camera you should buy.

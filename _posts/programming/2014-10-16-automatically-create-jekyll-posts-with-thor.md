@@ -4,7 +4,7 @@ title: "Automatically create Jekyll posts with Thor"
 avatar: http://png-4.findicons.com/files/icons/2770/ios_7_icons/512/thor_hammer.png
 category: Programming
 tags: [Programming - Jekyll - Thor - Ruby - Automation]
-path: posts
+identifier: posts
 ---
 
 **The Problem**

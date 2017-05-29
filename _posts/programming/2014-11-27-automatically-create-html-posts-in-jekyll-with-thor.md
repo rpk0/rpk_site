@@ -4,7 +4,7 @@ title: "Automatically create HTML posts in Jekyll with Thor"
 avatar: http://simpleicon.com/wp-content/uploads/gear.png
 category: Programming
 tags: [Programming - Jekyll - Thor - Ruby - Automation]
-path: posts
+identifier: posts
 ---
 
 ## The Problem

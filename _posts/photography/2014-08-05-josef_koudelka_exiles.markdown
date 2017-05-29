@@ -4,7 +4,7 @@ title: Josef Koudelka - Exiles
 avatar: http://ecx.images-amazon.com/images/I/81ddmIXwa8L.jpg
 category: Photography
 tags: [Photography - Photobook - Jesef Koudelka - Exiles]
-path: posts
+identifier: posts
 ---
 
 **Just republished**—one of the all-time great photo books.  

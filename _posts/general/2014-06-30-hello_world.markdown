@@ -4,7 +4,7 @@ title: Hello World
 avatar: https://uxrepo.com/static/icon-sets/ionicons/svg/earth.svg
 category: General
 tags: [General - First Post]
-path: posts
+identifier: posts
 ---
 
 Hi,
