@@ -9,9 +9,8 @@ identifier: posts
 
 Hey there!
 
-Few days ago I accidentally scanned the same negative twice.
-The first one without any additional enhancements features enabled, and the second one with my default procedure and Digital ICE technology enabled.
-  
+A few days ago I accidentally scanned the same negative twice.
+The first one without any enhancement features enabled, and the second one with my default settings i.e. Digital ICE technology enabled.
 
 So I thought, why not post the results of this accident?
 
@@ -64,25 +63,24 @@ Detail showing image degradation (Slideshow):
 
 ## My thoughts
 
-**You have a $200 flatbed scanner, do not expect professional print quality scans!**
-It can of course, with good configuration, produce remarkable results which can be printed and excellent results for digital use (website - social media).
+**Do not expect professional print quality scans with a $200 flatbed scanner!**
+It can of course, produce high quality results adequate for printing and excellent for digital use (website - social media).
 
-With that in mind I choose to use **Digital ICE** in my scans because it reduces my time in post processing. 
-Yes there is a slightly image degradation, but for me its not noticeable, especially for *jpegs* images 3-times smaller than the original scans.
+With that in mind I choose to use **Digital ICE** in my scans because it reduces the time I have to spend in post processing. 
+Yes there is some image degradation, but for me its not noticeable, especially in *jpeg* images three times smaller than the original scans.
 
-Now Dust Removal Is the worst enhancement in my opinion. It does a good job removing dust but many times removes more than dust. 
-And things that are not dust may be something crucial in your photo. 
+Now Dust Removal is the worst enhancement in my opinion. It does a good job removing dust, but oftentimes also removes other artifacts that may be of significance.
 The good thing is that it's pretty fast compared to the Digital ICE technology.
 
-Last but not least the option not to use any of the available enhancements is by many the best thing if you want the finest quality.
+Last but not least, not using any of the available enhancements is considered by many the best option to get the finest quality.
 Yes thats true! When you have a raw scan and then export it to Photoshop or Lightroom you can achieve the best quality.
 
-**This although, requires a significant amount of time which in my opinion does not justify the final result quality difference.**
+**However, that requires a considerable amount of time which, in my opinion, the difference in quality does not justify.**
   
 ### **TL;DR**
 
 - **Digital Ice** Removes Dust, Scratches AND Detail
-- **Dust Removal** Removes Dust and not only Dust 
-- **No Enhancements used** adds more work to Posts Processing 
+- **Dust Removal** Removes Dust but not only that
+- **No Enhancements used** adds extra work to Post Processing
 
 Happy Scanning! :)
