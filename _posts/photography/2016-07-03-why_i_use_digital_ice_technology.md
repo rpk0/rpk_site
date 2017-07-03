@@ -1,6 +1,6 @@
 ---
 layout: post_layout
-title: Should I use Digital ICE Technology?
+title: Why I use Digital ICE Technology
 avatar: /images/posts/digital_ice/ice_good.png
 category: Photography
 tags: [Photography - Scanning - Film - Analogue - Digital ICE - Epson]
