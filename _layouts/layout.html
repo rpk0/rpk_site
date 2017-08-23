@@ -44,9 +44,9 @@
     {% endif %}
 
     {% if page.path == "photo_essays" %}
-      <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/1.jpg" />
-      <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/2.jpg" />
-      <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/3.jpg" />
+      <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/{{ page.images.first }}" />
+      <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/{{ page.images[1] }}" />
+      <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/{{ page.images.last }}" />
     {% elsif page.path == "posts" %}
       <meta property="og:image" content="{{ page.avatar }}" />
     {% else %}
