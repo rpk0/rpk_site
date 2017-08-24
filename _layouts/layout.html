@@ -93,10 +93,10 @@
 
     {% if page.images %}
       <meta name="twitter:url" content="{{ site.url }}{{ page.url | remove:'index.html' }}" />
-      <meta name="twitter:image0" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/1.jpg">
-      <meta name="twitter:image1" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/2.jpg">
-      <meta name="twitter:image2" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/3.jpg">
-      <meta name="twitter:image3" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/4.jpg">
+      <meta name="twitter:image0" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/{{ page.images.first }}">
+      <meta name="twitter:image1" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/{{ page.images[1] }}">
+      <meta name="twitter:image2" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/{{ page.images[2] }}">
+      <meta name="twitter:image3" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/{{ page.images.last }}">
     {% else %}
       {% if page.avatar %}
         <meta name="twitter:image:src" content="{{ page.avatar }}">
