@@ -1,7 +1,7 @@
 ---
 layout: post_layout
 title: "Automatically create HTML posts in Jekyll with Thor"
-avatar: http://simpleicon.com/wp-content/uploads/gear.png
+avatar: /images/posts/jekyll_thor/thor_hammer.png
 category: Programming
 tags: [Programming - Jekyll - Thor - Ruby - Automation]
 identifier: posts
@@ -9,7 +9,7 @@ identifier: posts
 
 ## The Problem
 
-<sup>This article is the sequel to the [the previous Thor automation tutorial](http://rpk.io/posts/automatically-create-jekyll-posts-with-thor/) posted some months ago.<sup>
+<sup>This article is the sequel to the [the previous Thor automation tutorial](https://rpk.io/posts/automatically-create-jekyll-posts-with-thor/) posted some months ago.<sup>
 
 In the photography section of this blog I post photo essays, a photo-essay (or photographic essay) is a set or series of photographs that are intended to tell a story or evoke a series of emotions in the viewer.
 
@@ -48,7 +48,7 @@ This site is hosted in [GitHub Pages](https://pages.github.com/) so it is very c
 
 ### 3. The script 
 
-The Thor script has 2 major changes compared to the one used for the [blog post](http://rpk.io/posts/automatically-create-jekyll-posts-with-thor/) generation. 
+The Thor script has 2 major changes compared to the one used for the [blog post](https://rpk.io/posts/automatically-create-jekyll-posts-with-thor/) generation. 
 
 * The attributes passed via a interactive prompt after running the script. 
 * The file's content it is not generated inside the script but it copies a sample post and replaces the keywords in it based on the input.

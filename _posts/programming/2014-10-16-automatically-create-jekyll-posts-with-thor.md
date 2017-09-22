@@ -1,7 +1,7 @@
 ---
 layout: post_layout
 title: "Automatically create Jekyll posts with Thor"
-avatar: http://png-4.findicons.com/files/icons/2770/ios_7_icons/512/thor_hammer.png
+avatar: /images/posts/jekyll_thor/thor_hammer.png
 category: Programming
 tags: [Programming - Jekyll - Thor - Ruby - Automation]
 identifier: posts

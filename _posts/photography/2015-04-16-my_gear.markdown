@@ -7,7 +7,7 @@ tags: [Photography - Gear - Cameras - Bronica GS-1 - Contax G1 - Olympus XA2 - O
 identifier: posts
 ---
 
-The second most popular question following the ["Why you shoot film?"](http://rpk.io/posts/why-I-shoot-film/) is **"What gear you own and use?"**
+The second most popular question following the ["Why you shoot film?"](https://rpk.io/posts/why-I-shoot-film/) is **"What gear you own and use?"**
 
 So this is the list of all the gear I own and use!
 
@@ -27,7 +27,7 @@ The built quality is also very good, solid with good ergonomics which makes the 
 
 The **Zenzanon PG** series of lenses are excellent, sharp across the field even when wide open and can be found in very reasonable prices.
 
-Due to my work style ([urban landscapes](http://rpk.io/photo_essays/on_the_road/)) I mostly use the *PG 65mm* and whenever I shoot portraits I use the *100mm* one.
+Due to my work style ([urban landscapes](https://rpk.io/photo_essays/on_the_road/)) I mostly use the *PG 65mm* and whenever I shoot portraits I use the *100mm* one.
 
 The only weakness of the lenses is that they are a bit slow (3.5) and they don't have "character" in their bokeh.
 
@@ -55,7 +55,7 @@ Where I use the Contax:
 
 - Backup to the Bronica GS-1 in my photography roadtrips
 - Main camera in my urban wanderings
-- Loaded with black and white film for my [black and white projects](http://rpk.io/photo_essays/roadtrip_snapshots/) :) 
+- Loaded with black and white film for my [black and white projects](https://rpk.io/photo_essays/roadtrip_snapshots/) :) 
 
 ## **Olympus OM2n** 
 with **Zuiko Auto-W 28mm f/3.5**
@@ -84,7 +84,7 @@ It offers **automatic exposure** and **zone focusing**. This means that the only
 
 This focusing system is one of the biggest disadvantages in my opinion, I have many out of focus images and with their mediocre quality these images are unusable. 
 
-Overall this is my favorite take-everywhere film camera and responsible for this great set: [Roadtrip Snapshots](http://rpk.io/photo_essays/roadtrip_snapshots/)
+Overall this is my favorite take-everywhere film camera and responsible for this great set: [Roadtrip Snapshots](https://rpk.io/photo_essays/roadtrip_snapshots/)
 
 ## **Olympus OMD EM-5**
 with **M.Zuiko 12-50mm f/3.5-6.3 ED** and **Panasonic LUMIX G 20mm f/1.7**

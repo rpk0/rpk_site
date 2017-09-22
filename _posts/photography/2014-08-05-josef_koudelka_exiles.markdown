@@ -1,7 +1,7 @@
 ---
 layout: post_layout
 title: Josef Koudelka - Exiles
-avatar: http://ecx.images-amazon.com/images/I/81ddmIXwa8L.jpg
+avatar: https://images-na.ssl-images-amazon.com/images/I/51KxlcxHLvL._SX258_BO1,204,203,200_.jpg
 category: Photography
 tags: [Photography - Photobook - Jesef Koudelka - Exiles]
 identifier: posts
@@ -30,7 +30,7 @@ Unfortunately, many of his photo collections are expensive and difficult to find
 
 >FRANCE. Brittany. Gypsies. 1973
 
-![1](http://38.media.tumblr.com/38785e3036921fcaa3e310336ff487dc/tumblr_n06oqicYzo1qaihw2o1_1280.jpg "koudelka")
+![1](https://38.media.tumblr.com/38785e3036921fcaa3e310336ff487dc/tumblr_n06oqicYzo1qaihw2o1_1280.jpg "koudelka")
 
 >IRELAND. 1976
 
