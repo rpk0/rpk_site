@@ -162,6 +162,9 @@ SIDEBAR SECTION
 .sidebar .menu {
   margin: 40px 0 30px;
   padding: 0;
+  background: #fff;
+  position: relative;
+  z-index: 2;
 }
 
 .sidebar .menu li {
