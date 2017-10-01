@@ -94,10 +94,10 @@ SIDEBAR SECTION
   color: transparent;
   margin: 0 auto 10px;
   display: block;
-  width: 80px;
+  width: 60px;
   height: 80px;
   background-image: url("../images/site_logo.svg");
-  background-size: 80px 80px;
+  background-size: 60px 80px;
 }
 
 .sidebar .name small,
