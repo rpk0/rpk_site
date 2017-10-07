@@ -94,7 +94,8 @@ SIDEBAR SECTION
   display: block;
   width: 60px;
   height: 80px;
-  background: url("../images/site_logo.svg") no-repeat;
+  background: url("../images/site_logo.svg") no-repeat center;
+  background-size: contain;
 }
 
 .sidebar .name small,
