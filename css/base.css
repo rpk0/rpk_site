@@ -268,6 +268,7 @@ LAYOUT STYLES
   margin: 0 auto;
   padding: 20px;
   position: relative;
+  text-align: center;
 }
 
 .photography .inner-center,
@@ -591,6 +592,14 @@ SECTION PHOTOGRAPHY
   position: relative;
 }
 
+.photo-listing li:nth-child(n + 13) {
+  display: none;
+}
+
+.photo-listing li:nth-child(n + 13).active {
+  display: inline-block;
+}
+
 .photo-listing li a {
   position: absolute;
   top: 0;
@@ -682,6 +691,29 @@ SECTION PHOTOGRAPHY
 .photography li {
   margin-bottom: 32px;
 }
+
+/* Load more btn */
+
+.load-more {
+  display: inline-block;
+  margin-top: 20px;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.load-more:hover {
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+}
+
+.load-more.hide {
+  display: none;
+}
+
 
 /* Phototography project pagination */
 
@@ -1124,5 +1156,9 @@ blockquote {
   .more-projects .next-proj a {
     font-size: 40px;
     margin-top: 0;
+  }
+
+  .load-more {
+    display: block;
   }
 }
