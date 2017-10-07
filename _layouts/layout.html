@@ -132,6 +132,10 @@
     <script async src="/js/lightbox-2.6.min.js"></script>
     <link href="/css/lightbox.css" rel="stylesheet"/>
 
+    {% if page.path == "photo_essay" or page.path == "index" %}
+      <script async src="/js/show_more.js"></script>
+    {% endif %}
+
     <script>
       $(document).ready(function(){
        $('.menu-icon').on('click', function() {
