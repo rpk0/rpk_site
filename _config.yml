@@ -5,7 +5,7 @@ kramdown:
   auto_ids: true
   syntax_highlighter: rouge
 permalink: posts/:title
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
 paginate: 6
 paginate_path: "posts/page:num"
 navigation:
