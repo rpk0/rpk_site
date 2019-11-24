@@ -397,15 +397,15 @@ SECTION ABOUT
 }
 
 .socialss li:first-child > a:hover {
-  color: #000;
+  color: #e4405f;
 }
 
 .socialss li:nth-child(2) > a:hover {
-  color: #0084b4;
+  color: #3b5998;
 }
 
 .socialss li:last-child > a:hover {
-  color: #0063DC;
+  color: #1da1f2;
 }
 
 .about .main-text ul li img {
