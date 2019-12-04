@@ -48,18 +48,15 @@ It's difficult to spot the differences, so lets do some cropping.
   Click for high-resolution
 </span>
 
-Detail showing image degradation (Slideshow):
-<div style="width:100%;height:0;padding-bottom:104%;position:relative;"><iframe src="https://giphy.com/embed/A9iFIWC0udQOs" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
-  
+Detail showing image degradation (GIF):
+![Sign Crop - Digital ICE](/images/posts/digital_ice/umbrella_full_crop.gif)
+
 <br>
 
-Detail showing image degradation and spot removals (Slideshow):
-![Henri Cartier-Bresson with a Leica](/images/posts/digital_ice/sign_crop.png)
+Detail showing image degradation and spot removals:
+![Sign Crop - Digital ICE](/images/posts/digital_ice/sign_crop.png)
   
 <br>
-
-Detail showing image degradation (Slideshow):
-<div style="width:100%;height:0;padding-bottom:52%;position:relative;"><iframe src="https://giphy.com/embed/PaRMLZIbXx7cQ" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
 
 ## My thoughts
 
@@ -79,8 +76,8 @@ Yes thats true! When you have a raw scan and then export it to Photoshop or Ligh
   
 ### **TL;DR**
 
-- **Digital Ice** Removes Dust, Scratches AND Detail
-- **Dust Removal** Removes Dust but not only that
-- **No Enhancements used** adds extra work to Post Processing
+- **Digital Ice** Removes dust, scratches AND detail
+- **Dust Removal** Removes dust but not only that
+- **No Enhancements used** Adds extra work to post processing
 
 Happy Scanning! :)
