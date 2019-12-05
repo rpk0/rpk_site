@@ -49,13 +49,13 @@
     <meta property="og:title" content="{{ page.title }}" />
     <meta property="fb:admins" content="100006320713108">
 
-    {% if page.path == "posts" %}
+    {% if page.identifier == "posts" %}
       <meta property="og:url" content="{{ site.url }}{{ page.url }}/" />
     {% else %}
       <meta property="og:url" content="{{ site.url }}{{ page.url | remove:'index.html' }}" />
     {% endif %}
 
-    {% if page.path == "photo_essays" or page.path == "posts" %}
+    {% if page.path == "photo_essays" or page.identifier == "posts" %}
       <meta property="og:type" content="article" />
     {% else %}
       <meta property="og:type" content="website" />
@@ -65,7 +65,7 @@
       <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/{{ page.images.first }}" />
       <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/{{ page.images[1] }}" />
       <meta property="og:image" content="{{ site.url }}/uploads/{{ page.title | downcase | split: ' ' | join: '_' }}/{{ page.images.last }}" />
-    {% elsif page.path == "posts" %}
+    {% elsif page.identifier == "posts" %}
       <meta property="og:image" content="{{ page.avatar }}" />
     {% else %}
       <meta property="og:image" content="{{ site.gravatar_url }}" />
@@ -79,7 +79,7 @@
 
     {% if page.description %}
       <meta property="og:description" content="{{ page.description | replace:'more start -->','' | replace:'<!-- more end','' | truncatewords: 30 }}" />
-    {% elsif page.path == "posts" %}
+    {% elsif page.identifier == "posts" %}
       <meta property="og:description" content="{{ page.content | markdownify | strip_html | xml_escape | truncate: 200 }}" />
     {% else %}
       <meta property="og:description" content="{{ site.description }}" />
@@ -103,7 +103,7 @@
 
     {% if page.description %}
       <meta name="twitter:description" content="{{ page.description | replace:'more start -->','' | replace:'<!-- more end','' | truncatewords: 30 }}" />
-    {% elsif page.path == "posts" %}
+    {% elsif page.identifier == "posts" %}
       <meta property="og:description" content="{{ page.content | markdownify | strip_html | xml_escape | truncate: 200 }}" />
     {% else %}
       <meta name="twitter:description" content="{{ site.description }}">
