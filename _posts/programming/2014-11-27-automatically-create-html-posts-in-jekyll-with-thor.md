@@ -9,7 +9,7 @@ identifier: posts
 
 ## The Problem
 
-<sup>This article is the sequel to the [the previous Thor automation tutorial](https://rpk.io/posts/automatically-create-jekyll-posts-with-thor/) posted some months ago.<sup>
+<sup>This article is the sequel to the [the previous Thor automation tutorial](https://rpk.io/posts/automatically-create-jekyll-posts-with-thor) posted some months ago.<sup>
 
 In the photography section of this blog I post photo essays, a photo-essay (or photographic essay) is a set or series of photographs that are intended to tell a story or evoke a series of emotions in the viewer.
 

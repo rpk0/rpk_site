@@ -14,27 +14,21 @@ His work combines ethnography, photojournalism and landscape photography in the 
 
 Unfortunately, many of his photo collections are expensive and difficult to find so this one is a real bargain.
 
-*You can pre-order the book from [Amazon.com](https://www.amazon.com/Josef-Koudelka-Exiles-Czeslaw-Milosz/dp/1597112690/ "Josef Koudelka: Exiles Hardcover").*
+*You can order the book from [Amazon.com](https://www.amazon.com/Josef-Koudelka-Exiles-Czeslaw-Milosz/dp/1597112690/ "Josef Koudelka: Exiles Hardcover").*
 
 ---------------
 
-![1](https://www.magnumphotos.com/CorexDoc/MAG/Media/TR2/2/1/8/6/PAR65507.jpg "koudelka") 
-
+![Josef Kudelka](/images/posts/josef_kudelka/josef_kudelka_dog.jpg "Josef Koudelka")
 >FRANCE. Hauts-de-Seine. Parc de Sceaux. 1987
 
-![1](https://www.magnumphotos.com/CorexDoc/MAG/Media/TR2/9/2/d/a/PAR65592.jpg "koudelka")
-
+![Josef Kudelka](/images/posts/josef_kudelka/josef_kudelka_sea.jpg "Josef Koudelka")
 >PORTUGAL. S. Bartolomeu Do Mar. 1976
 
-![1](https://www.magnumphotos.com/CorexDoc/MAG/Media/TR2/8/6/f/c/PAR65541.jpg "koudelka")
-
+![Josef Kudelka](/images/posts/josef_kudelka/josef_kudelka_horse.jpg "Josef Koudelka")
 >FRANCE. Brittany. Gypsies. 1973
 
-![1](https://38.media.tumblr.com/38785e3036921fcaa3e310336ff487dc/tumblr_n06oqicYzo1qaihw2o1_1280.jpg "koudelka")
-
+![Josef Kudelka](/images/posts/josef_kudelka/josef_kudelka_pee.jpg "Josef Koudelka")
 >IRELAND. 1976
 
-![1](https://www.magnumphotos.com/CorexDoc/MAG/Media/TR2/8/2/f/a/PAR65558.jpg "koudelka")
-
+![Josef Kudelka](/images/posts/josef_kudelka/josef_kudelka_road.png "Josef Koudelka")
 >NORTHERN IRELAND. 1978
-

@@ -25,7 +25,7 @@ Hence we have to automate these two things:
 
 **The solution**
 
-I chose [Thor](https://whatisthor.com/) for this job as it is a very simple but powerful tool.
+I chose [Thor](https://github.com/erikhuda/thor) for this job as it is a very simple but powerful tool.
 
 In my research I have rejected two other solutions
 
