@@ -48,7 +48,7 @@ This site is hosted in [GitHub Pages](https://pages.github.com/) so it is very c
 
 ### 3. The script 
 
-The Thor script has 2 major changes compared to the one used for the [blog post](https://rpk.io/posts/automatically-create-jekyll-posts-with-thor/) generation. 
+The Thor script has 2 major changes compared to the one used for the [blog post](https://rpk.io/posts/automatically-create-jekyll-posts-with-thor) generation.
 
 * The attributes passed via a interactive prompt after running the script. 
 * The file's content it is not generated inside the script but it copies a sample post and replaces the keywords in it based on the input.
