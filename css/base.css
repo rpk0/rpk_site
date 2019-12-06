@@ -418,7 +418,35 @@ SECTION ABOUT
 
 }
 
+/* -----------------------------------------------------------------------
 
+SECTION 404
+
+----------------------------------------------------------------------- */
+
+.not-found {
+  position: absolute;
+  left: calc(50% + 115px);
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.not-found h1 {
+  font-size: 32px;
+  letter-spacing: 4px;
+  margin: 18px 0 40px;
+  text-align: center;
+}
+
+.not-found p {
+  margin: 18px 0 5px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.not-found span {
+  font-weight: 700;
+}
 /* -----------------------------------------------------------------------
 
 SECTION POSTS
