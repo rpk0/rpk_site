@@ -3,7 +3,7 @@ layout: post_layout
 title: Why I use Digital ICE Technology
 avatar: /images/posts/digital_ice/ice_good.png
 category: Photography
-tags: [Photography - Scanning - Film - Analogue - Digital ICE - Epson]
+tags: photography scanning film analogue digital-ICE epson
 identifier: posts
 ---
 
@@ -39,7 +39,7 @@ My scanner is an **Epson Perfection V550** which supports Digital ICE technology
 <span class="center_align">
   Digital ICE Enabled
 </span>
-  
+
 
 It's difficult to spot the differences, so lets do some cropping.
 
@@ -55,7 +55,7 @@ Detail showing image degradation (GIF):
 
 Detail showing image degradation and spot removals:
 ![Sign Crop - Digital ICE](/images/posts/digital_ice/sign_crop.png)
-  
+
 <br>
 
 ## My thoughts
@@ -63,7 +63,7 @@ Detail showing image degradation and spot removals:
 **Do not expect professional print quality scans with a $200 flatbed scanner!**
 It can of course, produce high quality results adequate for printing and excellent for digital use (website - social media).
 
-With that in mind I choose to use **Digital ICE** in my scans because it reduces the time I have to spend in post processing. 
+With that in mind I choose to use **Digital ICE** in my scans because it reduces the time I have to spend in post processing.
 Yes there is some image degradation, but for me its not noticeable, especially in *jpeg* images three times smaller than the original scans.
 
 Now Dust Removal is the worst enhancement in my opinion. It does a good job removing dust, but oftentimes also removes other artifacts that may be of significance.
@@ -73,7 +73,7 @@ Last but not least, not using any of the available enhancements is considered by
 Yes thats true! When you have a raw scan and then export it to Photoshop or Lightroom you can achieve the best quality.
 
 **However, that requires a considerable amount of time which, in my opinion, the difference in quality does not justify.**
-  
+
 ### **TL;DR**
 
 - **Digital Ice** Removes dust, scratches AND detail

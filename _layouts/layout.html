@@ -10,6 +10,10 @@
     <meta charset="utf-8">
     <link rel="alternate" href="/atom.xml" type="application/atom+xml" title="rpk.io Feed">
 
+    {% if site.tags != "" %}
+      {% include collecttags.html %}
+    {% endif %}
+
     <!-- FB Pixel-->
     <script>
       !function(f,b,e,v,n,t,s)
@@ -122,7 +126,7 @@
         <meta name="twitter:image:src" content="{{ site.gravatar_url }}">
       {% endif %}
     {% endif %}
-    
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">

@@ -1159,6 +1159,7 @@ blockquote {
     font-size: 26px;
     letter-spacing: 5px;
     box-shadow: 1px 1px 15px rgba(80, 79, 79, 0.12);
+    background: url("../images/site_logo.svg") no-repeat;
   }
 
   .sidebar.toggle + .menu-icon-bg {
