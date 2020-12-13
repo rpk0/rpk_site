@@ -4,10 +4,17 @@ kramdown:
   input: GFM
   auto_ids: true
   syntax_highlighter: rouge
-permalink: posts/:title
-plugins_dir: [jekyll-paginate]
-gems: [jekyll-paginate]
-paginate: 6
+plugins:
+  - jekyll-paginate-v2
+gems: [jekyll-paginate-v2]
+plugins_dir: [jekyll-paginate-v2]
+pagination:
+  enabled: true
+  per_page: 6
+  sort_reverse: true
+  sort_field: 'date'
+  permalink: posts/:title
+
 paginate_path: "posts/page:num"
 navigation:
     - text: photo essays
