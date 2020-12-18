@@ -16,6 +16,7 @@ navigation:
       url: /posts/
     - text: about
       url: /about/
+gems: [jekyll-paginate]
 name: rpk.io
 email: kostis.rpk@gmail
 url: https://rpk.io
