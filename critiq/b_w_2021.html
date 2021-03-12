@@ -1,0 +1,47 @@
+---
+layout: critiq_layout
+title: black and white 2021
+path: critiq
+images:
+  - fog_and_cold_1.jpg
+  - fog_and_cold_2.jpg
+  - fog_and_cold_3.jpg
+  - fog_and_cold_4.jpg
+  - fog_and_cold_5.jpg
+  - fog_and_cold_6.jpg
+  - fog_and_cold_7.jpg
+  - fog_and_cold_8.jpg
+  - fog_and_cold_9.jpg
+  - fog_and_cold_10.jpg
+  - fog_and_cold_11.jpg
+  - fog_and_cold_12.jpg
+  - fog_and_cold_13.jpg
+  - fog_and_cold_14.jpg
+  - fog_and_cold_15.jpg
+  - fog_and_cold_16.jpg
+  - fog_and_cold_17.jpg
+---
+
+<div class="intro-text">
+  <blockquote>
+    Please Vote! :)
+  </blockquote>
+</div>
+
+<ul>
+  {% for img in page.images %}
+    <li><a href="/uploads/fog_and_cold/{{img}}" data-lightbox="image-1"><img src="/uploads/fog_and_cold/{{img}}"alt="{{img}}" /></a></li>
+    <div
+      class="lyket"
+      data-lyket-type="updown"
+      data-lyket-id="b_w_2021__{{img}}"
+      data-lyket-namespace="critiq"
+    ></div>
+  {% endfor %}
+</ul>
+
+<div class="intro-text">
+  <blockquote>
+    Thanks! <3
+  </blockquote>
+</div>

@@ -596,8 +596,17 @@ SECTION PHOTOGRAPHY
   list-style: none;
 }
 
+.photography.critiq .inner-center li {
+  margin-bottom: 5px;
+}
+
 .photography .inner-center ul li img {
   width: 100%;
+}
+
+.photography.critiq .inner-center .lyket {
+  font-size: 18px;
+  margin-bottom: 25px;
 }
 
 .photo .inner-center {
