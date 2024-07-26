@@ -396,18 +396,6 @@ SECTION ABOUT
   margin: 4px;
 }
 
-.socialss li:first-child > a:hover {
-  color: #e4405f;
-}
-
-.socialss li:nth-child(2) > a:hover {
-  color: #3b5998;
-}
-
-.socialss li:last-child > a:hover {
-  color: #1da1f2;
-}
-
 .about .main-text ul li img {
   width: 100%;
 }
