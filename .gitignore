@@ -1,6 +1,7 @@
 _site/
 .bundle/
 .DS_Store
+.vscode/
 gh-pages/
 site/_site/
 .jekyll-cache
