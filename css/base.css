@@ -752,6 +752,264 @@ SECTION PHOTOGRAPHY
 }
 
 
+/* Projects overview */
+
+.projects .inner-center {
+  max-width: 1000px;
+}
+
+.projects-list {
+  list-style: none;
+  padding: 0;
+  margin: 40px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+}
+
+.projects-list li {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  flex: 1 1 49%;
+  transition: transform .3s ease;
+}
+
+.projects-list li:hover {
+  transform: translateY(-4px);
+}
+
+.projects-list li a {
+  color: inherit;
+  display: block;
+  height: 100%;
+  text-decoration: none;
+}
+
+.project-cover {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+}
+
+.project-cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 24px;
+  text-align: left;
+}
+
+.project-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.05) 60%, transparent 100%);
+  transition: opacity .3s ease;
+  pointer-events: none;
+}
+
+.project-label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  pointer-events: none;
+}
+.project-title {
+  margin: 0 0 12px;
+  font-size: 28px;
+}
+
+.projects-list p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.projects-list li:hover .project-cover::after {
+  opacity: 0.7;
+}
+@media (max-width: 900px) {
+  .projects-list {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .projects-list li {
+    flex: 1 1 100%;
+  }
+
+  .project-title {
+    font-size: 24px;
+  }
+
+
+  .project-label {
+    left: 12px;
+    font-size: 14px;
+    letter-spacing: 3px;
+  }
+  .projects-list p {
+    font-size: 15px;
+  }
+}
+
+.photo-essays-preview {
+  margin-top: 60px;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.preview-header h2 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.preview-view-all {
+  font-size: 14px;
+  color: #31472D;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.preview-carousel {
+  position: relative;
+}
+
+.preview-track {
+  overflow-x: auto;
+  padding: 0 8px 12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.preview-track::-webkit-scrollbar {
+  display: none;
+}
+
+.preview-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  scroll-snap-type: x mandatory;
+}
+
+.preview-list li {
+  flex: 0 0 45%;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  scroll-snap-align: start;
+}
+
+.preview-list li a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.preview-list img {
+  display: block;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.preview-list span {
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  padding: 10px 6px;
+  color: #333;
+}
+
+.preview-list li:hover span {
+  color: #31472D;
+}
+
+.preview-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #d9d9d9;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 2;
+  transition: opacity .2s ease;
+}
+
+.preview-arrow.prev {
+  left: 4px;
+}
+
+.preview-arrow.next {
+  right: 4px;
+}
+
+.preview-arrow.disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 901px) {
+  .preview-track {
+    overflow-x: visible;
+    padding: 0;
+  }
+
+  .preview-list {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(90px, 1fr));
+    gap: 12px;
+    scroll-snap-type: none;
+  }
+
+  .preview-list li {
+    flex: initial;
+  }
+
+  .preview-list img {
+    height: 110px;
+  }
+
+  .preview-list span {
+    font-size: 13px;
+    padding: 8px 4px;
+  }
+
+  .preview-arrow {
+    display: none;
+  }
+}
+
+
 /* Phototography project pagination */
 
 .more-projects {

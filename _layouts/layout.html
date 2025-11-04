@@ -140,8 +140,11 @@
     <script async src="/js/lightbox-2.6.min.js"></script>
     <link href="/css/lightbox.css" rel="stylesheet"/>
 
-    {% if page.path == "photo_essay" or page.path == "index" %}
+    {% if page.url == "/photo_essays/" %}
       <script async src="/js/show_more.js"></script>
+    {% endif %}
+    {% if page.path == "projects" %}
+      <script defer src="/js/projects-preview.js"></script>
     {% endif %}
 
     <script>

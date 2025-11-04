@@ -10,9 +10,12 @@ plugins:
 paginate: 6
 paginate_path: "posts/page:num"
 navigation:
+    - text: projects
+      identity: projects
+      url: /
     - text: photo essays
       identity: photo_essays
-      url: /
+      url: /photo_essays/
     - text: posts
       url: /posts/
     - text: about
