@@ -1,6 +1,8 @@
   <div class="social-buttons">
     {% if page.path == "photo_essays" %}
       <p class="share">Share this photo essay in:</p>
+    {% elsif page.path == "projects" %}
+      <p class="share">Share this project in:</p>
     {% else %}
       <p class="share">Share this post in:</p>
     {% endif %}
@@ -12,7 +14,10 @@
         <a class="btn" href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url | remove:'index.html' }}" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a>
       </li>
       <li>
-        <a class="btn" href="https://plus.google.com/share?url={{ site.url }}{{ page.url | remove:'index.html' }}" rel="nofollow" target="_blank" title="Share on Google+">Google+</a>
+        <button type="button" class="btn js-copy-link" data-copy-url="{{ site.url }}{{ page.url | remove:'index.html' }}" data-label="Copy link" data-success-label="Link copied!" title="Copy link">
+          <span class="btn-label">Copy link</span>
+        </button>
       </li>
     </ul>
   </div>
+  <script>

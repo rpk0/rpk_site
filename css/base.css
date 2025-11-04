@@ -323,16 +323,36 @@ LAYOUT STYLES
   margin: 2em 3em;
 }
 
+
 .btn {
   color: #000;
   font-size: 14px;
-  padding: 8px 18px 8px 18px;
+  padding: 8px 18px;
   border: solid #ccc 1px;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color .2s ease, border-color .2s ease, background-color .2s ease;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
   color: #31472D;
+  border-color: #31472D;
+  outline: none;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 2px rgba(49, 71, 45, 0.2);
+}
+
+.btn.is-copied {
+  color: #31472D;
+  border-color: #31472D;
 }
 
 /* -----------------------------------------------------------------------
