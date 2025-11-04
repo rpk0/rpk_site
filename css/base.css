@@ -403,39 +403,90 @@ SECTION ABOUT
   height: auto;
 }
 
-.about .main-text ul {
-  padding: 0;
-  margin: 40px 0;
-  text-align: center;
-}
-
-.about .main-text ul li {
-  list-style: none;
-  display: inline-block;
-  width: 31%;
-  margin: 4px;
-}
-
-.socialss li:first-child > a:hover {
-  color: #e4405f;
-}
-
-.socialss li:nth-child(2) > a:hover {
-  color: #3b5998;
-}
-
-.socialss li:last-child > a:hover {
-  color: #1da1f2;
-}
-
-.about .main-text ul li img {
-  width: 100%;
-}
-
 .about small {
   font-size: 15px;
   color: #707070;
 
+}
+
+.about .contact-note {
+  margin: 30px 0 20px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.about .contact-note a {
+  font-weight: bold;
+  color: #474747;
+}
+
+.exhibitions,
+.awards {
+  margin-top: 40px;
+}
+
+.exhibitions h2,
+.awards h2 {
+  font-size: 24px;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.exhibitions-list,
+.awards-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.exhibitions-list li,
+.awards-list li {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid #e6e6e6;
+}
+
+.exhibitions-list li:first-child,
+.awards-list li:first-child {
+  border-top: 0;
+}
+
+.exhibitions-list strong,
+.awards-list strong {
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.exhibitions-list span,
+.awards-list span {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.exhibitions-list a,
+.awards-list a {
+  font-size: 14px;
+  color: #31472D;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 700px) {
+  .exhibitions-list li,
+  .awards-list li {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .exhibitions-list a,
+  .awards-list a {
+    justify-self: start;
+  }
 }
 
 /* -----------------------------------------------------------------------
