@@ -1,5 +1,21 @@
-# www.robotstxt.org/
-# www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449
+# robots.txt for rpk.io
+# https://www.robotstxt.org/
 
 User-agent: *
+Allow: /
+Disallow: /assets/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /_site/
+Disallow: /scripts/
+Disallow: /.well-known/
+Disallow: /404.html
+Disallow: /*?tag=*
+
+# Allow specific important resources
+Allow: /uploads/
+Allow: /images/
+
+# Sitemap location
 Sitemap: https://rpk.io/sitemap.xml
