@@ -7,9 +7,21 @@ path: projects
 next_project: Snapshots
 next_project_path: snapshots
 images:
-  - https://via.placeholder.com/1600x1067?text=Granules+1
-  - https://via.placeholder.com/1600x1067?text=Granules+2
-  - https://via.placeholder.com/1600x1067?text=Granules+3
+  - Kostis_Karampinas_01.jpg
+  - Kostis_Karampinas_02.jpg
+  - Kostis_Karampinas_03.jpg
+  - Kostis_Karampinas_04.jpg
+  - Kostis_Karampinas_05.jpg
+  - Kostis_Karampinas_06.jpg
+  - Kostis_Karampinas_07.jpg
+  - Kostis_Karampinas_08.jpg
+  - Kostis_Karampinas_09.jpg
+  - Kostis_Karampinas_10.jpg
+  - Kostis_Karampinas_11.jpg
+  - Kostis_Karampinas_12.jpg
+  - Kostis_Karampinas_13.jpg
+  - Kostis_Karampinas_14.jpg
+  - Kostis_Karampinas_15.jpg
 ---
 
 <div class="intro-text">
@@ -21,7 +33,7 @@ images:
 <ul>
   {% for img in page.images %}
     <li>
-      <a href="{{ img }}" data-lightbox="granules"><img src="{{ img }}" alt="Granules placeholder image" /></a>
+      <a href="/projects/granules/{{ img }}" data-lightbox="granules"><img src="/projects/granules/{{ img }}" alt="Granules" /></a>
     </li>
   {% endfor %}
 </ul>
