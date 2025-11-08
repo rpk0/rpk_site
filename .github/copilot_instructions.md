@@ -38,3 +38,11 @@
   - If the commit is small enough, the "what" should be evident from the code
   - Focus on explaining WHY the change was made
   - Provide enough context for reviewers and future developers
+
+## Recent Feature Implementations
+
+### Lightbox System
+Custom vanilla JS lightbox (`/js/lightbox-improved.js`) with touch/swipe support. Desktop: arrows beside image + click zones. Mobile: bottom-right navigation for one-handed use + swipe gestures. Uses hardware acceleration, image preloading, and SVG icons for optimal performance.
+
+### Tag Filtering
+Client-side post filtering (`/js/tag-filter.js`) compatible with GitHub Pages. Clickable tag badges in `/posts/` filter posts instantly. URL-shareable filters, browser history support, and tags index at `/tags/`. Each post has `data-tags` attribute for filtering logic.

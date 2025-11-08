@@ -10,9 +10,12 @@ plugins:
 paginate: 6
 paginate_path: "posts/page:num"
 navigation:
+    - text: projects
+      identity: projects
+      url: /
     - text: photo essays
       identity: photo_essays
-      url: /
+      url: /photo_essays/
     - text: posts
       url: /posts/
     - text: about
@@ -20,9 +23,9 @@ navigation:
 name: rpk.io
 email: kostis.rpk@gmail
 url: https://rpk.io
-myname: "Kostas Karampinas"
-title: "Kostas Karampinas Photography - Projects"
-description: "Kostas Karampinas Contemporary Photography - Urban and sub-urban landscapes which emit the feeling of loneliness, abandonment and curiosity."
+myname: "Kostis Karampinas"
+title: "Kostis Karampinas Photography - Projects"
+description: "Kostis Karampinas Contemporary Photography - Urban and sub-urban landscapes which emit the feeling of loneliness, abandonment and curiosity."
 twitter: rpk0_
 github: rpk0
 instagram: rpk.io
@@ -30,6 +33,7 @@ facebook_page: https://www.facebook.com/kostis.karampinas/
 gravatar_url: https://s.gravatar.com/avatar/8bc43bee9040db6434f0842501858358?s=80
 exclude:
   - .jekyll-cache
+  - .well-known
   - Gemfile
   - Gemfile.lock
   - node_modules

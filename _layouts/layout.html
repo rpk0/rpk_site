@@ -4,9 +4,6 @@
     <!-- for Google -->
     <meta name="google-site-verification" content="ZeiyLEq0pBT9mOrskrWweTuwTZ9ti2HJoPOOe1SVyok" />
     {% include google_analytics.html %}
-    {% if site.google_plus %}
-      <link rel="author" href="{{ site.google_plus }}?rel=author" />
-    {% endif %}
     <meta charset="utf-8">
     <link rel="alternate" href="/atom.xml" type="application/atom+xml" title="rpk.io Feed">
 
@@ -137,12 +134,19 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-    <script async src="/js/lightbox-2.6.min.js"></script>
-    <link href="/css/lightbox.css" rel="stylesheet"/>
+    <script defer src="/js/lightbox-improved.js"></script>
+    <link href="/css/lightbox-improved.css" rel="stylesheet"/>
 
-    {% if page.path == "photo_essay" or page.path == "index" %}
+    {% if page.url == "/photo_essays/" %}
       <script async src="/js/show_more.js"></script>
     {% endif %}
+    {% if page.path == "projects" %}
+      <script defer src="/js/projects-preview.js"></script>
+    {% endif %}
+    {% if page.url == "/posts/" or page.url contains "/posts/page" %}
+      <script defer src="/js/tag-filter.js"></script>
+    {% endif %}
+    <script defer src="/js/copy-link.js"></script>
 
     <script>
       $(document).ready(function(){
@@ -158,12 +162,11 @@
   </head>
 
   <body>
-    <a href="{{ site.google_plus }}" rel="publisher"></a>
     <section class="sidebar">
 
       <a href="/" class="name">
         <span></span>
-        <small>Kostas Karampinas</small>
+        <small>Kostis Karampinas</small>
         <em>&#x1f4f7;</em>
         <small>Photographer</small>
       </a>
@@ -210,7 +213,12 @@
 
     </section>
     <a href="/" class="name">
-      <div class="menu-icon-bg">RPK</div>
+      <div class="menu-icon-bg">
+        <div class="menu-icon-text">
+          <span class="menu-icon-primary">rpk.io</span>
+          <span class="menu-icon-secondary">Kostis Karampinas</span>
+        </div>
+      </div>
     </a>
 
     {{ content }}
