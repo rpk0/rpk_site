@@ -8,28 +8,46 @@ path: about
 <section class="content about">
 	<div class="main-text inner-center">
 		<div class="about-img">
-	  	<img src="../images/logo.png" alt="">
+	  	<img src="../images/mylos_creatures-about.jpg" alt="">
 	  </div>
 		<span>Hi,</span>
 		my name is Kostis and I'm a software engineer at <a href="https://www.skroutz.gr">Skroutz.gr</a>.
 		Besides my life as a developer I enjoy photography. I am self-taught and started my involvement with photography in 2012.
 		I like urban and sub-urban landscapes which emit the feeling of loneliness, abandonment and curiosity.
 		Nowadays I shoot mostly film because I don't have much time for post processing my digital images.
-    <small>
+    
+		<small>
       This site began as a fork of <a href="https://github.com/holman/left">holman/left</a>
       but <a href="http://vangeltzo.com/">Vangelis</a> took it to another
       level with his amazing design.
     </small>
+
 		<p class="contact-note">
 			If you want to get in touch, send me an
-			<a href="https://mailhide.io/e/mDaBH" onclick="mailhidepopup=window.open('https://mailhide.io/e/mDaBH','mailhidepopup','width=580,height=635'); return false;">e-mail</a>
+			<a href="#" id="email-link">e-mail</a>
 			or follow me on
 			<a href="https://instagram.com/{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a>.
 		</p>
 
+		<section class="upcoming-exhibitions">
+			<h2>Upcoming Exhibitions</h2>
+			<ul class="exhibitions-list">
+				<li>
+					<strong>11/2025</strong>
+					<span>Analog Sparks Best of Show Exhibition — House of Lucie Budapest</span>
+					<a href="https://www.instagram.com/p/DQXPvhwDbYV/" target="_blank" rel="noopener">More info</a>
+				</li>
+			</ul>
+		</section>
+
 		<section class="exhibitions">
 			<h2>Exhibitions</h2>
 			<ul class="exhibitions-list">
+				<li>
+					<strong>2024</strong>
+					<span>Faces Forms & Materials Group Show — I AM ART Gallery Athens</span>
+					<a href="https://www.instagram.com/p/DBi134OIhU0/?igsh=MWpwcWhsenV3bDN3eA==" target="_blank" rel="noopener">More info</a>
+				</li>
 				<li>
 					<strong>2024</strong>
 					<span>Photometria International Photography Festival — Parallel Voices group exhibition</span>
@@ -55,3 +73,17 @@ path: about
 		</section>
 	</div>
 </section>
+
+<script>
+	// Anti-spam email obfuscation
+	(function() {
+		const u = 'kostis.karampinas';
+		const d = 'gmail.com';
+		const link = document.getElementById('email-link');
+		link.href = 'mailto:' + u + String.fromCharCode(64) + d;
+		link.onclick = function(e) {
+			e.preventDefault();
+			window.location.href = this.href;
+		};
+	})();
+</script>
