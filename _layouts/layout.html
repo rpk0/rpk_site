@@ -134,14 +134,17 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-    <script async src="/js/lightbox-2.6.min.js"></script>
-    <link href="/css/lightbox.css" rel="stylesheet"/>
+    <script defer src="/js/lightbox-improved.js"></script>
+    <link href="/css/lightbox-improved.css" rel="stylesheet"/>
 
     {% if page.url == "/photo_essays/" %}
       <script async src="/js/show_more.js"></script>
     {% endif %}
     {% if page.path == "projects" %}
       <script defer src="/js/projects-preview.js"></script>
+    {% endif %}
+    {% if page.url == "/posts/" or page.url contains "/posts/page" %}
+      <script defer src="/js/tag-filter.js"></script>
     {% endif %}
     <script defer src="/js/copy-link.js"></script>
 
