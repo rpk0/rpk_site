@@ -33,6 +33,7 @@ facebook_page: https://www.facebook.com/kostis.karampinas/
 gravatar_url: https://s.gravatar.com/avatar/8bc43bee9040db6434f0842501858358?s=80
 exclude:
   - .jekyll-cache
+  - .well-known
   - Gemfile
   - Gemfile.lock
   - node_modules
