@@ -3,7 +3,7 @@ layout: post_layout
 title: What film camera to buy
 avatar: https://cdn3.iconfinder.com/data/icons/camera-icons/512/camera-leica-512.png
 category: Photography
-tags: [Photography - Cameras - Film - Analogue - Buyers - Guide]
+tags: [Photography, Cameras, Film, Analogue, Buyers Guide]
 identifier: posts
 ---
 

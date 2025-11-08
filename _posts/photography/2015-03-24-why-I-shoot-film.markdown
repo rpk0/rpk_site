@@ -3,7 +3,7 @@ layout: post_layout
 title: Why I shoot Film
 avatar: https://cdn3.iconfinder.com/data/icons/glypho-photography/64/film-strip-roll-512.png
 category: Photography
-tags: [Photography - Film - Analogue - Darkroom]
+tags: [Photography, Film, Analogue, Darkroom]
 identifier: posts
 ---
 

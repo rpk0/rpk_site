@@ -3,7 +3,7 @@ layout: post_layout
 title: "Automatically create HTML posts in Jekyll with Thor"
 avatar: /images/posts/jekyll_thor/thor_hammer.png
 category: Programming
-tags: [Programming - Jekyll - Thor - Ruby - Automation]
+tags: [Programming, Jekyll, Thor, Ruby, Automation]
 identifier: posts
 ---
 

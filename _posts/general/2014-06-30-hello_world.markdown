@@ -3,7 +3,7 @@ layout: post_layout
 title: Hello World
 avatar: https://image.flaticon.com/icons/png/512/44/44386.png
 category: General
-tags: [General - First Post]
+tags: [General, First Post]
 identifier: posts
 ---
 

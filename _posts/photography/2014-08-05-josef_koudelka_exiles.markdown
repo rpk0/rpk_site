@@ -3,7 +3,7 @@ layout: post_layout
 title: Josef Koudelka - Exiles
 avatar: https://images-na.ssl-images-amazon.com/images/I/51KxlcxHLvL._SX258_BO1,204,203,200_.jpg
 category: Photography
-tags: [Photography - Photobook - Jesef Koudelka - Exiles]
+tags: [Photography, Photobook, Josef Koudelka, Exiles]
 identifier: posts
 ---
 
