@@ -1,19 +1,20 @@
-{% assign is_project_page = page.path == "projects" %}
-{% if is_project_page %}
+{% if page.path == "projects" %}
   {% assign base_url = "/projects/" %}
   {% assign back_url = "/" %}
   {% assign back_label = "back to projects" %}
+  {% assign next_label = "next project" %}
 {% else %}
   {% assign base_url = "/photo_essays/" %}
   {% assign back_url = "/photo_essays/" %}
   {% assign back_label = "back to photo essays" %}
+  {% assign next_label = "next photo essay" %}
 {% endif %}
 
 <div class="more-projects">
   <div class="next-proj">
     {% if page.next_project_path != "" and page.next_project_path %}
       <a href="{{ base_url }}{{ page.next_project_path }}/">
-        <i>next project</i>
+        <i>{{ next_label }}</i>
         {{ page.next_project }}
       </a>
     {% endif %}
