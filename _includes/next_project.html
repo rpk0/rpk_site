@@ -13,10 +13,18 @@
 <div class="more-projects">
   <div class="next-proj">
     {% if page.next_project_path != "" and page.next_project_path %}
-      <a href="{{ base_url }}{{ page.next_project_path }}/">
-        <i>{{ next_label }}</i>
-        {{ page.next_project }}
-      </a>
+      {% if page.next_project_path == "snapshots" %}
+        <span class="next-proj-wip" title="Work in progress">
+          <i>{{ next_label }}</i>
+          {{ page.next_project }}
+          <small class="wip-label">work in progress</small>
+        </span>
+      {% else %}
+        <a href="{{ base_url }}{{ page.next_project_path }}/">
+          <i>{{ next_label }}</i>
+          {{ page.next_project }}
+        </a>
+      {% endif %}
     {% endif %}
     <a href="{{ back_url }}">
       <span>{{ back_label }}</span>

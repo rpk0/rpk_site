@@ -1367,6 +1367,30 @@ SECTION PHOTOGRAPHY
   transform: translateX(-50%);
 }
 
+.more-projects .next-proj .next-proj-wip {
+  font-size: 50px;
+  color: #999;
+  margin-bottom: 20px;
+  display: block;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.more-projects .next-proj .next-proj-wip i {
+  color: #999;
+  display: block;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.more-projects .next-proj .next-proj-wip .wip-label {
+  display: block;
+  font-size: 14px;
+  color: #b0b0b0;
+  margin-top: 10px;
+  font-style: italic;
+}
+
 blockquote {
   color: #a5a4a4;
   font-style: italic;
