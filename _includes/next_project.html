@@ -16,8 +16,9 @@
       {% if page.next_project_path == "snapshots" %}
         <span class="next-proj-wip" title="Work in progress">
           <i>{{ next_label }}</i>
+          <span class="wip-icon">⏳</span>
           {{ page.next_project }}
-          <small class="wip-label">work in progress</small>
+          <small class="wip-label">coming soon</small>
         </span>
       {% else %}
         <a href="{{ base_url }}{{ page.next_project_path }}/">

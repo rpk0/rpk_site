@@ -610,7 +610,7 @@ SECTION POSTS
 @media (min-width: 769px) {
   .content .listing li:hover,
   .content .listing .post-item:hover {
-    transform: translateY(-4px) scale(1.01);
+    transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     z-index: 1;
   }
@@ -1359,27 +1359,44 @@ SECTION PHOTOGRAPHY
 }
 
 .more-projects .next-proj .next-proj-wip {
-  font-size: 50px;
-  color: #999;
+  font-size: 40px;
+  color: #b0b0b0;
   margin-bottom: 20px;
   display: block;
-  cursor: not-allowed;
-  opacity: 0.6;
+  cursor: default;
+  opacity: 0.7;
+  position: relative;
 }
 
 .more-projects .next-proj .next-proj-wip i {
   color: #999;
   display: block;
-  font-size: 20px;
-  font-style: normal;
+  font-size: 16px;
+  font-style: italic;
+  margin-bottom: 8px;
+  text-transform: lowercase;
+}
+
+.more-projects .next-proj .next-proj-wip .wip-icon {
+  display: block;
+  font-size: 32px;
+  margin: 10px 0 8px 0;
+  opacity: 0.6;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.9; }
 }
 
 .more-projects .next-proj .next-proj-wip .wip-label {
   display: block;
-  font-size: 14px;
-  color: #b0b0b0;
-  margin-top: 10px;
+  font-size: 13px;
+  color: #c0c0c0;
+  margin-top: 8px;
   font-style: italic;
+  letter-spacing: 0.5px;
 }
 
 blockquote {
