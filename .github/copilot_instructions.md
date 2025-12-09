@@ -46,3 +46,19 @@ Custom vanilla JS lightbox (`/js/lightbox-improved.js`) with touch/swipe support
 
 ### Tag Filtering
 Client-side post filtering (`/js/tag-filter.js`) compatible with GitHub Pages. Clickable tag badges in `/posts/` filter posts instantly. URL-shareable filters, browser history support, and tags index at `/tags/`. Each post has `data-tags` attribute for filtering logic.
+
+### Firebase Voting System (Critiq)
+Firebase-powered photo voting in `/critiq/` with 3-choice voting (😍 Like/😐 Ok/😞 Dislike), name tracking, real-time counts. Reuses standard photo layout with lightbox.
+
+**Create Session:**
+```bash
+ruby create_critiq_session.rb <session-name> <photos-folder>
+```
+Copies photos, generates `index.html` with `critiq_layout`, validates naming (lowercase/numbers/underscores).
+
+**Key Files:**
+- Layout: `_layouts/critiq_layout.html` (Firebase SDK, name modal, vote buttons under images, vote summary line)
+- Logic: `js/firebase-voting.js` (sanitizes photo IDs, real-time listeners)
+- Admin: `critiq/admin.html`
+- Vote structure: `{vote: "like/ok/dislike", voterName: string, timestamp: number}`
+- Firebase rules: Allow read at `/sessions`, validate vote structure with required fields

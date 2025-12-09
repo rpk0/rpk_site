@@ -1,11 +1,99 @@
 ---
 layout: layout
-comments: true
 ---
+
+<!-- Firebase SDK - Load synchronously -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+<!-- Firebase Voting System - Load after Firebase SDK -->
+<script src="/js/firebase-voting.js"></script>
 
 <section class="content photography critiq">
   <div class="inner-center">
     <h1 class="inner-heading">{{ page.title }}</h1>
-    {{ content }}
+    
+    <!-- Voting Instructions -->
+    <div class="intro-text">
+      <blockquote>
+        {{ page.description | default: "Vote for each photo by clicking Like, Ok, or Dislike below the image. Your votes are saved in real-time." }}
+      </blockquote>
+    </div>
+
+    <!-- Voter Display -->
+    <div id="voter-display" style="margin-bottom: 20px;"></div>
+
+    <!-- Photo Grid with Voting -->
+    <ul>
+      {% for img in page.images %}
+        <li>
+          <a href="/critiq/{{ page.session_id }}/{{ img }}" data-lightbox="{{ page.session_id }}">
+            <img src="/critiq/{{ page.session_id }}/{{ img }}" alt="{{ page.title }}" />
+          </a>
+          <div class="vote-summary" data-photo-id="{{ img }}">
+            <span class="summary-like">😍 0</span>
+            <span class="summary-ok">😐 0</span>
+            <span class="summary-dislike">😞 0</span>
+          </div>
+          <div class="vote-controls" data-photo-id="{{ img }}">
+            <div class="vote-buttons">
+              <button class="vote-btn vote-like" data-vote="like">
+                <span class="icon">😍</span>
+                <span class="label">Like</span>
+                <span class="count">0</span>
+              </button>
+              <button class="vote-btn vote-ok" data-vote="ok">
+                <span class="icon">😐</span>
+                <span class="label">Ok</span>
+                <span class="count">0</span>
+              </button>
+              <button class="vote-btn vote-dislike" data-vote="dislike">
+                <span class="icon">😞</span>
+                <span class="label">Dislike</span>
+                <span class="count">0</span>
+              </button>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
 </section>
+
+<!-- Name Prompt Modal -->
+<div id="name-prompt-modal" class="modal">
+  <div class="modal-content">
+    <h2>Welcome to the voting session!</h2>
+    <p>Please enter your name to continue:</p>
+    <input 
+      type="text" 
+      id="voter-name-input" 
+      placeholder="Your name" 
+      maxlength="50"
+      autocomplete="name"
+    />
+    <button id="submit-name" class="submit-name-btn">Continue</button>
+  </div>
+</div>
+
+<!-- Initialize voting -->
+<script>
+  // Initialize voting with session ID from page
+  document.addEventListener('DOMContentLoaded', function() {
+    const sessionId = '{{ page.session_id }}';
+    if (sessionId) {
+      initVoting(sessionId);
+      
+      // Attach click handlers to vote buttons
+      document.querySelectorAll('.vote-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const photoId = this.closest('.vote-controls').getAttribute('data-photo-id');
+          const voteType = this.getAttribute('data-vote');
+          voteForPhoto(photoId, voteType);
+        });
+      });
+    } else {
+      console.error('No session_id defined in page front matter');
+    }
+  });
+</script>
