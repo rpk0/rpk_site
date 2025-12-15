@@ -53,6 +53,9 @@ layout: layout
                 <span class="count">0</span>
               </button>
             </div>
+            <div class="vote-comment" style="margin-top: 10px;">
+              <textarea class="vote-comment-input" placeholder="Optional comment..." rows="2" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; resize: vertical;"></textarea>
+            </div>
           </div>
         </li>
       {% endfor %}
@@ -90,6 +93,17 @@ layout: layout
           const photoId = this.closest('.vote-controls').getAttribute('data-photo-id');
           const voteType = this.getAttribute('data-vote');
           voteForPhoto(photoId, voteType);
+        });
+      });
+
+      // Attach change handlers to comment inputs
+      document.querySelectorAll('.vote-comment-input').forEach(input => {
+        input.addEventListener('change', function() {
+          const photoId = this.closest('.vote-controls').getAttribute('data-photo-id');
+          const comment = this.value.trim();
+          if (window.updateComment) {
+            window.updateComment(photoId, comment);
+          }
         });
       });
     } else {

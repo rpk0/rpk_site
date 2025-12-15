@@ -215,6 +215,10 @@
       color: #f44336;
     }
 
+    .like { color: #4caf50; font-weight: bold; }
+    .ok { color: #ffc107; font-weight: bold; }
+    .dislike { color: #f44336; font-weight: bold; }
+
     .photo-votes {
       font-size: 24px;
       font-weight: 700;
@@ -430,6 +434,26 @@
       document.getElementById('error').style.display = 'none';
     }
 
+    function getSessionTimestamp(sessionData) {
+      let minTime = Infinity;
+      
+      if (sessionData.voters) {
+        Object.values(sessionData.voters).forEach(v => {
+          if (v.timestamp && v.timestamp < minTime) minTime = v.timestamp;
+        });
+      }
+      
+      if (sessionData.votes) {
+        Object.values(sessionData.votes).forEach(photoVotes => {
+          Object.values(photoVotes).forEach(v => {
+            if (v.timestamp && v.timestamp < minTime) minTime = v.timestamp;
+          });
+        });
+      }
+      
+      return minTime === Infinity ? 0 : minTime;
+    }
+
     async function loadAvailableSessions() {
       try {
         const snapshot = await database.ref('sessions').once('value');
@@ -440,7 +464,11 @@
           return;
         }
 
-        availableSessions = Object.keys(sessions);
+        availableSessions = Object.entries(sessions).map(([id, data]) => ({
+          id,
+          timestamp: getSessionTimestamp(data)
+        })).sort((a, b) => b.timestamp - a.timestamp);
+
         displaySessionsList();
       } catch (error) {
         console.error('Error loading sessions:', error);
@@ -464,7 +492,8 @@
       }
 
       listEl.innerHTML = '';
-      availableSessions.forEach(sessionId => {
+      availableSessions.forEach(session => {
+        const sessionId = session.id;
         const card = document.createElement('div');
         card.className = 'session-card';
         
@@ -473,9 +502,12 @@
           .replace(/_/g, ' ')
           .replace(/\b\w/g, l => l.toUpperCase());
         
+        const dateStr = session.timestamp ? new Date(session.timestamp).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : 'No activity';
+
         card.innerHTML = `
           <div class="session-card-title">${title}</div>
           <div class="session-card-id">${sessionId}</div>
+          <div style="font-size: 12px; color: #888; margin-top: 5px;">Created: ${dateStr}</div>
         `;
         
         card.onclick = () => {
@@ -525,6 +557,16 @@
       document.querySelector('.loading').style.display = 'none';
     }
 
+    function unsanitizePhotoId(id) {
+      // If it looks like an extension was replaced
+      if (id.endsWith('_jpg')) return id.slice(0, -4) + '.jpg';
+      if (id.endsWith('_jpeg')) return id.slice(0, -5) + '.jpeg';
+      if (id.endsWith('_png')) return id.slice(0, -4) + '.png';
+      if (id.endsWith('_gif')) return id.slice(0, -4) + '.gif';
+      if (id.endsWith('_webp')) return id.slice(0, -5) + '.webp';
+      return id;
+    }
+
     function displayResults(data) {
       const voters = data.voters || {};
       const votes = data.votes || {};
@@ -551,7 +593,7 @@
           count: voteCount,
           voters: photoVoters,
           voteCounts: voteCounts,
-          originalPhotoId: Object.values(photoVoters)[0]?.photoId || photo
+          originalPhotoId: Object.values(photoVoters).find(v => v.photoId)?.photoId || unsanitizePhotoId(photo)
         };
       });
 
@@ -572,7 +614,13 @@
         photoItem.className = 'photo-item';
         
         const votersList = Object.values(data.voters)
-          .map(v => `<span class="voter-item">${v.voterName} (${v.vote || 'vote'})</span>`)
+          .map(v => {
+            let text = `<strong>${v.voterName}</strong> <span class="${v.vote}">${v.vote || 'vote'}</span>`;
+            if (v.comment) {
+              text += `<div style="margin-top: 4px; font-size: 12px; color: #555; font-style: italic; border-top: 1px solid #eee; padding-top: 2px;">"${v.comment}"</div>`;
+            }
+            return `<div class="voter-item" style="display: inline-block; vertical-align: top; max-width: 200px;">${text}</div>`;
+          })
           .join('');
 
         // Get the original photo ID (with extension) for image path
@@ -582,7 +630,9 @@
         const imagePath = `/critiq/${currentData.sessionId}/${originalPhotoId}`;
 
         photoItem.innerHTML = `
-          <img src="${imagePath}" alt="${originalPhotoId}" class="photo-thumbnail" onerror="this.style.display='none'">
+          <a href="${imagePath}" target="_blank" style="flex-shrink: 0; display: block;">
+            <img src="${imagePath}" alt="${originalPhotoId}" class="photo-thumbnail" onerror="this.style.display='none'">
+          </a>
           <div class="photo-info">
             <div class="photo-name">${originalPhotoId}</div>
             <div class="vote-breakdown">
@@ -609,19 +659,43 @@
           if (!voterPhotos[voterKey]) {
             voterPhotos[voterKey] = {
               name: voteData.voterName,
-              photos: []
+              photos: [],
+              comments: []
             };
           }
           voterPhotos[voterKey].photos.push(photo);
+          if (voteData.comment) {
+             voterPhotos[voterKey].comments.push({ photo: photo, text: voteData.comment });
+          }
         });
       });
 
       Object.entries(voterPhotos).forEach(([voterKey, data]) => {
         const voterCard = document.createElement('div');
         voterCard.className = 'voter-card';
+        
+        let commentsHtml = '';
+        if (data.comments.length > 0) {
+            commentsHtml = '<div style="margin-top: 8px; font-size: 13px;"><strong>Comments:</strong><ul style="margin-left: 20px; margin-top: 4px;">' + 
+                data.comments.map(c => `<li>${c.photo}: "${c.text}"</li>`).join('') + 
+                '</ul></div>';
+        }
+
+        // Create thumbnails for voted photos
+        const photosHtml = data.photos.map(photo => {
+            // Try to find original ID from photoVotes if available, otherwise use key
+            const originalId = photoVotes[photo]?.originalPhotoId || unsanitizePhotoId(photo);
+            const imagePath = `/critiq/${currentData.sessionId}/${originalId}`;
+            return `<a href="${imagePath}" target="_blank" title="${originalId}"><img src="${imagePath}" style="width: 60px; height: 60px; object-fit: cover; margin: 4px; border-radius: 4px; border: 1px solid #ddd; vertical-align: middle;"></a>`;
+        }).join('');
+
         voterCard.innerHTML = `
           <div class="voter-name">${data.name}</div>
-          <div class="voter-photos">Voted for: ${data.photos.join(', ')}</div>
+          <div class="voter-photos">
+            <div style="margin-bottom: 5px; font-size: 14px; color: #666;">Voted for:</div>
+            <div style="display: flex; flex-wrap: wrap; align-items: center;">${photosHtml}</div>
+          </div>
+          ${commentsHtml}
         `;
         votersSection.appendChild(voterCard);
       });
@@ -632,7 +706,33 @@
     function exportData() {
       if (!currentData) return;
 
-      const dataStr = JSON.stringify(currentData, null, 2);
+      const votes = currentData.votes || {};
+      const exportList = [];
+
+      Object.keys(votes).forEach(photoKey => {
+        const photoVoters = votes[photoKey];
+        const counts = { like: 0, ok: 0, dislike: 0, total: 0 };
+        
+        // Try to find original ID from votes
+        let originalPhotoId = Object.values(photoVoters).find(v => v.photoId)?.photoId || unsanitizePhotoId(photoKey);
+
+        Object.values(photoVoters).forEach(vote => {
+          if (vote.vote && counts[vote.vote] !== undefined) {
+            counts[vote.vote]++;
+            counts.total++;
+          }
+        });
+
+        exportList.push({
+          photo: originalPhotoId,
+          votes: counts
+        });
+      });
+
+      // Sort by total votes descending
+      exportList.sort((a, b) => b.votes.total - a.votes.total);
+
+      const dataStr = JSON.stringify(exportList, null, 2);
       const dataBlob = new Blob([dataStr], { type: 'application/json' });
       const url = URL.createObjectURL(dataBlob);
       const link = document.createElement('a');

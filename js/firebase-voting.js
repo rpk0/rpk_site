@@ -165,6 +165,11 @@ function voteForPhoto(photoId, voteType) {
   const sanitizedPhotoId = sanitizePhotoId(photoId);
   const voteRef = database.ref(`sessions/${currentSession}/votes/${sanitizedPhotoId}/${voterKey}`);
   
+  // Get current comment
+  const container = document.querySelector(`.vote-controls[data-photo-id="${photoId}"]`);
+  const commentInput = container ? container.querySelector('.vote-comment-input') : null;
+  const comment = commentInput ? commentInput.value.trim() : '';
+
   // Check if already voted with same type
   voteRef.once('value', (snapshot) => {
     const existingVote = snapshot.val();
@@ -180,6 +185,8 @@ function voteForPhoto(photoId, voteType) {
       voteRef.set({
         vote: voteType,
         voterName: voterName,
+        comment: comment,
+        photoId: photoId,
         timestamp: firebase.database.ServerValue.TIMESTAMP
       }).then(() => {
         console.log('Vote saved successfully');
@@ -189,6 +196,26 @@ function voteForPhoto(photoId, voteType) {
     }
   }).catch((error) => {
     console.error('Error reading existing vote:', error);
+  });
+}
+
+/**
+ * Update just the comment for a photo
+ */
+function updateComment(photoId, comment) {
+  if (!voterKey || !currentSession) return;
+
+  const sanitizedPhotoId = sanitizePhotoId(photoId);
+  const voteRef = database.ref(`sessions/${currentSession}/votes/${sanitizedPhotoId}/${voterKey}`);
+
+  voteRef.once('value', (snapshot) => {
+    const existingVote = snapshot.val();
+    if (existingVote) {
+      voteRef.update({
+        comment: comment,
+        photoId: photoId
+      });
+    }
   });
 }
 
@@ -232,6 +259,7 @@ function loadVotes() {
       // Count votes by type
       const voteCounts = { like: 0, ok: 0, dislike: 0 };
       let userVote = null;
+      let userComment = '';
       
       Object.entries(votes).forEach(([key, voteData]) => {
         const voteType = voteData.vote;
@@ -240,6 +268,7 @@ function loadVotes() {
         }
         if (key === voterKey) {
           userVote = voteType;
+          userComment = voteData.comment || '';
         }
       });
       
@@ -251,6 +280,12 @@ function loadVotes() {
       if (likeBtn) likeBtn.textContent = voteCounts.like;
       if (okBtn) okBtn.textContent = voteCounts.ok;
       if (dislikeBtn) dislikeBtn.textContent = voteCounts.dislike;
+
+      // Update comment if not focused
+      const commentInput = element.querySelector('.vote-comment-input');
+      if (commentInput && document.activeElement !== commentInput) {
+        commentInput.value = userComment;
+      }
       
       // Update vote summary under image
       const summaryElement = document.querySelector(`.vote-summary[data-photo-id="${photoId}"]`);
@@ -291,3 +326,4 @@ window.addEventListener('beforeunload', cleanupVoting);
 // Export for use in HTML
 window.initVoting = initVoting;
 window.voteForPhoto = voteForPhoto;
+window.updateComment = updateComment;
