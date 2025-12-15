@@ -5,24 +5,39 @@
 # Usage: ruby create_external_session.rb <session-name> <urls-file>
 
 require 'fileutils'
+require 'tty-prompt'
+require 'pastel'
 
-def create_external_session(session_name, urls_file)
+def create_external_session(session_name, urls_file, prompt, pastel)
+  # Expand path
+  urls_file = File.expand_path(urls_file)
+
   # Validate inputs
   unless File.exist?(urls_file)
-    puts "Error: URLs file '#{urls_file}' does not exist"
-    exit 1
+    puts pastel.red("Error: URLs file '#{urls_file}' does not exist")
+    return
   end
 
   # Read URLs
+  print pastel.cyan("Reading URLs... ")
   urls = File.readlines(urls_file).map(&:strip).reject(&:empty?)
 
   if urls.empty?
-    puts "Error: No URLs found in '#{urls_file}'"
-    exit 1
+    puts pastel.red("\nError: No URLs found in '#{urls_file}'")
+    return
   end
+  puts pastel.green("Found #{urls.length} URLs")
 
   # Create session folder
   session_path = File.join('critiq', session_name)
+  
+  if Dir.exist?(session_path)
+    unless prompt.yes?("Session '#{session_name}' already exists. Overwrite?")
+      puts pastel.yellow("Cancelled.")
+      return
+    end
+  end
+
   FileUtils.mkdir_p(session_path)
 
   # Generate index.html content
@@ -41,36 +56,45 @@ def create_external_session(session_name, urls_file)
   # Write index.html
   File.write(File.join(session_path, 'index.html'), html_content)
 
-  puts "✅ Created external voting session: #{session_name}"
-  puts "📁 Location: #{session_path}"
-  puts "🖼️  Photos: #{urls.length}"
-  puts "🔗 URL: http://127.0.0.1:4000/critiq/#{session_name}/"
   puts ""
-  puts "Next steps:"
+  puts pastel.green("✅ Created external voting session: #{session_name}")
+  puts pastel.dim("📁 Location: #{session_path}")
+  puts pastel.dim("🖼️  Photos: #{urls.length}")
+  puts pastel.bold("🔗 URL: http://127.0.0.1:4000/critiq/#{session_name}/")
+  puts ""
+  puts pastel.yellow("Next steps:")
   puts "1. Review the generated page at the URL above"
   puts "2. Share the URL with voters"
   puts "3. View results at: http://127.0.0.1:4000/critiq/admin.html"
 end
 
 # Main execution
-if ARGV.length != 2
-  puts "Usage: ruby create_external_session.rb <session-name> <urls-file>"
-  puts ""
-  puts "Example:"
-  puts "  ruby create_external_session.rb paris_2025 urls.txt"
-  puts ""
-  puts "Session name should:"
-  puts "  - Use lowercase letters, numbers, and underscores only"
-  exit 1
+prompt = TTY::Prompt.new
+pastel = Pastel.new
+
+if ARGV.length == 2
+  session_name = ARGV[0]
+  urls_file = ARGV[1]
+  
+  # Validate session name
+  unless session_name.match?(/^[a-z0-9_]+$/)
+    puts pastel.red("Error: Session name should only contain lowercase letters, numbers, and underscores")
+    exit 1
+  end
+else
+  puts pastel.bold("Create a new External Critiq Session")
+  
+  session_name = prompt.ask("Session name (lowercase, numbers, underscores):") do |q|
+    q.required true
+    q.validate /^[a-z0-9_]+$/
+    q.messages[:valid?] = "Invalid format. Use lowercase letters, numbers, and underscores only."
+  end
+
+  urls_file = prompt.ask("Path to URLs file (text file with one URL per line):") do |q|
+    q.required true
+    q.validate ->(path) { File.exist?(File.expand_path(path)) }
+    q.messages[:valid?] = "File does not exist."
+  end
 end
 
-session_name = ARGV[0]
-urls_file = ARGV[1]
-
-# Validate session name
-unless session_name.match?(/^[a-z0-9_]+$/)
-  puts "Error: Session name should only contain lowercase letters, numbers, and underscores"
-  exit 1
-end
-
-create_external_session(session_name, urls_file)
+create_external_session(session_name, urls_file, prompt, pastel)

@@ -5,36 +5,53 @@
 # Usage: ruby create_critiq_session.rb <session-name> <photos-folder>
 
 require 'fileutils'
+require 'tty-prompt'
+require 'pastel'
 
-def create_voting_session(session_name, photos_folder)
+def create_voting_session(session_name, photos_folder, prompt, pastel)
+  # Expand path to handle ~ etc
+  photos_folder = File.expand_path(photos_folder)
+
   # Validate inputs
   unless Dir.exist?(photos_folder)
-    puts "Error: Photos folder '#{photos_folder}' does not exist"
-    exit 1
+    puts pastel.red("Error: Photos folder '#{photos_folder}' does not exist")
+    return
   end
 
   # Find all image files
+  print pastel.cyan("Scanning for photos... ")
   image_extensions = %w[.jpg .jpeg .png .gif .webp .JPG .JPEG .PNG .GIF .WEBP]
   photos = Dir.glob("#{photos_folder}/*").select do |file|
     File.file?(file) && image_extensions.include?(File.extname(file))
   end
 
   if photos.empty?
-    puts "Error: No photos found in '#{photos_folder}'"
-    exit 1
+    puts pastel.red("\nError: No photos found in '#{photos_folder}'")
+    return
   end
+  puts pastel.green("Found #{photos.length} photos")
 
   # Sort photos by filename
   photos.sort!
 
   # Create session folder
   session_path = File.join('critiq', session_name)
+  
+  if Dir.exist?(session_path)
+    unless prompt.yes?("Session '#{session_name}' already exists. Overwrite?")
+      puts pastel.yellow("Cancelled.")
+      return
+    end
+  end
+
   FileUtils.mkdir_p(session_path)
 
   # Copy photos to session folder
+  print pastel.cyan("Copying photos... ")
   photos.each do |photo|
     FileUtils.cp(photo, session_path)
   end
+  puts pastel.green("Done")
 
   # Get just the filenames for the YAML
   photo_filenames = photos.map { |p| File.basename(p) }
@@ -55,37 +72,45 @@ def create_voting_session(session_name, photos_folder)
   # Write index.html
   File.write(File.join(session_path, 'index.html'), html_content)
 
-  puts "✅ Created voting session: #{session_name}"
-  puts "📁 Location: #{session_path}"
-  puts "🖼️  Photos: #{photos.length}"
-  puts "🔗 URL: http://127.0.0.1:4000/critiq/#{session_name}/"
   puts ""
-  puts "Next steps:"
+  puts pastel.green("✅ Created voting session: #{session_name}")
+  puts pastel.dim("📁 Location: #{session_path}")
+  puts pastel.dim("🖼️  Photos: #{photos.length}")
+  puts pastel.bold("🔗 URL: http://127.0.0.1:4000/critiq/#{session_name}/")
+  puts ""
+  puts pastel.yellow("Next steps:")
   puts "1. Review the generated page at the URL above"
   puts "2. Share the URL with voters (it won't appear in navigation)"
   puts "3. View results at: http://127.0.0.1:4000/critiq/admin.html"
 end
 
 # Main execution
-if ARGV.length != 2
-  puts "Usage: ruby create_critiq_session.rb <session-name> <photos-folder>"
-  puts ""
-  puts "Example:"
-  puts "  ruby create_critiq_session.rb paris_2025 ~/Desktop/paris_photos"
-  puts ""
-  puts "Session name should:"
-  puts "  - Use lowercase letters, numbers, and underscores only"
-  puts "  - Be URL-friendly (no spaces or special characters)"
-  exit 1
+prompt = TTY::Prompt.new
+pastel = Pastel.new
+
+if ARGV.length == 2
+  session_name = ARGV[0]
+  photos_folder = ARGV[1]
+  
+  # Validate session name
+  unless session_name.match?(/^[a-z0-9_]+$/)
+    puts pastel.red("Error: Session name should only contain lowercase letters, numbers, and underscores")
+    exit 1
+  end
+else
+  puts pastel.bold("Create a new Critiq Session")
+  
+  session_name = prompt.ask("Session name (lowercase, numbers, underscores):") do |q|
+    q.required true
+    q.validate /^[a-z0-9_]+$/
+    q.messages[:valid?] = "Invalid format. Use lowercase letters, numbers, and underscores only."
+  end
+
+  photos_folder = prompt.ask("Path to photos folder:") do |q|
+    q.required true
+    q.validate ->(path) { Dir.exist?(File.expand_path(path)) }
+    q.messages[:valid?] = "Folder does not exist."
+  end
 end
 
-session_name = ARGV[0]
-photos_folder = ARGV[1]
-
-# Validate session name
-unless session_name.match?(/^[a-z0-9_]+$/)
-  puts "Error: Session name should only contain lowercase letters, numbers, and underscores"
-  exit 1
-end
-
-create_voting_session(session_name, photos_folder)
+create_voting_session(session_name, photos_folder, prompt, pastel)
