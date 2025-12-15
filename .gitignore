@@ -6,3 +6,4 @@ vendor/
 gh-pages/
 site/_site/
 .jekyll-cache
+firebase_secret.key

@@ -456,7 +456,20 @@
 
     async function loadAvailableSessions() {
       try {
-        const snapshot = await database.ref('sessions').once('value');
+        // Try to fetch only active sessions (where 'archived' is null/missing)
+        // Note: This requires .indexOn: ["archived"] in Firebase rules for best performance
+        let snapshot;
+        try {
+          snapshot = await database.ref('sessions')
+            .orderByChild('archived')
+            .equalTo(null)
+            .once('value');
+        } catch (queryError) {
+          console.warn('Query failed (likely missing index), falling back to client-side filtering:', queryError);
+          // Fallback: fetch all and filter
+          snapshot = await database.ref('sessions').once('value');
+        }
+        
         const sessions = snapshot.val();
 
         if (!sessions) {
@@ -464,10 +477,13 @@
           return;
         }
 
-        availableSessions = Object.entries(sessions).map(([id, data]) => ({
-          id,
-          timestamp: getSessionTimestamp(data)
-        })).sort((a, b) => b.timestamp - a.timestamp);
+        availableSessions = Object.entries(sessions)
+          .filter(([id, data]) => !data.archived) // Double check filter just in case
+          .map(([id, data]) => ({
+            id,
+            timestamp: getSessionTimestamp(data)
+          }))
+          .sort((a, b) => b.timestamp - a.timestamp);
 
         displaySessionsList();
       } catch (error) {
@@ -627,14 +643,17 @@
         const originalPhotoId = data.originalPhotoId;
         
         // Construct image path based on session ID
-        const imagePath = `/critiq/${currentData.sessionId}/${originalPhotoId}`;
+        let imagePath = originalPhotoId;
+        if (!originalPhotoId.includes('://')) {
+          imagePath = `/critiq/${currentData.sessionId}/${originalPhotoId}`;
+        }
 
         photoItem.innerHTML = `
           <a href="${imagePath}" target="_blank" style="flex-shrink: 0; display: block;">
             <img src="${imagePath}" alt="${originalPhotoId}" class="photo-thumbnail" onerror="this.style.display='none'">
           </a>
           <div class="photo-info">
-            <div class="photo-name">${originalPhotoId}</div>
+            <div class="photo-name" style="word-break: break-all;">${originalPhotoId}</div>
             <div class="vote-breakdown">
               <div class="vote-breakdown-item like">👍 ${data.voteCounts.like}</div>
               <div class="vote-breakdown-item ok">🤷 ${data.voteCounts.ok}</div>
@@ -685,7 +704,12 @@
         const photosHtml = data.photos.map(photo => {
             // Try to find original ID from photoVotes if available, otherwise use key
             const originalId = photoVotes[photo]?.originalPhotoId || unsanitizePhotoId(photo);
-            const imagePath = `/critiq/${currentData.sessionId}/${originalId}`;
+            
+            let imagePath = originalId;
+            if (!originalId.includes('://')) {
+              imagePath = `/critiq/${currentData.sessionId}/${originalId}`;
+            }
+            
             return `<a href="${imagePath}" target="_blank" title="${originalId}"><img src="${imagePath}" style="width: 60px; height: 60px; object-fit: cover; margin: 4px; border-radius: 4px; border: 1px solid #ddd; vertical-align: middle;"></a>`;
         }).join('');
 

@@ -142,7 +142,9 @@ function generateVoterKey() {
  * Sanitize photo ID for Firebase (remove invalid characters)
  */
 function sanitizePhotoId(photoId) {
-  return photoId.replace(/[.#$[\]]/g, '_');
+  // Replace Firebase invalid chars: . # $ [ ]
+  // Also replace URL chars that might cause issues in paths: / : ? & =
+  return photoId.replace(/[.#$[\]\/:?&=]/g, '_');
 }
 
 /**

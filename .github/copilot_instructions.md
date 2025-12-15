@@ -22,12 +22,14 @@
 - Do not commit `_site/` or local scratch files (e.g., `AGENT_GUIDE.md`).
 - When introducing gems or plugins, ensure compatibility with the `github-pages` gem set.
 - Respect existing typography/spacing to keep layouts consistent across galleries.
+- **Whitespace:** Do not leave trailing whitespace on lines. Ensure empty lines contain no spaces or tabs to avoid red diffs in GitHub.
 
 ## Deployment Notes
 - GitHub Pages handles builds; avoid workflow files that conflict with the default deploy pipeline.
 - Run `bundle exec jekyll build` locally before large changes to catch template errors.
 
 ## Communication Tips for Agents
+- **Documentation:** Update this file (`.github/copilot_instructions.md`) whenever a new feature is implemented or an existing workflow changes.
 - Mention any manual steps (image optimization, data preparation) in PR descriptions.
 - Highlight layout-impacting changes for easier review.
 - When unsure about design decisions, propose options rather than unilateral changes.
@@ -50,15 +52,31 @@ Client-side post filtering (`/js/tag-filter.js`) compatible with GitHub Pages. C
 ### Firebase Voting System (Critiq)
 Firebase-powered photo voting in `/critiq/` with 3-choice voting (😍 Like/😐 Ok/😞 Dislike), name tracking, real-time counts. Reuses standard photo layout with lightbox.
 
-**Create Session:**
+**Create Session (2 Methods):**
+
+1. **Local Images:**
+   ```bash
+   ruby create_critiq_session.rb <session-name> <photos-folder>
+   ```
+   Copies photos to `critiq/<session-name>`, generates `index.html`.
+
+2. **External Images (Dropbox/Drive):**
+   ```bash
+   ruby create_external_session.rb <session-name> <urls-file.txt>
+   ```
+   Uses a text file with one image URL per line. Does not download images; links directly to source.
+
+**Manage Sessions:**
 ```bash
-ruby create_critiq_session.rb <session-name> <photos-folder>
+ruby delete_critiq_session.rb
 ```
-Copies photos, generates `index.html` with `critiq_layout`, validates naming (lowercase/numbers/underscores).
+Interactive CLI to remove local folders and **archive** Firebase data (soft delete).
+- Requires Firebase Database Secret (prompted on first run, saved to `firebase_secret.key`).
+- Archived sessions are hidden from the Admin UI but data is preserved.
 
 **Key Files:**
 - Layout: `_layouts/critiq_layout.html` (Firebase SDK, name modal, vote buttons under images, vote summary line)
-- Logic: `js/firebase-voting.js` (sanitizes photo IDs, real-time listeners)
-- Admin: `critiq/admin.html`
-- Vote structure: `{vote: "like/ok/dislike", voterName: string, timestamp: number}`
+- Logic: `js/firebase-voting.js` (sanitizes photo IDs, real-time listeners, comment support)
+- Admin: `critiq/admin.html` (Thumbnails, sorting, filters out archived sessions)
+- Vote structure: `{vote: "like/ok/dislike", voterName: string, comment: string, timestamp: number}`
 - Firebase rules: Allow read at `/sessions`, validate vote structure with required fields
