@@ -26,13 +26,13 @@ layout: layout
     <!-- Photo Grid with Voting -->
     <ul>
       {% for img in page.images %}
-        {% assign img_url = img %}
+        {% assign img_src = img %}
         {% unless img contains '://' %}
-          {% assign img_url = "/critiq/" | append: page.session_id | append: "/" | append: img %}
+          {% assign img_src = "/critiq/" | append: page.session_id | append: "/" | append: img %}
         {% endunless %}
         <li>
-          <a href="{{ img_url }}" data-lightbox="{{ page.session_id }}">
-            <img src="{{ img_url }}" alt="{{ page.title }}" />
+          <a href="{{ img_src }}" data-lightbox="{{ page.session_id }}">
+            <img src="{{ img_src }}" alt="{{ page.title }}" />
           </a>
           <div class="vote-summary" data-photo-id="{{ img }}">
             <span class="summary-like">😍 0</span>

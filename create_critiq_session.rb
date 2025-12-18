@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 # Script to auto-generate a voting session from a folder of photos
-# Usage: ruby create_critiq_session.rb <session-name> <photos-folder>
+# Usage: ruby create_critiq_session.rb [session-name] [photos-folder]
 
 require 'fileutils'
 require 'tty-prompt'
