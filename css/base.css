@@ -1938,6 +1938,21 @@ blockquote {
 }
 
 /* Active states */
+.vote-btn.vote-strongly_like.active {
+  background: #fce4ec;
+  border-color: #e91e63;
+}
+
+.vote-btn.vote-strongly_like.active .label {
+  color: #c2185b;
+  font-weight: 600;
+}
+
+.vote-btn.vote-strongly_like.active .count {
+  background: #e91e63;
+  color: #fff;
+}
+
 .vote-btn.vote-like.active {
   background: #e8f5e9;
   border-color: #4caf50;
@@ -1953,32 +1968,32 @@ blockquote {
   color: #fff;
 }
 
-.vote-btn.vote-ok.active {
-  background: #fff9e6;
-  border-color: #ffc107;
+.vote-btn.vote-fits_set.active {
+  background: #e3f2fd;
+  border-color: #2196f3;
 }
 
-.vote-btn.vote-ok.active .label {
-  color: #f57c00;
+.vote-btn.vote-fits_set.active .label {
+  color: #1565c0;
   font-weight: 600;
 }
 
-.vote-btn.vote-ok.active .count {
-  background: #ffc107;
+.vote-btn.vote-fits_set.active .count {
+  background: #2196f3;
   color: #fff;
 }
 
-.vote-btn.vote-dislike.active {
+.vote-btn.vote-not_good.active {
   background: #ffebee;
   border-color: #f44336;
 }
 
-.vote-btn.vote-dislike.active .label {
+.vote-btn.vote-not_good.active .label {
   color: #c62828;
   font-weight: 600;
 }
 
-.vote-btn.vote-dislike.active .count {
+.vote-btn.vote-not_good.active .count {
   background: #f44336;
   color: #fff;
 }
