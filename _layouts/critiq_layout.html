@@ -16,7 +16,7 @@ layout: layout
     <!-- Voting Instructions -->
     <div class="intro-text">
       <blockquote>
-        {{ page.description | default: "Vote for each photo by clicking Like, Ok, or Dislike below the image. Your votes are saved in real-time." }}
+        {{ page.description | default: "Help curate this collection by voting on each photo. Use 'Super Like' for your absolute favorites, 'Like' for good shots, 'Fits the Set' for photos that work well in context, and 'No' for ones that should be cut. Your votes are saved automatically." }}
       </blockquote>
     </div>
 
@@ -35,25 +35,31 @@ layout: layout
             <img src="{{ img_src }}" alt="{{ page.title }}" />
           </a>
           <div class="vote-summary" data-photo-id="{{ img }}">
-            <span class="summary-like">😍 0</span>
-            <span class="summary-ok">😐 0</span>
-            <span class="summary-dislike">😞 0</span>
+            <span class="summary-strongly_like" title="Strongly Like">😍 0</span>
+            <span class="summary-like" title="Like">🙂 0</span>
+            <span class="summary-fits_set" title="Fits Set">🧩 0</span>
+            <span class="summary-not_good" title="Not Good">❌ 0</span>
           </div>
           <div class="vote-controls" data-photo-id="{{ img }}">
             <div class="vote-buttons">
-              <button class="vote-btn vote-like" data-vote="like">
+              <button class="vote-btn vote-strongly_like" data-vote="strongly_like" title="Outstanding shot, must be included (+3 points)">
                 <span class="icon">😍</span>
+                <span class="label">Super Like</span>
+                <span class="count">0</span>
+              </button>
+              <button class="vote-btn vote-like" data-vote="like" title="Good photo, worth keeping (+1 point)">
+                <span class="icon">🙂</span>
                 <span class="label">Like</span>
                 <span class="count">0</span>
               </button>
-              <button class="vote-btn vote-ok" data-vote="ok">
-                <span class="icon">😐</span>
-                <span class="label">Ok</span>
+              <button class="vote-btn vote-fits_set" data-vote="fits_set" title="Works well in the sequence/context (+0.5 points)">
+                <span class="icon">🧩</span>
+                <span class="label">Fits the Set</span>
                 <span class="count">0</span>
               </button>
-              <button class="vote-btn vote-dislike" data-vote="dislike">
-                <span class="icon">😞</span>
-                <span class="label">Dislike</span>
+              <button class="vote-btn vote-not_good" data-vote="not_good" title="Should be removed from the selection (-1 point)">
+                <span class="icon">❌</span>
+                <span class="label">No</span>
                 <span class="count">0</span>
               </button>
             </div>

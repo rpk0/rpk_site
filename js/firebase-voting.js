@@ -28,6 +28,7 @@ try {
 let currentSession = null;
 let voterName = null;
 let voterKey = null;
+let activeListeners = [];
 
 /**
  * Initialize the voting system
@@ -74,33 +75,62 @@ function promptForName() {
       return;
     }
     
-    voterName = name;
-    
-    // Create a unique voter key
-    voterKey = generateVoterKey();
-    
-    // Save voter info
-    database.ref(`sessions/${currentSession}/voters/${voterKey}`).set({
-      name: voterName,
-      timestamp: firebase.database.ServerValue.TIMESTAMP
-    });
-    
-    // Store voter key locally
-    localStorage.setItem(`voter_${currentSession}`, voterKey);
-    
-    // Hide modal
-    modal.style.display = 'none';
-    
-    // Update UI
-    updateVoterDisplay();
+    // Helper to finalize login
+    const finalizeLogin = (key) => {
+      voterName = name;
+      voterKey = key;
+      
+      // Save/Update voter info
+      database.ref(`sessions/${currentSession}/voters/${voterKey}`).update({
+        name: voterName,
+        lastSeen: firebase.database.ServerValue.TIMESTAMP
+      });
+      
+      // Store voter key locally
+      localStorage.setItem(`voter_${currentSession}`, voterKey);
+      
+      // Hide modal
+      modal.style.display = 'none';
+      
+      // Update UI
+      updateVoterDisplay();
+      
+      // Reload votes to reflect this user's history
+      loadVotes();
+    };
+
+    // Check if user exists by name (handles both old random keys and new deterministic keys)
+    database.ref(`sessions/${currentSession}/voters`)
+      .orderByChild('name')
+      .equalTo(name)
+      .once('value', (snapshot) => {
+        if (snapshot.exists()) {
+          // User exists - get the first match
+          const voters = snapshot.val();
+          const existingKey = Object.keys(voters)[0];
+          
+          // User exists - ask for confirmation
+          if (confirm(`A voter named "${name}" already exists.\n\nIs this you?\n\nClick OK to load your previous votes.\nClick Cancel to enter a different name.`)) {
+            finalizeLogin(existingKey);
+          } else {
+            input.value = '';
+            input.focus();
+          }
+        } else {
+          // New user - generate deterministic key
+          const newKey = generateVoterKey(name);
+          finalizeLogin(newKey);
+        }
+      });
   };
   
-  submitBtn.addEventListener('click', submitName);
-  input.addEventListener('keypress', (e) => {
+  // Use onclick to prevent duplicate listeners if promptForName is called multiple times
+  submitBtn.onclick = submitName;
+  input.onkeypress = (e) => {
     if (e.key === 'Enter') {
       submitName();
     }
-  });
+  };
 }
 
 /**
@@ -132,10 +162,14 @@ function updateVoterDisplay() {
 }
 
 /**
- * Generate a unique voter key
+ * Generate a deterministic voter key based on name
+ * This allows users to "log in" by entering the same name
  */
-function generateVoterKey() {
-  return 'voter_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+function generateVoterKey(name) {
+  if (!name) return 'voter_' + Date.now();
+  // Create a safe key from the name: lowercase, alphanumeric only
+  const safeName = name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+  return 'voter_' + safeName;
 }
 
 /**
@@ -246,6 +280,10 @@ function updateVoteButton(photoId, voteType, isActive) {
  * Load all votes and set up real-time listeners
  */
 function loadVotes() {
+  // Cleanup existing listeners to avoid duplicates
+  activeListeners.forEach(ref => ref.off());
+  activeListeners = [];
+
   const voteControlElements = document.querySelectorAll('.vote-controls[data-photo-id]');
   
   voteControlElements.forEach((element) => {
@@ -253,34 +291,51 @@ function loadVotes() {
     const sanitizedPhotoId = sanitizePhotoId(photoId);
     const votesRef = database.ref(`sessions/${currentSession}/votes/${sanitizedPhotoId}`);
     
+    // Track listener for cleanup
+    activeListeners.push(votesRef);
+    
     // Listen for vote changes
     votesRef.on('value', (snapshot) => {
       const votes = snapshot.val() || {};
       
       // Count votes by type
-      const voteCounts = { like: 0, ok: 0, dislike: 0 };
+      const voteCounts = { 
+        strongly_like: 0, 
+        like: 0, 
+        fits_set: 0, 
+        not_good: 0 
+      };
+      
       let userVote = null;
       let userComment = '';
       
       Object.entries(votes).forEach(([key, voteData]) => {
-        const voteType = voteData.vote;
+        let voteType = voteData.vote;
+        
+        // Backward compatibility mapping
+        if (voteType === 'ok') voteType = 'fits_set';
+        if (voteType === 'dislike') voteType = 'not_good';
+        
         if (voteCounts[voteType] !== undefined) {
           voteCounts[voteType]++;
         }
+        
         if (key === voterKey) {
-          userVote = voteType;
+          userVote = voteType; // Use mapped type for UI state
           userComment = voteData.comment || '';
         }
       });
       
       // Update vote count displays in buttons
+      const sLikeBtn = element.querySelector('.vote-strongly_like .count');
       const likeBtn = element.querySelector('.vote-like .count');
-      const okBtn = element.querySelector('.vote-ok .count');
-      const dislikeBtn = element.querySelector('.vote-dislike .count');
+      const fitsBtn = element.querySelector('.vote-fits_set .count');
+      const notGoodBtn = element.querySelector('.vote-not_good .count');
       
+      if (sLikeBtn) sLikeBtn.textContent = voteCounts.strongly_like;
       if (likeBtn) likeBtn.textContent = voteCounts.like;
-      if (okBtn) okBtn.textContent = voteCounts.ok;
-      if (dislikeBtn) dislikeBtn.textContent = voteCounts.dislike;
+      if (fitsBtn) fitsBtn.textContent = voteCounts.fits_set;
+      if (notGoodBtn) notGoodBtn.textContent = voteCounts.not_good;
 
       // Update comment if not focused
       const commentInput = element.querySelector('.vote-comment-input');
@@ -291,13 +346,15 @@ function loadVotes() {
       // Update vote summary under image
       const summaryElement = document.querySelector(`.vote-summary[data-photo-id="${photoId}"]`);
       if (summaryElement) {
-        const summaryLike = summaryElement.querySelector('.summary-like');
-        const summaryOk = summaryElement.querySelector('.summary-ok');
-        const summaryDislike = summaryElement.querySelector('.summary-dislike');
+        const sLikeSum = summaryElement.querySelector('.summary-strongly_like');
+        const likeSum = summaryElement.querySelector('.summary-like');
+        const fitsSum = summaryElement.querySelector('.summary-fits_set');
+        const notGoodSum = summaryElement.querySelector('.summary-not_good');
         
-        if (summaryLike) summaryLike.textContent = `😍 ${voteCounts.like}`;
-        if (summaryOk) summaryOk.textContent = `😐 ${voteCounts.ok}`;
-        if (summaryDislike) summaryDislike.textContent = `😞 ${voteCounts.dislike}`;
+        if (sLikeSum) sLikeSum.textContent = `😍 ${voteCounts.strongly_like}`;
+        if (likeSum) likeSum.textContent = `🙂 ${voteCounts.like}`;
+        if (fitsSum) fitsSum.textContent = `🧩 ${voteCounts.fits_set}`;
+        if (notGoodSum) notGoodSum.textContent = `❌ ${voteCounts.not_good}`;
       }
       
       // Update button states
@@ -316,6 +373,9 @@ function loadVotes() {
  * Clean up Firebase listeners
  */
 function cleanupVoting() {
+  activeListeners.forEach(ref => ref.off());
+  activeListeners = [];
+  
   if (currentSession) {
     database.ref(`sessions/${currentSession}/votes`).off();
   }

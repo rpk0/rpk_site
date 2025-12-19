@@ -203,27 +203,106 @@
       gap: 5px;
     }
 
-    .vote-breakdown-item.like {
-      color: #4caf50;
-    }
+    .vote-breakdown-item.strongly_like { color: #e91e63; font-weight: bold; }
+    .vote-breakdown-item.like { color: #4caf50; }
+    .vote-breakdown-item.fits_set { color: #ff9800; }
+    .vote-breakdown-item.not_good { color: #f44336; }
 
-    .vote-breakdown-item.ok {
-      color: #ffc107;
-    }
-
-    .vote-breakdown-item.dislike {
-      color: #f44336;
-    }
-
+    .strongly_like { color: #e91e63; font-weight: bold; }
     .like { color: #4caf50; font-weight: bold; }
-    .ok { color: #ffc107; font-weight: bold; }
-    .dislike { color: #f44336; font-weight: bold; }
+    .fits_set { color: #ff9800; font-weight: bold; }
+    .not_good { color: #f44336; font-weight: bold; }
 
     .photo-votes {
       font-size: 24px;
       font-weight: 700;
       color: #4caf50;
       flex-shrink: 0;
+      text-align: right;
+    }
+    
+    .photo-score {
+      font-size: 14px;
+      color: #666;
+      font-weight: normal;
+      display: block;
+    }
+
+    .smart-selection {
+      background: #fff;
+      border: 2px solid #4caf50;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+
+    .smart-selection h3 {
+      margin-bottom: 15px;
+      color: #2e7d32;
+    }
+
+    .selection-controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .selection-input {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: 80px;
+    }
+
+    .selection-btn {
+      padding: 8px 16px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .selection-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+    }
+
+    .selection-item {
+      position: relative;
+    }
+
+    .selection-item img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .selection-score {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 2px 6px;
+      font-size: 12px;
+      border-radius: 4px 0 4px 0;
+    }
+    
+    .bubble-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px dashed #ccc;
+    }
+    
+    .bubble-title {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+      font-weight: bold;
     }
 
     .voters-list {
@@ -316,7 +395,7 @@
   </div>
 
   <div class="container" id="admin-content" style="display: none;">
-    <h1>📊 Voting Results Admin</h1>
+    <h1><span style="filter: grayscale(100%);">🧠</span> Voting Results Admin</h1>
     <p class="subtitle">View voting results and export data</p>
 
     <div class="session-selector">
@@ -342,6 +421,24 @@
         <div class="stat-card">
           <div class="stat-value" id="total-photos">0</div>
           <div class="stat-label">Photos</div>
+        </div>
+      </div>
+
+      <div class="smart-selection" id="smart-selection-section">
+        <h3>✨ Smart Selection</h3>
+        <div class="selection-controls">
+          <label>Target Set Size:</label>
+          <input type="number" id="target-size" class="selection-input" value="15" min="1">
+          <button class="selection-btn" onclick="generateSelection()">Generate Selection</button>
+        </div>
+        <div id="selection-results" style="display: none;">
+          <h4>The Cut (<span id="cut-count">0</span>)</h4>
+          <div class="selection-grid" id="the-cut"></div>
+          
+          <div class="bubble-section">
+            <div class="bubble-title">The Bubble (Next 5)</div>
+            <div class="selection-grid" id="the-bubble"></div>
+          </div>
         </div>
       </div>
 
@@ -583,6 +680,8 @@
       return id;
     }
 
+    let processedPhotos = [];
+
     function displayResults(data) {
       const voters = data.voters || {};
       const votes = data.votes || {};
@@ -597,16 +696,34 @@
         const voteCount = Object.keys(photoVoters).length;
         totalVotes += voteCount;
         
-        // Count by vote type
-        const voteCounts = { like: 0, ok: 0, dislike: 0, total: voteCount };
+        // Count by vote type & Calculate Score
+        // Weights: Strongly Like (+3), Like (+1), Fits Set (+0.5), Not Good (-1)
+        const voteCounts = { strongly_like: 0, like: 0, fits_set: 0, not_good: 0, total: voteCount };
+        let score = 0;
+
         Object.values(photoVoters).forEach(vote => {
-          if (vote.vote && voteCounts[vote.vote] !== undefined) {
-            voteCounts[vote.vote]++;
+          let type = vote.vote;
+          // Backward compatibility
+          if (type === 'ok') type = 'fits_set';
+          if (type === 'dislike') type = 'not_good';
+          
+          if (voteCounts[type] !== undefined) {
+            voteCounts[type]++;
           }
+
+          // Score calculation
+          if (type === 'strongly_like') score += 3;
+          else if (type === 'like') score += 1;
+          else if (type === 'fits_set') score += 0.5;
+          else if (type === 'not_good') score -= 1;
+          // Old 'ok' mapped to fits_set (+0.5), 'dislike' to not_good (-1)
+          else if (type === 'ok') score += 0.5;
+          else if (type === 'dislike') score -= 1;
         });
         
         photoVotes[photo] = {
           count: voteCount,
+          score: score,
           voters: photoVoters,
           voteCounts: voteCounts,
           originalPhotoId: Object.values(photoVoters).find(v => v.photoId)?.photoId || unsanitizePhotoId(photo)
@@ -618,20 +735,38 @@
       document.getElementById('total-votes').textContent = totalVotes;
       document.getElementById('total-photos').textContent = Object.keys(photoVotes).length;
 
-      // Display photos sorted by votes
+      // Store for smart selection
+      processedPhotos = Object.entries(photoVotes).map(([id, data]) => ({
+        id,
+        ...data
+      })).sort((a, b) => {
+        // Sort by Score first, then by Strongly Like count
+        if (b.score !== a.score) return b.score - a.score;
+        return b.voteCounts.strongly_like - a.voteCounts.strongly_like;
+      });
+
+      // Display photos sorted by votes (default view)
       const photoResultsEl = document.getElementById('photo-results');
       photoResultsEl.innerHTML = '';
 
-      const sortedPhotos = Object.entries(photoVotes)
-        .sort((a, b) => b[1].count - a[1].count);
-
-      sortedPhotos.forEach(([photo, data]) => {
+      // Sort by raw vote count for the list view (or maybe score is better? let's stick to count for now as requested "Photos by Votes")
+      // Actually, let's sort by Score for the main list too, it's more useful now.
+      processedPhotos.forEach(data => {
         const photoItem = document.createElement('div');
         photoItem.className = 'photo-item';
         
         const votersList = Object.values(data.voters)
           .map(v => {
-            let text = `<strong>${v.voterName}</strong> <span class="${v.vote}">${v.vote || 'vote'}</span>`;
+            let type = v.vote;
+            if (type === 'ok') type = 'fits_set';
+            if (type === 'dislike') type = 'not_good';
+            
+            let label = type;
+            if (type === 'strongly_like') label = 'Love';
+            if (type === 'fits_set') label = 'Fits';
+            if (type === 'not_good') label = 'No';
+
+            let text = `<strong>${v.voterName}</strong> <span class="${type}">${label}</span>`;
             if (v.comment) {
               text += `<div style="margin-top: 4px; font-size: 12px; color: #555; font-style: italic; border-top: 1px solid #eee; padding-top: 2px;">"${v.comment}"</div>`;
             }
@@ -658,13 +793,17 @@
           <div class="photo-info">
             <div class="photo-name" style="word-break: break-all;">${displayName}</div>
             <div class="vote-breakdown">
-              <div class="vote-breakdown-item like">👍 ${data.voteCounts.like}</div>
-              <div class="vote-breakdown-item ok">🤷 ${data.voteCounts.ok}</div>
-              <div class="vote-breakdown-item dislike">👎 ${data.voteCounts.dislike}</div>
+              <div class="vote-breakdown-item strongly_like">😍 ${data.voteCounts.strongly_like}</div>
+              <div class="vote-breakdown-item like">🙂 ${data.voteCounts.like}</div>
+              <div class="vote-breakdown-item fits_set">🧩 ${data.voteCounts.fits_set}</div>
+              <div class="vote-breakdown-item not_good">❌ ${data.voteCounts.not_good}</div>
             </div>
             <div class="voters-list">${votersList}</div>
           </div>
-          <div class="photo-votes">${data.count}</div>
+          <div class="photo-votes">
+            ${data.score.toFixed(1)}
+            <span class="photo-score">Score</span>
+          </div>
         `;
         
         photoResultsEl.appendChild(photoItem);
@@ -728,6 +867,51 @@
       });
 
       document.getElementById('results').style.display = 'block';
+      
+      // Auto-generate selection if data loaded
+      generateSelection();
+    }
+
+    function generateSelection() {
+      const targetSize = parseInt(document.getElementById('target-size').value) || 15;
+      const cutContainer = document.getElementById('the-cut');
+      const bubbleContainer = document.getElementById('the-bubble');
+      
+      cutContainer.innerHTML = '';
+      bubbleContainer.innerHTML = '';
+      
+      // processedPhotos is already sorted by Score
+      const theCut = processedPhotos.slice(0, targetSize);
+      const theBubble = processedPhotos.slice(targetSize, targetSize + 5);
+      
+      document.getElementById('cut-count').textContent = theCut.length;
+      
+      const renderThumb = (data) => {
+        const originalId = data.originalPhotoId;
+        let imagePath = originalId;
+        if (!originalId.includes('://')) {
+          imagePath = `/critiq/${currentData.sessionId}/${originalId}`;
+        }
+        
+        return `
+          <div class="selection-item">
+            <a href="${imagePath}" target="_blank">
+              <img src="${imagePath}" loading="lazy">
+            </a>
+            <div class="selection-score">${data.score.toFixed(1)}</div>
+          </div>
+        `;
+      };
+      
+      theCut.forEach(data => {
+        cutContainer.innerHTML += renderThumb(data);
+      });
+      
+      theBubble.forEach(data => {
+        bubbleContainer.innerHTML += renderThumb(data);
+      });
+      
+      document.getElementById('selection-results').style.display = 'block';
     }
 
     function exportData() {
