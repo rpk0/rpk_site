@@ -642,6 +642,9 @@
         // Get the original photo ID (with extension) for image path
         const originalPhotoId = data.originalPhotoId;
         
+        // Extract just the filename for display
+        const displayName = originalPhotoId.split('/').pop();
+        
         // Construct image path based on session ID
         let imagePath = originalPhotoId;
         if (!originalPhotoId.includes('://')) {
@@ -653,7 +656,7 @@
             <img src="${imagePath}" alt="${originalPhotoId}" class="photo-thumbnail" onerror="this.style.display='none'">
           </a>
           <div class="photo-info">
-            <div class="photo-name" style="word-break: break-all;">${originalPhotoId}</div>
+            <div class="photo-name" style="word-break: break-all;">${displayName}</div>
             <div class="vote-breakdown">
               <div class="vote-breakdown-item like">👍 ${data.voteCounts.like}</div>
               <div class="vote-breakdown-item ok">🤷 ${data.voteCounts.ok}</div>
