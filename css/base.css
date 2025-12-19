@@ -1502,11 +1502,17 @@ blockquote {
     left: -230px;
     transition: left .5s;
     z-index: 2;
+    pointer-events: none;
   }
 
   .sidebar.toggle {
     left: 0;
     box-shadow: 1px 1px 15px rgba(80, 79, 79, 0.12);
+    pointer-events: auto;
+  }
+
+  .sidebar .menu-icon {
+    pointer-events: auto;
   }
 
   .sidebar .name em:before {
@@ -2068,7 +2074,7 @@ blockquote {
   background: #333;
 }
 
-/* Mobile responsiveness */
+/* Mobile responsiveness for voting system */
 @media screen and (max-width: 768px) {
   .modal-content {
     padding: 30px 20px;
@@ -2084,13 +2090,15 @@ blockquote {
   }
 
   .vote-buttons {
-    gap: 8px;
+    gap: 6px;
     padding: 12px 0;
   }
 
   .vote-btn {
     min-height: 70px;
-    padding: 10px 6px;
+    padding: 8px 4px;
+    flex: 1;
+    max-width: none;
   }
 
   .vote-btn .icon {
@@ -2098,25 +2106,14 @@ blockquote {
   }
 
   .vote-btn .label {
-    font-size: 12px;
+    font-size: 10px;
+    white-space: nowrap;
   }
 
   .vote-btn .count {
-    font-size: 11px;
-    min-width: 20px;
-    height: 20px;
-  }
-
-  .vote-option {
-    padding: 10px 6px;
-    min-height: 70px;
-  }
-
-  .vote-option .icon {
-    font-size: 20px;
-  }
-
-  .vote-option .label {
-    font-size: 11px;
+    font-size: 10px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
   }
 }
