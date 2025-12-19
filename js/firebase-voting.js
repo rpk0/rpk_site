@@ -80,46 +80,48 @@ function promptForName() {
       voterName = name;
       voterKey = key;
       
-      // Save/Update voter info
-      database.ref(`sessions/${currentSession}/voters/${voterKey}`).update({
+      console.log('Finalizing login with key:', voterKey, 'session:', currentSession);
+      
+      // Save/Update voter info (use set to ensure it works for both new and existing users)
+      database.ref(`sessions/${currentSession}/voters/${voterKey}`).set({
         name: voterName,
         lastSeen: firebase.database.ServerValue.TIMESTAMP
+      }).then(() => {
+        console.log('Voter info saved successfully');
+        
+        // Store voter key locally
+        localStorage.setItem(`voter_${currentSession}`, voterKey);
+        
+        // Hide modal
+        modal.style.display = 'none';
+        
+        // Update UI
+        updateVoterDisplay();
+        
+        // Reload votes to reflect this user's history
+        loadVotes();
+      }).catch(error => {
+        console.error('Error saving voter info:', error);
+        alert('Failed to save voter information. Please check your internet connection and try again.');
       });
-      
-      // Store voter key locally
-      localStorage.setItem(`voter_${currentSession}`, voterKey);
-      
-      // Hide modal
-      modal.style.display = 'none';
-      
-      // Update UI
-      updateVoterDisplay();
-      
-      // Reload votes to reflect this user's history
-      loadVotes();
     };
 
-    // Check if user exists by name (handles both old random keys and new deterministic keys)
-    database.ref(`sessions/${currentSession}/voters`)
-      .orderByChild('name')
-      .equalTo(name)
+    // Check if user exists by checking the deterministic key directly
+    const potentialKey = generateVoterKey(name);
+    
+    database.ref(`sessions/${currentSession}/voters/${potentialKey}`)
       .once('value', (snapshot) => {
         if (snapshot.exists()) {
-          // User exists - get the first match
-          const voters = snapshot.val();
-          const existingKey = Object.keys(voters)[0];
-          
           // User exists - ask for confirmation
           if (confirm(`A voter named "${name}" already exists.\n\nIs this you?\n\nClick OK to load your previous votes.\nClick Cancel to enter a different name.`)) {
-            finalizeLogin(existingKey);
+            finalizeLogin(potentialKey);
           } else {
             input.value = '';
             input.focus();
           }
         } else {
-          // New user - generate deterministic key
-          const newKey = generateVoterKey(name);
-          finalizeLogin(newKey);
+          // New user - use the generated key
+          finalizeLogin(potentialKey);
         }
       });
   };
@@ -187,6 +189,7 @@ function sanitizePhotoId(photoId) {
  */
 function voteForPhoto(photoId, voteType) {
   console.log('voteForPhoto called:', photoId, voteType);
+  console.log('Current state - voterKey:', voterKey, 'voterName:', voterName, 'session:', currentSession);
   
   if (!voterKey || !voterName) {
     console.log('No voter key/name, prompting for name');
@@ -194,7 +197,11 @@ function voteForPhoto(photoId, voteType) {
     return;
   }
   
-  console.log('Voter:', voterName, 'Key:', voterKey, 'Session:', currentSession);
+  if (!currentSession) {
+    console.error('No current session!');
+    alert('Session not initialized. Please refresh the page.');
+    return;
+  }
   
   // Sanitize the photo ID to remove Firebase-invalid characters
   const sanitizedPhotoId = sanitizePhotoId(photoId);
