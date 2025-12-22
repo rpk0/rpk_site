@@ -1836,42 +1836,45 @@ blockquote {
 
 /* Critiq page layout */
 .photography.critiq .inner-center {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 /* Voter display */
 #voter-display {
   text-align: center;
-  padding: 15px;
-  background: #f5f5f5;
-  border-radius: 8px;
-  margin-bottom: 30px;
-  font-size: 16px;
+  padding: 16px 20px;
+  background: #fafafa;
+  border: 1px solid #e6e6e6;
+  margin-bottom: 40px;
+  font-size: 15px;
+  color: #666;
+}
   color: #666;
 }
 
 /* Vote summary under image */
 .vote-summary {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   justify-content: center;
-  padding: 8px 0;
-  font-size: 11px;
+  padding: 12px 0;
+  font-size: 12px;
   color: #999;
-  font-weight: 500;
-  border-bottom: 1px solid #f0f0f0;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .vote-summary span {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
 /* Photo grid for critiq - reuses standard photo layout */
 .critiq .inner-center ul li {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .critiq .inner-center ul li img {
@@ -1882,28 +1885,27 @@ blockquote {
 
 /* Vote controls container */
 .vote-controls {
-  padding: 15px 0;
+  padding: 16px 0;
 }
 
 /* Vote buttons */
 .vote-buttons {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   justify-content: center;
-  padding: 15px 0;
+  padding: 16px 0;
 }
 
 .vote-btn {
   flex: 1;
-  max-width: 120px;
+  max-width: 110px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 8px;
-  background: #f9f9f9;
-  border: 2px solid transparent;
-  border-radius: 8px;
+  padding: 14px 8px;
+  background: #fff;
+  border: 1px solid #e6e6e6;
   cursor: pointer;
   font-family: inherit;
   transition: all 0.2s ease;
@@ -1911,96 +1913,96 @@ blockquote {
 }
 
 .vote-btn:hover {
-  background: #f0f0f0;
-  transform: translateY(-2px);
+  background: #fafafa;
+  border-color: #333;
 }
 
 .vote-btn .icon {
-  font-size: 24px;
-  margin-bottom: 4px;
+  font-size: 22px;
+  margin-bottom: 6px;
   display: block;
 }
 
 .vote-btn .label {
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 11px;
+  font-weight: 400;
   color: #666;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   display: block;
+  letter-spacing: 0.5px;
 }
 
 .vote-btn .count {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 24px;
-  height: 24px;
-  background: #e0e0e0;
-  border-radius: 12px;
-  padding: 0 8px;
-  font-weight: 700;
-  font-size: 12px;
-  color: #666;
+  min-width: 22px;
+  height: 22px;
+  background: #f0f0f0;
+  padding: 0 6px;
+  font-weight: 600;
+  font-size: 11px;
+  color: #999;
 }
 
 /* Active states */
 .vote-btn.vote-strongly_like.active {
   background: #fce4ec;
-  border-color: #e91e63;
+  border-color: #c2185b;
 }
 
 .vote-btn.vote-strongly_like.active .label {
   color: #c2185b;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .vote-btn.vote-strongly_like.active .count {
-  background: #e91e63;
+  background: #c2185b;
   color: #fff;
 }
 
 .vote-btn.vote-like.active {
   background: #e8f5e9;
-  border-color: #4caf50;
+  border-color: #388e3c;
 }
 
 .vote-btn.vote-like.active .label {
-  color: #2e7d32;
-  font-weight: 600;
+  color: #388e3c;
+  font-weight: 500;
 }
 
 .vote-btn.vote-like.active .count {
-  background: #4caf50;
+  background: #388e3c;
   color: #fff;
 }
 
 .vote-btn.vote-fits_set.active {
-  background: #e3f2fd;
-  border-color: #2196f3;
+  background: #fff3e0;
+  border-color: #f57c00;
 }
 
 .vote-btn.vote-fits_set.active .label {
-  color: #1565c0;
-  font-weight: 600;
+  color: #e65100;
+  font-weight: 500;
 }
 
 .vote-btn.vote-fits_set.active .count {
-  background: #2196f3;
+  background: #f57c00;
   color: #fff;
 }
 
 .vote-btn.vote-not_good.active {
   background: #ffebee;
-  border-color: #f44336;
+  border-color: #d32f2f;
 }
 
 .vote-btn.vote-not_good.active .label {
   color: #c62828;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .vote-btn.vote-not_good.active .count {
-  background: #f44336;
+  background: #d32f2f;
   color: #fff;
 }
 
@@ -2012,7 +2014,7 @@ blockquote {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: #fff;
   align-items: center;
   justify-content: center;
   z-index: 9000;
@@ -2021,63 +2023,69 @@ blockquote {
 .modal-content {
   background: #fff;
   padding: 40px;
-  border-radius: 12px;
-  max-width: 500px;
+  max-width: 400px;
   width: 90%;
   text-align: center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .modal-content h2 {
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   font-size: 28px;
+  font-weight: 300;
   color: #333;
+  letter-spacing: 0.5px;
 }
 
 .modal-content p {
-  margin: 0 0 25px 0;
-  font-size: 16px;
-  color: #666;
+  margin: 0 0 30px 0;
+  font-size: 15px;
+  color: #999;
 }
 
 #voter-name-input {
   width: 100%;
-  padding: 15px;
-  font-size: 16px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  padding: 16px 20px;
+  font-size: 17px;
+  border: 1px solid #d4d4d4;
+  margin-bottom: 16px;
   font-family: inherit;
   transition: border-color 0.2s ease;
+  text-align: center;
 }
 
 #voter-name-input:focus {
   outline: none;
-  border-color: #474747;
+  border-color: #333;
+}
+
+#voter-name-input::placeholder {
+  color: #ccc;
 }
 
 .submit-name-btn {
   width: 100%;
-  padding: 15px;
-  background: #474747;
+  padding: 16px;
+  background: #333;
   color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 600;
+  border: 1px solid #333;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
   font-family: inherit;
 }
 
 .submit-name-btn:hover {
-  background: #333;
+  background: #474747;
+  border-color: #474747;
 }
 
 /* Mobile responsiveness for voting system */
 @media screen and (max-width: 768px) {
   .modal-content {
-    padding: 30px 20px;
+    padding: 30px 24px;
   }
 
   .modal-content h2 {
