@@ -498,28 +498,100 @@ SECTION 404
 ----------------------------------------------------------------------- */
 
 .not-found {
-  position: absolute;
-  left: calc(50% + 115px);
-  top: 50%;
-  transform: translate(-50%, -50%);
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
 }
 
-.not-found h1 {
-  font-size: 32px;
-  letter-spacing: 4px;
-  margin: 18px 0 40px;
+.not-found-inner {
   text-align: center;
+  max-width: 500px;
 }
 
-.not-found p {
-  margin: 18px 0 5px;
-  letter-spacing: 4px;
-  text-align: center;
+.not-found-gif {
+  position: relative;
+  margin-bottom: 30px;
 }
 
-.not-found span {
+.not-found-gif img {
+  max-width: 100%;
+  height: auto;
+  opacity: 0.75;
+  border-radius: 4px;
+  transition: opacity 0.3s ease;
+}
+
+.not-found-gif:hover img {
+  opacity: 1;
+}
+
+.not-found-content h1 {
+  font-size: 28px;
+  letter-spacing: 2px;
+  margin: 0 0 15px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.not-found-content h1 span {
   font-weight: 700;
+  color: #31472D;
 }
+
+.not-found-message {
+  font-size: 16px;
+  color: #666;
+  letter-spacing: 1px;
+  margin: 0 0 30px;
+  line-height: 1.6;
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.not-found-actions .btn {
+  min-width: 140px;
+  gap: 8px;
+}
+
+.not-found-actions .btn i {
+  font-size: 14px;
+  width: 14px;
+  text-align: center;
+}
+
+/* Mobile styles for 404 */
+@media only screen and (max-width: 768px) {
+  .not-found {
+    padding: 30px 15px;
+  }
+  
+  .not-found-content h1 {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+  
+  .not-found-message {
+    font-size: 14px;
+  }
+  
+  .not-found-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .not-found-actions .btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
 /* -----------------------------------------------------------------------
 
 SECTION POSTS
