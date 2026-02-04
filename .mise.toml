@@ -1,0 +1,6 @@
+[tools]
+ruby = "3.3.6"
+
+[env]
+# Ensure bundler uses the local vendor directory
+BUNDLE_PATH = "vendor/bundle"
