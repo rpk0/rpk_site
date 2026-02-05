@@ -497,8 +497,7 @@ SECTION 404
 
 ----------------------------------------------------------------------- */
 
-.not-found {
-  min-height: 100%;
+.content.not-found {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -508,6 +507,7 @@ SECTION 404
 .not-found-inner {
   text-align: center;
   max-width: 500px;
+  width: 100%;
 }
 
 .not-found-gif {
@@ -568,7 +568,7 @@ SECTION 404
 
 /* Mobile styles for 404 */
 @media only screen and (max-width: 768px) {
-  .not-found {
+  .content.not-found {
     padding: 30px 15px;
   }
   
