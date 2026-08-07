@@ -1,7 +1,8 @@
 ---
 layout: post_layout
 title: What film camera to buy
-avatar: https://cdn3.iconfinder.com/data/icons/camera-icons/512/camera-leica-512.png
+avatar: /images/posts/avatars/camera_leica.png
+image: /images/posts/what_to_buy/henri_cartier_bresson_children.jpg
 category: Photography
 tags: [Photography, Cameras, Film, Analogue, Buyers Guide]
 identifier: posts

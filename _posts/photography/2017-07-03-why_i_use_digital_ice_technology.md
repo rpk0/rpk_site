@@ -2,6 +2,7 @@
 layout: post_layout
 title: Why I use Digital ICE Technology
 avatar: /images/posts/digital_ice/ice_good.png
+image: /images/posts/digital_ice/all_ice.jpg
 category: Photography
 tags: [Photography, Scanning, Film, Analogue, Digital ICE, Epson]
 identifier: posts

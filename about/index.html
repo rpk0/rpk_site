@@ -2,14 +2,21 @@
 layout: layout
 title: "About"
 group: "navigation"
-path: about
+section: about
 ---
 
 <section class="content about">
 	<div class="main-text inner-center">
+		<h1 class="page-title">About</h1>
 		<div class="about-img">
-	  	<img src="../images/mylos_creatures-about.jpg" alt="">
-	  </div>
+			{%- assign dims = site.data.image_sizes['/images/mylos_creatures-about.jpg'] %}
+			<picture>
+				<source srcset="/images/mylos_creatures-about.webp" type="image/webp">
+				<img src="/images/mylos_creatures-about.jpg" alt="Kostis Karampinas"
+						 {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
+						 fetchpriority="high" decoding="async">
+			</picture>
+		</div>
 		<span>Hi,</span>
 		my name is Kostis and I'm a software engineer at <a href="https://www.skroutz.gr">Skroutz.gr</a>.
 		Besides my life as a developer I enjoy photography. I am self-taught and started my involvement with photography in 2012.

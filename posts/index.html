@@ -2,35 +2,46 @@
 layout: layout
 title: "Posts"
 group: "navigation"
+description: "Writing about film photography, gear, darkroom and scanning by Kostis Karampinas."
 ---
 
 <section class="content posts">
-	<ul class="listing">
-    {% for post in paginator.posts %}
-    <li class="post-item" data-tags="{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}" onclick="window.location.href='{{ post.url }}';">
-      <div class="post-avatar"><img src="{{ post.avatar }}" alt="post_avatar"></div>
-      <div class="post-title">{{ post.title }}</div>
+  <div class="inner-center">
+    <h1 class="page-title">Posts</h1>
+  </div>
+
+  <ul class="listing">
+    {%- for post in paginator.posts %}
+    <li class="post-item" data-tags="{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}">
+      {%- if post.avatar %}
+      <div class="post-avatar"><img src="{{ post.avatar }}" alt="" width="70" height="70" loading="lazy" decoding="async"></div>
+      {%- endif %}
+      {%- comment -%}
+        The whole card used to be an <li onclick=...>, which no keyboard or
+        crawler could follow. Now it is a real link; ::after stretches its hit
+        area over the card so the click target is unchanged.
+      {%- endcomment %}
+      <h2 class="post-title"><a class="post-link" href="{{ post.url }}">{{ post.title }}</a></h2>
       <span class="post-date">{{ post.date | date: "%B %e, %Y" }}</span>
+      {%- if post.tags.size > 0 %}
       <span class="post-tags">
-        {% for tag in post.tags %}
-          <button class="tag-badge" data-tag="{{ tag | slugify }}" onclick="event.stopPropagation();">{{ tag }}</button>
-        {% endfor %}
+        {%- for tag in post.tags %}
+        <button type="button" class="tag-badge" data-tag="{{ tag | slugify }}">{{ tag }}</button>
+        {%- endfor %}
       </span>
+      {%- endif %}
     </li>
-    {% endfor %}
-	</ul>
-  <nav id="pagination" class="pagination-buttons">
-     {% if paginator.previous_page %}
-       {% if paginator.previous_page == 1 %}
-       <a class="btn" href="/posts" title="Previous Page">&laquo; Newer</a>
-       {% else %}
-       <a class="btn" href="/page{{ paginator.previous_page }}/" title="Previous Page">&laquo; Newer</a>
-       {% endif %}
-     {% endif %}
+    {%- endfor %}
+  </ul>
 
-     {% if paginator.next_page %}
-       <a class="btn" href="/posts/page{{ paginator.next_page }}/" title="Next Page">Older &raquo;</a>
-     {% endif %}
-   </nav>
+  {%- if paginator.total_pages > 1 %}
+  <nav id="pagination" class="pagination-buttons" aria-label="Pagination">
+    {%- if paginator.previous_page %}
+    <a class="btn" href="{{ paginator.previous_page_path | relative_url }}" rel="prev">&laquo; Newer</a>
+    {%- endif %}
+    {%- if paginator.next_page %}
+    <a class="btn" href="{{ paginator.next_page_path | relative_url }}" rel="next">Older &raquo;</a>
+    {%- endif %}
+  </nav>
+  {%- endif %}
 </section>
-
