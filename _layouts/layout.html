@@ -39,7 +39,7 @@
     {%- if page.section == "projects" or page.url == "/" %}
     <script defer src="{{ '/js/projects-preview.js' | asset }}"></script>
     {%- endif %}
-    {%- if page.url == "/posts/" or page.url contains "/posts/page" %}
+    {%- if page.url == "/posts/" %}
     <script defer src="{{ '/js/tag-filter.js' | asset }}"></script>
     {%- endif %}
   </head>

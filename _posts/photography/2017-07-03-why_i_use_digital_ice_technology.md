@@ -1,6 +1,7 @@
 ---
 layout: post_layout
 title: Why I use Digital ICE Technology
+description: "I accidentally scanned the same negative twice, with and without Digital ICE. Here is the difference, up close."
 avatar: /images/posts/digital_ice/ice_good.png
 image: /images/posts/digital_ice/all_ice.jpg
 category: Photography

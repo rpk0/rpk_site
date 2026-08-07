@@ -1,149 +1,83 @@
-// Tag filtering functionality for posts page
-(function() {
+// Tag filtering on /posts/.
+//
+// Filters the full post list in place. The old version filtered only the posts
+// on the current pagination page, so with more than one page a tag could
+// silently miss matches; the index no longer paginates for that reason.
+(function () {
   'use strict';
 
-  // Initialize tag filtering on page load
-  document.addEventListener('DOMContentLoaded', function() {
-    const tagBadges = document.querySelectorAll('.tag-badge');
-    const postItems = document.querySelectorAll('.post-item');
-    
-    if (tagBadges.length === 0 || postItems.length === 0) {
-      return; // Not on posts page
+  document.addEventListener('DOMContentLoaded', function () {
+    var bar = document.querySelector('.tag-filter');
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.post-card'));
+    if (!bar || !cards.length) {
+      return;
     }
 
-    // Check URL for tag parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    const selectedTag = urlParams.get('tag');
-    
-    if (selectedTag) {
-      filterByTag(selectedTag);
-      setActiveBadges(selectedTag);
-      showClearButton();
+    var pills = Array.prototype.slice.call(bar.querySelectorAll('.tag-badge'));
+    var status = document.querySelector('.tag-filter-status');
+    var count = document.querySelector('.tag-filter-count');
+    var clear = document.querySelector('.tag-filter-clear');
+    var empty = document.querySelector('.post-list-empty');
+
+    function label(tag) {
+      var pill = pills.filter(function (p) {
+        return p.getAttribute('data-tag') === tag;
+      })[0];
+      return pill ? pill.textContent.trim() : tag.replace(/-/g, ' ');
     }
 
-    // Add click event to all tag badges
-    tagBadges.forEach(function(badge) {
-      badge.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const tag = this.getAttribute('data-tag');
-        
-        // Update URL without page reload
-        const newUrl = window.location.pathname + '?tag=' + tag;
-        window.history.pushState({tag: tag}, '', newUrl);
-        
-        filterByTag(tag);
-        setActiveBadges(tag);
-        showClearButton();
+    function apply(tag) {
+      var shown = 0;
+
+      cards.forEach(function (card) {
+        var tags = ' ' + (card.getAttribute('data-tags') || '') + ' ';
+        var match = !tag || tags.indexOf(' ' + tag + ' ') !== -1;
+        card.hidden = !match;
+        if (match) {
+          shown++;
+        }
       });
-    });
 
-    // Handle browser back/forward buttons
-    window.addEventListener('popstate', function(e) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const tag = urlParams.get('tag');
-      
+      pills.forEach(function (p) {
+        var on = p.getAttribute('data-tag') === tag;
+        p.classList.toggle('is-active', on);
+        p.setAttribute('aria-pressed', String(on));
+      });
+
       if (tag) {
-        filterByTag(tag);
-        setActiveBadges(tag);
-        showClearButton();
-      } else {
-        clearFilter();
+        count.textContent = shown + (shown === 1 ? ' post' : ' posts') + ' tagged “' + label(tag) + '”';
+      }
+      status.hidden = !tag;
+      empty.hidden = shown !== 0;
+    }
+
+    function go(tag, push) {
+      if (push) {
+        var url = tag ? window.location.pathname + '?tag=' + encodeURIComponent(tag) : window.location.pathname;
+        window.history.pushState({ tag: tag }, '', url);
+      }
+      apply(tag);
+    }
+
+    function fromUrl() {
+      return new URLSearchParams(window.location.search).get('tag') || '';
+    }
+
+    bar.addEventListener('click', function (e) {
+      var pill = e.target.closest('.tag-badge');
+      if (pill) {
+        go(pill.getAttribute('data-tag') || '', true);
       }
     });
 
-    function filterByTag(tag) {
-      postItems.forEach(function(item) {
-        const postTags = item.getAttribute('data-tags');
-        if (postTags && postTags.includes(tag)) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
-        }
-      });
+    clear.addEventListener('click', function () {
+      go('', true);
+    });
 
-      // Show message if no posts found
-      const visiblePosts = Array.from(postItems).filter(function(item) {
-        return item.style.display !== 'none';
-      });
+    window.addEventListener('popstate', function () {
+      apply(fromUrl());
+    });
 
-      const existingMessage = document.querySelector('.no-posts-message');
-      if (existingMessage) {
-        existingMessage.remove();
-      }
-
-      if (visiblePosts.length === 0) {
-        const message = document.createElement('li');
-        message.className = 'no-posts-message';
-        message.textContent = 'No posts found with this tag.';
-        document.querySelector('.listing').appendChild(message);
-      }
-
-      // Hide pagination when filtering
-      const pagination = document.getElementById('pagination');
-      if (pagination) {
-        pagination.style.display = 'none';
-      }
-    }
-
-    function setActiveBadges(tag) {
-      tagBadges.forEach(function(badge) {
-        const badgeTag = badge.getAttribute('data-tag');
-        if (badgeTag === tag) {
-          badge.classList.add('active');
-        } else {
-          badge.classList.remove('active');
-        }
-      });
-    }
-
-    function clearFilter() {
-      postItems.forEach(function(item) {
-        item.style.display = '';
-      });
-      
-      tagBadges.forEach(function(badge) {
-        badge.classList.remove('active');
-      });
-
-      const existingMessage = document.querySelector('.no-posts-message');
-      if (existingMessage) {
-        existingMessage.remove();
-      }
-
-      const clearBtn = document.querySelector('.clear-filter-btn');
-      if (clearBtn) {
-        clearBtn.remove();
-      }
-
-      // Show pagination again when filter is cleared
-      const pagination = document.getElementById('pagination');
-      if (pagination) {
-        pagination.style.display = '';
-      }
-    }
-
-    function showClearButton() {
-      // Remove existing button if present
-      const existingBtn = document.querySelector('.clear-filter-btn');
-      if (existingBtn) {
-        existingBtn.remove();
-      }
-
-      // Create clear button
-      const clearBtn = document.createElement('div');
-      clearBtn.className = 'clear-filter-btn';
-      clearBtn.innerHTML =
-        '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" ' +
-        'stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Clear Filter';
-      clearBtn.addEventListener('click', function() {
-        window.history.pushState({}, '', window.location.pathname);
-        clearFilter();
-      });
-
-      // Insert before the listing
-      const listing = document.querySelector('.listing');
-      listing.parentNode.insertBefore(clearBtn, listing);
-    }
+    apply(fromUrl());
   });
 })();

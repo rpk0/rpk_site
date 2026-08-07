@@ -1,6 +1,7 @@
 ---
 layout: post_layout
 title: My photography gear
+description: "Every camera and lens I own and actually use, from the Bronica GS-1 to the Olympus XA2, with a tip for each."
 avatar: /images/posts/avatars/my_gear.jpg
 image: /images/posts/my_gear/my_gear_logo.jpg
 category: Photography

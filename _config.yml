@@ -44,11 +44,8 @@ kramdown:
 # Kept as-is on purpose: /posts/:title renders to /posts/<title>.html and those
 # URLs are already indexed. Changing the shape would need redirects for no gain.
 permalink: posts/:title
-paginate: 6
-paginate_path: "posts/page:num"
 
 plugins:
-  - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed

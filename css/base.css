@@ -1269,83 +1269,162 @@ hr {
   text-align: left;
 }
 
-.listing {
-  margin: 0;
+/* --------------------------------------------------------------------------
+   Posts index
+
+   Horizontal boxed cards, sharing the 1px --rule border used by the essay and
+   project cards. Replaces the full-bleed alternating grey bands, which were
+   the last part of the site not speaking the same visual language.
+   -------------------------------------------------------------------------- */
+
+.post-list {
+  margin: 24px 0 0;
   padding: 0;
   list-style: none;
+  display: grid;
+  gap: 14px;
 }
 
-.listing li {
-  position: relative;
-  padding: 45px 30px;
-  text-align: center;
-  color: #777;
+.post-card {
+  background: var(--bg);
+  border: 1px solid var(--rule);
   transition: transform var(--ease), box-shadow var(--ease);
 }
 
-/* Alternating rows used to be #fafafa / #ddd with white link text on the dark
-   row, which measured about 1.4:1. Both rows now keep --ink text. */
-.listing li:nth-child(odd) {
-  background: var(--bg-soft);
+.post-card[hidden] {
+  display: none;
 }
 
-.listing li:nth-child(even) {
-  background: var(--bg-alt);
-}
-
-@media (hover: hover) {
-  .listing li:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lift);
-    z-index: 1;
-  }
-}
-
-.post-avatar {
-  width: 70px;
-  height: 70px;
-  margin: 0 auto 10px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.post-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.listing .post-title {
-  margin: 0 0 10px;
-  font-size: 3.75rem; /* 60px */
-}
-
-/* The card used to be an <li onclick>. This stretches the real link over the
-   whole card so the hit area is unchanged but keyboard and crawlers work. */
-.post-link {
+.post-card > a {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: stretch;
   color: inherit;
 }
 
-.post-link::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-}
-
-.listing .post-date {
+.post-card-media {
   display: block;
-  font-size: var(--fs-meta);
+  overflow: hidden;
+  background: var(--bg-alt);
 }
 
-.listing .post-tags {
+.post-card-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.post-card-body {
+  display: block;
+  padding: 20px 24px;
+  text-align: left;
+}
+
+.post-card-title {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.post-card-date {
+  display: block;
+  margin-top: 6px;
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+.post-card-excerpt {
   display: block;
   margin-top: 10px;
+  line-height: 1.55;
+  color: var(--ink-soft);
 }
 
-/* Tag badges sit above the stretched link so they stay clickable. */
+@media (hover: hover) {
+  .post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .post-card:hover .post-card-title {
+    color: var(--accent);
+  }
+}
+
+.post-list-empty {
+  margin: 40px 0;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--muted);
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+}
+
+.post-list-empty[hidden] {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Tag filter bar
+   -------------------------------------------------------------------------- */
+
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tag-filter-more {
+  margin-left: 4px;
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+.tag-filter-more:hover {
+  color: var(--accent);
+}
+
+.tag-filter-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: baseline;
+  justify-content: center;
+  margin: 20px 0 0;
+  font-size: var(--fs-meta);
+  color: var(--ink-soft);
+}
+
+.tag-filter-status[hidden] {
+  display: none;
+}
+
+.tag-filter-clear {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: var(--fs-small);
+  color: var(--muted);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 0.18em;
+}
+
+.tag-filter-clear:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
 .tag-badge {
-  position: relative;
-  z-index: 1;
   display: inline-block;
   min-height: 32px;
   padding: 6px 14px;
@@ -1362,6 +1441,7 @@ hr {
 }
 
 .tag-badge:hover,
+.tag-badge.is-active,
 .tag-badge.active {
   background: #474747;
   border-color: #474747;
@@ -1826,9 +1906,26 @@ hr {
     font-size: 1rem;
   }
 
-  .listing .post-title {
-    font-size: 2rem; /* 32px */
+  .post-card > a {
+    grid-template-columns: 110px 1fr;
   }
+
+  .post-card-media img {
+    min-height: 110px;
+  }
+
+  .post-card-body {
+    padding: 14px 16px;
+  }
+
+  .post-card-title {
+    font-size: 1.125rem;
+  }
+
+  .post-card-excerpt {
+    display: none;
+  }
+
 
   .more-projects .next-proj a {
     font-size: 2.5rem; /* 40px */
@@ -1850,9 +1947,6 @@ hr {
     grid-auto-columns: minmax(60vw, 1fr);
   }
 
-  .listing li {
-    padding: 40px 16px;
-  }
 
   .about .inner-center {
     padding: 20px;

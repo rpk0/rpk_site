@@ -5,43 +5,61 @@ group: "navigation"
 description: "Writing about film photography, gear, darkroom and scanning by Kostis Karampinas."
 ---
 
-<section class="content posts">
+<section class="content posts posts-index">
   <div class="inner-center">
     <h1 class="page-title">Posts</h1>
+
+    {%- comment -%}
+      Only tags used by more than one post are worth a filter control; the
+      one-offs (camera models, book titles) live on /tags/. The JS still honours
+      any ?tag= value, so a badge on a post page pointing at a one-off works.
+    {%- endcomment -%}
+    {%- assign multi = '' | split: '' -%}
+    {%- for t in site.tags -%}
+      {%- if t[1].size > 1 -%}{%- assign multi = multi | push: t -%}{%- endif -%}
+    {%- endfor -%}
+
+    <div class="tag-filter" role="group" aria-label="Filter posts by tag">
+      <button type="button" class="tag-badge is-active" data-tag="">All</button>
+      {%- for t in multi %}
+      <button type="button" class="tag-badge" data-tag="{{ t[0] | slugify }}">{{ t[0] }}</button>
+      {%- endfor %}
+      <a class="tag-filter-more" href="/tags/">all tags &rarr;</a>
+    </div>
+
+    <p class="tag-filter-status" hidden>
+      <span class="tag-filter-count" role="status"></span>
+      <button type="button" class="tag-filter-clear">&times; clear</button>
+    </p>
+
+    <ul class="post-list">
+      {%- for post in site.posts %}
+      <li class="post-card" data-tags="{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}">
+        <a href="{{ post.url }}">
+          {%- if post.image %}
+          {%- assign webp = post.image | split: '.' | first | append: '.webp' -%}
+          {%- assign dims = site.data.image_sizes[post.image] %}
+          <span class="post-card-media">
+            <picture>
+              <source srcset="{{ webp }}" type="image/webp">
+              <img src="{{ post.image }}" alt=""
+                   {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
+                   loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
+            </picture>
+          </span>
+          {%- endif %}
+          <span class="post-card-body">
+            <span class="post-card-title">{{ post.title }}</span>
+            <time class="post-card-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %e, %Y" }}</time>
+            {%- if post.description %}
+            <span class="post-card-excerpt">{{ post.description }}</span>
+            {%- endif %}
+          </span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+
+    <p class="post-list-empty" hidden>No posts with this tag.</p>
   </div>
-
-  <ul class="listing">
-    {%- for post in paginator.posts %}
-    <li class="post-item" data-tags="{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}">
-      {%- if post.avatar %}
-      <div class="post-avatar"><img src="{{ post.avatar }}" alt="" width="70" height="70" loading="lazy" decoding="async"></div>
-      {%- endif %}
-      {%- comment -%}
-        The whole card used to be an <li onclick=...>, which no keyboard or
-        crawler could follow. Now it is a real link; ::after stretches its hit
-        area over the card so the click target is unchanged.
-      {%- endcomment %}
-      <h2 class="post-title"><a class="post-link" href="{{ post.url }}">{{ post.title }}</a></h2>
-      <span class="post-date">{{ post.date | date: "%B %e, %Y" }}</span>
-      {%- if post.tags.size > 0 %}
-      <span class="post-tags">
-        {%- for tag in post.tags %}
-        <button type="button" class="tag-badge" data-tag="{{ tag | slugify }}">{{ tag }}</button>
-        {%- endfor %}
-      </span>
-      {%- endif %}
-    </li>
-    {%- endfor %}
-  </ul>
-
-  {%- if paginator.total_pages > 1 %}
-  <nav id="pagination" class="pagination-buttons" aria-label="Pagination">
-    {%- if paginator.previous_page %}
-    <a class="btn" href="{{ paginator.previous_page_path | relative_url }}" rel="prev">&laquo; Newer</a>
-    {%- endif %}
-    {%- if paginator.next_page %}
-    <a class="btn" href="{{ paginator.next_page_path | relative_url }}" rel="next">Older &raquo;</a>
-    {%- endif %}
-  </nav>
-  {%- endif %}
 </section>

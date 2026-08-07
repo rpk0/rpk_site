@@ -1,6 +1,7 @@
 ---
 layout: post_layout
 title: What film camera to buy
+description: "Most buying guides drown you in options. A short list of film cameras by budget and need, after two years of shooting."
 avatar: /images/posts/avatars/camera_leica.png
 image: /images/posts/what_to_buy/henri_cartier_bresson_children.jpg
 category: Photography
