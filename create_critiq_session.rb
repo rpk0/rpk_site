@@ -72,6 +72,13 @@ def create_voting_session(session_name, photos_folder, prompt, pastel)
   # Write index.html
   File.write(File.join(session_path, 'index.html'), html_content)
 
+  # Critiq photos are full-resolution exports; without this the page ships tens
+  # of MB. Generates the .webp siblings and the width/height data the layout uses.
+  print pastel.cyan("Building WebP versions... ")
+  system('ruby', 'tools/build_images.rb', out: File::NULL) or
+    puts pastel.yellow("\n⚠️  tools/build_images.rb failed. Run it manually before committing.")
+  puts pastel.green("Done")
+
   puts ""
   puts pastel.green("✅ Created voting session: #{session_name}")
   puts pastel.dim("📁 Location: #{session_path}")
