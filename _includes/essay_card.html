@@ -1,0 +1,28 @@
+{%- comment -%}
+One card for a photo essay. Used by both /photo_essays/ and the home carousel so
+the two stop drifting apart. Pass `essay`, optionally `eager` for above-the-fold.
+
+  {% include essay_card.html essay=item %}
+{%- endcomment -%}
+{%- assign e = include.essay -%}
+{%- assign webp = e.thumb | split: '.' | first | append: '.webp' -%}
+{%- assign dims = site.data.image_sizes[e.thumb] -%}
+<li class="essay-card">
+  <a href="{{ e.url }}">
+    <picture>
+      <source srcset="{{ webp }}" type="image/webp">
+      <img src="{{ e.thumb }}" alt="{{ e.title }}"
+           {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
+           loading="{% if include.eager %}eager{% else %}lazy{% endif %}" decoding="async">
+    </picture>
+    <span class="essay-card-body">
+      <span class="essay-card-title">{{ e.title }}</span>
+      {%- if e.subtitle %}
+      <span class="essay-card-meta">{{ e.subtitle }}</span>
+      {%- endif %}
+      {%- if e.note %}
+      <span class="essay-card-meta">{{ e.note }}</span>
+      {%- endif %}
+    </span>
+  </a>
+</li>

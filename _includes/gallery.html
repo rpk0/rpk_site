@@ -1,0 +1,37 @@
+{%- comment -%}
+Photo essay / project gallery. Written once here instead of copy-pasted into
+every essay, which is how the alt text drifted to `alt="submerged_1.jpg"`.
+
+Reads `page.images` and `page.dir` from front matter. An entry containing "://"
+is treated as an absolute URL and used as-is.
+
+Each frame gets a WebP source (built by tools/build_webp.sh), a JPEG fallback,
+lazy loading below the fold, and intrinsic dimensions so nothing shifts on load.
+{%- endcomment -%}
+<ul class="gallery">
+  {%- for img in page.images %}
+    {%- if img contains '://' -%}
+      {%- assign src = img -%}
+      {%- assign webp = nil -%}
+    {%- else -%}
+      {%- assign src = page.dir | append: '/' | append: img -%}
+      {%- assign webp = src | split: '.' | first | append: '.webp' -%}
+    {%- endif -%}
+    {%- assign dims = site.data.image_sizes[src] -%}
+  <li>
+    <a href="{{ src }}" data-lightbox="{{ page.title | slugify }}" aria-label="{{ page.title }}, photo {{ forloop.index }} of {{ forloop.length }}">
+      <picture>
+        {%- if webp %}
+        <source srcset="{{ webp }}" type="image/webp">
+        {%- endif %}
+        <img src="{{ src }}"
+             alt="{{ page.title }}, photo {{ forloop.index }} of {{ forloop.length }}"
+             {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
+             loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+             {% if forloop.first %}fetchpriority="high"{% endif %}
+             decoding="async">
+      </picture>
+    </a>
+  </li>
+  {%- endfor %}
+</ul>

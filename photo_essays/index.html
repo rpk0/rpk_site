@@ -2,139 +2,23 @@
 layout: layout
 title: "Photo Essays"
 group: "navigation"
-path: photo_essays
+section: photo_essays
+description: "Photo essays by Kostis Karampinas. Analog and digital series shot in Greece, the US and beyond."
 ---
+
 <section class="content photo">
   <div class="inner-center">
+    <h1 class="page-title">Photo Essays</h1>
+
     <ul class="photo-listing" id="photo-list">
-
-      <li>
-        <img src="../images/photo_listing/stories_from_the_pandemic.jpg" alt="">
-        <a href="/photo_essays/stories_from_the_pandemic/">
-          <span>Stories from the Pandemic<em>2021</em>
-            <i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/submerged.jpg" alt="">
-        <a href="/photo_essays/submerged/">
-          <span>Submerged<em>Summer 2017</em>
-            <i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/burning_man_2016.jpg" alt="">
-        <a href="/photo_essays/burning_man_2016/">
-          <span>Burning Man 2016<em>With disposable cameras</em>
-            <i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/finally_normal_people.jpg" alt="">
-        <a href="/photo_essays/finally_normal_people/">
-          <span>Finally Normal People<em>Burning Man 2016</em>
-            <i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/roadtrip_snapshots_2.jpg" alt="">
-        <a href="/photo_essays/roadtrip_snapshots_2/">
-          <span>Roadtrip Snapshots 2<em>Summer 2015</em>
-            <i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/burning_man_2015.jpg" alt="">
-        <a href="/photo_essays/burning_man_2015/">
-          <span>Burning Man 2015<em>Guest post by Alex K.</em><em>August 2015</em>
-            <i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/fog_and_cold.jpg" alt="">
-        <a href="/photo_essays/fog_and_cold/">
-          <span>Fog and Cold<em>December 2015</em><i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/underwater.jpg" alt="">
-        <a href="/photo_essays/underwater/">
-          <span>Underwater<em>September 2015</em><i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/california_101.jpg" alt="">
-        <a href="/photo_essays/california_101/">
-          <span>California 101<em>August 2015</em><i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/on_the_road2.jpg" alt="">
-        <a href="/photo_essays/on_the_road2/">
-          <span>On the road 2<em>December 2014</em><i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="https://farm8.staticflickr.com/7397/14213094563_a616f0b28e_n.jpg" alt="">
-        <a href="/photo_essays/on_the_road/">
-          <span>On the road<em>April 2014</em><i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/roadtrip_snapshots.jpg" alt="">
-        <a href="/photo_essays/roadtrip_snapshots/">
-          <span>Roadtrip Snapshots<em>December 2014</em><i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/kythira.jpg" alt="">
-        <a href="/photo_essays/kythira/">
-          <span>Kythira<em>August 2014</em><i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/360km.jpg" alt="">
-        <a href="/photo_essays/360km/">
-          <span>360km<em>April 2014</em><i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/athens_pride.jpg" alt="">
-        <a href="/photo_essays/athens_pride/">
-          <span>Athens Pride<em>June 2014</em><i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/dark_woods.jpg" alt="">
-        <a href="/photo_essays/dark_woods/">
-          <span>Dark woods<em>January 2014</em><i class="stack-icon"></i></span>
-        </a>
-      </li>
-
-      <li>
-        <img src="../images/photo_listing/dafni.jpg" alt="">
-        <a href="/photo_essays/dafne/">
-          <span>Dafne<em>August 2013</em><i class="stack-icon"></i></span>
-        </a>
-      </li>
-
+      {%- assign essays = site.photo_essays | sort: 'order' -%}
+      {%- for essay in essays %}
+      {% include essay_card.html essay=essay eager=forloop.first %}
+      {%- endfor %}
     </ul>
 
-    <div class="btn load-more">Load more</div>
+    {%- if essays.size > 12 %}
+    <button type="button" class="btn load-more">Load more</button>
+    {%- endif %}
   </div>
 </section>

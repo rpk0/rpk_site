@@ -1,13 +1,36 @@
 ---
 layout: layout
-comments: true
 ---
 
-<section class="content photography">
+{%- comment -%}
+  Shared by the photo_essays collection and the standalone project pages.
+  Byline, intro quote and next/prev all render from front matter, so an essay
+  body is usually just `{% include gallery.html %}`.
+{%- endcomment -%}
+<article class="content photography">
   <div class="inner-center">
-    <h1 class="inner-heading">{{ page.title }}</h1>
+    <h1 class="page-title">{{ page.title }}</h1>
+
+    {%- if page.date_label or page.location or page.camera or page.film %}
+    <section class="byline">
+      <ul class="project-icons">
+        {%- if page.date_label %}<li>{% include icon.html name="calendar" %} {{ page.date_label }}</li>{% endif %}
+        {%- if page.location %}<li>{% include icon.html name="map-marker" %} {{ page.location }}</li>{% endif %}
+        {%- if page.camera %}<li>{% include icon.html name="camera" %} {{ page.camera }}</li>{% endif %}
+        {%- if page.film %}<li>{% include icon.html name="film" %} {{ page.film }}</li>{% endif %}
+      </ul>
+    </section>
+    {%- endif %}
+
+    {%- if page.description %}
+    <div class="intro-text">
+      <blockquote>{{ page.description }}</blockquote>
+    </div>
+    {%- endif %}
+
     {{ content }}
+
     {% include share_links.html %}
     {% include next_project.html %}
   </div>
-</section>
+</article>

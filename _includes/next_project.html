@@ -1,34 +1,54 @@
-{% if page.path == "projects" %}
-  {% assign base_url = "/projects/" %}
-  {% assign back_url = "/" %}
-  {% assign back_label = "back to projects" %}
-  {% assign next_label = "next project" %}
-{% else %}
-  {% assign base_url = "/photo_essays/" %}
-  {% assign back_url = "/photo_essays/" %}
-  {% assign back_label = "back to photo essays" %}
-  {% assign next_label = "next photo essay" %}
-{% endif %}
+{%- comment -%}
+Next / back navigation.
 
-<div class="more-projects">
+Photo essays derive theirs from the collection's `order`, so adding an essay no
+longer means hand-editing a `next_project` chain across two other files. Project
+pages still declare `next_project` in front matter since there are only two.
+{%- endcomment -%}
+
+{%- if page.collection == 'photo_essays' -%}
+  {%- assign ordered = site.photo_essays | sort: 'order' -%}
+  {%- for e in ordered -%}
+    {%- if e.url == page.url -%}
+      {%- assign idx = forloop.index0 -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign next_idx = idx | plus: 1 -%}
+  {%- if next_idx < ordered.size -%}
+    {%- assign next = ordered[next_idx] -%}
+    {%- assign next_url = next.url -%}
+    {%- assign next_title = next.title -%}
+  {%- endif -%}
+  {%- assign back_url = '/photo_essays/' -%}
+  {%- assign back_label = 'back to photo essays' -%}
+  {%- assign next_label = 'next photo essay' -%}
+{%- else -%}
+  {%- assign back_url = '/' -%}
+  {%- assign back_label = 'back to projects' -%}
+  {%- assign next_label = 'next project' -%}
+  {%- if page.next_project_path and page.next_project_path != '' -%}
+    {%- assign next_url = '/projects/' | append: page.next_project_path | append: '/' -%}
+    {%- assign next_title = page.next_project -%}
+  {%- endif -%}
+{%- endif -%}
+
+<nav class="more-projects" aria-label="{{ next_label }}">
   <div class="next-proj">
-    {% if page.next_project_path != "" and page.next_project_path %}
-      {% if page.next_project_path == "snapshots" %}
-        <span class="next-proj-wip" title="Work in progress">
-          <i>{{ next_label }}</i>
-          <span class="wip-icon">⏳</span>
-          {{ page.next_project }}
-          <small class="wip-label">coming soon</small>
-        </span>
-      {% else %}
-        <a href="{{ base_url }}{{ page.next_project_path }}/">
-          <i>{{ next_label }}</i>
-          {{ page.next_project }}
-        </a>
-      {% endif %}
-    {% endif %}
-    <a href="{{ back_url }}">
-      <span>{{ back_label }}</span>
+    {%- if next_title %}
+      {%- if page.next_project_path == 'snapshots' %}
+    <span class="next-proj-wip" title="Work in progress">
+      <i>{{ next_label }}</i>
+      <span class="wip-icon" aria-hidden="true">&#9203;</span>
+      {{ next_title }}
+      <small class="wip-label">coming soon</small>
+    </span>
+      {%- else %}
+    <a href="{{ next_url }}">
+      <i>{{ next_label }}</i>
+      {{ next_title }}
     </a>
+      {%- endif %}
+    {%- endif %}
+    <a href="{{ back_url }}"><span>{{ back_label }}</span></a>
   </div>
-</div>
+</nav>

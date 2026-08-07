@@ -2,16 +2,26 @@
 layout: layout
 title: "Projects"
 group: "navigation"
-path: projects
+section: projects
+description: "Contemporary photography by Kostis Karampinas. Urban and sub-urban landscapes which emit the feeling of loneliness, abandonment and curiosity."
+image: /images/og-default.jpg
 ---
+
 <section class="content projects">
   <div class="inner-center">
-    <h1 class="inner-heading">Projects</h1>
+    <h1 class="page-title">Projects</h1>
+
     <ul class="projects-list">
       <li>
         <a href="/projects/granules/">
           <div class="project-cover">
-            <img src="/images/projects/granules.jpg" alt="Granules cover image" />
+            {%- assign dims = site.data.image_sizes['/images/projects/granules.jpg'] %}
+            <picture>
+              <source srcset="/images/projects/granules.webp" type="image/webp">
+              <img src="/images/projects/granules.jpg" alt="Granules cover image"
+                   {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
+                   fetchpriority="high" decoding="async">
+            </picture>
             <span class="project-label">Granules</span>
           </div>
           <div class="project-content">
@@ -23,10 +33,16 @@ path: projects
       <li class="project-wip">
         <div class="project-item">
           <div class="project-cover">
-            <img src="/images/projects/snapshots.jpg" alt="Snapshots cover image" />
+            {%- assign dims = site.data.image_sizes['/images/projects/snapshots.jpg'] %}
+            <picture>
+              <source srcset="/images/projects/snapshots.webp" type="image/webp">
+              <img src="/images/projects/snapshots.jpg" alt="Snapshots cover image"
+                   {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
+                   loading="lazy" decoding="async">
+            </picture>
             <span class="project-label">Snapshots</span>
             <div class="wip-overlay">
-              <span class="wip-text">Work in Progress<br/>Coming Soon</span>
+              <span class="wip-text">Work in Progress<br>Coming Soon</span>
             </div>
           </div>
           <div class="project-content">
@@ -43,52 +59,20 @@ path: projects
         <a href="/photo_essays/" class="preview-view-all">View all</a>
       </div>
       <div class="preview-carousel">
-        <button class="preview-arrow prev" aria-label="Scroll left">
-          &larr;
-        </button>
+        <button type="button" class="preview-arrow prev" aria-label="Scroll left">&larr;</button>
         <div class="preview-track">
-          <ul class="preview-list">
-          <li>
-            <a href="/photo_essays/stories_from_the_pandemic/">
-              <img src="/images/photo_listing/stories_from_the_pandemic.jpg" alt="Stories from the Pandemic thumbnail" />
-              <span>Stories from the Pandemic</span>
-            </a>
-          </li>
-          <li>
-            <a href="/photo_essays/submerged/">
-              <img src="/images/photo_listing/submerged.jpg" alt="Submerged thumbnail" />
-              <span>Submerged</span>
-            </a>
-          </li>
-          <li>
-            <a href="/photo_essays/burning_man_2016/">
-              <img src="/images/photo_listing/burning_man_2016.jpg" alt="Burning Man 2016 thumbnail" />
-              <span>Burning Man 2016</span>
-            </a>
-          </li>
-          <li>
-            <a href="/photo_essays/finally_normal_people/">
-              <img src="/images/photo_listing/finally_normal_people.jpg" alt="Finally Normal People thumbnail" />
-              <span>Finally Normal People</span>
-            </a>
-          </li>
-          <li>
-            <a href="/photo_essays/roadtrip_snapshots_2/">
-              <img src="/images/photo_listing/roadtrip_snapshots_2.jpg" alt="Roadtrip Snapshots 2 thumbnail" />
-              <span>Roadtrip Snapshots 2</span>
-            </a>
-          </li>
-          <li>
-            <a href="/photo_essays/burning_man_2015/">
-              <img src="/images/photo_listing/burning_man_2015.jpg" alt="Burning Man 2015 thumbnail" />
-              <span>Burning Man 2015</span>
-            </a>
-          </li>
+          {%- comment -%}
+            Six most recent, straight off the collection. This used to be six
+            hardcoded <li> blocks kept in sync with /photo_essays/ by hand.
+          {%- endcomment -%}
+          <ul class="preview-list essay-cards">
+            {%- assign featured = site.photo_essays | sort: 'order' | slice: 0, 6 -%}
+            {%- for essay in featured %}
+            {% include essay_card.html essay=essay %}
+            {%- endfor %}
           </ul>
         </div>
-        <button class="preview-arrow next" aria-label="Scroll right">
-          &rarr;
-        </button>
+        <button type="button" class="preview-arrow next" aria-label="Scroll right">&rarr;</button>
       </div>
     </section>
   </div>

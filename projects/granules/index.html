@@ -3,7 +3,8 @@ layout: photo_post
 title: Granules
 description: Embark on a visual odyssey through rural Greece with my collection of 15 photographs. These evocative landscapes and portraits convey "granules" of solitude, abandonment and curiosity, where time stands still. The haunting beauty of neglected corners unfolds in each image, inviting viewers to reflect on untold narratives of loneliness.
 group: "photo_navigation"
-path: projects
+section: projects
+dir: /projects/granules
 next_project: Snapshots
 next_project_path: snapshots
 images:
@@ -24,16 +25,4 @@ images:
   - Kostis_Karampinas_15.jpg
 ---
 
-<div class="intro-text">
-  <blockquote>
-    {{ page.description }}
-  </blockquote>
-</div>
-
-<ul>
-  {% for img in page.images %}
-    <li>
-      <a href="/projects/granules/{{ img }}" data-lightbox="granules"><img src="/projects/granules/{{ img }}" alt="Granules" /></a>
-    </li>
-  {% endfor %}
-</ul>
+{% include gallery.html %}
