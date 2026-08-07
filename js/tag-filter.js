@@ -133,7 +133,9 @@
       // Create clear button
       const clearBtn = document.createElement('div');
       clearBtn.className = 'clear-filter-btn';
-      clearBtn.innerHTML = '<i class="fa fa-times"></i> Clear Filter';
+      clearBtn.innerHTML =
+        '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" ' +
+        'stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Clear Filter';
       clearBtn.addEventListener('click', function() {
         window.history.pushState({}, '', window.location.pathname);
         clearFilter();
