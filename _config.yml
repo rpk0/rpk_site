@@ -1,14 +1,70 @@
+title: "Kostis Karampinas Photography"
+name: rpk.io
+myname: "Kostis Karampinas"
+email: kostis.rpk@gmail.com
+url: https://rpk.io
+description: "Kostis Karampinas Contemporary Photography - Urban and sub-urban landscapes which emit the feeling of loneliness, abandonment and curiosity."
+
+# jekyll-seo-tag
+author:
+  name: "Kostis Karampinas"
+  twitter: rpk0_
+logo: /images/og-default.jpg
+social:
+  name: "Kostis Karampinas"
+  links:
+    - https://instagram.com/rpk.io
+    - https://twitter.com/rpk0_
+    - https://www.facebook.com/kostis.karampinas/
+    - https://github.com/rpk0
+
+twitter:
+  username: rpk0_
+  card: summary_large_image
+
+github: rpk0
+instagram: rpk.io
+facebook_page: https://www.facebook.com/kostis.karampinas/
+
 highlighter: rouge
 markdown: kramdown
 kramdown:
   input: GFM
   auto_ids: true
   syntax_highlighter: rouge
+
+# Kept as-is on purpose: /posts/:title renders to /posts/<title>.html and those
+# URLs are already indexed. Changing the shape would need redirects for no gain.
 permalink: posts/:title
-plugins:
-  - jekyll-paginate
 paginate: 6
 paginate_path: "posts/page:num"
+
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+feed:
+  path: atom.xml
+
+collections:
+  photo_essays:
+    output: true
+    # :path, not :name. :name slugifies underscores to hyphens, which would have
+    # silently moved every essay from /photo_essays/athens_pride/ to
+    # /photo_essays/athens-pride/ and 404'd the indexed URLs.
+    permalink: /photo_essays/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: photo_essays
+    values:
+      layout: photo_post
+      section: photo_essays
+      group: photo_navigation
+
 navigation:
     - text: projects
       identity: projects
@@ -20,21 +76,19 @@ navigation:
       url: /posts/
     - text: about
       url: /about/
-name: rpk.io
-email: kostis.rpk@gmail
-url: https://rpk.io
-myname: "Kostis Karampinas"
-title: "Kostis Karampinas Photography - Projects"
-description: "Kostis Karampinas Contemporary Photography - Urban and sub-urban landscapes which emit the feeling of loneliness, abandonment and curiosity."
-twitter: rpk0_
-github: rpk0
-instagram: rpk.io
-facebook_page: https://www.facebook.com/kostis.karampinas/
-gravatar_url: https://s.gravatar.com/avatar/8bc43bee9040db6434f0842501858358?s=80
+
 exclude:
   - .jekyll-cache
+  - .mise.toml
+  - .ruby-lsp
   - .well-known
   - Gemfile
   - Gemfile.lock
+  - LICENSE
+  - README.md
+  - create_critiq_session.rb
+  - create_external_session.rb
+  - delete_critiq_session.rb
+  - firebase_secret.key
   - node_modules
   - vendor

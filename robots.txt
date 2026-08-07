@@ -3,19 +3,14 @@
 
 User-agent: *
 Allow: /
-Disallow: /assets/
-Disallow: /js/
-Disallow: /css/
-Disallow: /fonts/
-Disallow: /_site/
-Disallow: /scripts/
-Disallow: /.well-known/
-Disallow: /404.html
-Disallow: /*?tag=*
 
-# Allow specific important resources
-Allow: /uploads/
-Allow: /images/
+# Private client review sessions. These pages also carry a noindex meta tag.
+Disallow: /critiq/
 
-# Sitemap location
+# Tag filtering is client-side; the URLs are duplicates of /posts/.
+Disallow: /*?tag=
+
+# NOTE: /css/, /js/ and /fonts/ are deliberately crawlable. Blocking them stops
+# Google rendering the page, which costs more than it saves.
+
 Sitemap: https://rpk.io/sitemap.xml
