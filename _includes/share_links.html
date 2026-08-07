@@ -7,9 +7,13 @@
       <p class="share">Share this post in:</p>
     {% endif %}
     {%- comment -%}
-      site.twitter is a hash (username/card) because jekyll-seo-tag reads it, so
-      it has to be addressed as site.twitter.username. Interpolating the hash
-      itself dumped `{"username"=>"rpk0_", "card"=>...}` into the href.
+      The config key stays `twitter` because that is jekyll-seo-tag's API and
+      the card meta tags are still literally named `twitter:card`. Only the
+      user-facing label, the domain and the icon are X.
+
+      site.twitter is a hash (username/card), so it has to be addressed as
+      site.twitter.username. Interpolating the hash itself dumped
+      `{"username"=>"rpk0_", "card"=>...}` into the href.
 
       Titles and URLs go through url_encode; a title with & or ? used to
       truncate the shared text.
@@ -18,7 +22,7 @@
     {%- assign share_text = page.title | url_encode -%}
     <ul>
       <li>
-        <a class="btn" href="https://twitter.com/intent/tweet?text={{ share_text }}&amp;url={{ share_url }}&amp;via={{ site.twitter.username }}" rel="nofollow" target="_blank" title="Share on X">Twitter</a>
+        <a class="btn" href="https://x.com/intent/post?text={{ share_text }}&amp;url={{ share_url }}&amp;via={{ site.twitter.username }}" rel="nofollow" target="_blank" title="Share on X">X</a>
       </li>
       <li>
         <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a>
