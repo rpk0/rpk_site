@@ -17,12 +17,18 @@ social:
     - https://x.com/rpk0_
     - https://www.facebook.com/kostis.karampinas/
     - https://github.com/rpk0
+    - https://monobloc.gr
 
 # Key name is fixed by jekyll-seo-tag; it emits the twitter:card meta tags,
 # which X still uses under that name.
 twitter:
   username: rpk0_
   card: summary_large_image
+
+# Woodworking side of the same practice; prints from here are framed there.
+monobloc:
+  url: https://monobloc.gr
+  frames_url: https://monobloc.gr/projects/rpk.io-frames
 
 github: rpk0
 instagram: rpk.io
