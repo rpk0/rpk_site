@@ -486,6 +486,13 @@ hr {
   max-width: var(--w-posts);
 }
 
+/* The index is a card list, not prose, so it can run wider than the 800px
+   reading measure a post body wants. Reuses the projects width rather than
+   introducing a fifth container size. */
+.posts.posts-index .inner-center {
+  max-width: var(--w-page);
+}
+
 .page-title {
   margin: 0 auto 12px;
   font-size: var(--fs-page-title);
