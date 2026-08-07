@@ -1,3 +1,6 @@
+---
+sitemap: false
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1230,7 +1233,7 @@
               imagePath = `/critiq/${currentData.sessionId}/${originalId}`;
             }
             
-            return `<a href="${imagePath}" target="_blank" title="${originalId}"><img src="${imagePath}" style="width: 60px; height: 60px; object-fit: cover; margin: 4px; border-radius: 4px; border: 1px solid #ddd; vertical-align: middle;"></a>`;
+            return `<a href="${imagePath}" target="_blank" title="${originalId}"><img src="${imagePath}" alt="" loading="lazy" decoding="async" style="width: 60px; height: 60px; object-fit: cover; margin: 4px; border-radius: 4px; border: 1px solid #ddd; vertical-align: middle;"></a>`;
         }).join('');
 
         voterCard.innerHTML = `
@@ -1274,7 +1277,7 @@
         return `
           <div class="selection-item">
             <a href="${imagePath}" target="_blank">
-              <img src="${imagePath}" loading="lazy">
+              <img src="${imagePath}" alt="" loading="lazy" decoding="async">
             </a>
             <div class="selection-score">${data.score.toFixed(1)}</div>
           </div>

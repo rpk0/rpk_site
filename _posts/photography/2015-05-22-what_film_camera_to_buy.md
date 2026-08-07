@@ -87,7 +87,7 @@ Each section will have **two subsections** based on **budget** with two options 
   Marco Liu with a XD-7
 </span>
 
-![Me with Bronica GS-1](https://c1.staticflickr.com/9/8583/15429222394_6705994903_c.jpg)
+![Me with Bronica GS-1](/images/posts/what_to_buy/me_with_bronica_gs1.jpg)
 <span class="center_align">
   Me with a Bronica GS-1
 </span>
