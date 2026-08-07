@@ -1062,7 +1062,9 @@ hr {
    -------------------------------------------------------------------------- */
 
 .prints-cta {
-  margin: 40px 0 0;
+  /* Bottom margin matters: without it the share row butts straight onto the
+     card and reads as part of the promo. */
+  margin: 40px 0 56px;
   padding: 32px 24px;
   border: 1px solid var(--rule);
   background: var(--bg-soft);
@@ -1118,6 +1120,16 @@ hr {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+}
+
+/* Softer than the label so "X" stays the name and "(Twitter)" is the hint. */
+.btn-alias {
+  color: var(--muted);
+}
+
+.btn:hover .btn-alias,
+.btn:focus-visible .btn-alias {
+  color: inherit;
 }
 
 /* --------------------------------------------------------------------------

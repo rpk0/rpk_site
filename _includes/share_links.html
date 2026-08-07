@@ -20,16 +20,26 @@
     {%- endcomment -%}
     {%- assign share_url = site.url | append: page.url | remove: 'index.html' | url_encode -%}
     {%- assign share_text = page.title | url_encode -%}
+    {%- comment -%}
+      A lone "X" in a bordered box reads as a close button, so the brand mark
+      carries the identity and "(Twitter)" carries the recognition for anyone
+      who has not internalised the rename. All three get a mark so the row
+      stays visually parallel.
+    {%- endcomment -%}
     <ul>
       <li>
-        <a class="btn" href="https://x.com/intent/post?text={{ share_text }}&amp;url={{ share_url }}&amp;via={{ site.twitter.username }}" rel="nofollow" target="_blank" title="Share on X">X</a>
+        <a class="btn" href="https://x.com/intent/post?text={{ share_text }}&amp;url={{ share_url }}&amp;via={{ site.twitter.username }}" rel="nofollow" target="_blank" title="Share on X, formerly Twitter">
+          {% include icon.html name="x" %}X <span class="btn-alias">(Twitter)</span>
+        </a>
       </li>
       <li>
-        <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a>
+        <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" rel="nofollow" target="_blank" title="Share on Facebook">
+          {% include icon.html name="facebook" %}Facebook
+        </a>
       </li>
       <li>
         <button type="button" class="btn js-copy-link" data-copy-url="{{ site.url }}{{ page.url | remove:'index.html' }}" data-label="Copy link" data-success-label="Link copied!" title="Copy link">
-          <span class="btn-label">Copy link</span>
+          {% include icon.html name="link" %}<span class="btn-label">Copy link</span>
         </button>
       </li>
     </ul>
