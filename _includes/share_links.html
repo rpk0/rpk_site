@@ -6,12 +6,22 @@
     {% else %}
       <p class="share">Share this post in:</p>
     {% endif %}
+    {%- comment -%}
+      site.twitter is a hash (username/card) because jekyll-seo-tag reads it, so
+      it has to be addressed as site.twitter.username. Interpolating the hash
+      itself dumped `{"username"=>"rpk0_", "card"=>...}` into the href.
+
+      Titles and URLs go through url_encode; a title with & or ? used to
+      truncate the shared text.
+    {%- endcomment -%}
+    {%- assign share_url = site.url | append: page.url | remove: 'index.html' | url_encode -%}
+    {%- assign share_text = page.title | url_encode -%}
     <ul>
       <li>
-        <a class="btn" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url | remove:'index.html' }}&via={{ site.twitter }}&related=@{{ site.twitter }}" rel="nofollow" target="_blank" title="Share on Twitter">Twitter</a>
+        <a class="btn" href="https://twitter.com/intent/tweet?text={{ share_text }}&amp;url={{ share_url }}&amp;via={{ site.twitter.username }}" rel="nofollow" target="_blank" title="Share on X">Twitter</a>
       </li>
       <li>
-        <a class="btn" href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url | remove:'index.html' }}" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a>
+        <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a>
       </li>
       <li>
         <button type="button" class="btn js-copy-link" data-copy-url="{{ site.url }}{{ page.url | remove:'index.html' }}" data-label="Copy link" data-success-label="Link copied!" title="Copy link">
