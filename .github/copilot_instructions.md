@@ -70,7 +70,11 @@ gallery; use the include.
   other's content. Use `section:` for navigation grouping instead.
 - Icons are inline SVG via `{% include icon.html name="camera" %}`. There is no
   icon font. Add new glyphs to `_includes/icon.html`.
-- Fonts are self-hosted Inter (variable, woff2) in `fonts/`. No Google Fonts.
+- Fonts are self-hosted Selawik Light/Bold (woff2) in `fonts/`. No Google Fonts.
+  Selawik is Microsoft's SIL OFL font that is metrically compatible with Segoe
+  UI, which the site ran on for years, so it sets identically without shipping a
+  proprietary 2.6MB webfont. Licence in `fonts/Selawik-LICENSE.txt`. Weights are
+  300 and 700 only; use `--fw-display` / `--fw-body` / `--fw-bold`.
 - Meta tags come from `jekyll-seo-tag`. Do not hand-roll `og:`/`twitter:` tags.
   Set `title`, `description` and `image` in front matter and it follows.
 - Sitemap (`jekyll-sitemap`) and feed (`jekyll-feed`) are generated. There are no
