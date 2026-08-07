@@ -1147,9 +1147,24 @@ hr {
   text-align: left;
 }
 
+/* Selawik ships only Light and Bold, and Bold lays down 2.3x the ink of the
+   300 body text, so bolding a link inside a paragraph shouts. Underline plus
+   colour carries the affordance instead, which is the more accessible signal
+   anyway: it does not depend on colour perception. */
 .about .main-text a {
-  font-weight: var(--fw-bold);
-  color: #474747;
+  font-weight: inherit;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--muted);
+  text-underline-offset: 0.18em;
+  transition: color var(--ease), text-decoration-color var(--ease);
+}
+
+.about .main-text a:hover,
+.about .main-text a:focus-visible {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
 .about .inner-center span {
