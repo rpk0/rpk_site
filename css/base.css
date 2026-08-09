@@ -228,6 +228,75 @@ hr {
 }
 
 /* --------------------------------------------------------------------------
+   Page transitions
+
+   Native cross-document view transitions, so navigating between the four
+   sections is a fade instead of a white flash. No JS: the browser snapshots
+   the old page, the new one animates in over it.
+
+   The nav chrome and the page title are lifted out of the root snapshot by
+   naming them, so only the body content moves. The title then cross-fades in
+   place, which is the reason every shell puts it at the same height.
+
+   Browsers without support (Firefox < 144) just navigate as before.
+   -------------------------------------------------------------------------- */
+
+@view-transition {
+  navigation: auto;
+}
+
+.sidebar {
+  view-transition-name: sidebar;
+}
+
+.topbar {
+  view-transition-name: topbar;
+}
+
+.page-title {
+  view-transition-name: page-title;
+}
+
+::view-transition-old(root) {
+  animation: page-out 90ms ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: page-in 220ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* The UA default for a named group is 250ms; match the root so the title is
+   not still settling after the body has landed. */
+::view-transition-group(page-title),
+::view-transition-old(page-title),
+::view-transition-new(page-title) {
+  animation-duration: 220ms;
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* The global reduced-motion reset selects `*`, which does not reach into the
+   ::view-transition pseudo tree. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
    Topbar (<= 960px only)
    -------------------------------------------------------------------------- */
 
@@ -466,10 +535,14 @@ hr {
   position: relative;
 }
 
+/* Every page shell shares this padding so the <h1> lands at the same height on
+   all four sections. Page-specific rules below may change the width, never the
+   top padding; the view transition morphs the title between pages and any
+   difference reads as a jump. */
 .content .inner-center {
   max-width: var(--w-grid);
   margin: 0 auto;
-  padding: 20px;
+  padding: 28px 20px 20px;
   text-align: center;
 }
 
@@ -499,6 +572,7 @@ hr {
   font-weight: var(--fw-display);
   line-height: 1.1;
   color: var(--ink);
+  text-align: center;
   overflow-wrap: break-word;
 }
 
@@ -1144,7 +1218,6 @@ hr {
    -------------------------------------------------------------------------- */
 
 .about .inner-center {
-  padding: 50px 20px;
   font-size: 1.0625rem; /* 17px */
   line-height: 1.6;
   text-align: center;
@@ -1174,9 +1247,11 @@ hr {
   text-decoration-color: var(--accent);
 }
 
-.about .inner-center span {
+/* "Hi," sits on its own line above the intro. Scoped to the paragraph: the
+   unscoped selector also caught every <span> in the exhibitions and awards
+   lists. */
+.about .main-text p > span {
   display: block;
-  font-size: 1.0625rem;
 }
 
 .about-img {
@@ -1242,16 +1317,8 @@ hr {
    -------------------------------------------------------------------------- */
 
 .posts .inner-center {
-  padding-top: 30px;
   font-size: 1.25rem; /* 20px */
   text-align: left;
-}
-
-.posts .inner-center > .page-title,
-.photography .inner-center > .page-title,
-.photo .inner-center > .page-title,
-.about .inner-center > .page-title {
-  text-align: center;
 }
 
 .posts .inner-center p {
@@ -1448,44 +1515,21 @@ hr {
 }
 
 .tag-badge:hover,
-.tag-badge.is-active,
-.tag-badge.active {
+.tag-badge.is-active {
   background: #474747;
   border-color: #474747;
   color: var(--bg);
 }
 
-.clear-filter-btn {
-  padding: 15px;
-  background: #474747;
-  color: var(--bg);
-  text-align: center;
-  cursor: pointer;
-  transition: background-color var(--ease);
-}
-
-.clear-filter-btn:hover {
-  background: var(--ink);
-}
-
-.no-posts-message {
-  padding: 100px 20px;
-  text-align: center;
-  font-size: 1.125rem;
-  color: var(--muted);
-  background: var(--bg-soft);
-}
-
-.pagination-buttons {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  padding: 20px 0 80px;
-}
-
 /* --------------------------------------------------------------------------
    Tags page
    -------------------------------------------------------------------------- */
+
+/* A list of dated links reads as prose, not as a grid. Left at the default
+   --w-grid it ran 1170px wide with three words per row. */
+.tags-page .inner-center {
+  max-width: var(--w-posts);
+}
 
 .tags-cloud {
   padding: 40px 0;
@@ -1952,11 +1996,6 @@ hr {
 
   .preview-list {
     grid-auto-columns: minmax(60vw, 1fr);
-  }
-
-
-  .about .inner-center {
-    padding: 20px;
   }
 
   .exhibitions-list li,
