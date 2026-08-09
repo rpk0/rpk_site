@@ -1,12 +1,10 @@
 ---
-layout: post_layout
 title: Why I shoot Film
 description: "Thirty-six frames make you slow down. On constraint, patience, and the wait between pressing the shutter and seeing the result."
 avatar: /images/posts/avatars/film_strip.png
 image: /images/posts/why_i_shoot_film/filmvsdigital.jpg
 category: Photography
 tags: [Photography, Film, Analogue, Darkroom]
-identifier: posts
 ---
 
 ## **Slow Life - The wait**

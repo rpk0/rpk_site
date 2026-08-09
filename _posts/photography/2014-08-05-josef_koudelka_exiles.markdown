@@ -1,12 +1,10 @@
 ---
-layout: post_layout
 title: Josef Koudelka - Exiles
 description: "A newly republished classic, and why Koudelka's mix of ethnography, photojournalism and landscape earns its shelf space."
 avatar: /images/posts/avatars/koudelka_exiles.jpg
 image: /images/posts/josef_kudelka/josef_kudelka_road.png
 category: Photography
 tags: [Photography, Photobook, Josef Koudelka, Exiles]
-identifier: posts
 ---
 
 **Just republished**—one of the all-time great photo books.  

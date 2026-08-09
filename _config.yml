@@ -69,6 +69,15 @@ defaults:
       layout: photo_post
       section: photo_essays
       group: photo_navigation
+  # Drives both the "posts" nav highlight and the pygments stylesheet in
+  # _layouts/layout.html. It used to be per-post front matter, so a new post
+  # that forgot the line lost its code highlighting and its nav state.
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post_layout
+      identifier: posts
 
 navigation:
     - text: projects

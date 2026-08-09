@@ -1,12 +1,10 @@
 ---
-layout: post_layout
 title: My photography gear
 description: "Every camera and lens I own and actually use, from the Bronica GS-1 to the Olympus XA2, with a tip for each."
 avatar: /images/posts/avatars/my_gear.jpg
 image: /images/posts/my_gear/my_gear_logo.jpg
 category: Photography
 tags: [Photography, Gear, Cameras, Bronica GS-1, Contax G1, Olympus XA2, Olympus OM2n, Olympus OMD EM-5]
-identifier: posts
 ---
 
 The second most popular question following the ["Why you shoot film?"](https://rpk.io/posts/why-I-shoot-film) is **"What gear you own and use?"**

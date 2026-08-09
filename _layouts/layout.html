@@ -23,20 +23,44 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="rpk.io Feed">
 
+    {%- comment -%}
+      The lightbox only ever fires on the data-lightbox links written by
+      gallery.html and the critiq layout, and share_links.html is only included
+      by the three article layouts. Everything else was paying for a
+      render-blocking stylesheet and 17KB of JS it can never use.
+    {%- endcomment -%}
+    {%- assign has_gallery = false -%}
+    {%- if page.layout == "photo_post" or page.layout == "critiq_layout" -%}
+      {%- assign has_gallery = true -%}
+    {%- endif -%}
+    {%- assign has_share = has_gallery -%}
+    {%- if page.layout == "post_layout" -%}
+      {%- assign has_share = true -%}
+    {%- endif -%}
+
     <link rel="preload" href="/fonts/selawik-light.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ '/css/base.css' | asset }}">
+    {%- if has_gallery %}
     <link rel="stylesheet" href="{{ '/css/lightbox-improved.css' | asset }}">
-    {%- if page.identifier == "posts" or page.url == "/posts/" %}
+    {%- endif %}
+    {%- comment -%}
+      Post bodies only. The /posts/ index is a card list with no code in it.
+    {%- endcomment -%}
+    {%- if page.identifier == "posts" %}
     <link rel="stylesheet" href="{{ '/css/pygments.css' | asset }}">
     {%- endif %}
 
-    <script defer src="{{ '/js/lightbox-improved.js' | asset }}"></script>
     <script defer src="{{ '/js/site.js' | asset }}"></script>
+    {%- if has_gallery %}
+    <script defer src="{{ '/js/lightbox-improved.js' | asset }}"></script>
+    {%- endif %}
+    {%- if has_share %}
     <script defer src="{{ '/js/copy-link.js' | asset }}"></script>
+    {%- endif %}
     {%- if page.url == "/photo_essays/" %}
     <script defer src="{{ '/js/show_more.js' | asset }}"></script>
     {%- endif %}
-    {%- if page.section == "projects" or page.url == "/" %}
+    {%- if page.url == "/" %}
     <script defer src="{{ '/js/projects-preview.js' | asset }}"></script>
     {%- endif %}
     {%- if page.url == "/posts/" %}
