@@ -24,11 +24,11 @@
 
     {%- comment -%}
       The lightbox only ever fires on the data-lightbox links written by
-      gallery.html and the critiq layout, and share_links.html is only included
-      by the three article layouts, so every other page skips their CSS and JS.
+      gallery.html, and share_links.html is only included by the article
+      layouts, so every other page skips their CSS and JS.
     {%- endcomment -%}
     {%- assign has_gallery = false -%}
-    {%- if page.layout == "photo_post" or page.layout == "critiq_layout" -%}
+    {%- if page.layout == "photo_post" -%}
       {%- assign has_gallery = true -%}
     {%- endif -%}
     {%- assign has_share = has_gallery -%}
@@ -40,9 +40,6 @@
     <link rel="stylesheet" href="{{ '/css/base.css' | asset }}">
     {%- if has_gallery %}
     <link rel="stylesheet" href="{{ '/css/lightbox-improved.css' | asset }}">
-    {%- endif %}
-    {%- if page.layout == "critiq_layout" %}
-    <link rel="stylesheet" href="{{ '/css/critiq.css' | asset }}">
     {%- endif %}
 
     <script defer src="{{ '/js/site.js' | asset }}"></script>

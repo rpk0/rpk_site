@@ -4,6 +4,5 @@ vendor/
 .DS_Store
 .vscode/
 .jekyll-cache
-firebase_secret.key
 
 .ruby-lsp/

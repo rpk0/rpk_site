@@ -4,9 +4,6 @@
 User-agent: *
 Allow: /
 
-# Private client review sessions. These pages also carry a noindex meta tag.
-Disallow: /critiq/
-
 # Tag filtering is client-side; the URLs are duplicates of /posts/.
 Disallow: /*?tag=
 

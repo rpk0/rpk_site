@@ -10,7 +10,3 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-feed"
 end
-
-# Critiq session management CLI (create_critiq_session.rb et al)
-gem "tty-prompt"
-gem "pastel"
