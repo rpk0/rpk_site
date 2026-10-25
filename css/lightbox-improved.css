@@ -1,9 +1,3 @@
-/**
- * Enhanced Lightbox Styles v1.0
- * Improved styling with visible navigation and smooth animations
- */
-
-/* Overlay */
 .lightboxOverlay {
   position: fixed;
   top: 0;
@@ -21,7 +15,6 @@
   opacity: 1;
 }
 
-/* Lightbox container */
 .lightbox {
   position: fixed;
   top: 0;
@@ -38,7 +31,6 @@
   opacity: 1;
 }
 
-/* Outer container */
 .lb-outerContainer {
   position: fixed;
   top: 50%;
@@ -56,7 +48,6 @@
   height: 100%;
 }
 
-/* Image */
 .lb-image {
   display: block;
   width: 100%;
@@ -65,7 +56,6 @@
   transition: opacity 0.3s ease;
 }
 
-/* Loader */
 .lb-loader {
   position: absolute;
   top: 50%;
@@ -87,7 +77,6 @@
   to { transform: rotate(360deg); }
 }
 
-/* Navigation */
 .lb-nav {
   pointer-events: none;
   z-index: 10;
@@ -146,7 +135,6 @@
   transform: translateX(3px);
 }
 
-/* Click zones for image navigation */
 .lb-click-zone {
   position: absolute;
   top: 0;
@@ -164,7 +152,6 @@
   right: 0;
 }
 
-/* Data container */
 .lb-dataContainer {
   position: fixed;
   bottom: 0;
@@ -207,7 +194,6 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* Close button */
 .lb-close {
   background: transparent;
   border: none;
@@ -237,14 +223,12 @@
   opacity: 1;
 }
 
-/* Mobile optimizations */
 @media screen and (max-width: 768px) {
   .lb-outerContainer {
     max-width: 100vw;
     max-height: 100vh;
   }
 
-  /* Reposition arrows for mobile - right side */
   .lb-nav {
     position: fixed;
     right: 10px;
@@ -276,14 +260,13 @@
   .lb-next:active {
     opacity: 1;
   }
-  
+
   .lb-prev svg,
   .lb-next svg {
     width: 24px;
     height: 24px;
   }
 
-  /* Hide click zones on mobile, use swipe */
   .lb-click-zone {
     display: none;
   }
@@ -332,7 +315,6 @@
   }
 }
 
-/* Small mobile */
 @media screen and (max-width: 480px) {
   .lb-dataContainer {
     padding: 12px;
@@ -347,7 +329,6 @@
   }
 }
 
-/* Prevent text selection during drag/swipe */
 .lightbox.active .lb-container {
   user-select: none;
   -webkit-user-select: none;
@@ -355,7 +336,6 @@
   -ms-user-select: none;
 }
 
-/* Smooth hardware acceleration */
 .lb-image,
 .lb-prev,
 .lb-next,
@@ -365,7 +345,6 @@
   backface-visibility: hidden;
 }
 
-/* Focus styles for accessibility */
 .lb-prev:focus,
 .lb-next:focus,
 .lb-close:focus {
