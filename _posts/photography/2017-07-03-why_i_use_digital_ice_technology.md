@@ -48,7 +48,7 @@ It's difficult to spot the differences, so lets do some cropping.
 </span>
 
 Detail showing image degradation (GIF):
-![Sign Crop - Digital ICE](/images/posts/digital_ice/umbrella_full_crop.gif)
+![Sign Crop - Digital ICE](/images/posts/digital_ice/umbrella_full_crop.webp){: width="307" height="369"}
 
 <br>
 
