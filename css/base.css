@@ -1141,13 +1141,11 @@ hr {
   margin: 30px 0 20px;
 }
 
-.upcoming-exhibitions,
 .exhibitions,
 .awards {
   margin-top: 40px;
 }
 
-.upcoming-exhibitions h2,
 .exhibitions h2,
 .awards h2 {
   margin: 0 0 20px;
@@ -1198,7 +1196,6 @@ hr {
   width: 100%;
 }
 
-.posts .image-caption,
 .center_align {
   display: block;
   text-align: center;
