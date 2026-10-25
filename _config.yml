@@ -89,6 +89,7 @@ navigation:
 
 exclude:
   - .jekyll-cache
+  - CLAUDE.md
   - .mise.toml
   - .ruby-lsp
   - .well-known
