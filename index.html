@@ -15,13 +15,8 @@ image: /images/og-default.jpg
       <li>
         <a href="/projects/granules/">
           <div class="project-cover">
-            {%- assign dims = site.data.image_sizes['/images/projects/granules.jpg'] %}
-            <picture>
-              <source srcset="/images/projects/granules.webp" type="image/webp">
-              <img src="/images/projects/granules.jpg" alt="Granules cover image"
-                   {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
-                   fetchpriority="high" decoding="async">
-            </picture>
+            <img src="/images/projects/granules.jpg" alt="Granules cover image"
+                 fetchpriority="high" decoding="async">
             <span class="project-label">Granules</span>
           </div>
           <div class="project-content">
@@ -33,13 +28,8 @@ image: /images/og-default.jpg
       <li class="project-wip">
         <div class="project-item">
           <div class="project-cover">
-            {%- assign dims = site.data.image_sizes['/images/projects/snapshots.jpg'] %}
-            <picture>
-              <source srcset="/images/projects/snapshots.webp" type="image/webp">
-              <img src="/images/projects/snapshots.jpg" alt="Snapshots cover image"
-                   {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
-                   loading="lazy" decoding="async">
-            </picture>
+            <img src="/images/projects/snapshots.jpg" alt="Snapshots cover image"
+                 loading="lazy" decoding="async">
             <span class="project-label">Snapshots</span>
             <div class="wip-overlay">
               <span class="wip-text">Work in Progress<br>Coming Soon</span>
