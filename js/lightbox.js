@@ -9,6 +9,8 @@
 
   const GAP = 24;
   const DRIFT = 30;
+  const DOT = 12;
+  const DOTS_SHOWN = 7;
   const EASE = 'cubic-bezier(0.25, 1, 0.5, 1)';
 
   const icon = (d) => `<svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="${d}" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -21,6 +23,7 @@
   dialog.innerHTML = `
     <p class="lb-caption" aria-hidden="true"><span class="lb-title"></span><span class="lb-meta"></span></p>
     ${slide}${slide}${slide}
+    <div class="lb-dots" aria-hidden="true"><div class="lb-strip"></div></div>
     <button type="button" class="lb-prev" aria-label="Previous photo">${icon('M20 5 10 15l10 10')}</button>
     <button type="button" class="lb-next" aria-label="Next photo">${icon('M10 5l10 10-10 10')}</button>
     <div class="lb-bar">
@@ -33,6 +36,8 @@
   const number = dialog.querySelector('.lb-number');
   const title = dialog.querySelector('.lb-title');
   const meta = dialog.querySelector('.lb-meta');
+  const dots = dialog.querySelector('.lb-dots');
+  const strip = dialog.querySelector('.lb-strip');
   const canHover = window.matchMedia('(hover: hover)');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const isZoomed = () => (window.visualViewport ? window.visualViewport.scale > 1.01 : false);
@@ -57,6 +62,20 @@
     return ms;
   }
 
+  // Instagram-style: a window of dots slides along long albums, and an edge dot
+  // shrinks while more photos lie beyond it.
+  function markDot(i) {
+    const n = album.length;
+    const shown = Math.min(n, DOTS_SHOWN);
+    const start = Math.max(0, Math.min(i - (DOTS_SHOWN >> 1), n - shown));
+    dots.style.width = `${shown * DOT}px`;
+    strip.style.transform = `translate3d(${-start * DOT}px, 0, 0)`;
+    [...strip.children].forEach((dot, k) => {
+      dot.classList.toggle('is-current', k === i);
+      dot.classList.toggle('is-edge', (k === start && start > 0) || (k === start + shown - 1 && start + shown < n));
+    });
+  }
+
   function fill() {
     slides.forEach((img, slot) => {
       const photo = album[wrap(index + slot - 1)];
@@ -67,6 +86,7 @@
     });
     number.textContent = `Image ${index + 1} of ${album.length}`;
     dialog.classList.toggle('is-loading', !slides[1].complete);
+    markDot(index);
   }
 
   function settle(ms, then) {
@@ -98,6 +118,7 @@
   // Dragging finishes the slide the finger started; everything else crossfades.
   function go(dir, slide) {
     if (moving || album.length < 2) return;
+    markDot(wrap(index + dir));
     settle(slide ? place(-dir * step(), true) : fade(dir), () => {
       index = wrap(index + dir);
       if (dir > 0) slides.push(slides.shift());
@@ -129,6 +150,7 @@
     title.textContent = gallery?.dataset.title || '';
     meta.textContent = gallery?.dataset.meta || '';
     dialog.classList.toggle('is-single', album.length < 2);
+    strip.innerHTML = '<span></span>'.repeat(album.length);
     place(0, false);
     fill();
     dialog.showModal();

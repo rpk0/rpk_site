@@ -149,6 +149,58 @@ html:has(.lb[open]) {
   background: linear-gradient(to top, rgb(20 20 20 / 0.9), transparent);
 }
 
+.lb-dots {
+  position: fixed;
+  bottom: 52px;
+  left: 50%;
+  translate: -50% 0;
+  overflow: hidden;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px rgb(0 0 0 / 0.5));
+  transition: width 0.28s ease;
+}
+
+.lb.is-single .lb-dots {
+  display: none;
+}
+
+.lb-strip {
+  display: flex;
+  transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.lb-strip span {
+  display: flex;
+  flex: 0 0 12px;
+  justify-content: center;
+}
+
+.lb-strip span::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.25;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.lb-strip .is-current::before {
+  opacity: 0.7;
+}
+
+.lb-strip .is-edge::before {
+  transform: scale(0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lb-dots,
+  .lb-strip,
+  .lb-strip span::before {
+    transition: none;
+  }
+}
+
 .lb-number {
   font-size: 13px;
   color: rgb(255 255 255 / 0.7);
@@ -273,6 +325,10 @@ html:has(.lb[open]) {
   .lb-meta {
     display: none;
   }
+
+  .lb-dots {
+    bottom: calc(48px + env(safe-area-inset-bottom));
+  }
 }
 
 @media (max-height: 500px) {
@@ -301,5 +357,9 @@ html:has(.lb[open]) {
     max-height: calc(50vh - 40px);
     line-height: normal;
     writing-mode: vertical-rl;
+  }
+
+  .lb-dots {
+    bottom: max(14px, env(safe-area-inset-bottom));
   }
 }
