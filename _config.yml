@@ -34,12 +34,10 @@ github: rpk0
 instagram: rpk.io
 facebook_page: https://www.facebook.com/kostis.karampinas/
 
-highlighter: rouge
 markdown: kramdown
 kramdown:
   input: GFM
   auto_ids: true
-  syntax_highlighter: rouge
 
 # Kept as-is on purpose: /posts/:title renders to /posts/<title>.html and those
 # URLs are already indexed. Changing the shape would need redirects for no gain.
@@ -68,9 +66,7 @@ defaults:
     values:
       layout: photo_post
       section: photo_essays
-  # Drives both the "posts" nav highlight and the pygments stylesheet in
-  # _layouts/layout.html. It used to be per-post front matter, so a new post
-  # that forgot the line lost its code highlighting and its nav state.
+  # `identifier` lights up the "posts" nav item on every post.
   - scope:
       path: ""
       type: posts
