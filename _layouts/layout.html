@@ -43,6 +43,9 @@
     {%- if has_gallery %}
     <link rel="stylesheet" href="{{ '/css/lightbox-improved.css' | asset }}">
     {%- endif %}
+    {%- if page.layout == "critiq_layout" %}
+    <link rel="stylesheet" href="{{ '/css/critiq.css' | asset }}">
+    {%- endif %}
 
     <script defer src="{{ '/js/site.js' | asset }}"></script>
     {%- if has_gallery %}
