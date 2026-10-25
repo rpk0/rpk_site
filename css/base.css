@@ -860,7 +860,7 @@ hr {
 }
 
 @media (hover: hover) {
-  .projects-list li:hover {
+  .projects-list li:not(.project-wip):hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lift);
   }
@@ -876,11 +876,6 @@ hr {
 
 .project-wip .project-item {
   cursor: default;
-}
-
-.project-wip:hover {
-  transform: none;
-  box-shadow: none;
 }
 
 .wip-overlay {
