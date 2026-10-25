@@ -937,6 +937,7 @@ hr {
   padding-bottom: 12px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
 }
 
 .preview-track::-webkit-scrollbar {
@@ -948,7 +949,6 @@ hr {
   grid-auto-flow: column;
   grid-auto-columns: minmax(150px, 1fr);
   gap: 16px;
-  scroll-snap-type: x mandatory;
 }
 
 .preview-list > li {
@@ -1009,13 +1009,13 @@ hr {
 @media (min-width: 961px) {
   .preview-track {
     overflow-x: visible;
+    scroll-snap-type: none;
   }
 
   .preview-list {
     grid-auto-flow: row;
     grid-template-columns: repeat(6, 1fr);
     gap: 12px;
-    scroll-snap-type: none;
   }
 
   .preview-list .essay-card img {
