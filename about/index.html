@@ -28,7 +28,7 @@ section: about
 
 		<p class="contact-note">
 			If you want to get in touch, send me an
-			<a href="#" id="email-link">e-mail</a>
+			<a href="mailto:kostis.karampinas@gmail.com">e-mail</a>
 			or follow me on
 			<a href="https://instagram.com/{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a>.
 		</p>
@@ -71,17 +71,3 @@ section: about
 		</section>
 	</div>
 </section>
-
-<script>
-	// Anti-spam email obfuscation
-	(function() {
-		const u = 'kostis.karampinas';
-		const d = 'gmail.com';
-		const link = document.getElementById('email-link');
-		link.href = 'mailto:' + u + String.fromCharCode(64) + d;
-		link.onclick = function(e) {
-			e.preventDefault();
-			window.location.href = this.href;
-		};
-	})();
-</script>
