@@ -24,23 +24,8 @@
 
     var updateArrows = function () {
       var maxScrollLeft = list.scrollWidth - scroller.clientWidth;
-      if (maxScrollLeft <= 0) {
-        prevArrow.classList.add('disabled');
-        nextArrow.classList.add('disabled');
-        return;
-      }
-
-      if (scroller.scrollLeft <= 4) {
-        prevArrow.classList.add('disabled');
-      } else {
-        prevArrow.classList.remove('disabled');
-      }
-
-      if (scroller.scrollLeft >= maxScrollLeft - 4) {
-        nextArrow.classList.add('disabled');
-      } else {
-        nextArrow.classList.remove('disabled');
-      }
+      prevArrow.disabled = maxScrollLeft <= 0 || scroller.scrollLeft <= 4;
+      nextArrow.disabled = maxScrollLeft <= 0 || scroller.scrollLeft >= maxScrollLeft - 4;
     };
 
     var scheduleUpdate;

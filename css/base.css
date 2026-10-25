@@ -996,7 +996,7 @@ hr {
   right: 4px;
 }
 
-.preview-arrow.disabled {
+.preview-arrow:disabled {
   opacity: 0;
   pointer-events: none;
 }
