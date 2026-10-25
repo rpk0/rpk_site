@@ -101,4 +101,5 @@ exclude:
   - delete_critiq_session.rb
   - firebase_secret.key
   - node_modules
+  - tools
   - vendor
