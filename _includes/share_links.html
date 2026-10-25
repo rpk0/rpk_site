@@ -11,12 +11,10 @@
       the card meta tags are still literally named `twitter:card`. Only the
       user-facing label, the domain and the icon are X.
 
-      site.twitter is a hash (username/card), so it has to be addressed as
-      site.twitter.username. Interpolating the hash itself dumped
-      `{"username"=>"rpk0_", "card"=>...}` into the href.
+      site.twitter is a hash (username/card), so the handle is
+      site.twitter.username.
 
-      Titles and URLs go through url_encode; a title with & or ? used to
-      truncate the shared text.
+      Titles and URLs go through url_encode so a title with & or ? survives.
     {%- endcomment -%}
     {%- assign share_url = site.url | append: page.url | remove: 'index.html' | url_encode -%}
     {%- assign share_text = page.title | url_encode -%}

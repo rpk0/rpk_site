@@ -1,20 +1,5 @@
 @charset "UTF-8";
 
-/* ==========================================================================
-   rpk.io
-
-   Layout rules, in order: tokens, base, chrome (topbar/sidebar), page
-   shells, components, then the two breakpoints at the bottom of each block.
-
-   Two breakpoints only:
-     <= 960px  sidebar collapses to an overlay drawer, topbar appears
-     <= 640px  single column
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   Tokens
-   -------------------------------------------------------------------------- */
-
 :root {
   --accent: #31472d;
   --accent-hover: #52744b;
@@ -30,17 +15,13 @@
   --rule: #e6e6e6;
   --rule-strong: #d4d4d4;
 
-  /* Only the page title uses a new scale; every other size below is the value
-     from the old sheet. */
   --fs-page-title: clamp(1.875rem, 4.5vw, 3.25rem);
-  --fs-h2: 1.875rem; /* 30px */
-  --fs-h3: 1.5625rem; /* 25px */
+  --fs-h2: 1.875rem;
+  --fs-h3: 1.5625rem;
   --fs-body: 1rem;
   --fs-small: 0.875rem;
   --fs-meta: 0.9375rem;
 
-  /* Selawik Light is the 300 cut; 700 is the real Bold face, so emphasis no
-     longer relies on browser-synthesised bold the way the old sheet did. */
   --fw-display: 300;
   --fw-body: 300;
   --fw-bold: 700;
@@ -48,7 +29,6 @@
   --sidebar-w: 230px;
   --topbar-h: 56px;
 
-  /* Four container widths, down from eight. */
   --w-prose: 750px;
   --w-page: 1000px;
   --w-posts: 800px;
@@ -63,15 +43,6 @@
   --ease: 0.25s ease;
 }
 
-/* --------------------------------------------------------------------------
-   Base
-   -------------------------------------------------------------------------- */
-
-/* Selawik is Microsoft's SIL OFL release of a font metrically compatible with
-   Segoe UI, which is what this site ran on for years. Measured against
-   production it lands within 0.1% on both ink coverage and advance width, so
-   the page sets identically without shipping a proprietary 2.6MB webfont.
-   Licence text is in fonts/Selawik-LICENSE.txt. */
 @font-face {
   font-family: 'Selawik';
   font-style: normal;
@@ -101,14 +72,12 @@ html {
 body {
   margin: 0;
   min-height: 100%;
-  /* Falls back to the real Segoe UI on Windows, then the system sans. The old
-     stack ended in Palatino, a serif, so a missed webfont changed the voice. */
+
   font-family: Selawik, 'Segoe UI', -apple-system, BlinkMacSystemFont,
     system-ui, sans-serif;
   font-weight: var(--fw-body);
   font-size: var(--fs-body);
-  /* The old sheet set no global line-height. Only the two blocks that opted in
-     below did, so leaving this at normal is what restores the old rhythm. */
+
   line-height: normal;
   color: var(--ink);
   background: var(--bg);
@@ -126,7 +95,7 @@ h4,
 h5,
 h6 {
   font-weight: var(--fw-display);
-  /* The old sheet set none, so headings ran at the font's natural leading. */
+
   line-height: normal;
   color: var(--ink);
 }
@@ -165,7 +134,6 @@ hr {
   margin: 2em 3em;
 }
 
-/* Icons come from _includes/icon.html now, not a 764KB webfont. */
 .icon {
   width: 1em;
   height: 1em;
@@ -227,20 +195,6 @@ hr {
   }
 }
 
-/* --------------------------------------------------------------------------
-   Page transitions
-
-   Native cross-document view transitions, so navigating between the four
-   sections is a fade instead of a white flash. No JS: the browser snapshots
-   the old page, the new one animates in over it.
-
-   The nav chrome and the page title are lifted out of the root snapshot by
-   naming them, so only the body content moves. The title then cross-fades in
-   place, which is the reason every shell puts it at the same height.
-
-   Browsers without support (Firefox < 144) just navigate as before.
-   -------------------------------------------------------------------------- */
-
 @view-transition {
   navigation: auto;
 }
@@ -265,8 +219,6 @@ hr {
   animation: page-in 220ms cubic-bezier(0.2, 0, 0, 1) both;
 }
 
-/* The UA default for a named group is 250ms; match the root so the title is
-   not still settling after the body has landed. */
 ::view-transition-group(page-title),
 ::view-transition-old(page-title),
 ::view-transition-new(page-title) {
@@ -286,8 +238,6 @@ hr {
   }
 }
 
-/* The global reduced-motion reset selects `*`, which does not reach into the
-   ::view-transition pseudo tree. */
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
   ::view-transition-old(*),
@@ -295,10 +245,6 @@ hr {
     animation: none !important;
   }
 }
-
-/* --------------------------------------------------------------------------
-   Topbar (<= 960px only)
-   -------------------------------------------------------------------------- */
 
 .topbar {
   display: none;
@@ -393,10 +339,6 @@ hr {
 .sidebar-scrim[hidden] {
   display: none;
 }
-
-/* --------------------------------------------------------------------------
-   Sidebar
-   -------------------------------------------------------------------------- */
 
 .sidebar {
   position: fixed;
@@ -526,19 +468,11 @@ hr {
   color: var(--accent);
 }
 
-/* --------------------------------------------------------------------------
-   Page shell
-   -------------------------------------------------------------------------- */
-
 .content {
   margin-left: var(--sidebar-w);
   position: relative;
 }
 
-/* Every page shell shares this padding so the <h1> lands at the same height on
-   all four sections. Page-specific rules below may change the width, never the
-   top padding; the view transition morphs the title between pages and any
-   difference reads as a jump. */
 .content .inner-center {
   max-width: var(--w-grid);
   margin: 0 auto;
@@ -559,9 +493,6 @@ hr {
   max-width: var(--w-posts);
 }
 
-/* The index is a card list, not prose, so it can run wider than the 800px
-   reading measure a post body wants. Reuses the projects width rather than
-   introducing a fifth container size. */
 .posts.posts-index .inner-center {
   max-width: var(--w-page);
 }
@@ -634,10 +565,6 @@ hr {
   border-radius: var(--radius);
 }
 
-/* --------------------------------------------------------------------------
-   Buttons
-   -------------------------------------------------------------------------- */
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -665,10 +592,6 @@ hr {
   border-color: var(--accent);
 }
 
-/* --------------------------------------------------------------------------
-   Galleries (photo essays, projects, critiq)
-   -------------------------------------------------------------------------- */
-
 .gallery {
   margin: 0;
   padding: 0;
@@ -684,14 +607,6 @@ hr {
   display: block;
   background: var(--bg-alt);
 }
-
-/* --------------------------------------------------------------------------
-   Essay cards
-
-   One card component. Previously /photo_essays/ used a dark scrim with the
-   title centred over the photo, and the home carousel used a white card with
-   the caption underneath, for the same content type.
-   -------------------------------------------------------------------------- */
 
 .photo-listing,
 .preview-list {
@@ -758,7 +673,6 @@ hr {
   }
 }
 
-/* "Load more" hides everything past the 12th card until clicked. */
 .photo-listing > li:nth-child(n + 13) {
   display: none;
 }
@@ -774,10 +688,6 @@ hr {
 .load-more.hide {
   display: none;
 }
-
-/* --------------------------------------------------------------------------
-   Home: projects
-   -------------------------------------------------------------------------- */
 
 .projects-list {
   list-style: none;
@@ -849,7 +759,7 @@ hr {
 
 .project-title {
   margin: 0 0 12px;
-  font-size: 1.75rem; /* 28px */
+  font-size: 1.75rem;
 }
 
 .projects-list p {
@@ -891,15 +801,11 @@ hr {
 }
 
 .wip-text {
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
   font-weight: var(--fw-display);
   text-align: center;
   letter-spacing: 0.5px;
 }
-
-/* --------------------------------------------------------------------------
-   Home: photo essays carousel
-   -------------------------------------------------------------------------- */
 
 .photo-essays-preview {
   margin-top: 40px;
@@ -950,8 +856,6 @@ hr {
   scroll-snap-align: start;
 }
 
-/* The carousel is a strip, not a gallery. Override the square card ratio with
-   the fixed thumbnail heights the preview used before. */
 .preview-list .essay-card img {
   aspect-ratio: auto;
   height: 140px;
@@ -1026,10 +930,6 @@ hr {
   }
 }
 
-/* --------------------------------------------------------------------------
-   Next / back navigation
-   -------------------------------------------------------------------------- */
-
 .more-projects {
   position: relative;
   padding: 20px 0 80px;
@@ -1058,7 +958,7 @@ hr {
 .more-projects .next-proj a {
   display: block;
   margin-bottom: 20px;
-  font-size: 3.125rem; /* 50px */
+  font-size: 3.125rem;
   font-weight: var(--fw-display);
   color: #474747;
 }
@@ -1092,7 +992,7 @@ hr {
 .next-proj-wip {
   display: block;
   margin-bottom: 20px;
-  font-size: 2.5rem; /* 40px */
+  font-size: 2.5rem;
   font-weight: var(--fw-display);
   color: #b0b0b0;
   cursor: default;
@@ -1133,13 +1033,7 @@ hr {
   }
 }
 
-/* --------------------------------------------------------------------------
-   Prints CTA (cross-link to monobloc.gr)
-   -------------------------------------------------------------------------- */
-
 .prints-cta {
-  /* Bottom margin matters: without it the share row butts straight onto the
-     card and reads as part of the promo. */
   margin: 40px 0 56px;
   padding: 32px 24px;
   border: 1px solid var(--rule);
@@ -1173,10 +1067,6 @@ hr {
   letter-spacing: 1px;
 }
 
-/* --------------------------------------------------------------------------
-   Share links
-   -------------------------------------------------------------------------- */
-
 .social-buttons {
   padding: 20px 0 80px;
   text-align: center;
@@ -1198,7 +1088,6 @@ hr {
   justify-content: center;
 }
 
-/* Softer than the label so "X" stays the name and "(Twitter)" is the hint. */
 .btn-alias {
   color: var(--muted);
 }
@@ -1208,12 +1097,8 @@ hr {
   color: inherit;
 }
 
-/* --------------------------------------------------------------------------
-   About
-   -------------------------------------------------------------------------- */
-
 .about .inner-center {
-  font-size: 1.0625rem; /* 17px */
+  font-size: 1.0625rem;
   line-height: 1.6;
   text-align: center;
 }
@@ -1222,10 +1107,6 @@ hr {
   text-align: left;
 }
 
-/* Selawik ships only Light and Bold, and Bold lays down 2.3x the ink of the
-   300 body text, so bolding a link inside a paragraph shouts. Underline plus
-   colour carries the affordance instead, which is the more accessible signal
-   anyway: it does not depend on colour perception. */
 .about .main-text a {
   font-weight: inherit;
   color: var(--ink);
@@ -1242,9 +1123,6 @@ hr {
   text-decoration-color: var(--accent);
 }
 
-/* "Hi," sits on its own line above the intro. Scoped to the paragraph: the
-   unscoped selector also caught every <span> in the exhibitions and awards
-   lists. */
 .about .main-text p > span {
   display: block;
 }
@@ -1307,12 +1185,8 @@ hr {
   letter-spacing: 1px;
 }
 
-/* --------------------------------------------------------------------------
-   Posts
-   -------------------------------------------------------------------------- */
-
 .posts .inner-center {
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.25rem;
   text-align: left;
 }
 
@@ -1337,14 +1211,6 @@ hr {
 .posts blockquote + p {
   text-align: left;
 }
-
-/* --------------------------------------------------------------------------
-   Posts index
-
-   Horizontal boxed cards, sharing the 1px --rule border used by the essay and
-   project cards. Replaces the full-bleed alternating grey bands, which were
-   the last part of the site not speaking the same visual language.
-   -------------------------------------------------------------------------- */
 
 .post-list {
   margin: 24px 0 0;
@@ -1436,10 +1302,6 @@ hr {
   display: none;
 }
 
-/* --------------------------------------------------------------------------
-   Tag filter bar
-   -------------------------------------------------------------------------- */
-
 .tag-filter {
   display: flex;
   flex-wrap: wrap;
@@ -1516,12 +1378,6 @@ hr {
   color: var(--bg);
 }
 
-/* --------------------------------------------------------------------------
-   Tags page
-   -------------------------------------------------------------------------- */
-
-/* A list of dated links reads as prose, not as a grid. Left at the default
-   --w-grid it ran 1170px wide with three words per row. */
 .tags-page .inner-center {
   max-width: var(--w-posts);
 }
@@ -1600,10 +1456,6 @@ hr {
   color: var(--accent);
 }
 
-/* --------------------------------------------------------------------------
-   404
-   -------------------------------------------------------------------------- */
-
 .content.not-found {
   display: flex;
   align-items: center;
@@ -1634,7 +1486,7 @@ hr {
 
 .not-found-content h1 {
   margin: 0 0 15px;
-  font-size: 1.75rem; /* 28px */
+  font-size: 1.75rem;
   letter-spacing: 2px;
 }
 
@@ -1660,10 +1512,6 @@ hr {
   min-width: 160px;
 }
 
-/* ==========================================================================
-   Breakpoint 1: <= 960px. Sidebar becomes an overlay drawer.
-   ========================================================================== */
-
 @media (max-width: 960px) {
   .topbar {
     display: flex;
@@ -1673,8 +1521,6 @@ hr {
     display: block;
   }
 
-  /* The old rule left margin-left: 50px here while the sidebar was parked
-     off-screen, i.e. a 50px empty gutter on every tablet and large phone. */
   .content {
     margin-left: 0;
     padding-top: var(--topbar-h);
@@ -1707,16 +1553,11 @@ hr {
   }
 }
 
-/* ==========================================================================
-   Breakpoint 2: <= 640px. Single column.
-   ========================================================================== */
-
 @media (max-width: 640px) {
   .content .inner-center {
     padding: 16px;
   }
 
-  /* Font sizes the old sheet stepped down on small screens. */
   .posts .inner-center {
     font-size: 1rem;
   }
@@ -1741,9 +1582,8 @@ hr {
     display: none;
   }
 
-
   .more-projects .next-proj a {
-    font-size: 2.5rem; /* 40px */
+    font-size: 2.5rem;
   }
 
   .next-proj-wip {

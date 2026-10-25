@@ -54,9 +54,9 @@ feed:
 collections:
   photo_essays:
     output: true
-    # :path, not :name. :name slugifies underscores to hyphens, which would have
-    # silently moved every essay from /photo_essays/athens_pride/ to
-    # /photo_essays/athens-pride/ and 404'd the indexed URLs.
+    # :path, not :name. :name slugifies underscores to hyphens, which would move
+    # every essay from /photo_essays/athens_pride/ to /photo_essays/athens-pride/
+    # and 404 the indexed URLs.
     permalink: /photo_essays/:path/
 
 defaults:

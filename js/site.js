@@ -1,5 +1,4 @@
-// Sidebar menu toggle. Replaces the jQuery 1.12 snippet that used to live
-// inline in _layouts/layout.html (90KB of jQuery for one classList.toggle).
+// Sidebar menu toggle.
 (function () {
   'use strict';
 

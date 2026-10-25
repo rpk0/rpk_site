@@ -1,8 +1,4 @@
-// Tag filtering on /posts/.
-//
-// Filters the full post list in place. The old version filtered only the posts
-// on the current pagination page, so with more than one page a tag could
-// silently miss matches; the index no longer paginates for that reason.
+// Tag filtering on /posts/. Filters the full, unpaginated post list in place.
 (function () {
   'use strict';
 

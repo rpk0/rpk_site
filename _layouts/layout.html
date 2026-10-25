@@ -10,8 +10,7 @@
 
     {%- comment -%}
       Titles, canonical, Open Graph, X/Twitter cards and JSON-LD all come from
-      jekyll-seo-tag. It replaced ~110 lines of hand-rolled meta that emitted a
-      canonical URL which 404'd on every post.
+      jekyll-seo-tag.
 
       Pages opt into a social image with `image:` in front matter; photo essays
       get theirs from the first frame (see _layouts/photo_post.html).
@@ -26,8 +25,7 @@
     {%- comment -%}
       The lightbox only ever fires on the data-lightbox links written by
       gallery.html and the critiq layout, and share_links.html is only included
-      by the three article layouts. Everything else was paying for a
-      render-blocking stylesheet and 17KB of JS it can never use.
+      by the three article layouts, so every other page skips their CSS and JS.
     {%- endcomment -%}
     {%- assign has_gallery = false -%}
     {%- if page.layout == "photo_post" or page.layout == "critiq_layout" -%}
@@ -91,8 +89,8 @@
         {%- for link in site.navigation -%}
           {%- comment -%}
             Compare only when both sides exist. `nil == nil` is true in Liquid,
-            so pages without a `section` used to light up every nav item whose
-            `identity` was also unset (posts and about were both "active").
+            so a page without a `section` would match every nav item without
+            an `identity`.
           {%- endcomment -%}
           {%- assign active = false -%}
           {%- if url == link.url -%}

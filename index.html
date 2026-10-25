@@ -51,8 +51,7 @@ image: /images/og-default.jpg
         <button type="button" class="preview-arrow prev" aria-label="Scroll left">&larr;</button>
         <div class="preview-track">
           {%- comment -%}
-            Six most recent, straight off the collection. This used to be six
-            hardcoded <li> blocks kept in sync with /photo_essays/ by hand.
+            Six most recent, straight off the collection.
           {%- endcomment -%}
           <ul class="preview-list essay-cards">
             {%- assign featured = site.photo_essays | sort: 'order' | slice: 0, 6 -%}
