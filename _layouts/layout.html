@@ -43,12 +43,6 @@
     {%- if has_gallery %}
     <link rel="stylesheet" href="{{ '/css/lightbox-improved.css' | asset }}">
     {%- endif %}
-    {%- comment -%}
-      Post bodies only. The /posts/ index is a card list with no code in it.
-    {%- endcomment -%}
-    {%- if page.identifier == "posts" %}
-    <link rel="stylesheet" href="{{ '/css/pygments.css' | asset }}">
-    {%- endif %}
 
     <script defer src="{{ '/js/site.js' | asset }}"></script>
     {%- if has_gallery %}
