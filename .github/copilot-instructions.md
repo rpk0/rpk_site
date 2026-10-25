@@ -85,11 +85,46 @@ hand-write an `<img>` in a gallery; use the include.
   and 640px.
 - **Whitespace:** no trailing whitespace, no spaces on blank lines.
 
+## Caching
+
+Cloudflare sits in front of GitHub Pages. Cache Rules on the `rpk.io` zone
+(`901ce6739332c213a2a9a2236a9c89b2`) override origin TTLs at the edge and in
+the browser:
+
+| Path | TTL |
+| --- | --- |
+| `/css/*`, `/js/*`, `/fonts/*` | 1 year |
+| `*.webp` | 30 days |
+| everything else (HTML) | origin, 10 minutes |
+
+- **CSS/JS:** never needs a purge. `_plugins/asset_hash.rb` appends `?v=<sha>`,
+  so every change is a new URL. Always reference them with `{{ '/css/x.css' | asset }}`,
+  never a bare path.
+- **Fonts:** not hashed. To change a font, give it a new filename and update
+  `css/base.css` and the preload in `_layouts/layout.html`. Overwriting in place
+  leaves browsers on the old file for up to a year, a purge cannot reach them.
+- **`.webp` (and fonts if overwritten anyway):** you must purge every modified,
+  renamed or deleted file yourself, once the change has deployed. New files need
+  nothing.
+  1. List them: `git diff --name-status <base>..HEAD -- fonts uploads images projects`
+     (`M`, `R` old path, `D`; a replaced `.jpg` shows up as its `.webp`).
+  2. Wait for the Pages deploy of that commit: `gh run watch` on the `pages.yml` run.
+     Purging earlier lets the edge re-cache the old file.
+  3. Purge via the `cloudflare` MCP server (mcp.cloudflare.com):
+     `POST /zones/901ce6739332c213a2a9a2236a9c89b2/purge_cache` with
+     `{"files": ["https://rpk.io/uploads/<slug>/1.webp", ...]}` (max 100 URLs per call).
+  4. Verify: `curl -sI <url>` shows `cf-cache-status: MISS` then `HIT` with the new
+     `content-length`/`etag`.
+  If the deploy will happen after your session (e.g. the PR is not merged yet),
+  list the URLs still to purge in the PR body and tell the user.
+
 ## Deployment
 - Push to `gh-pages`; the Actions workflow builds and deploys.
 - Pages source must be set to **GitHub Actions** in repo settings (Settings →
   Pages → Build and deployment → Source).
 - Run `bundle exec jekyll build` locally before pushing to catch template errors.
+- Cloudflare sends HSTS (`max-age=31536000; includeSubDomains`). Any new subdomain
+  must serve HTTPS from day one, or browsers that saw the header cannot reach it.
 
 ## Commits
 - Title max 50 chars, imperative, then a blank line
