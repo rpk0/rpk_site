@@ -24,7 +24,7 @@ layout: layout
 
     {%- if page.description %}
     <div class="intro-text">
-      <blockquote>{{ page.description }}</blockquote>
+      <blockquote>{{ page.description | newline_to_br }}</blockquote>
     </div>
     {%- endif %}
 
