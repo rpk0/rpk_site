@@ -164,44 +164,6 @@
   right: 0;
 }
 
-/* Swipe hint for mobile */
-.lb-swipe-hint {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 15;
-  display: none;
-}
-
-.lb-swipe-hint.active {
-  display: block;
-  animation: swipeHint 3s ease-in-out;
-}
-
-@keyframes swipeHint {
-  0% { opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-.lb-swipe-hint svg {
-  width: 80px;
-  height: 80px;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
-}
-
-.lb-swipe-hint .swipe-arrow {
-  animation: swipeAnimation 1.5s ease-in-out infinite;
-}
-
-@keyframes swipeAnimation {
-  0%, 100% { transform: translateX(-10px); opacity: 0.5; }
-  50% { transform: translateX(10px); opacity: 1; }
-}
-
 /* Data container */
 .lb-dataContainer {
   position: fixed;
@@ -325,29 +287,6 @@
   .lb-click-zone {
     display: none;
   }
-  
-  /* Swipe hint animation for mobile */
-  .swipe-hint {
-    position: fixed;
-    bottom: 140px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 14px;
-    animation: fadeInOut 3s ease-in-out;
-    pointer-events: none;
-    z-index: 9999;
-  }
-  
-  @keyframes fadeInOut {
-    0% { opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
-  }
 
   .lb-dataContainer {
     padding: 15px;
@@ -434,7 +373,6 @@
   outline-offset: 2px;
 }
 
-/* Hide scrollbar on body when lightbox is open */
-body.lb-disable-scrolling {
-  overflow: hidden;
+.lightbox:focus-visible {
+  outline: none;
 }

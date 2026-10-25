@@ -8,7 +8,6 @@
   const Lightbox = {
     options: {
       fadeDuration: 300,
-      resizeDuration: 400,
       fitImagesInViewport: true,
       showImageNumberLabel: true,
       wrapAround: true,
@@ -29,7 +28,7 @@
     createMarkup: function() {
       const markup = `
         <div id="lightboxOverlay" class="lightboxOverlay"></div>
-        <div id="lightbox" class="lightbox">
+        <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" tabindex="-1">
           <div class="lb-outerContainer">
             <div class="lb-container">
               <img class="lb-image" src="" alt="">
@@ -51,15 +50,6 @@
                 <path d="M10 5 L20 15 L10 25" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
-          </div>
-          <div class="lb-swipe-hint">
-            <svg width="80" height="80" viewBox="0 0 80 80">
-              <circle cx="40" cy="40" r="35" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="2"/>
-              <g class="swipe-arrow">
-                <path d="M25 40 L55 40" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                <path d="M45 30 L55 40 L45 50" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-            </svg>
           </div>
           <div class="lb-dataContainer">
             <div class="lb-data">
@@ -93,7 +83,6 @@
       this.$number = this.$lightbox.querySelector('.lb-number');
       this.$closeButton = this.$lightbox.querySelector('.lb-close');
       this.$dataContainer = this.$lightbox.querySelector('.lb-dataContainer');
-      this.$swipeHint = this.$lightbox.querySelector('.lb-swipe-hint');
     },
 
     bindEvents: function() {
@@ -101,7 +90,7 @@
 
       // Click to open lightbox
       document.addEventListener('click', function(e) {
-        const link = e.target.closest('a[rel^="lightbox"], a[data-lightbox]');
+        const link = e.target.closest('a[data-lightbox]');
         if (link) {
           e.preventDefault();
           self.start(link);
@@ -175,74 +164,36 @@
       this.album = [];
       let imageIndex = 0;
 
-      const dataLightbox = link.getAttribute('data-lightbox');
-      const rel = link.getAttribute('rel');
-
-      if (dataLightbox) {
-        // Group by data-lightbox attribute
-        const links = document.querySelectorAll(`a[data-lightbox="${dataLightbox}"]`);
-        links.forEach((el, index) => {
-          this.album.push({
-            link: el.href,
-            title: el.getAttribute('title') || ''
-          });
-          if (el === link) imageIndex = index;
-        });
-      } else if (rel && rel !== 'lightbox') {
-        // Group by rel attribute
-        const links = document.querySelectorAll(`a[rel="${rel}"]`);
-        links.forEach((el, index) => {
-          this.album.push({
-            link: el.href,
-            title: el.getAttribute('title') || ''
-          });
-          if (el === link) imageIndex = index;
-        });
-      } else {
-        // Single image
+      const links = document.querySelectorAll(`a[data-lightbox="${link.getAttribute('data-lightbox')}"]`);
+      links.forEach((el, index) => {
+        const thumb = el.querySelector('img');
         this.album.push({
-          link: link.href,
-          title: link.getAttribute('title') || ''
+          link: el.href,
+          title: el.getAttribute('title') || '',
+          alt: thumb ? thumb.alt : ''
         });
-      }
+        if (el === link) imageIndex = index;
+      });
 
       this.open();
       this.changeImage(imageIndex);
     },
 
     open: function() {
+      // Everything behind the viewer goes inert, so Tab and screen readers stay inside it.
+      this.opener = document.activeElement;
+      Array.from(document.body.children).forEach((el) => {
+        if (el !== this.$overlay && el !== this.$lightbox) el.inert = true;
+      });
       document.body.style.overflow = 'hidden';
       this.$overlay.style.display = 'block';
       this.$lightbox.style.display = 'block';
+      this.$lightbox.focus({ preventScroll: true });
 
       setTimeout(() => {
         this.$overlay.classList.add('active');
         this.$lightbox.classList.add('active');
       }, 10);
-
-      // Show swipe hint on mobile for albums (no longer needed with visible arrows)
-      // Keeping the code but not showing hint since arrows are now visible
-    },
-
-    isMobile: function() {
-      return window.innerWidth <= 768;
-    },
-
-    showSwipeHint: function() {
-      if (sessionStorage.getItem('lightbox-swipe-hint-shown') || !this.isMobile()) {
-        return;
-      }
-
-      const hint = document.createElement('div');
-      hint.className = 'swipe-hint';
-      hint.textContent = '← Swipe to navigate →';
-      document.body.appendChild(hint);
-
-      sessionStorage.setItem('lightbox-swipe-hint-shown', 'true');
-      
-      setTimeout(() => {
-        hint.remove();
-      }, 3000);
     },
 
     changeImage: function(index) {
@@ -255,6 +206,7 @@
       const img = new Image();
       img.onload = () => {
         this.$image.src = img.src;
+        this.$image.alt = this.album[index].alt;
         this.sizeImage();
         this.updateDetails();
         this.updateNav();
@@ -432,6 +384,8 @@
     end: function() {
       this.$overlay.classList.remove('active');
       this.$lightbox.classList.remove('active');
+      Array.from(document.body.children).forEach((el) => { el.inert = false; });
+      if (this.opener) this.opener.focus({ preventScroll: true });
 
       setTimeout(() => {
         this.$overlay.style.display = 'none';
