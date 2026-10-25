@@ -2,9 +2,10 @@
 Photo essay / project gallery.
 
 Reads `page.images` and `page.dir` from front matter. An entry containing "://"
-is treated as an absolute URL and used as-is. _plugins/images.rb serves the
-.webp for each frame. The first frame loads eagerly, the rest lazily, all with
-intrinsic dimensions so nothing shifts on load.
+is treated as an absolute URL and used as-is. `page.alts` holds a description
+per frame, in the same order; a frame without one falls back to its position.
+_plugins/images.rb serves the .webp for each frame. The first frame loads
+eagerly, the rest lazily, all with intrinsic dimensions so nothing shifts.
 {%- endcomment -%}
 <ul class="gallery">
   {%- for img in page.images %}
@@ -13,10 +14,12 @@ intrinsic dimensions so nothing shifts on load.
     {%- else -%}
       {%- assign src = page.dir | append: '/' | append: img -%}
     {%- endif -%}
+    {%- capture position %}{{ page.title }}, photo {{ forloop.index }} of {{ forloop.length }}{% endcapture -%}
+    {%- assign alt = page.alts[forloop.index0] | default: position -%}
   <li>
-    <a href="{{ src }}" data-lightbox="{{ page.title | slugify }}" aria-label="{{ page.title }}, photo {{ forloop.index }} of {{ forloop.length }}">
+    <a href="{{ src }}" data-lightbox="{{ page.title | slugify }}">
       <img src="{{ src }}"
-           alt="{{ page.title }}, photo {{ forloop.index }} of {{ forloop.length }}"
+           alt="{{ alt | escape }}"
            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
            {% if forloop.first %}fetchpriority="high"{% endif %}
            decoding="async">
