@@ -45,6 +45,7 @@ html:has(.lb[open]) {
 }
 
 .lb-image {
+  grid-area: 1 / 1;
   display: block;
   width: auto;
   height: auto;
@@ -55,11 +56,16 @@ html:has(.lb[open]) {
   box-shadow: 0 10px 50px rgb(0 0 0 / 0.8);
   user-select: none;
   -webkit-user-select: none;
-  transition: opacity 0.2s ease, transform 0.25s ease;
+  will-change: transform;
+  transition: opacity 0.2s ease;
 }
 
-.lb.is-loading .lb-image {
+.lb.is-loading .lb-image.is-current {
   opacity: 0;
+}
+
+.lb.is-single .lb-image:not(.is-current) {
+  visibility: hidden;
 }
 
 .lb.is-dragging .lb-image {
