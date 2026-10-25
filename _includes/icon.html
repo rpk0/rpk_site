@@ -9,6 +9,8 @@ Without `label` the icon is decorative and hidden from assistive tech. With
 
 Brand marks are from Simple Icons (CC0). UI glyphs are Feather (MIT).
 The 'x' mark is the current X logo, not the retired Twitter bird.
+'monobloc' is the cube from the monobloc.gr logo; 'terminal' matches the
+terminal-window look of kostiskarampinas.com.
 {%- endcomment -%}
 {%- assign a11y = 'aria-hidden="true" focusable="false"' -%}
 {%- if include.label -%}
@@ -39,6 +41,12 @@ The 'x' mark is the current X logo, not the retired Twitter bird.
 
 {%- when 'facebook' -%}
 <svg class="icon" viewBox="0 0 24 24" fill="currentColor" {{ a11y }}><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07Z"/></svg>
+
+{%- when 'monobloc' -%}
+<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" {{ a11y }}><path d="M12 2.5 3.75 7.25v9.5L12 21.5M3.75 7.25 12 12l-8.25 4.75"/><path d="M12 2.5l8.25 4.75v9.5L12 21.5Z" fill="currentColor"/></svg>
+
+{%- when 'terminal' -%}
+<svg class="icon" viewBox="0 0 24 24" fill="currentColor" {{ a11y }}><path fill-rule="evenodd" d="M5 2.5h14A2.5 2.5 0 0 1 21.5 5v14a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 19V5A2.5 2.5 0 0 1 5 2.5Zm1.3 6.9 1.4-1.4 4 4-4 4-1.4-1.4 2.6-2.6Zm6.2 4.6h5.5v2h-5.5Z"/></svg>
 
 {%- when 'link' -%}
 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" {{ a11y }}><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>

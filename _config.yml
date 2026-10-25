@@ -16,9 +16,9 @@ social:
   links:
     - https://instagram.com/rpk.io
     - https://x.com/rpk0_
-    - https://www.facebook.com/kostis.karampinas/
     - https://github.com/rpk0
     - https://monobloc.gr
+    - https://kostiskarampinas.com
 
 # Key name is fixed by jekyll-seo-tag; it emits the twitter:card meta tags,
 # which X still uses under that name.
@@ -33,7 +33,6 @@ monobloc:
 
 github: rpk0
 instagram: rpk.io
-facebook_page: https://www.facebook.com/kostis.karampinas/
 
 markdown: kramdown
 kramdown:
