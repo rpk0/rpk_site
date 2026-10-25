@@ -1,4 +1,4 @@
-// "Load more" on the photo essays index. Vanilla rewrite of the jQuery version.
+// "Load more" on the photo essays index.
 (function () {
   'use strict';
 
