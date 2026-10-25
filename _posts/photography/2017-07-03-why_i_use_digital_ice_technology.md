@@ -24,17 +24,17 @@ My scanner is an **Epson Perfection V550** which supports Digital ICE technology
 
 #### The same picture scanned with three different ways. (Click for high-resolution)
 
-<a href="/images/posts/digital_ice/all_no_tool.jpg" target="_blank" rel="no tool">![All enhancements disabled](/images/posts/digital_ice/all_no_tool.jpg)</a>
+<a href="/images/posts/digital_ice/all_no_tool.jpg" target="_blank">![All enhancements disabled](/images/posts/digital_ice/all_no_tool.jpg)</a>
 <span class="center_align">
   All enhancements disabled
 </span>
 
-<a href="/images/posts/digital_ice/all_dust.jpg" target="_blank" rel="Dust removal (Medium) Enabled">![Dust removal (Medium) Enabled](/images/posts/digital_ice/all_dust.jpg)</a>
+<a href="/images/posts/digital_ice/all_dust.jpg" target="_blank">![Dust removal (Medium) Enabled](/images/posts/digital_ice/all_dust.jpg)</a>
 <span class="center_align">
   Dust removal (Medium) Enabled
 </span>
 
-<a href="/images/posts/digital_ice/all_ice.jpg" target="_blank" rel="Digital ICE Enabled">![Digital ICE Enabled](/images/posts/digital_ice/all_ice.jpg)</a>
+<a href="/images/posts/digital_ice/all_ice.jpg" target="_blank">![Digital ICE Enabled](/images/posts/digital_ice/all_ice.jpg)</a>
 <span class="center_align">
   Digital ICE Enabled
 </span>
@@ -42,7 +42,7 @@ My scanner is an **Epson Perfection V550** which supports Digital ICE technology
 
 It's difficult to spot the differences, so lets do some cropping.
 
-<a href="/images/posts/digital_ice/general_crop.png" target="_blank" rel="Dust removal (Medium) Enabled">![Details](/images/posts/digital_ice/general_crop.png)</a>
+<a href="/images/posts/digital_ice/general_crop.png" target="_blank">![Details](/images/posts/digital_ice/general_crop.png)</a>
 <span class="center_align">
   Click for high-resolution
 </span>
