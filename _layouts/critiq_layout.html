@@ -29,22 +29,13 @@ noindex: true
     <ul class="gallery">
       {%- for img in page.images %}
         {%- assign src = img -%}
-        {%- assign webp = nil -%}
         {%- unless img contains '://' -%}
           {%- assign src = "/critiq/" | append: page.session_id | append: "/" | append: img -%}
-          {%- assign webp = src | split: '.' | first | append: '.webp' -%}
         {%- endunless -%}
-        {%- assign dims = site.data.image_sizes[src] %}
       <li>
         <a href="{{ src }}" data-lightbox="{{ page.session_id }}">
-          <picture>
-            {%- if webp %}
-            <source srcset="{{ webp }}" type="image/webp">
-            {%- endif %}
-            <img src="{{ src }}" alt="Photo {{ forloop.index }} of {{ forloop.length }}"
-                 {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
-                 loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
-          </picture>
+          <img src="{{ src }}" alt="Photo {{ forloop.index }} of {{ forloop.length }}"
+               loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
         </a>
         <div class="vote-summary" data-photo-id="{{ img }}">
           <span class="summary-strongly_like" title="Super Like">&#128525; 0</span>

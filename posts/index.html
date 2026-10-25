@@ -36,15 +36,9 @@ description: "Writing about film photography, gear, darkroom and scanning by Kos
       <li class="post-card" data-tags="{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}">
         <a href="{{ post.url }}">
           {%- if post.image %}
-          {%- assign webp = post.image | split: '.' | first | append: '.webp' -%}
-          {%- assign dims = site.data.image_sizes[post.image] %}
           <span class="post-card-media">
-            <picture>
-              <source srcset="{{ webp }}" type="image/webp">
-              <img src="{{ post.image }}" alt=""
-                   {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
-                   loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
-            </picture>
+            <img src="{{ post.image }}" alt=""
+                 loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
           </span>
           {%- endif %}
           <span class="post-card-body">

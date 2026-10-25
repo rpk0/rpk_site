@@ -8,13 +8,8 @@ section: about
 	<div class="main-text inner-center">
 		<h1 class="page-title">About</h1>
 		<div class="about-img">
-			{%- assign dims = site.data.image_sizes['/images/mylos_creatures-about.jpg'] %}
-			<picture>
-				<source srcset="/images/mylos_creatures-about.webp" type="image/webp">
-				<img src="/images/mylos_creatures-about.jpg" alt="Kostis Karampinas"
-						 {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
-						 fetchpriority="high" decoding="async">
-			</picture>
+			<img src="/images/mylos_creatures-about.jpg" alt="Kostis Karampinas"
+					 fetchpriority="high" decoding="async">
 		</div>
 		<p>
 			<span>Hi,</span>
