@@ -12,7 +12,7 @@ eagerly, the rest lazily, all with intrinsic dimensions so nothing shifts.
     {%- if img contains '://' -%}
       {%- assign src = img -%}
     {%- else -%}
-      {%- assign src = page.dir | append: '/' | append: img -%}
+      {%- assign src = page.dir | append: '/' | append: img | replace: '//', '/' -%}
     {%- endif -%}
     {%- capture position %}{{ page.title }}, photo {{ forloop.index }} of {{ forloop.length }}{% endcapture -%}
     {%- assign alt = page.alts[forloop.index0] | default: position -%}
