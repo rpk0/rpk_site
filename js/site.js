@@ -1,11 +1,11 @@
-// Sidebar menu toggle. Replaces the jQuery 1.12 snippet that used to live
-// inline in _layouts/layout.html (90KB of jQuery for one classList.toggle).
+// Sidebar menu toggle.
 (function () {
   'use strict';
 
   var button = document.querySelector('.menu-icon');
   var sidebar = document.getElementById('sidebar');
   var scrim = document.querySelector('.sidebar-scrim');
+  var main = document.getElementById('main');
 
   if (!button || !sidebar) {
     return;
@@ -20,6 +20,9 @@
     }
     // Only lock scroll on the narrow layouts where the sidebar is an overlay.
     document.body.classList.toggle('nav-open', open);
+    if (main) {
+      main.inert = open;
+    }
   }
 
   function isOpen() {

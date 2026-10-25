@@ -1,7 +1,6 @@
 ---
 layout: layout
 title: "About"
-group: "navigation"
 section: about
 ---
 
@@ -9,17 +8,12 @@ section: about
 	<div class="main-text inner-center">
 		<h1 class="page-title">About</h1>
 		<div class="about-img">
-			{%- assign dims = site.data.image_sizes['/images/mylos_creatures-about.jpg'] %}
-			<picture>
-				<source srcset="/images/mylos_creatures-about.webp" type="image/webp">
-				<img src="/images/mylos_creatures-about.jpg" alt="Kostis Karampinas"
-						 {% if dims %}width="{{ dims.w }}" height="{{ dims.h }}"{% endif %}
-						 fetchpriority="high" decoding="async">
-			</picture>
+			<img src="/images/mylos_creatures-about.jpg" alt="Kostis Karampinas"
+					 fetchpriority="high" decoding="async">
 		</div>
 		<p>
 			<span>Hi,</span>
-			my name is Kostis and I'm a software engineer at <a href="https://www.skroutz.gr">Skroutz.gr</a>.
+			my name is Kostis and I'm a <a href="https://kostiskarampinas.com">tech lead</a> at <a href="https://www.skroutz.gr">Skroutz.gr</a>.
 			Besides my life as a developer I enjoy photography. I am self-taught and started my involvement with photography in 2012.
 			I like urban and sub-urban landscapes which emit the feeling of loneliness, abandonment and curiosity.
 			Nowadays I shoot mostly film - 6×7 medium format and 35mm.
@@ -34,7 +28,7 @@ section: about
 
 		<p class="contact-note">
 			If you want to get in touch, send me an
-			<a href="#" id="email-link">e-mail</a>
+			<a href="mailto:kostis.karampinas@gmail.com">e-mail</a>
 			or follow me on
 			<a href="https://instagram.com/{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a>.
 		</p>
@@ -77,17 +71,3 @@ section: about
 		</section>
 	</div>
 </section>
-
-<script>
-	// Anti-spam email obfuscation
-	(function() {
-		const u = 'kostis.karampinas';
-		const d = 'gmail.com';
-		const link = document.getElementById('email-link');
-		link.href = 'mailto:' + u + String.fromCharCode(64) + d;
-		link.onclick = function(e) {
-			e.preventDefault();
-			window.location.href = this.href;
-		};
-	})();
-</script>

@@ -4,11 +4,9 @@ require 'digest'
 
 # `{{ '/css/base.css' | asset }}` -> `/css/base.css?v=<8 chars of sha1>`
 #
-# rpk.io sits behind Cloudflare, which serves CSS and JS with a 16 day
-# Cache-Control. Without a changing URL, a stylesheet edit stays invisible to
-# returning visitors (and to the edge) for over two weeks. Hashing the file
-# contents means the URL only changes when the file actually does, so unchanged
-# assets keep their cache across deploys.
+# rpk.io sits behind Cloudflare's cache. Hashing the file contents means the URL
+# changes exactly when the file does, so CSS and JS can be cached for as long as
+# the edge allows and an edit still reaches every visitor on the next deploy.
 module Jekyll
   module AssetHashFilter
     CACHE = {}

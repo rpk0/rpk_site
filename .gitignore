@@ -3,9 +3,6 @@ _site/
 vendor/
 .DS_Store
 .vscode/
-gh-pages/
-site/_site/
 .jekyll-cache
-firebase_secret.key
 
 .ruby-lsp/

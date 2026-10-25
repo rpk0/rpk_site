@@ -10,8 +10,7 @@
 
     {%- comment -%}
       Titles, canonical, Open Graph, X/Twitter cards and JSON-LD all come from
-      jekyll-seo-tag. It replaced ~110 lines of hand-rolled meta that emitted a
-      canonical URL which 404'd on every post.
+      jekyll-seo-tag.
 
       Pages opt into a social image with `image:` in front matter; photo essays
       get theirs from the first frame (see _layouts/photo_post.html).
@@ -25,12 +24,11 @@
 
     {%- comment -%}
       The lightbox only ever fires on the data-lightbox links written by
-      gallery.html and the critiq layout, and share_links.html is only included
-      by the three article layouts. Everything else was paying for a
-      render-blocking stylesheet and 17KB of JS it can never use.
+      gallery.html, and share_links.html is only included by the article
+      layouts, so every other page skips their CSS and JS.
     {%- endcomment -%}
     {%- assign has_gallery = false -%}
-    {%- if page.layout == "photo_post" or page.layout == "critiq_layout" -%}
+    {%- if page.layout == "photo_post" -%}
       {%- assign has_gallery = true -%}
     {%- endif -%}
     {%- assign has_share = has_gallery -%}
@@ -43,12 +41,6 @@
     {%- if has_gallery %}
     <link rel="stylesheet" href="{{ '/css/lightbox-improved.css' | asset }}">
     {%- endif %}
-    {%- comment -%}
-      Post bodies only. The /posts/ index is a card list with no code in it.
-    {%- endcomment -%}
-    {%- if page.identifier == "posts" %}
-    <link rel="stylesheet" href="{{ '/css/pygments.css' | asset }}">
-    {%- endif %}
 
     <script defer src="{{ '/js/site.js' | asset }}"></script>
     {%- if has_gallery %}
@@ -56,9 +48,6 @@
     {%- endif %}
     {%- if has_share %}
     <script defer src="{{ '/js/copy-link.js' | asset }}"></script>
-    {%- endif %}
-    {%- if page.url == "/photo_essays/" %}
-    <script defer src="{{ '/js/show_more.js' | asset }}"></script>
     {%- endif %}
     {%- if page.url == "/" %}
     <script defer src="{{ '/js/projects-preview.js' | asset }}"></script>
@@ -85,7 +74,7 @@
       <a href="/" class="name">
         <span class="name-logo"></span>
         <small>Kostis Karampinas</small>
-        <em>&#x1f4f7;</em>
+        <em aria-hidden="true">&#x1f4f7;</em>
         <small>Photographer</small>
       </a>
 
@@ -94,8 +83,8 @@
         {%- for link in site.navigation -%}
           {%- comment -%}
             Compare only when both sides exist. `nil == nil` is true in Liquid,
-            so pages without a `section` used to light up every nav item whose
-            `identity` was also unset (posts and about were both "active").
+            so a page without a `section` would match every nav item without
+            an `identity`.
           {%- endcomment -%}
           {%- assign active = false -%}
           {%- if url == link.url -%}
@@ -111,8 +100,8 @@
 
       <ul class="meta">
         <li><a href="https://instagram.com/{{ site.instagram }}" target="_blank" rel="noopener">{% include icon.html name="instagram" label="Instagram" %}</a></li>
-        <li><a href="{{ site.facebook_page }}" target="_blank" rel="noopener">{% include icon.html name="facebook" label="Facebook" %}</a></li>
-        <li><a href="https://x.com/{{ site.twitter.username }}" target="_blank" rel="noopener">{% include icon.html name="x" label="X" %}</a></li>
+        <li><a href="{{ site.monobloc.url }}" target="_blank" rel="noopener">{% include icon.html name="monobloc" label="Monobloc" %}</a></li>
+        <li><a href="https://kostiskarampinas.com" target="_blank" rel="noopener">{% include icon.html name="terminal" label="kostiskarampinas.com" %}</a></li>
       </ul>
     </nav>
 

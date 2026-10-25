@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "~> 3.3"
+ruby "~> 4.0"
 
 gem "jekyll", "~> 4.4"
 gem "webrick", "~> 1.9"
@@ -10,7 +10,3 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-feed"
 end
-
-# Critiq session management CLI (create_critiq_session.rb et al)
-gem "tty-prompt"
-gem "pastel"

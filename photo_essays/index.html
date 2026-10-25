@@ -1,7 +1,6 @@
 ---
 layout: layout
 title: "Photo Essays"
-group: "navigation"
 section: photo_essays
 description: "Photo essays by Kostis Karampinas. Analog and digital series shot in Greece, the US and beyond."
 ---
@@ -10,15 +9,11 @@ description: "Photo essays by Kostis Karampinas. Analog and digital series shot 
   <div class="inner-center">
     <h1 class="page-title">Photo Essays</h1>
 
-    <ul class="photo-listing" id="photo-list">
+    <ul class="photo-listing">
       {%- assign essays = site.photo_essays | sort: 'order' -%}
       {%- for essay in essays %}
       {% include essay_card.html essay=essay eager=forloop.first %}
       {%- endfor %}
     </ul>
-
-    {%- if essays.size > 12 %}
-    <button type="button" class="btn load-more">Load more</button>
-    {%- endif %}
   </div>
 </section>

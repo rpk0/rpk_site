@@ -3,7 +3,7 @@
 ## Project Overview
 - Static photography portfolio, Jekyll 4, deployed to GitHub Pages by GitHub Actions (`.github/workflows/pages.yml`) on push to `gh-pages`.
 - **Not** the legacy Pages build. The `github-pages` gem is gone, so any plugin and any Jekyll version is fair game.
-- Local runtime: Ruby 3.3.6 via mise/rbenv. Output goes to `_site/`, which stays untracked.
+- Local runtime: Ruby 4.0 via mise (`.mise.toml`). Output goes to `_site/`, which stays untracked.
 
 ## Local Environment
 1. `bundle install`
@@ -18,7 +18,6 @@
 | Photo essays | `_photo_essays/<slug>.html` (a Jekyll collection) |
 | Photo essay assets | `uploads/<slug>/` |
 | Projects | `projects/<slug>/index.html` |
-| Critiq sessions | `critiq/<session>/` (generated, private) |
 | Shared markup | `_includes/`, layouts in `_layouts/` |
 | Styles | `css/base.css` |
 | Scripts | `js/` |
@@ -55,13 +54,15 @@ Then `ruby tools/build_images.rb` and commit both the `.jpg` and the `.webp`.
 `tools/build_images.rb` is the only image step. It is idempotent, run it after
 adding any photo:
 
-- writes a sibling `.webp` for every jpg/png in `uploads/ images/ projects/ critiq/`
-- regenerates `_data/image_sizes.yml`, which templates read to emit `width`/`height`
+- writes a sibling `.webp` for every jpg/png in `uploads/ images/ projects/`
+- regenerates `_data/image_sizes.yml`, which `_plugins/images.rb` reads for `width`/`height`
 
-Originals are never modified. `_includes/gallery.html` and
-`_includes/essay_card.html` consume both, so galleries get `<picture>`, WebP,
-lazy loading and no layout shift for free. Never hand-write an `<img>` in a
-gallery; use the include.
+Always reference the original `.jpg`/`.png` (front matter, Markdown, templates).
+At build time `_plugins/images.rb` rewrites every local `src`/`href` to the
+`.webp`, adds intrinsic dimensions and lazy loading to every `<img>`, and leaves
+the originals out of the deployed site, except images used as social cards
+(`image:` front matter, `logo:`), which crawlers still want as JPG. Never
+hand-write an `<img>` in a gallery; use the include.
 
 ## Conventions
 
@@ -84,34 +85,50 @@ gallery; use the include.
   and 640px.
 - **Whitespace:** no trailing whitespace, no spaces on blank lines.
 
-## Critiq (private client review pages)
+## Caching
 
-Firebase-backed photo voting under `/critiq/`. Sessions are `noindex` and
-disallowed in `robots.txt`.
+Cloudflare sits in front of GitHub Pages. Cache Rules on the `rpk.io` zone
+(`901ce6739332c213a2a9a2236a9c89b2`) override origin TTLs at the edge and in
+the browser:
 
-```bash
-ruby create_critiq_session.rb <session-name> <photos-folder>  # local images
-ruby create_external_session.rb <session-name> <urls-file>    # external URLs
-ruby delete_critiq_session.rb                                 # interactive removal
-```
+| Path | TTL |
+| --- | --- |
+| `/css/*`, `/js/*`, `/fonts/*` | 1 year |
+| `*.webp` | 30 days |
+| everything else (HTML) | origin, 10 minutes |
 
-`create_critiq_session.rb` runs `tools/build_images.rb` automatically.
-
-**Known limitation:** the Realtime Database is world-readable and the admin PIN
-is a client-side SHA-1 hash embedded in `critiq/admin.html`. Anyone with the URL
-can read every session over the REST API. Treat critiq as obscure, not private,
-until the rules are moved behind Firebase Auth.
-
-- Layout: `_layouts/critiq_layout.html`
-- Logic: `js/firebase-voting.js`
-- Admin: `critiq/admin.html`
-- Vote shape: `{vote, voterName, comment, timestamp}`
+- **CSS/JS:** never needs a purge. `_plugins/asset_hash.rb` appends `?v=<sha>`,
+  so every change is a new URL. Always reference them with `{{ '/css/x.css' | asset }}`,
+  never a bare path.
+- **Fonts:** not hashed. To change a font, give it a new filename and update
+  `css/base.css` and the preload in `_layouts/layout.html`. Overwriting in place
+  leaves browsers on the old file for up to a year, a purge cannot reach them.
+- **`.webp` (and fonts if overwritten anyway):** you must purge every modified,
+  renamed or deleted file yourself, once the change has deployed. New files need
+  nothing.
+  1. List them: `git diff --name-status <base>..HEAD -- fonts uploads images projects`
+     (`M`, `R` old path, `D`; a replaced `.jpg` shows up as its `.webp`).
+  2. Wait for the Pages deploy of that commit: `gh run watch` on the `pages.yml` run.
+     Purging earlier lets the edge re-cache the old file.
+  3. Purge via the `cloudflare` MCP server (mcp.cloudflare.com):
+     `POST /zones/901ce6739332c213a2a9a2236a9c89b2/purge_cache` with
+     `{"files": ["https://rpk.io/uploads/<slug>/1.webp", ...]}` (max 100 URLs per call).
+  4. Verify: `curl -sI <url>` shows `cf-cache-status: MISS` then `HIT` with the new
+     `content-length`/`etag`.
+  If the deploy will happen after your session (e.g. the PR is not merged yet),
+  list the URLs still to purge in the PR body and tell the user.
 
 ## Deployment
 - Push to `gh-pages`; the Actions workflow builds and deploys.
 - Pages source must be set to **GitHub Actions** in repo settings (Settings →
   Pages → Build and deployment → Source).
 - Run `bundle exec jekyll build` locally before pushing to catch template errors.
+- Cloudflare sends HSTS (`max-age=31536000; includeSubDomains`). Any new subdomain
+  must serve HTTPS from day one, or browsers that saw the header cannot reach it.
+- Cloudflare also sends a CSP (`default-src 'self'`). Everything loads from rpk.io:
+  no inline `<script>`, no `style="..."` or `<style>`, no `on*=` handlers, no
+  third-party hosts or embeds. Put code in `js/`, styles in `css/`. Setting
+  `el.style.x` from JS is fine.
 
 ## Commits
 - Title max 50 chars, imperative, then a blank line
