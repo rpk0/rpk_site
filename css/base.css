@@ -1460,13 +1460,15 @@ hr {
   margin-bottom: 30px;
 }
 
-.not-found-gif img {
+.not-found-gif video {
+  max-width: 100%;
+  height: auto;
   opacity: 0.75;
   border-radius: 4px;
   transition: opacity 0.3s ease;
 }
 
-.not-found-gif:hover img {
+.not-found-gif:hover video {
   opacity: 1;
 }
 
