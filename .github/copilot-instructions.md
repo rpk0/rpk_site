@@ -3,7 +3,7 @@
 ## Project Overview
 - Static photography portfolio, Jekyll 4, deployed to GitHub Pages by GitHub Actions (`.github/workflows/pages.yml`) on push to `gh-pages`.
 - **Not** the legacy Pages build. The `github-pages` gem is gone, so any plugin and any Jekyll version is fair game.
-- Local runtime: Ruby 3.3.6 via mise/rbenv. Output goes to `_site/`, which stays untracked.
+- Local runtime: Ruby 4.0 via mise (`.mise.toml`). Output goes to `_site/`, which stays untracked.
 
 ## Local Environment
 1. `bundle install`
@@ -56,12 +56,14 @@ Then `ruby tools/build_images.rb` and commit both the `.jpg` and the `.webp`.
 adding any photo:
 
 - writes a sibling `.webp` for every jpg/png in `uploads/ images/ projects/ critiq/`
-- regenerates `_data/image_sizes.yml`, which templates read to emit `width`/`height`
+- regenerates `_data/image_sizes.yml`, which `_plugins/images.rb` reads for `width`/`height`
 
-Originals are never modified. `_includes/gallery.html` and
-`_includes/essay_card.html` consume both, so galleries get `<picture>`, WebP,
-lazy loading and no layout shift for free. Never hand-write an `<img>` in a
-gallery; use the include.
+Always reference the original `.jpg`/`.png` (front matter, Markdown, templates).
+At build time `_plugins/images.rb` rewrites every local `src`/`href` to the
+`.webp`, adds intrinsic dimensions and lazy loading to every `<img>`, and leaves
+the originals out of the deployed site, except images used as social cards
+(`image:` front matter, `logo:`), which crawlers still want as JPG. Never
+hand-write an `<img>` in a gallery; use the include.
 
 ## Conventions
 
