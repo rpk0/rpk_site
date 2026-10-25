@@ -17,7 +17,7 @@ require 'yaml'
 require 'shellwords'
 
 ROOT = File.expand_path('..', __dir__)
-DIRS = %w[uploads images projects critiq].freeze
+DIRS = %w[uploads images projects].freeze
 QUALITY = 82
 
 Dir.chdir(ROOT)

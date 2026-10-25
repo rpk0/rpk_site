@@ -18,7 +18,6 @@
 | Photo essays | `_photo_essays/<slug>.html` (a Jekyll collection) |
 | Photo essay assets | `uploads/<slug>/` |
 | Projects | `projects/<slug>/index.html` |
-| Critiq sessions | `critiq/<session>/` (generated, private) |
 | Shared markup | `_includes/`, layouts in `_layouts/` |
 | Styles | `css/base.css` |
 | Scripts | `js/` |
@@ -55,7 +54,7 @@ Then `ruby tools/build_images.rb` and commit both the `.jpg` and the `.webp`.
 `tools/build_images.rb` is the only image step. It is idempotent, run it after
 adding any photo:
 
-- writes a sibling `.webp` for every jpg/png in `uploads/ images/ projects/ critiq/`
+- writes a sibling `.webp` for every jpg/png in `uploads/ images/ projects/`
 - regenerates `_data/image_sizes.yml`, which `_plugins/images.rb` reads for `width`/`height`
 
 Always reference the original `.jpg`/`.png` (front matter, Markdown, templates).
@@ -85,29 +84,6 @@ hand-write an `<img>` in a gallery; use the include.
   tokens, do not add new hex values or breakpoints. Two breakpoints exist: 960px
   and 640px.
 - **Whitespace:** no trailing whitespace, no spaces on blank lines.
-
-## Critiq (private client review pages)
-
-Firebase-backed photo voting under `/critiq/`. Sessions are `noindex` and
-disallowed in `robots.txt`.
-
-```bash
-ruby create_critiq_session.rb <session-name> <photos-folder>  # local images
-ruby create_external_session.rb <session-name> <urls-file>    # external URLs
-ruby delete_critiq_session.rb                                 # interactive removal
-```
-
-`create_critiq_session.rb` runs `tools/build_images.rb` automatically.
-
-**Known limitation:** the Realtime Database is world-readable and the admin PIN
-is a client-side SHA-1 hash embedded in `critiq/admin.html`. Anyone with the URL
-can read every session over the REST API. Treat critiq as obscure, not private,
-until the rules are moved behind Firebase Auth.
-
-- Layout: `_layouts/critiq_layout.html`
-- Logic: `js/firebase-voting.js`
-- Admin: `critiq/admin.html`
-- Vote shape: `{vote, voterName, comment, timestamp}`
 
 ## Deployment
 - Push to `gh-pages`; the Actions workflow builds and deploys.

@@ -11,11 +11,8 @@
 #   3. Originals are left out of the build, except the ones used as social
 #      cards (`image:` front matter and the site logo), since crawlers still
 #      expect JPG there.
-#
-# critiq/ is rewritten but always deployed: its admin page links originals.
 module RpkImages
-  ORIGINAL = %r{\A/(images|uploads|projects|critiq)/[^"]+\.(?:jpe?g|png)\z}i
-  UNDEPLOYED = %r{\A/(images|uploads|projects)/}
+  ORIGINAL = %r{\A/(images|uploads|projects)/[^"]+\.(?:jpe?g|png)\z}i
 
   def self.webp_for(site, url)
     return unless url.match?(ORIGINAL)
@@ -45,7 +42,7 @@ Jekyll::Hooks.register :site, :post_read do |site|
   keep << site.config['logo']
   site.static_files.reject! do |file|
     url = file.url
-    url.match?(RpkImages::UNDEPLOYED) && !keep.include?(url) && RpkImages.webp_for(site, url)
+    !keep.include?(url) && RpkImages.webp_for(site, url)
   end
 end
 
