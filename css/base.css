@@ -662,22 +662,6 @@ hr {
   }
 }
 
-.photo-listing > li:nth-child(n + 13) {
-  display: none;
-}
-
-.photo-listing > li:nth-child(n + 13).active {
-  display: block;
-}
-
-.load-more {
-  margin-top: 30px;
-}
-
-.load-more.hide {
-  display: none;
-}
-
 .projects-list {
   list-style: none;
   padding: 0;
