@@ -13,7 +13,8 @@ html:has(.lb[open]) {
   overflow: hidden;
   overscroll-behavior: contain;
   touch-action: pinch-zoom;
-  background: rgb(0 0 0 / 0.92);
+  -webkit-tap-highlight-color: transparent;
+  background: rgb(20 20 20);
   opacity: 0;
   transition: opacity 0.3s ease, overlay 0.3s ease allow-discrete,
     display 0.3s ease allow-discrete;
@@ -139,7 +140,7 @@ html:has(.lb[open]) {
   gap: 20px;
   padding: 20px max(20px, env(safe-area-inset-right))
     max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
-  background: linear-gradient(to top, rgb(0 0 0 / 0.9), transparent);
+  background: linear-gradient(to top, rgb(20 20 20 / 0.9), transparent);
 }
 
 .lb-number {
@@ -149,8 +150,39 @@ html:has(.lb[open]) {
 }
 
 .lb .lb-close {
+  position: fixed;
+  top: max(20px, env(safe-area-inset-top));
+  right: max(20px, env(safe-area-inset-right));
   width: 44px;
   height: 44px;
+}
+
+.lb-caption {
+  position: fixed;
+  top: 28px;
+  left: 34px;
+  max-height: calc(50vh - 70px);
+  margin: 0;
+  overflow: hidden;
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.3);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.lb-title {
+  color: rgb(255 255 255 / 0.55);
+}
+
+.lb-meta:not(:empty)::before {
+  content: '·';
+  margin-inline: 0.8em;
 }
 
 @media (hover: hover) {
@@ -214,14 +246,26 @@ html:has(.lb[open]) {
     bottom: calc(122px + env(safe-area-inset-bottom));
   }
 
-  .lb-close {
-    position: fixed;
+  .lb .lb-close {
     top: max(12px, env(safe-area-inset-top));
     right: max(10px, env(safe-area-inset-right));
   }
 
   .lb-number {
     font-size: 12px;
+  }
+
+  .lb-caption {
+    top: max(12px, env(safe-area-inset-top));
+    left: max(16px, env(safe-area-inset-left));
+    right: 70px;
+    max-height: none;
+    line-height: 44px;
+    writing-mode: horizontal-tb;
+  }
+
+  .lb-meta {
+    display: none;
   }
 }
 
@@ -242,5 +286,14 @@ html:has(.lb[open]) {
   .lb-prev {
     left: max(10px, env(safe-area-inset-left));
     right: auto;
+  }
+
+  .lb-caption {
+    top: 16px;
+    left: max(22px, env(safe-area-inset-left));
+    right: auto;
+    max-height: calc(50vh - 40px);
+    line-height: normal;
+    writing-mode: vertical-rl;
   }
 }

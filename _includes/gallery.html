@@ -6,8 +6,12 @@ is treated as an absolute URL and used as-is. `page.alts` holds a description
 per frame, in the same order; a frame without one falls back to its position.
 _plugins/images.rb serves the .webp for each frame. The first frame loads
 eagerly, the rest lazily, all with intrinsic dimensions so nothing shifts.
+`data-title` and `data-meta` feed the photo viewer's caption.
 {%- endcomment -%}
-<ul class="gallery">
+{%- capture meta -%}
+  {{ site.myname }}{% if page.date_label %} · {{ page.date_label }}{% endif %}{% if page.location %} · {{ page.location }}{% endif %}
+{%- endcapture -%}
+<ul class="gallery" data-title="{{ page.title | escape }}" data-meta="{{ meta | strip | escape }}">
   {%- for img in page.images %}
     {%- if img contains '://' -%}
       {%- assign src = img -%}

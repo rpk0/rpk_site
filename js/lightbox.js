@@ -12,6 +12,7 @@
   dialog.setAttribute('aria-label', 'Photo viewer');
   dialog.tabIndex = -1;
   dialog.innerHTML = `
+    <p class="lb-caption" aria-hidden="true"><span class="lb-title"></span><span class="lb-meta"></span></p>
     <img class="lb-image" alt="" draggable="false">
     <button type="button" class="lb-prev" aria-label="Previous photo">${icon('M20 5 10 15l10 10')}</button>
     <button type="button" class="lb-next" aria-label="Next photo">${icon('M10 5l10 10-10 10')}</button>
@@ -23,6 +24,8 @@
 
   const image = dialog.querySelector('.lb-image');
   const number = dialog.querySelector('.lb-number');
+  const title = dialog.querySelector('.lb-title');
+  const meta = dialog.querySelector('.lb-meta');
   const canHover = window.matchMedia('(hover: hover)');
   const isZoomed = () => (window.visualViewport ? window.visualViewport.scale > 1.01 : false);
   let album = [];
@@ -52,7 +55,10 @@
     if (!link || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
     const links = [...document.querySelectorAll(`a[data-lightbox="${CSS.escape(link.dataset.lightbox)}"]`)];
+    const gallery = link.closest('.gallery');
     album = links.map((a) => ({ src: a.href, alt: a.querySelector('img')?.alt || '' }));
+    title.textContent = gallery?.dataset.title || '';
+    meta.textContent = gallery?.dataset.meta || '';
     dialog.classList.toggle('is-single', album.length < 2);
     show(links.indexOf(link));
     dialog.showModal();
