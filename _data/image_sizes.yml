@@ -63,18 +63,6 @@
 "/images/photo_listing/underwater.jpg":
   w: 320
   h: 320
-"/images/posts/avatars/camera_leica.png":
-  w: 512
-  h: 512
-"/images/posts/avatars/film_strip.png":
-  w: 512
-  h: 512
-"/images/posts/avatars/koudelka_exiles.jpg":
-  w: 260
-  h: 227
-"/images/posts/avatars/my_gear.jpg":
-  w: 150
-  h: 150
 "/images/posts/digital_ice/all_dust.jpg":
   w: 1200
   h: 957
@@ -87,9 +75,6 @@
 "/images/posts/digital_ice/general_crop.png":
   w: 3490
   h: 1947
-"/images/posts/digital_ice/ice_good.png":
-  w: 143
-  h: 78
 "/images/posts/digital_ice/sign_crop.png":
   w: 752
   h: 1384
@@ -138,9 +123,6 @@
 "/images/posts/my_gear/olympus_xa2.jpg":
   w: 800
   h: 594
-"/images/posts/what_to_buy/Todd_Hido2-1500x1020.jpg":
-  w: 1500
-  h: 1020
 "/images/posts/what_to_buy/alex_kompotis_mamiya7ii.jpg":
   w: 700
   h: 550
@@ -159,9 +141,6 @@
 "/images/posts/what_to_buy/martin_parr_plaubel_makina.jpg":
   w: 1315
   h: 1080
-"/images/posts/what_to_buy/martin_parr_plaubel_makina2.jpg":
-  w: 880
-  h: 704
 "/images/posts/what_to_buy/mccurry_nikon_f6.jpg":
   w: 620
   h: 450
@@ -852,9 +831,6 @@
 "/uploads/stories_from_the_pandemic/stories_from_the_pandemic_18.jpg":
   w: 1200
   h: 800
-"/uploads/stories_from_the_pandemic/stories_from_the_pandemic_19.jpg":
-  w: 1200
-  h: 800
 "/uploads/stories_from_the_pandemic/stories_from_the_pandemic_2.jpg":
   w: 1200
   h: 814
@@ -922,9 +898,6 @@
   w: 900
   h: 600
 "/uploads/submerged/submerged_18.jpg":
-  w: 900
-  h: 600
-"/uploads/submerged/submerged_19.jpg":
   w: 900
   h: 600
 "/uploads/submerged/submerged_2.jpg":
